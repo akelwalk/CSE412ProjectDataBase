@@ -9,3 +9,6 @@ How to use?
 3) THEN DO "psql cse412project < dump.sql"
 4) After that is done you can connect to the database and make changes you want.
 5) After you are done, do "pg_dump --no-owner cse412project > dump.sql"
+
+
+Tutorial Video: https://www.youtube.com/watch?v=DA1Trq51JZs
