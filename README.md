@@ -1,6 +1,6 @@
 # CSE412ProjectDataBase
 
-Database currently being edited by: Arjun
+Database currently being edited by: No one.
 
 How to use? 
 
