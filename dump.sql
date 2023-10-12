@@ -21,6 +21,77 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: customer; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.customer (
+    userid integer NOT NULL,
+    paymenttype character varying(255),
+    leasestart date,
+    leaseend date,
+    isapproved boolean,
+    unitid integer
+);
+
+
+--
+-- Name: maintenancerequest; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.maintenancerequest (
+    isdealtwith boolean,
+    requestid integer NOT NULL,
+    "timestamp" date,
+    unitid integer,
+    userid integer
+);
+
+
+--
+-- Name: property; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.property (
+    amenities text[],
+    propertyid integer NOT NULL,
+    address character varying(255),
+    rentduedate date,
+    name character varying(255),
+    communityannouncements text[]
+);
+
+
+--
+-- Name: propertymanager; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.propertymanager (
+    userid integer NOT NULL,
+    isowner boolean,
+    propertyid integer
+);
+
+
+--
+-- Name: unit; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.unit (
+    unitid integer NOT NULL,
+    isfurnished boolean,
+    rentamount double precision,
+    floorplan character varying(255),
+    condition character varying(255),
+    isrented boolean,
+    appliances text[],
+    propertyid integer,
+    rentpaid boolean,
+    rentdue date,
+    userid integer
+);
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -30,58 +101,97 @@ CREATE TABLE public.users (
     firstname character varying(255),
     lastname character varying(255),
     email character varying(255),
-    "Phone#" character varying(50)
+    password character varying(255),
+    phonenumber character varying(255)
 );
 
 
 --
--- Name: users_userid_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Data for Name: customer; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.users_userid_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+COPY public.customer (userid, paymenttype, leasestart, leaseend, isapproved, unitid) FROM stdin;
+\.
 
 
 --
--- Name: users_userid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Data for Name: maintenancerequest; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.users_userid_seq OWNED BY public.users.userid;
+COPY public.maintenancerequest (isdealtwith, requestid, "timestamp", unitid, userid) FROM stdin;
+\.
 
 
 --
--- Name: users userid; Type: DEFAULT; Schema: public; Owner: -
+-- Data for Name: property; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.users ALTER COLUMN userid SET DEFAULT nextval('public.users_userid_seq'::regclass);
+COPY public.property (amenities, propertyid, address, rentduedate, name, communityannouncements) FROM stdin;
+\.
+
+
+--
+-- Data for Name: propertymanager; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.propertymanager (userid, isowner, propertyid) FROM stdin;
+\.
+
+
+--
+-- Data for Name: unit; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.unit (unitid, isfurnished, rentamount, floorplan, condition, isrented, appliances, propertyid, rentpaid, rentdue, userid) FROM stdin;
+\.
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.users (userid, role, firstname, lastname, email, "Phone#") FROM stdin;
+COPY public.users (userid, role, firstname, lastname, email, password, phonenumber) FROM stdin;
 \.
 
 
 --
--- Name: users_userid_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: customer customer_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_userid_seq', 1, false);
+ALTER TABLE ONLY public.customer
+    ADD CONSTRAINT customer_pkey PRIMARY KEY (userid);
 
 
 --
--- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: maintenancerequest maintenancerequest_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_email_key UNIQUE (email);
+ALTER TABLE ONLY public.maintenancerequest
+    ADD CONSTRAINT maintenancerequest_pkey PRIMARY KEY (requestid);
+
+
+--
+-- Name: property property_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.property
+    ADD CONSTRAINT property_pkey PRIMARY KEY (propertyid);
+
+
+--
+-- Name: propertymanager propertymanager_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.propertymanager
+    ADD CONSTRAINT propertymanager_pkey PRIMARY KEY (userid);
+
+
+--
+-- Name: unit unit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.unit
+    ADD CONSTRAINT unit_pkey PRIMARY KEY (unitid);
 
 
 --
@@ -90,6 +200,54 @@ ALTER TABLE ONLY public.users
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (userid);
+
+
+--
+-- Name: customer customer_unitid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.customer
+    ADD CONSTRAINT customer_unitid_fkey FOREIGN KEY (unitid) REFERENCES public.unit(unitid) ON DELETE SET NULL;
+
+
+--
+-- Name: unit fk_unit_customer; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.unit
+    ADD CONSTRAINT fk_unit_customer FOREIGN KEY (userid) REFERENCES public.customer(userid) ON DELETE SET NULL;
+
+
+--
+-- Name: maintenancerequest maintenancerequest_unitid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.maintenancerequest
+    ADD CONSTRAINT maintenancerequest_unitid_fkey FOREIGN KEY (unitid) REFERENCES public.unit(unitid) ON DELETE CASCADE;
+
+
+--
+-- Name: maintenancerequest maintenancerequest_userid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.maintenancerequest
+    ADD CONSTRAINT maintenancerequest_userid_fkey FOREIGN KEY (userid) REFERENCES public.customer(userid) ON DELETE SET NULL;
+
+
+--
+-- Name: propertymanager propertymanager_propertyid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.propertymanager
+    ADD CONSTRAINT propertymanager_propertyid_fkey FOREIGN KEY (propertyid) REFERENCES public.property(propertyid) ON DELETE SET NULL;
+
+
+--
+-- Name: unit unit_propertyid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.unit
+    ADD CONSTRAINT unit_propertyid_fkey FOREIGN KEY (propertyid) REFERENCES public.property(propertyid) ON DELETE CASCADE;
 
 
 --
