@@ -197,15 +197,15 @@ if __name__ == "__main__":
     
     if conn:
         print("connection successful")
-        create_table(conn, "Users", user)
-        create_table(conn, "Property", property)
-        create_table(conn, "Unit", unit) 
-        create_table(conn, "Customer", customer) 
-        create_table(conn, "PropertyManager", property_manager)
-        create_table(conn, "MaintenanceRequest", maintenance_req)
+        # create_table(conn, "Users", user)
+        # create_table(conn, "Property", property)
+        # create_table(conn, "Unit", unit) 
+        # create_table(conn, "Customer", customer) 
+        # create_table(conn, "PropertyManager", property_manager)
+        # create_table(conn, "MaintenanceRequest", maintenance_req)
 
         # add FK UserID to Unit 
-        add_foreign_key(conn, "Unit", "UserID", "Customer", "UserID", "ON DELETE SET NULL")
+        # add_foreign_key(conn, "Unit", "UserID", "Customer", "UserID", "ON DELETE SET NULL")
         
         print("Tables in the database:")
         show_all_tables(conn)
