@@ -20,7 +20,7 @@ cursor = conn.cursor()
 user_ids = []
 for _ in range(NUM_USERS):
     user_id = fake.unique.random_int()
-    role = random.choice(['Customer', 'PropertyManager'])
+    role = random.choice(['Customer', 'Customer', 'Customer', 'PropertyManager'])
     first_name = fake.first_name()
     last_name = fake.last_name()
     email = fake.email()
