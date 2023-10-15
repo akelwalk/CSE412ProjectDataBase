@@ -101,7 +101,6 @@ for user_id in user_ids:
             lease_start = None 
             lease_end = None
             appr = False
-        is_approved = fake.boolean()
         cursor.execute(
             "INSERT INTO Customer(UserID, PaymentType, LeaseStart, LeaseEnd, IsApproved) VALUES (%s, %s, %s, %s, %s)",
             (user_id, payment_type, lease_start, lease_end, appr)
