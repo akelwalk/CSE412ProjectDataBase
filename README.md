@@ -2,7 +2,7 @@
 
 Database currently being edited by: No one.
 
-How to use? 
+## How to use? 
 
 1) Download the dump.sql File
 2) Createa a new database named "cse412project" (Drop the previous database if you have it stored)
@@ -15,3 +15,30 @@ createdb cse412project
 
 
 Tutorial Video: https://www.youtube.com/watch?v=DA1Trq51JZs
+
+## Using Automation Tools 
+
+### Pythons Scripts 
+
+* data_gen.py 
+This script generates the tables for our database with the associated columns. No data is added to the tables using this script so disregard the name. Automation with make clean and make build uses this script to delete or add the tables in the database. 
+
+* utility.py
+This script generates the data into the tables of our database. This script is automated with the make data_gen command. 
+
+### MakeFile Commands 
+
+* make import 
+Imports the current database dump file currently in the repo to your local instance. 
+
+* make dump 
+Dumps that changes that you have made to the database into the dump.sql file. 
+
+* make build 
+This command builds the database tables with the data_gen.py file. 
+
+* make clean
+This command deletes the tables in the database essentially emptying the database. 
+
+* make data_gen 
+This command inserts the data into the database usin the utility.py script. 
