@@ -1,4 +1,6 @@
 import psycopg2
+import sys 
+
 
 def connect_to_db(database_name):
     """Connect to PostgreSQL database."""
@@ -116,8 +118,27 @@ def add_foreign_key(conn, table_name, column_name, referenced_table, referenced_
     except Exception as e:
         print(f"Error: {e}")
 
-        
+def is_database_empty(conn):
+    cursor = conn.cursor()
+    
+    # Query to count the number of user-defined tables in the current database.
+    query = """
+    SELECT COUNT(*)
+    FROM pg_tables
+    WHERE schemaname = 'public';
+    """
+    
+    cursor.execute(query)
+    table_count = cursor.fetchone()[0]
+    
+    cursor.close()
+    return table_count == 0
+
+ 
 if __name__ == "__main__":
+    
+    delete_tables = sys.argv[1]
+    create_tables = sys.argv[2]
     
     user = """
     CREATE TABLE Users(
@@ -197,31 +218,38 @@ if __name__ == "__main__":
     
     if conn:
         print("connection successful")
-        # create_table(conn, "Users", user)
-        # create_table(conn, "Property", property)
-        # create_table(conn, "Unit", unit) 
-        # create_table(conn, "Customer", customer) 
-        # create_table(conn, "PropertyManager", property_manager)
-        # create_table(conn, "MaintenanceRequest", maintenance_req)
+        print(create_tables)
+        print(delete_tables)
+        if (create_tables == "1"):
+            if is_database_empty(conn):
+                print("Creating Tables.. ")
+                create_table(conn, "Users", user)
+                create_table(conn, "Property", property)
+                create_table(conn, "Unit", unit) 
+                create_table(conn, "Customer", customer) 
+                create_table(conn, "PropertyManager", property_manager)
+                create_table(conn, "MaintenanceRequest", maintenance_req)
+                # add FK UserID to Unit 
+                add_foreign_key(conn, "Unit", "UserID", "Customer", "UserID", "ON DELETE SET NULL")
+            else: 
+                print("Cannot create tables until database is empty!! run 'make clean' !!")
 
-        # add FK UserID to Unit 
-        # add_foreign_key(conn, "Unit", "UserID", "Customer", "UserID", "ON DELETE SET NULL")
         
-        print("Tables in the database:")
-        show_all_tables(conn)
         
         # print("Deleting Created Tables")
         
         # uncomment to delete a table
-        # delete_table(conn, "Users")
-        # delete_table(conn, "Property")
-        # delete_table(conn, "Unit")
-        # delete_table(conn, "Customer")
-        # delete_table(conn, "PropertyManager")
-        # delete_table(conn, "MaintenanceRequest")
+        if (delete_tables == "1"):
+            print("Deleting Tables..")
+            delete_table(conn, "Users")
+            delete_table(conn, "Property")
+            delete_table(conn, "Unit")
+            delete_table(conn, "Customer")
+            delete_table(conn, "PropertyManager")
+            delete_table(conn, "MaintenanceRequest")
         
         # view current tables in the database 
-        # print("Tables in the database:")
-        # show_all_tables(conn)
+        print("Tables in the database:")
+        show_all_tables(conn)
         
         conn.close()
