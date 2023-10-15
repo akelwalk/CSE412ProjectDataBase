@@ -20,25 +20,25 @@ Tutorial Video: https://www.youtube.com/watch?v=DA1Trq51JZs
 
 ### Pythons Scripts 
 
-* data_gen.py 
+* `data_gen.py` <br>
 This script generates the tables for our database with the associated columns. No data is added to the tables using this script so disregard the name. Automation with make clean and make build uses this script to delete or add the tables in the database. 
 
-* utility.py
+* `utility.py` <br>
 This script generates the data into the tables of our database. This script is automated with the make data_gen command. 
 
 ### MakeFile Commands 
 
-* make import 
+* `make import` <br>
 Imports the current database dump file currently in the repo to your local instance. 
 
-* make dump 
+* `make dump` <br>
 Dumps that changes that you have made to the database into the dump.sql file. 
 
-* make build 
+* `make build` <br>
 This command builds the database tables with the data_gen.py file. 
 
-* make clean
+* `make clean` <br>
 This command deletes the tables in the database essentially emptying the database. 
 
-* make data_gen 
+* `make data_gen` <br>
 This command inserts the data into the database usin the utility.py script. 
