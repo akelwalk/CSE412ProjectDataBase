@@ -157,7 +157,6 @@ if __name__ == "__main__":
         amenities TEXT[],
         propertyID INT PRIMARY KEY,
         address VARCHAR(255),
-        rentDueDate DATE,
         Name VARCHAR(255),
         communityAnnouncements TEXT[]	
     );
@@ -174,7 +173,7 @@ if __name__ == "__main__":
         appliances TEXT[],
         PropertyID INT,
         rentPaid boolean,
-        rentDue DATE,
+        rentDue TIMESTAMP,
         UserID INT,
         FOREIGN KEY (PropertyID) REFERENCES Property(propertyID) ON DELETE CASCADE
     );
@@ -197,6 +196,7 @@ if __name__ == "__main__":
         LeaseEnd DATE,
         IsApproved boolean,
         UnitID INT,
+        PropertyID INT, 
         FOREIGN KEY(UnitID) REFERENCES Unit(UnitId) ON DELETE SET NULL
     );
     """
@@ -206,8 +206,10 @@ if __name__ == "__main__":
         isDealtWith boolean,
         requestID INT PRIMARY KEY,
         timeStamp DATE,
+        PropertyID INT,
         UnitID INT,
         userID INT,
+        PropertID INT,
         FOREIGN KEY (UnitID) REFERENCES Unit(UnitId) ON DELETE CASCADE,
         FOREIGN KEY (userID) REFERENCES Customer(UserID) ON DELETE SET NULL
     );
@@ -231,6 +233,10 @@ if __name__ == "__main__":
                 create_table(conn, "MaintenanceRequest", maintenance_req)
                 # add FK UserID to Unit 
                 add_foreign_key(conn, "Unit", "UserID", "Customer", "UserID", "ON DELETE SET NULL")
+                # adding property id as FK to customer 
+                add_foreign_key(conn,"Customer","propertyID","Property","propertyID","ON DELETE SET NULL") 
+                # adding PropertyID as FK to maintenance request 
+                add_foreign_key(conn,"MaintenanceRequest","propertyID","Property","propertyID","ON DELETE CASCADE")
             else: 
                 print("Cannot create tables until database is empty!! run 'make clean' !!")
 
