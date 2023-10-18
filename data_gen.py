@@ -209,7 +209,6 @@ if __name__ == "__main__":
         PropertyID INT,
         UnitID INT,
         userID INT,
-        PropertID INT,
         FOREIGN KEY (UnitID) REFERENCES Unit(UnitId) ON DELETE CASCADE,
         FOREIGN KEY (userID) REFERENCES Customer(UserID) ON DELETE SET NULL
     );
