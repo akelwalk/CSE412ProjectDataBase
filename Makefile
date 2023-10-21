@@ -14,3 +14,6 @@ clean:
 
 data_gen: 
 	python3 utility.py
+
+demo_one: 
+	psql -d cse412project -a -e -f demo_one.sql > demo_one_out.txt
