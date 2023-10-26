@@ -1,2 +1,8 @@
 *.txt
 .vscode
+JavaFXTestProject/.idea/*
+JavaFXTestProject/target/* 
+JavaFXTestProject/*.xml
+JavaFXTestProject/*.iml 
+JavaFXTestProject/src/main/java/module-info.java
+JavaFXTestProject/out/
