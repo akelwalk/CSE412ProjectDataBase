@@ -33,6 +33,12 @@ public class Login {
 
     }
 
+    public void userRegister(ActionEvent event) throws IOException {
+        HelloApplication m = new HelloApplication();
+        m.changeScene("afterLogin.fxml");
+
+    }
+
     private void checkLogin() throws IOException {
         HelloApplication m = new HelloApplication();
         if(username.getText().toString().equals("test") && password.getText().toString().equals("test12345")) {
