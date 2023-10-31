@@ -29,7 +29,7 @@
                         <Image url="https://i.imgur.com/ZZfDO86.png" />
                     </image>
                 </ImageView>
-                <Text fill="#ffc900" layoutX="32.0" layoutY="160.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                <Text fill="#ffc900" layoutX="32.0" layoutY="160.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="email">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -39,10 +39,10 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="username" layoutX="138.0" layoutY="143.0" promptText="Username" />
+                <TextField fx:id="email" layoutX="138.0" layoutY="143.0" promptText="Email" />
                 <PasswordField fx:id="password" layoutX="138.0" layoutY="195.0" promptText="Password" />
                 <Button fx:id="button" layoutX="129.0" layoutY="277.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="38.0" prefWidth="75.0" style="-fx-background-color: #ffc900;" text="Log In" />
-            <Label fx:id="wrongLogin" layoutX="114.0" layoutY="118.0" />
+            <Label fx:id="wrongLogin" layoutX="114.0" layoutY="118.0" textFill="WHITE" />
             <Button fx:id="registerButton" layoutX="232.0" layoutY="277.0" mnemonicParsing="false" onAction="#userRegister" prefHeight="38.0" prefWidth="75.0" style="-fx-background-color: #ffc900;" text="Register" />
             </children>
         </AnchorPane>

@@ -9,6 +9,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import java.io.IOException;
 public class Login {
@@ -22,7 +26,7 @@ public class Login {
     @FXML
     private Label wrongLogin;
     @FXML
-    private TextField username;
+    private TextField email;
     @FXML
     private PasswordField password;
 
@@ -40,20 +44,49 @@ public class Login {
     }
 
     private void checkLogin() throws IOException {
-        HelloApplication m = new HelloApplication();
-        if(username.getText().toString().equals("test") && password.getText().toString().equals("test12345")) {
-            wrongLogin.setText("Success!");
-
-            m.changeScene("afterLogin.fxml");
-        }
-
-        else if(username.getText().isEmpty() && password.getText().isEmpty()) {
-            wrongLogin.setText("Please enter your data.");
-        }
-
-
-        else {
-            wrongLogin.setText("Wrong username or password!");
+        final String JDBC_DRIVER = "org.postgresql.Driver";  
+        final String DB_URL = "jdbc:postgresql://localhost:8888/cse412project"; // This port will likely be different on windows 
+        
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+    
+            String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email.getText());
+            stmt.setString(2, password.getText()); 
+            ResultSet rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                wrongLogin.setText("Success!");
+                HelloApplication m = new HelloApplication();
+                m.changeScene("afterLogin.fxml"); // should probably have a couple of these pages one for users and another for Property managers. 
+            } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
+                wrongLogin.setText("Please enter your data.");
+            } else {
+                wrongLogin.setText("Wrong email or password!");
+            }
+    
+            // Clean up
+            rs.close();
+            stmt.close();
+            conn.close();
+    
+        } catch(Exception e) {
+            e.printStackTrace();
+            wrongLogin.setText("Error connecting to the database.");
+        } finally {
+            try {
+                if(stmt != null) stmt.close();
+            } catch(Exception se2) {}
+            try {
+                if(conn != null) conn.close();
+            } catch(Exception se) {
+                se.printStackTrace();
+            }
         }
     }
 
