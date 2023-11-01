@@ -60,6 +60,7 @@ public class Login {
                 stmt.setString(1, email.getText());
                 stmt.setString(2, password.getText());
 
+                System.out.println(isPropertyManager.isSelected());
                 if (isPropertyManager.isSelected()) {
                     stmt.setString(3, "PropertyManager");
                 }
@@ -73,7 +74,13 @@ public class Login {
                 if (rs.next()) {
                     wrongLogin.setText("Success!");
                     HelloApplication m = new HelloApplication();
-                    m.changeScene("afterLogin.fxml"); // should probably have a couple of these pages one for users and another for Property managers.
+
+                    if (isPropertyManager.isSelected()) {
+                        m.changeScene("homepageManager.fxml"); // should probably have a couple of these pages one for users and another for Property managers.
+                    }
+                    else {
+                        m.changeScene("homepageCustomer.fxml"); // should probably have a couple of these pages one for users and another for Property managers.
+                    }
                 } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
                     wrongLogin.setText("Please enter your data.");
                 } else {

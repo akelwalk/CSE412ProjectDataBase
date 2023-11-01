@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class AfterLogin {
+public class homepageCustomer {
 
     @FXML
     private Button logout;
