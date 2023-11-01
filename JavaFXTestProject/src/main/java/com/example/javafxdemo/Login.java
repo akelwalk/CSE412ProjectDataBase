@@ -50,15 +50,24 @@ public class Login {
         Connection conn = null;
         PreparedStatement stmt = null;
 
-        if (isPropertyManager.isSelected()) {
+
             try {
                 Class.forName(JDBC_DRIVER);
                 conn = DriverManager.getConnection(DB_URL);
 
-                String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND ROLE = PropertyManager";
+                String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND ROLE = ?";
                 stmt = conn.prepareStatement(sql);
                 stmt.setString(1, email.getText());
                 stmt.setString(2, password.getText());
+
+                if (isPropertyManager.isSelected()) {
+                    stmt.setString(3, "PropertyManager");
+                }
+                else
+                {
+                    stmt.setString(3, "Customer");
+                }
+
                 ResultSet rs = stmt.executeQuery();
 
                 if (rs.next()) {
@@ -92,50 +101,7 @@ public class Login {
             }
 
         }
-        else {
-            try {
-                Class.forName(JDBC_DRIVER);
-                conn = DriverManager.getConnection(DB_URL);
 
-                String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND ROLE = Customer";
-                stmt = conn.prepareStatement(sql);
-                stmt.setString(1, email.getText());
-                stmt.setString(2, password.getText());
-                ResultSet rs = stmt.executeQuery();
-
-                if (rs.next()) {
-                    wrongLogin.setText("Success!");
-                    HelloApplication m = new HelloApplication();
-                    m.changeScene("afterLogin.fxml"); // should probably have a couple of these pages one for users and another for Property managers.
-                } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
-                    wrongLogin.setText("Please enter your data.");
-                } else {
-                    wrongLogin.setText("Wrong email or password!");
-                }
-
-                // Clean up
-                rs.close();
-                stmt.close();
-                conn.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                wrongLogin.setText("Error connecting to the database.");
-            } finally {
-                try {
-                    if (stmt != null) stmt.close();
-                } catch (Exception se2) {
-                }
-                try {
-                    if (conn != null) conn.close();
-                } catch (Exception se) {
-                    se.printStackTrace();
-                }
-            }
-
-        }
-
-    }
 
 
 }
