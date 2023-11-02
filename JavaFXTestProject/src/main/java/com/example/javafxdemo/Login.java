@@ -45,69 +45,63 @@ public class Login {
 
     private void checkLogin() throws IOException {
         final String JDBC_DRIVER = "org.postgresql.Driver";  
-        final String DB_URL = "jdbc:postgresql://localhost:8888/cse412project"; // This port will likely be different on windows 
-        
+        final String DB_URL = "jdbc:postgresql://localhost:8888/cse412project"; 
+            
         Connection conn = null;
         PreparedStatement stmt = null;
-
-
-            try {
-                Class.forName(JDBC_DRIVER);
-                conn = DriverManager.getConnection(DB_URL);
-
-                String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND ROLE = ?";
-                stmt = conn.prepareStatement(sql);
-                stmt.setString(1, email.getText());
-                stmt.setString(2, password.getText());
-
-                System.out.println(isPropertyManager.isSelected());
-                if (isPropertyManager.isSelected()) {
-                    stmt.setString(3, "PropertyManager");
-                }
-                else
-                {
-                    stmt.setString(3, "Customer");
-                }
-
-                ResultSet rs = stmt.executeQuery();
-
-                if (rs.next()) {
-                    wrongLogin.setText("Success!");
-                    HelloApplication m = new HelloApplication();
-
-                    if (isPropertyManager.isSelected()) {
-                        m.changeScene("homepageManager.fxml"); // should probably have a couple of these pages one for users and another for Property managers.
-                    }
-                    else {
-                        m.changeScene("homepageCustomer.fxml"); // should probably have a couple of these pages one for users and another for Property managers.
-                    }
-                } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
-                    wrongLogin.setText("Please enter your data.");
+    
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+    
+            // Query only for email and password, the role will be determined from the result
+            String sql = "SELECT ROLE FROM users WHERE email = ? AND password = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email.getText());
+            stmt.setString(2, password.getText());
+    
+            ResultSet rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                String role = rs.getString("ROLE");
+    
+                HelloApplication m = new HelloApplication();
+    
+                if ("PropertyManager".equals(role)) {
+                    m.changeScene("homepageManager.fxml");
+                } else if ("Customer".equals(role)) {
+                    m.changeScene("homepageCustomer.fxml");
                 } else {
-                    wrongLogin.setText("Wrong email or password!");
+                    // Handle any other roles if required
+                    wrongLogin.setText("Unrecognized role!");
                 }
-
-                // Clean up
-                rs.close();
-                stmt.close();
-                conn.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                wrongLogin.setText("Error connecting to the database.");
-            } finally {
-                try {
-                    if (stmt != null) stmt.close();
-                } catch (Exception se2) {
-                }
-                try {
-                    if (conn != null) conn.close();
-                } catch (Exception se) {
-                    se.printStackTrace();
-                }
+            } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
+                wrongLogin.setText("Please enter your data.");
+            } else {
+                wrongLogin.setText("Wrong email or password!");
             }
-
+    
+            // Clean up
+            rs.close();
+            stmt.close();
+            conn.close();
+    
+        } catch (Exception e) {
+            e.printStackTrace();
+            wrongLogin.setText("Error connecting to the database.");
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+            } catch (Exception se2) {
+            }
+            try {
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
         }
+    }
+    
 
 
 
