@@ -93,7 +93,24 @@ public class Register {
                 errorLabel.setText("An account already exists with that email!");
             }
             else {
-                errorLabel.setText("Account succesfully created!");
+
+                sql = "INSERT INTO Users VALUES ( (SELECT MAX(coalesce(UserID, -1)) FROM USERS) + 1, ?, ?, ?, ?, ?, ?)";
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, "Customer");
+                stmt.setString(2, firstName.getText());
+                stmt.setString(3, lastName.getText());
+                stmt.setString(4, email.getText());
+                stmt.setString(5, password.getText());
+                stmt.setString(6, phoneNumber.getText());
+
+                int affectedRows = stmt.executeUpdate();
+
+
+                if (affectedRows > 0) {
+                    errorLabel.setText("Account succesfully created!");
+                }
+
+
             }
 
             // Clean up
