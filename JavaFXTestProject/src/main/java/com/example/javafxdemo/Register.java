@@ -55,16 +55,16 @@ public class Register {
 
     private void checkRegister() throws IOException {
 
-        boolean validFormat = true;
+        boolean validFormat = false;
 
         if (password != confirmPassword) {
             errorLabel.setText("Entered passwords do not match!");
-            validFormat = false;
+            return;
         } else {
             if (password.getLength() < 6) {
                 errorLabel.setText("Passwords must be at least 6 characters long!");
+                return;
             }
-            validFormat = false;
         }
 
         if (validFormat == true)
