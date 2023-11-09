@@ -48,18 +48,82 @@ public class Register {
 
     }
 
-    public void userLogin(ActionEvent event) throws IOException {
-        checkLogin();
+    public void userRegister(ActionEvent event) throws IOException {
+        checkRegister();
 
     }
 
-    private void checkLogin() throws IOException {
+    private void checkRegister() throws IOException {
+
+        if (password != confirmPassword)
+        {
+            errorLabel.setText("Entered passwords do not match!");
+        }
+        else {
+            if (password.getLength() < 6) {
+                errorLabel.setText("Passwords must be at least 6 characters long!");
+            }
+
+        }
+
         final String JDBC_DRIVER = "org.postgresql.Driver";
         final String DB_URL = "jdbc:postgresql://localhost:8888/cse412project";
 
         Connection conn = null;
         PreparedStatement stmt = null;
 
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            // Query only for email and password, the role will be determined from the result
+            String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email.getText());
+            stmt.setString(2, password.getText());
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String role = rs.getString("ROLE");
+
+                HelloApplication m = new HelloApplication();
+
+                if ("PropertyManager".equals(role)) {
+                    m.changeScene("homepageManager.fxml");
+                } else if ("Customer".equals(role)) {
+                    m.changeScene("homepageCustomer.fxml");
+                } else {
+                    // Handle any other roles if required
+                    errorLabel.setText("Unrecognized role!");
+                }
+            } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
+                errorLabel.setText("Please enter your data.");
+            } else {
+                errorLabel.setText("Wrong email or password!");
+            }
+
+            // Clean up
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            errorLabel.setText("Error connecting to the database.");
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+            } catch (Exception se2) {
+            }
+            try {
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+
+        /*
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL);
@@ -83,12 +147,12 @@ public class Register {
                     m.changeScene("homepageCustomer.fxml");
                 } else {
                     // Handle any other roles if required
-                    wrongLogin.setText("Unrecognized role!");
+                    errorLabel.setText("Unrecognized role!");
                 }
             } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
-                wrongLogin.setText("Please enter your data.");
+                errorLabel.setText("Please enter your data.");
             } else {
-                wrongLogin.setText("Wrong email or password!");
+                errorLabel.setText("Wrong email or password!");
             }
 
             // Clean up
@@ -98,7 +162,7 @@ public class Register {
 
         } catch (Exception e) {
             e.printStackTrace();
-            wrongLogin.setText("Error connecting to the database.");
+            errorLabel.setText("Error connecting to the database.");
         } finally {
             try {
                 if (stmt != null) stmt.close();
@@ -110,6 +174,10 @@ public class Register {
                 se.printStackTrace();
             }
         }
+        */
+
+
+
     }
 
 }
