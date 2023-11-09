@@ -57,7 +57,7 @@ public class Register {
 
         boolean validFormat = false;
 
-        if (password != confirmPassword) {
+        if (!(password.getText().equals(confirmPassword.getText()))) {
             errorLabel.setText("Entered passwords do not match!");
             return;
         } else {
