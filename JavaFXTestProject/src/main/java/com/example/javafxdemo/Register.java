@@ -12,7 +12,7 @@ public class Register {
     private Button logout;
 
 
-    public void userLogOut(ActionEvent event) throws IOException {
+    public void returnHome(ActionEvent event) throws IOException {
         HelloApplication m = new HelloApplication();
         m.changeScene("hello-view.fxml");
 
