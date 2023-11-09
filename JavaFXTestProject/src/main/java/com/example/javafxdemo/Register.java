@@ -107,9 +107,18 @@ public class Register {
 
 
                 if (affectedRows > 0) {
-                    errorLabel.setText("Account succesfully created!");
-                }
 
+                    sql = "INSERT INTO Customer VALUES( (SELECT UserID FROM USERS WHERE USERS.EMAIL = ?), NULL, NULL, NULL, NULL, NULL);\n";
+                    stmt = conn.prepareStatement(sql);
+                    stmt.setString(1, email.getText());
+
+                    int affectedRows2 = stmt.executeUpdate();
+
+
+                    if (affectedRows2 > 0) {
+                        errorLabel.setText("Account succesfully created!");
+                    }
+                }
 
             }
 
