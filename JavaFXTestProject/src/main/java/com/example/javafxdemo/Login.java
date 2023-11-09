@@ -39,7 +39,7 @@ public class Login {
 
     public void userRegister(ActionEvent event) throws IOException {
         HelloApplication m = new HelloApplication();
-        m.changeScene("afterRegister.fxml");
+        m.changeScene("Register.fxml");
 
     }
 
