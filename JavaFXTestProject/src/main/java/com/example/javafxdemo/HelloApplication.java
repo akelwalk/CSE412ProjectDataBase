@@ -3,6 +3,7 @@ package com.example.javafxdemo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
@@ -18,7 +19,7 @@ public class HelloApplication extends Application {
         // HelloApplication file
         stg = primaryStage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 680, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 650 , 500);
         primaryStage.setTitle("Hello!");
         primaryStage.setScene(scene);
         primaryStage.show();
