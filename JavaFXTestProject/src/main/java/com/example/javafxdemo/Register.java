@@ -55,17 +55,20 @@ public class Register {
 
     private void checkRegister() throws IOException {
 
-        if (password != confirmPassword)
-        {
+        boolean validFormat = true;
+
+        if (password != confirmPassword) {
             errorLabel.setText("Entered passwords do not match!");
-        }
-        else {
+            validFormat = false;
+        } else {
             if (password.getLength() < 6) {
                 errorLabel.setText("Passwords must be at least 6 characters long!");
             }
-
+            validFormat = false;
         }
 
+        if (validFormat == true)
+        {
         final String JDBC_DRIVER = "org.postgresql.Driver";
         final String DB_URL = "jdbc:postgresql://localhost:8888/cse412project";
 
@@ -122,6 +125,8 @@ public class Register {
                 se.printStackTrace();
             }
         }
+
+    }
 
         /*
         try {
