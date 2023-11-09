@@ -57,6 +57,9 @@ public class Register {
 
         boolean validFormat = false;
 
+        //To add checks for empty fields later
+       // if (email.getText().isEmpty() || password.getText().isEmpty() || )
+
         if (!(password.getText().equals(confirmPassword.getText()))) {
             errorLabel.setText("Entered passwords do not match!");
             return;
@@ -67,7 +70,7 @@ public class Register {
             }
         }
 
-        if (validFormat == true)
+        if (true)
         {
         final String JDBC_DRIVER = "org.postgresql.Driver";
         final String DB_URL = "jdbc:postgresql://localhost:8888/cse412project";
@@ -80,30 +83,17 @@ public class Register {
             conn = DriverManager.getConnection(DB_URL);
 
             // Query only for email and password, the role will be determined from the result
-            String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+            String sql = "SELECT * FROM users WHERE email = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, email.getText());
-            stmt.setString(2, password.getText());
 
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                String role = rs.getString("ROLE");
-
-                HelloApplication m = new HelloApplication();
-
-                if ("PropertyManager".equals(role)) {
-                    m.changeScene("homepageManager.fxml");
-                } else if ("Customer".equals(role)) {
-                    m.changeScene("homepageCustomer.fxml");
-                } else {
-                    // Handle any other roles if required
-                    errorLabel.setText("Unrecognized role!");
-                }
-            } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
-                errorLabel.setText("Please enter your data.");
-            } else {
-                errorLabel.setText("Wrong email or password!");
+                errorLabel.setText("An account already exists with that email!");
+            }
+            else {
+                errorLabel.setText("Account succesfully created!");
             }
 
             // Clean up
