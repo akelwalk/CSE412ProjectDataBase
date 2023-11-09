@@ -16,6 +16,20 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
+--
+
+-- *not* creating schema, since initdb creates it
+
+
+--
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON SCHEMA public IS '';
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -186,6 +200,8 @@ COPY public.customer (userid, paymenttype, leasestart, leaseend, isapproved, uni
 5310	Credit	2024-02-27	2024-12-18	t	1084	4534
 9173	Debit	2023-07-27	2024-03-08	t	6108	9683
 3204	Debit	2023-04-19	2024-01-12	t	3575	9683
+9966	\N	\N	\N	\N	\N	\N
+9967	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -452,6 +468,8 @@ COPY public.users (userid, role, firstname, lastname, email, password, phonenumb
 6362	Customer	Sylvia	Lloyd	strongdavid@example.org	&tXCax5S8w	(694)564-4711x70268
 3204	Customer	Joel	Williams	morrismatthew@example.org	1JSOfKNd$1	001-897-700-1620x684
 7828	Customer	Mackenzie	Andrews	wmendez@example.com	@j5Wwsyqyt	603.459.6967x671
+9966	Customer	John	Smith	jsmith@gmail.com	john123	1234567890
+9967	Customer	Arjun	Dadhwal	adadhwal@asu.edu	arjun12345	1234567890
 \.
 
 
@@ -565,6 +583,21 @@ ALTER TABLE ONLY public.propertymanager
 
 ALTER TABLE ONLY public.unit
     ADD CONSTRAINT unit_propertyid_fkey FOREIGN KEY (propertyid) REFERENCES public.property(propertyid) ON DELETE CASCADE;
+
+
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: -
+--
+
+REVOKE USAGE ON SCHEMA public FROM PUBLIC;
+
+
+--
+-- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: -; Owner: -
+--
+
+ALTER DEFAULT PRIVILEGES FOR ROLE postgres REVOKE ALL ON TABLES  FROM postgres;
+ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON TABLES  TO postgres WITH GRANT OPTION;
 
 
 --
