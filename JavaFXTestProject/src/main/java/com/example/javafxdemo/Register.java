@@ -49,11 +49,20 @@ public class Register {
     }
 
     public void userRegister(ActionEvent event) throws IOException {
-        checkRegister();
+        boolean registered = checkRegister(); 
+
+        if (registered == true)
+        {
+            returnHome(event);
+        }
+        else // registered = false 
+        {
+            // do nothing display error message
+        }
 
     }
 
-    private void checkRegister() throws IOException {
+    private boolean checkRegister() throws IOException {
 
         boolean validFormat = false;
 
@@ -62,11 +71,11 @@ public class Register {
 
         if (!(password.getText().equals(confirmPassword.getText()))) {
             errorLabel.setText("Entered passwords do not match!");
-            return;
+            return false;
         } else {
             if (password.getLength() < 6) {
                 errorLabel.setText("Passwords must be at least 6 characters long!");
-                return;
+                return false;
             }
         }
 
@@ -142,8 +151,10 @@ public class Register {
             }
         }
 
+        return true; 
     }
 
+    return false; // default return, indicates something went wrong
         /*
         try {
             Class.forName(JDBC_DRIVER);
