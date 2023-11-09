@@ -17,13 +17,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: public; Type: SCHEMA; Schema: -; Owner: -
---
-
--- *not* creating schema, since initdb creates it
-
-
---
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
 --
 
@@ -202,6 +195,7 @@ COPY public.customer (userid, paymenttype, leasestart, leaseend, isapproved, uni
 3204	Debit	2023-04-19	2024-01-12	t	3575	9683
 9966	\N	\N	\N	\N	\N	\N
 9967	\N	\N	\N	\N	\N	\N
+9968	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -470,6 +464,7 @@ COPY public.users (userid, role, firstname, lastname, email, password, phonenumb
 7828	Customer	Mackenzie	Andrews	wmendez@example.com	@j5Wwsyqyt	603.459.6967x671
 9966	Customer	John	Smith	jsmith@gmail.com	john123	1234567890
 9967	Customer	Arjun	Dadhwal	adadhwal@asu.edu	arjun12345	1234567890
+9968	Customer	test	dummy	testdummy@123.com	testtest	345-543-2345
 \.
 
 
