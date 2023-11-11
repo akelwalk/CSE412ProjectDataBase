@@ -12,7 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class database_controller {
+public class database_controller implements IDatabaseOperations {
     // Constants for JDBC driver and database URL
     private static final String JDBC_DRIVER = "org.postgresql.Driver";  
     // Might end up getting the port # from a text file in the event windows uses a different port
@@ -115,5 +115,5 @@ public class database_controller {
     //   that input captures are done in the source class and then passed to the database class return 
     //   values should be though out as to seperates the two as much as possible 
 
-    
+
 }
