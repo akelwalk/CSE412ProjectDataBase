@@ -64,151 +64,20 @@ public class Register {
 
     private boolean checkRegister() throws IOException {
 
-        boolean validFormat = false;
-
-        //To add checks for empty fields later
-       // if (email.getText().isEmpty() || password.getText().isEmpty() || )
-
+        // password contraints
         if (!(password.getText().equals(confirmPassword.getText()))) {
             errorLabel.setText("Entered passwords do not match!");
             return false;
+        } else if (password.getLength() < 6) {
+            errorLabel.setText("Passwords must be at least 6 characters long!");
+            return false;
         } else {
-            if (password.getLength() < 6) {
-                errorLabel.setText("Passwords must be at least 6 characters long!");
-                return false;
-            }
+            
+            database_controller dbController = new database_controller();
+            String registrationResult = dbController.registerUser(email.getText(), firstName.getText(), lastName.getText(), password.getText(), phoneNumber.getText());
+            errorLabel.setText(registrationResult);
+            return "Account successfully created!".equals(registrationResult);
         }
-
-        if (true)
-        {
-        final String JDBC_DRIVER = "org.postgresql.Driver";
-        final String DB_URL = "jdbc:postgresql://localhost:8888/cse412project";
-
-        Connection conn = null;
-        PreparedStatement stmt = null;
-
-        try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL);
-
-            // Query only for email and password, the role will be determined from the result
-            String sql = "SELECT * FROM users WHERE email = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, email.getText());
-
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                errorLabel.setText("An account already exists with that email!");
-            }
-            else {
-
-                sql = "INSERT INTO Users VALUES ( (SELECT MAX(coalesce(UserID, -1)) FROM USERS) + 1, ?, ?, ?, ?, ?, ?)";
-                stmt = conn.prepareStatement(sql);
-                stmt.setString(1, "Customer");
-                stmt.setString(2, firstName.getText());
-                stmt.setString(3, lastName.getText());
-                stmt.setString(4, email.getText());
-                stmt.setString(5, password.getText());
-                stmt.setString(6, phoneNumber.getText());
-
-                int affectedRows = stmt.executeUpdate();
-
-
-                if (affectedRows > 0) {
-
-                    sql = "INSERT INTO Customer VALUES( (SELECT UserID FROM USERS WHERE USERS.EMAIL = ?), NULL, NULL, NULL, NULL, NULL);\n";
-                    stmt = conn.prepareStatement(sql);
-                    stmt.setString(1, email.getText());
-
-                    int affectedRows2 = stmt.executeUpdate();
-
-
-                    if (affectedRows2 > 0) {
-                        errorLabel.setText("Account succesfully created!");
-                    }
-                }
-
-            }
-
-            // Clean up
-            rs.close();
-            stmt.close();
-            conn.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            errorLabel.setText("Error connecting to the database.");
-        } finally {
-            try {
-                if (stmt != null) stmt.close();
-            } catch (Exception se2) {
-            }
-            try {
-                if (conn != null) conn.close();
-            } catch (Exception se) {
-                se.printStackTrace();
-            }
-        }
-
-        return true; 
-    }
-
-    return false; // default return, indicates something went wrong
-        /*
-        try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL);
-
-            // Query only for email and password, the role will be determined from the result
-            String sql = "SELECT ROLE FROM users WHERE email = ? AND password = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, email.getText());
-            stmt.setString(2, password.getText());
-
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                String role = rs.getString("ROLE");
-
-                HelloApplication m = new HelloApplication();
-
-                if ("PropertyManager".equals(role)) {
-                    m.changeScene("homepageManager.fxml");
-                } else if ("Customer".equals(role)) {
-                    m.changeScene("homepageCustomer.fxml");
-                } else {
-                    // Handle any other roles if required
-                    errorLabel.setText("Unrecognized role!");
-                }
-            } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
-                errorLabel.setText("Please enter your data.");
-            } else {
-                errorLabel.setText("Wrong email or password!");
-            }
-
-            // Clean up
-            rs.close();
-            stmt.close();
-            conn.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            errorLabel.setText("Error connecting to the database.");
-        } finally {
-            try {
-                if (stmt != null) stmt.close();
-            } catch (Exception se2) {
-            }
-            try {
-                if (conn != null) conn.close();
-            } catch (Exception se) {
-                se.printStackTrace();
-            }
-        }
-        */
-
-
 
     }
 

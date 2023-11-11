@@ -54,4 +54,66 @@ public class database_controller {
         }
         return role;
     }
+
+    public String registerUser(String email, String firstName, String lastName, String password, String phoneNumber) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            // Check if user already exists
+            String checkUserSql = "SELECT * FROM users WHERE email = ?";
+            stmt = conn.prepareStatement(checkUserSql);
+            stmt.setString(1, email);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return "An account already exists with that email!";
+            } else {
+                // Insert new user
+                String insertUserSql = "INSERT INTO Users VALUES ((SELECT MAX(coalesce(UserID, -1)) FROM USERS) + 1, ?, ?, ?, ?, ?, ?)";
+                stmt = conn.prepareStatement(insertUserSql);
+                stmt.setString(1, "Customer");
+                stmt.setString(2, firstName);
+                stmt.setString(3, lastName);
+                stmt.setString(4, email);
+                stmt.setString(5, password);
+                stmt.setString(6, phoneNumber);
+                int affectedRows = stmt.executeUpdate();
+
+                if (affectedRows > 0) {
+                    String insertCustomerSql = "INSERT INTO Customer VALUES ((SELECT UserID FROM USERS WHERE USERS.EMAIL = ?), NULL, NULL, NULL, NULL, NULL);";
+                    stmt = conn.prepareStatement(insertCustomerSql);
+                    stmt.setString(1, email);
+                    int affectedRowsCustomer = stmt.executeUpdate();
+
+                    if (affectedRowsCustomer > 0) {
+                        return "Account successfully created!";
+                    }
+                }
+                return "Failed to create account.";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error connecting to the database.";
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
+    // Future SQL Queries use a string format for the sql string being used to the function call 
+    // - To further abstract this process we can seperate the implementation by concerns to ensure 
+    //   that input captures are done in the source class and then passed to the database class return 
+    //   values should be though out as to seperates the two as much as possible 
+
+    
 }
