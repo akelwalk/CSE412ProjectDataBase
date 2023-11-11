@@ -44,61 +44,27 @@ public class Login {
     }
 
     private void checkLogin() throws IOException {
-        final String JDBC_DRIVER = "org.postgresql.Driver";  
-        final String DB_URL = "jdbc:postgresql://localhost:8888/cse412project"; 
-            
-        Connection conn = null;
-        PreparedStatement stmt = null;
+        database_controller dbController = new database_controller();
+        String role = dbController.checkLogin(email.getText(), password.getText());
     
-        try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL);
+        HelloApplication m = new HelloApplication();
     
-            // Query only for email and password, the role will be determined from the result
-            String sql = "SELECT ROLE FROM users WHERE email = ? AND password = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, email.getText());
-            stmt.setString(2, password.getText());
-    
-            ResultSet rs = stmt.executeQuery();
-    
-            if (rs.next()) {
-                String role = rs.getString("ROLE");
-    
-                HelloApplication m = new HelloApplication();
-    
-                if ("PropertyManager".equals(role)) {
+        if (role != null) {
+            switch (role) {
+                case "PropertyManager":
                     m.changeScene("homepageManager.fxml");
-                } else if ("Customer".equals(role)) {
+                    break;
+                case "Customer":
                     m.changeScene("homepageCustomer.fxml");
-                } else {
-                    // Handle any other roles if required
+                    break;
+                default:
                     wrongLogin.setText("Unrecognized role!");
-                }
-            } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
-                wrongLogin.setText("Please enter your data.");
-            } else {
-                wrongLogin.setText("Wrong email or password!");
+                    break;
             }
-    
-            // Clean up
-            rs.close();
-            stmt.close();
-            conn.close();
-    
-        } catch (Exception e) {
-            e.printStackTrace();
-            wrongLogin.setText("Error connecting to the database.");
-        } finally {
-            try {
-                if (stmt != null) stmt.close();
-            } catch (Exception se2) {
-            }
-            try {
-                if (conn != null) conn.close();
-            } catch (Exception se) {
-                se.printStackTrace();
-            }
+        } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
+            wrongLogin.setText("Please enter your data.");
+        } else {
+            wrongLogin.setText("Wrong email or password!");
         }
     }
     
