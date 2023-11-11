@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,6 +30,21 @@ public class Login {
 
     @FXML
     private CheckBox isPropertyManager;
+
+    public void initialize() {
+        // Set the same action for email and password fields to respond to Enter key press
+        EventHandler<ActionEvent> loginHandler = event -> {
+            try {
+                userLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+                wrongLogin.setText("An error occurred while trying to log in.");
+            }
+        };
+
+        email.setOnAction(loginHandler);
+        password.setOnAction(loginHandler);
+    }
 
 
 
