@@ -1,4 +1,4 @@
-package com.example.javafxdemo;
+package com.db;
 
 public interface IDatabaseOperations {
     String checkLogin(String email, String password);

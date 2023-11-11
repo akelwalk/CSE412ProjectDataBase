@@ -1,4 +1,4 @@
-package com.example.javafxdemo;
+package com.components;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import com.db.database_controller;
+import com.main.MainApplication;
 
 import java.io.IOException;
 
@@ -43,8 +46,8 @@ public class Register {
     private Button backButton;
 
     public void returnHome(ActionEvent event) throws IOException {
-        HelloApplication m = new HelloApplication();
-        m.changeScene("hello-view.fxml");
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/hello-view.fxml");
 
     }
 

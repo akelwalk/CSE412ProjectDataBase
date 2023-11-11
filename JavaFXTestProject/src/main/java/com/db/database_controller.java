@@ -1,4 +1,4 @@
-package com.example.javafxdemo;
+package com.db;
 
 // Imports 
 import javafx.fxml.FXML;

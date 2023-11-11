@@ -1,10 +1,12 @@
-package com.example.javafxdemo;
+package com.components;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+
+import com.main.MainApplication;
 
 public class homepageManager {
 
@@ -13,8 +15,8 @@ public class homepageManager {
 
 
     public void userLogOut(ActionEvent event) throws IOException {
-        HelloApplication m = new HelloApplication();
-        m.changeScene("hello-view.fxml");
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/hello-view.fxml");
 
     }
 }

@@ -1,4 +1,4 @@
-package com.example.javafxdemo;
+package com.components;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import com.db.database_controller;
+import com.main.MainApplication;
 
 import java.io.IOException;
 public class Login {
@@ -54,8 +57,8 @@ public class Login {
     }
 
     public void userRegister(ActionEvent event) throws IOException {
-        HelloApplication m = new HelloApplication();
-        m.changeScene("Register.fxml");
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/Register.fxml");
 
     }
 
@@ -63,15 +66,15 @@ public class Login {
         database_controller dbController = new database_controller();
         String role = dbController.checkLogin(email.getText(), password.getText());
     
-        HelloApplication m = new HelloApplication();
+        MainApplication m = new MainApplication();
     
         if (role != null) {
             switch (role) {
                 case "PropertyManager":
-                    m.changeScene("homepageManager.fxml");
+                    m.changeScene("/com/resources/homepageManager.fxml");
                     break;
                 case "Customer":
-                    m.changeScene("homepageCustomer.fxml");
+                    m.changeScene("/com/resources/homepageCustomer.fxml");
                     break;
                 default:
                     wrongLogin.setText("Unrecognized role!");
