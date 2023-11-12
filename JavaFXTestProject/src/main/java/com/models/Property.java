@@ -9,6 +9,15 @@ public class Property {
     private String name;
     private ArrayList<String> communityAnnouncements;
 
+    public Property(String amenities, int propertyID, String address, String name, ArrayList<String> communityAnnouncements)
+    {
+        this.amenities = amenities;
+        this.propertyID = propertyID;
+        this.address = address;
+        this.name = name;
+        this.communityAnnouncements = communityAnnouncements;
+    }
+
     public String getAmenities()
     {
     return this.amenities;
