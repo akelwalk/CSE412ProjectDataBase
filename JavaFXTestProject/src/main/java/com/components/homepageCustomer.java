@@ -19,4 +19,9 @@ public class homepageCustomer {
         m.changeScene("/com/resources/hello-view.fxml");
 
     }
+
+    public void goToPropertyPage(ActionEvent event) throws IOException
+    {
+
+    }
 }
