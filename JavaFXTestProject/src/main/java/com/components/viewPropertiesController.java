@@ -32,7 +32,7 @@ import com.db.database_controller;
 import com.db.IDatabaseOperations;
 
 
-public class viewPropertiesController {
+public class viewPropertiesController implements Initializable {
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
@@ -49,6 +49,7 @@ public class viewPropertiesController {
     }
 
     public void goHome(ActionEvent event) throws IOException {
+        System.out.println("Property View -> Customer Home Page");
         MainApplication m = new MainApplication();
         m.changeScene("/com/resources/homepageCustomer.fxml");
 
