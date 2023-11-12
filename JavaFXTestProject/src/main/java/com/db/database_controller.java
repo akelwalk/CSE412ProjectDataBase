@@ -12,6 +12,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.models.Property;
+
+import java.util.List;
+
 public class database_controller implements IDatabaseOperations {
     // Constants for JDBC driver and database URL
     private static final String JDBC_DRIVER = "org.postgresql.Driver";  
@@ -108,6 +112,11 @@ public class database_controller implements IDatabaseOperations {
                 se.printStackTrace();
             }
         }
+    }
+
+    public List<Property> propertyList()
+    {
+
     }
 
     // Future SQL Queries use a string format for the sql string being used to the function call 
