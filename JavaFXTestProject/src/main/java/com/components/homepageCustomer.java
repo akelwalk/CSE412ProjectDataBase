@@ -22,6 +22,7 @@ public class homepageCustomer {
 
     public void goToPropertyPage(ActionEvent event) throws IOException
     {
-
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/ViewProperties.fxml");
     }
 }

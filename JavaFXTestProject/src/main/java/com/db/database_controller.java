@@ -7,21 +7,58 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
+import java.sql.*;
 
 import com.models.Property;
+import org.postgresql.Driver;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class database_controller implements IDatabaseOperations {
+    private static database_controller instance;
     // Constants for JDBC driver and database URL
     private static final String JDBC_DRIVER = "org.postgresql.Driver";  
     // Might end up getting the port # from a text file in the event windows uses a different port
     private static final String DB_URL = "jdbc:postgresql://localhost:8888/cse412project";
+
+
+    private Connection connection = null;
+
+
+    //Instances to allow it to be used in controllers.
+
+    //This constructor will connect to the database.
+
+    public database_controller()
+    {
+        this.initializePostgresqlDatabase();
+    }
+
+    public static database_controller getInstance() {
+        if (instance == null) {
+            instance = new database_controller();
+        }
+
+        return instance;
+    }
+
+    private void initializePostgresqlDatabase() {
+        try {
+            DriverManager.registerDriver(new Driver());
+            this.connection = DriverManager.getConnection(DB_URL);
+            System.out.println("DB connected");
+        } catch (IllegalArgumentException | SQLException var5) {
+            var5.printStackTrace(System.err);
+        } finally {
+            if (this.connection == null) {
+                System.exit(-1);
+            }
+
+        }
+
+    }
 
     // Method to check the user login and return the role for the view
     public String checkLogin(String email, String password) {

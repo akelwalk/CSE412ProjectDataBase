@@ -6,7 +6,7 @@ import com.models.Property;
 
 public interface IDatabaseOperations {
 
-    List<Property> propertyList();
+    public List<Property> propertyList();
 
     String checkLogin(String email, String password);
     String registerUser(String email, String firstName, String lastName, String password, String phoneNumber);

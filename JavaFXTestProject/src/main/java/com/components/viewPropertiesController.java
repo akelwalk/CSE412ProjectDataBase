@@ -13,11 +13,44 @@ import java.sql.ResultSet;
 
 import com.db.database_controller;
 import com.main.MainApplication;
+import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
 
 import java.io.IOException;
 import javafx.scene.control.ListView;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+
+import com.models.Property;
+import com.db.database_controller;
+import com.db.IDatabaseOperations;
+
 
 public class viewPropertiesController {
+
+    IDatabaseOperations databaseHandler = database_controller.getInstance();
+
+    @FXML
+    private Button homeButton;
+
+    @FXML
+    private ListView propertyListView;
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        propertyListView.getItems().addAll(databaseHandler.propertyList());
+
+    }
+
+    public void goHome(ActionEvent event) throws IOException {
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/homepageCustomer.fxml");
+
+    }
 
 }
