@@ -6,7 +6,7 @@ public class MaintenanceRequest {
 
     private boolean isDealtWith;
     private int requestID;
-    private Date timeStamp;
+    private Date timestamp;
     private int propertyID;
     private int unitID;
     private int userID;
@@ -14,7 +14,7 @@ public class MaintenanceRequest {
     public MaintenanceRequest(boolean isDealtWith, int requestID, Date timeStamp, int propertyID, int unitID, int userID) {
         this.isDealtWith = isDealtWith;
         this.requestID = requestID;
-        this.timeStamp = timeStamp;
+        this.timestamp = timeStamp;
         this.propertyID = propertyID;
         this.unitID = unitID;
         this.userID = userID;
@@ -36,12 +36,12 @@ public class MaintenanceRequest {
         this.requestID = requestID;
     }
 
-    public Date getTimeStamp() {
-        return timeStamp;
+    public Date getTimestamp() {
+        return timestamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setTimestamp(Date timeStamp) {
+        this.timestamp = timeStamp;
     }
 
     public int getPropertyID() {
