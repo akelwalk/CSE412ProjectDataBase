@@ -202,157 +202,21 @@ public class database_controller implements IDatabaseOperations {
 
     public List<PropertyManager> propertyManagerList()
     {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL);
-
-            String sql = "SELECT * FROM PROPERTY";
-            stmt = conn.prepareStatement(sql);
-
-
-            rs = stmt.executeQuery();
-
-            ArrayList returnValues = new ArrayList();
-
-            while (rs.next()) {
-                //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
-
-             //   returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
-            }
-
-            return returnValues;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (Exception se) {
-                se.printStackTrace();
-            }
-        }
         return null;
     }
 
     public List<Customers> customerList()
     {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL);
-
-            String sql = "SELECT * FROM PROPERTY";
-            stmt = conn.prepareStatement(sql);
-
-
-            rs = stmt.executeQuery();
-
-            ArrayList returnValues = new ArrayList();
-
-            while (rs.next()) {
-                //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
-
-               // returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
-            }
-
-            return returnValues;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (Exception se) {
-                se.printStackTrace();
-            }
-        }
         return null;
     }
 
     public List<MaintenanceRequest> maintenanceRequestList()
     {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL);
-
-            String sql = "SELECT * FROM PROPERTY";
-            stmt = conn.prepareStatement(sql);
-
-
-            rs = stmt.executeQuery();
-
-            ArrayList returnValues = new ArrayList();
-
-            while (rs.next()) {
-                //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
-
-          //      returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
-            }
-
-            return returnValues;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (Exception se) {
-                se.printStackTrace();
-            }
-        }
         return null;
     }
 
     public List<Unit> unitList()
     {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL);
-
-            String sql = "SELECT * FROM PROPERTY";
-            stmt = conn.prepareStatement(sql);
-
-
-            rs = stmt.executeQuery();
-
-            ArrayList returnValues = new ArrayList();
-
-            while (rs.next()) {
-                //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
-
-            //    returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
-            }
-
-            return returnValues;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (Exception se) {
-                se.printStackTrace();
-            }
-        }
         return null;
     }
 
