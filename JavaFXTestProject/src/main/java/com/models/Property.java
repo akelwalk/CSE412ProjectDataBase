@@ -1,15 +1,16 @@
 package com.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Property {
     private String amenities;
     private int propertyID;
     private String address;
     private String name;
-    private ArrayList<String> communityAnnouncements;
+    private List<String> communityAnnouncements;
 
-    public Property(String amenities, int propertyID, String address, String name, ArrayList<String> communityAnnouncements)
+    public Property(String amenities, int propertyID, String address, String name, List<String> communityAnnouncements)
     {
         this.amenities = amenities;
         this.propertyID = propertyID;
@@ -37,7 +38,7 @@ public class Property {
     return this.name;
     }
 
-    public ArrayList<String> getCommunityAnnouncements()
+    public List<String> getCommunityAnnouncements()
     {
     return this.communityAnnouncements;
     }
@@ -45,7 +46,7 @@ public class Property {
     @Override
     public String toString()
     {
-        return propertyID+","+name+","+address+","+amenities;
+        return propertyID+","+name+","+address+","+amenities + "COMMUNITY ANNOUNCEMENTS: " + communityAnnouncements.get(0);
     }
 
 

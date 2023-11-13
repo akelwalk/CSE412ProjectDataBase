@@ -18,6 +18,7 @@ import com.models.*;
 import org.postgresql.Driver;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class database_controller implements IDatabaseOperations {
@@ -216,7 +217,15 @@ public class database_controller implements IDatabaseOperations {
             while (rs.next()) {
                 //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
 
-                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
+                String[] communityAnnouncementsString;
+                Array rsArray = rs.getArray(5);
+                communityAnnouncementsString = (String [])rsArray.getArray();
+
+                List<String> communityAnnouncementsList = Arrays.asList(communityAnnouncementsString);
+
+
+
+                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), communityAnnouncementsList);
             }
 
             return returnValues;
