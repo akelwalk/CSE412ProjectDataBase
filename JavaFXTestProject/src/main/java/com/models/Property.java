@@ -46,7 +46,7 @@ public class Property {
     @Override
     public String toString()
     {
-        return propertyID+","+name+","+address+","+amenities + "COMMUNITY ANNOUNCEMENTS: " + communityAnnouncements.get(0);
+        return propertyID+","+name+","+address+","+amenities + "COMMUNITY ANNOUNCEMENTS: " + communityAnnouncements.size();
     }
 
 
