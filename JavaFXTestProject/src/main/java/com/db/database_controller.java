@@ -176,9 +176,8 @@ public class database_controller implements IDatabaseOperations {
             ArrayList returnValues = new ArrayList();
 
             while (rs.next()) {
-                //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
 
-                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
+                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
 
             return returnValues;
@@ -198,48 +197,6 @@ public class database_controller implements IDatabaseOperations {
 
     public List<Users> userList()
     {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL);
-
-            String sql = "SELECT * FROM PROPERTY";
-            stmt = conn.prepareStatement(sql);
-
-
-            rs = stmt.executeQuery();
-
-            ArrayList returnValues = new ArrayList();
-
-            while (rs.next()) {
-                //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
-
-                String[] communityAnnouncementsString;
-                Array rsArray = rs.getArray(5);
-                communityAnnouncementsString = (String [])rsArray.getArray();
-
-                List<String> communityAnnouncementsList = Arrays.asList(communityAnnouncementsString);
-
-
-
-                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), communityAnnouncementsList));
-            }
-
-            return returnValues;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (Exception se) {
-                se.printStackTrace();
-            }
-        }
         return null;
     }
 
@@ -264,7 +221,7 @@ public class database_controller implements IDatabaseOperations {
             while (rs.next()) {
                 //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
 
-                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
+             //   returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
             }
 
             return returnValues;
@@ -303,7 +260,7 @@ public class database_controller implements IDatabaseOperations {
             while (rs.next()) {
                 //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
 
-                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
+               // returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
             }
 
             return returnValues;
@@ -342,7 +299,7 @@ public class database_controller implements IDatabaseOperations {
             while (rs.next()) {
                 //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
 
-                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
+          //      returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
             }
 
             return returnValues;
@@ -381,7 +338,7 @@ public class database_controller implements IDatabaseOperations {
             while (rs.next()) {
                 //If anyone figures out how to pares the community announcemnt string list correctly, then replace it.
 
-                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
+            //    returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), new ArrayList<String>()));
             }
 
             return returnValues;

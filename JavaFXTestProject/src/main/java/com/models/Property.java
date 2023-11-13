@@ -1,6 +1,7 @@
 package com.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Property {
@@ -10,13 +11,16 @@ public class Property {
     private String name;
     private List<String> communityAnnouncements;
 
-    public Property(String amenities, int propertyID, String address, String name, List<String> communityAnnouncements)
+    public Property(String amenities, int propertyID, String address, String name, String communityAnnouncementsString)
     {
         this.amenities = amenities;
         this.propertyID = propertyID;
         this.address = address;
         this.name = name;
-        this.communityAnnouncements = communityAnnouncements;
+        this.communityAnnouncements = Arrays.asList(communityAnnouncementsString.split("\\s*,\\s*"));
+        ;
+
+
     }
 
     public String getAmenities()
