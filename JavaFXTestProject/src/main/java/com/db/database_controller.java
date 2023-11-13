@@ -225,7 +225,7 @@ public class database_controller implements IDatabaseOperations {
 
 
 
-                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), communityAnnouncementsList);
+                returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), communityAnnouncementsList));
             }
 
             return returnValues;
