@@ -1,12 +1,15 @@
 package com.models;
 
-public class PropertyManager {
+public class PropertyManager extends Users{
+
+    // inheriting from Users will allow us to modify details later 
 
     private int userID;
     private boolean isOwner;
     private int propertyID;
 
     public PropertyManager(int userID, boolean isOwner, int propertyID) {
+        super();
         this.userID = userID;
         this.isOwner = isOwner;
         this.propertyID = propertyID;

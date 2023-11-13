@@ -2,7 +2,8 @@ package com.models;
 
 import java.util.Date;
 
-public class Customers {
+// I think we want to inherit from users base in the ISA relantionship?? 
+public class Customers extends Users {
 
     private int userID;
     private String paymentType;
@@ -13,6 +14,7 @@ public class Customers {
     int propertyID;
 
     public Customers(int userID, String paymentType, Date leaseStart, Date leaseEnd, boolean isApproved, int unitID, int propertyID) {
+        super(); 
         this.userID = userID;
         this.paymentType = paymentType;
         this.leaseStart = leaseStart;

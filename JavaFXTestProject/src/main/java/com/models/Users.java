@@ -11,6 +11,11 @@ public class Users {
     private String password;
     private String phoneNumber;
 
+    // default constructor. 
+    public Users()
+    {
+        
+    }
     public Users(int userID, String role, String firstName, String lastName, String email, String password, String phoneNumber)
     {
         this.userID = userID;
