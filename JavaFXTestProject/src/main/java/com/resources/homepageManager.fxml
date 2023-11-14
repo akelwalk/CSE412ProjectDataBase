@@ -60,21 +60,18 @@
                               <InnerShadow />
                            </effect>
                         </ImageView>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="100.0">
-               <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="TOP_CENTER" focusTraversable="false" layoutX="12.0" layoutY="27.0" lineSpacing="2.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="63.0" text="username" textAlignment="JUSTIFY" textFill="WHITE">
+                        <Label alignment="TOP_CENTER" focusTraversable="false" layoutX="19.0" layoutY="77.0" lineSpacing="2.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="63.0" text="username" textAlignment="JUSTIFY" textFill="WHITE">
                            <padding>
                               <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                            </padding>
                         </Label>
                      </children>
                   </AnchorPane>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="100.0">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>
          </children>
