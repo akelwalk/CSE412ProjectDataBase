@@ -13,9 +13,6 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.components.homepageManager">
-<center>
-    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-</center>
    <left>
       <AnchorPane prefHeight="291.0" prefWidth="111.0" BorderPane.alignment="CENTER">
          <children>
@@ -42,9 +39,6 @@
          </children>
       </AnchorPane>
    </left>
-   <bottom>
-      <AnchorPane prefHeight="109.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </bottom>
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
