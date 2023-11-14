@@ -131,6 +131,8 @@ public class database_controller implements IDatabaseOperations {
                 stmt.setString(6, phoneNumber);
                 int affectedRows = stmt.executeUpdate();
 
+                // this creates a Customer for this user -- if we change the role later on we should delete the customer 
+                // database row for the user so they do not have dual accounts
                 if (affectedRows > 0) {
                     String insertCustomerSql = "INSERT INTO Customer VALUES ((SELECT UserID FROM USERS WHERE USERS.EMAIL = ?), NULL, NULL, NULL, NULL, NULL);";
                     stmt = conn.prepareStatement(insertCustomerSql);
