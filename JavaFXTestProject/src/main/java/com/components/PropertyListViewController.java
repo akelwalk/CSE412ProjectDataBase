@@ -50,6 +50,7 @@ public class PropertyListViewController implements Initializable {
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
+    private int selectedPropertyId;
     @FXML
     private Button homeButton;
 
@@ -76,7 +77,8 @@ public class PropertyListViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        propertyIDCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("id"));
+        this.selectedPropertyId = -1;
+        propertyIDCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("propertyID"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Property, String>("name"));
         addressCol.setCellValueFactory(new PropertyValueFactory<Property, String>("address"));
         amenitiesCol.setCellValueFactory(new PropertyValueFactory<Property, String>("amenities"));
@@ -88,6 +90,14 @@ public class PropertyListViewController implements Initializable {
         Property property0 = new Property("Test", 0, "ABC", "Test", "test");
         propertyTableView.getItems().addAll(property0);
     }
+
+    @FXML
+    void rowClicked(MouseEvent event) {
+        Property clickedProperty = propertyTableView.getSelectionModel().getSelectedItem();
+        selectedPropertyId = clickedProperty.getPropertyID();
+        System.out.println("selected propertyID: " + clickedProperty);
+    }
+
 
 
     public void goHome(ActionEvent event) throws IOException {
