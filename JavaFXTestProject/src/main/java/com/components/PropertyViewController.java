@@ -23,12 +23,7 @@ public class PropertyViewController implements Initializable {
     @FXML
     private Button homeButton;
 
-    @FXML
-    private ListView propertyListView;
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Intialized property list view");
-        propertyListView.getItems().addAll(databaseHandler.propertyList());
 
     }
 

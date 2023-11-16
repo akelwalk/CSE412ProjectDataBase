@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -16,12 +15,11 @@
                     <Font size="27.0" />
                 </font>
             </Button>
-            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Properties" wrappingWidth="461.75390625">
+            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Property Page" wrappingWidth="461.75390625">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <ListView fx:id="propertyListView" layoutX="33.0" layoutY="75.0" prefHeight="200.0" prefWidth="527.0" />
         </children>
     </AnchorPane>
 </center>

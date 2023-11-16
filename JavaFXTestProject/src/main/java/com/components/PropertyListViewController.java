@@ -56,6 +56,9 @@ public class PropertyListViewController implements Initializable {
     private Button homeButton;
 
     @FXML
+    private Button 
+
+    @FXML
    // private ListView<Propery> propertyListView = new ListView(FXCollections.observableList(Arrays.asList("one", "2", "3")));
    // private ListView<String> propertyListView = new ListView<>();
 
