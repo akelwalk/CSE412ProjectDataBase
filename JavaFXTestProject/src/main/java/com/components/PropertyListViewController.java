@@ -32,7 +32,7 @@ import com.db.database_controller;
 import com.db.IDatabaseOperations;
 
 
-public class viewPropertiesController implements Initializable {
+public class PropertyListViewController implements Initializable {
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
