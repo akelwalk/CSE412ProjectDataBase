@@ -3,10 +3,13 @@ package com.components;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -82,7 +85,16 @@ public class Login {
                     m.changeScene("/com/resources/homepageManager.fxml");
                     break;
                 case "Customer":
-                    m.changeScene("/com/resources/homepageCustomer.fxml");
+                    URL url = getClass().getResource("/com/resources/homepageCustomer.fxml");
+                    System.out.println(url.toString());
+                    FXMLLoader loader = new FXMLLoader(url);
+                    Parent root = loader.load();
+                    homepageCustomer homepageCustomerController = loader.getController();
+                    homepageCustomerController.setStage(primaryStage);
+                    primaryStage.setScene(new Scene(root));
+                    primaryStage.show();
+
+                   // m.changeScene("/com/resources/homepageCustomer.fxml");
                     break;
                 default:
                     wrongLogin.setText("Unrecognized role!");

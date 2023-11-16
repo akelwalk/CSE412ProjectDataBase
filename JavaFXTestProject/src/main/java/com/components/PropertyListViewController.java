@@ -52,6 +52,8 @@ public class PropertyListViewController implements Initializable {
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
+    private Stage primaryStage;
+
     private int selectedPropertyId;
     @FXML
     private Button homeButton;
@@ -90,6 +92,13 @@ public class PropertyListViewController implements Initializable {
         freeUnitsCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("free units"));
         setupTable();
     }
+
+    public void setStage(Stage primaryStage)
+    {
+        this.primaryStage = primaryStage;
+    }
+
+
     private void setupTable(){
 
         List<Property> getPropertyList = databaseHandler.propertyList();
