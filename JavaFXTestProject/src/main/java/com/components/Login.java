@@ -18,8 +18,16 @@ import com.main.MainApplication;
 import java.io.IOException;
 public class Login {
 
+    private Stage primaryStage;
+
+
     public Login() {
 
+    }
+
+    public void setStage(Stage primaryStage)
+    {
+        this.primaryStage = primaryStage;
     }
 
     @FXML

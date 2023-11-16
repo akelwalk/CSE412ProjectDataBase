@@ -129,8 +129,8 @@ public class PropertyListViewController implements Initializable {
         Parent root = loader.load();
         PropertyViewController propertyViewController = loader.getController();
         propertyViewController.initializeValues(propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        /*primaryStage.setScene(new Scene(root));
+        primaryStage.show();*/
 
 
     }

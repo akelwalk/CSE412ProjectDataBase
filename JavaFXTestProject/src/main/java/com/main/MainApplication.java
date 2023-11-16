@@ -35,8 +35,8 @@ public class MainApplication extends Application {
         URL url = getClass().getResource("/com/resources/hello-view.fxml");
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        /*Login loginController = loader.getController();
-        loginController.initService(primaryStage, loginService, nurseService, userService);*/
+        Login loginController = loader.getController();
+        loginController.setStage(primaryStage);
         Scene loginScene = new Scene(root);
         primaryStage.setScene(loginScene);
         primaryStage.show();
