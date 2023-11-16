@@ -56,7 +56,7 @@ public class PropertyListViewController implements Initializable {
     private Button homeButton;
 
     @FXML
-    private Button 
+    private Button viewPropertyPage;
 
     @FXML
    // private ListView<Propery> propertyListView = new ListView(FXCollections.observableList(Arrays.asList("one", "2", "3")));
@@ -111,6 +111,14 @@ public class PropertyListViewController implements Initializable {
         System.out.println("Property View -> Customer Home Page");
         MainApplication m = new MainApplication();
         m.changeScene("/com/resources/homepageCustomer.fxml");
+
+    }
+
+
+    public void goToPropertyPage(ActionEvent event) throws IOException {
+        System.out.println("Property View -> Customer Home Page");
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/PropertyView.fxml");
 
     }
 

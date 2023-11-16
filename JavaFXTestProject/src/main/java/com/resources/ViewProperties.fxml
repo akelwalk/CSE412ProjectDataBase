@@ -31,7 +31,7 @@
                   <TableColumn fx:id="freeUnitsCol" prefWidth="75.0" text="freeUnits" />
               </columns>
             </TableView>
-            <Button fx:id="viewPropertyPage" layoutX="233.0" layoutY="297.0" mnemonicParsing="false" onAction="#goToPropertyPAge" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: #FFC900;" text="viewProperty">
+            <Button fx:id="viewPropertyPage" layoutX="233.0" layoutY="297.0" mnemonicParsing="false" onAction="#goToPropertyPage" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: #FFC900;" text="viewProperty">
                <font>
                   <Font size="27.0" />
                </font>

@@ -12,7 +12,7 @@
 <center>
     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
-            <Button fx:id="homeButton" layoutX="233.0" layoutY="299.0" mnemonicParsing="false" onAction="#goHome" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Home">
+            <Button fx:id="homeButton" layoutX="63.0" layoutY="297.0" mnemonicParsing="false" onAction="#goHome" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Home">
                 <font>
                     <Font size="27.0" />
                 </font>
@@ -22,7 +22,7 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <TableView fx:id="propertyTableView" onMouseClicked="#rowClicked" layoutX="63.0" layoutY="75.0" prefHeight="200.0" prefWidth="462.0">
+            <TableView fx:id="propertyTableView" layoutX="63.0" layoutY="75.0" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="462.0">
               <columns>
                 <TableColumn fx:id="propertyIDCol" prefWidth="75.0" text="propertyID" />
                 <TableColumn fx:id="nameCol" prefWidth="75.0" text="name" />
@@ -31,6 +31,11 @@
                   <TableColumn fx:id="freeUnitsCol" prefWidth="75.0" text="freeUnits" />
               </columns>
             </TableView>
+            <Button fx:id="viewPropertyPage" layoutX="233.0" layoutY="297.0" mnemonicParsing="false" onAction="#goToPropertyPage" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: #FFC900;" text="viewProperty">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Button>
         </children>
     </AnchorPane>
 </center>
