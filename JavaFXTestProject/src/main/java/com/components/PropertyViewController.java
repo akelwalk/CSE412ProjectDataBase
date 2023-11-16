@@ -79,7 +79,7 @@ public class PropertyViewController implements Initializable {
         amenitiesText.setText(amenities);
         addressText.setText(address);
         nameText.setText(name);
-        communityAnnouncementsText.setText(communityAnnouncements);
+        //communityAnnouncementsText.setText(communityAnnouncements);
 
 
     }

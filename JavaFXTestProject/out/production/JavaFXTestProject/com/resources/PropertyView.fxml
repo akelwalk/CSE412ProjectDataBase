@@ -11,7 +11,7 @@
 <center>
     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
-            <Button fx:id="homeButton" layoutX="233.0" layoutY="299.0" mnemonicParsing="false" onAction="#goHome" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Home">
+            <Button fx:id="homeButton" layoutX="87.0" layoutY="297.0" mnemonicParsing="false" onAction="#goHome" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Home">
                 <font>
                     <Font size="27.0" />
                 </font>
@@ -21,8 +21,21 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <Label layoutX="59.0" layoutY="101.0" text="Property ID" />
-            <Text fx:id="propertyIDText" layoutX="154.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+            <Label layoutX="59.0" layoutY="101.0" text="Property ID" textFill="WHITE" />
+            <Text fx:id="propertyIDText" fill="WHITE" layoutX="154.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+            <Label layoutX="58.0" layoutY="127.0" text="Name" textFill="WHITE" />
+            <Text fx:id="nameText" fill="WHITE" layoutX="153.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+            <Label layoutX="58.0" layoutY="154.0" text="Address" textFill="WHITE" />
+            <Text fx:id="addressText" fill="WHITE" layoutX="153.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+            <Label layoutX="58.0" layoutY="183.0" text="Amenities" textFill="WHITE" />
+            <Text fx:id="amenitiesText" fill="WHITE" layoutX="153.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+            <Label layoutX="52.0" layoutY="212.0" text="communityAnnouncements" textFill="WHITE" />
+            <Text fx:id="communityAnnouncementsText" fill="WHITE" layoutX="147.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+            <Button fx:id="homeButton1" layoutX="269.0" layoutY="297.0" mnemonicParsing="false" onAction="#goHome" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="View Units">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Button>
         </children>
     </AnchorPane>
 </center>
