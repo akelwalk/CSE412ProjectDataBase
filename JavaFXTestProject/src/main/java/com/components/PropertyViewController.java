@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class PropertyViewController implements Initializable {
 
+    private int propertyID;
+
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
     @FXML
@@ -34,6 +36,7 @@ public class PropertyViewController implements Initializable {
         System.out.println("Property View -> Customer Home Page");
         MainApplication m = new MainApplication();
         m.changeScene("/com/resources/homepageCustomer.fxml");
+
 
     }
 
