@@ -60,13 +60,34 @@ public class PropertyListViewController implements Initializable {
     private TableView<Property> propertyTableView;
 
     @FXML
-    private TableColumn<Property, Integer> idCol;
+    private TableColumn<Property, Integer> propertyIDCol;
 
     @FXML
-    private TableColumn<Property, String> typeCol;
+    private TableColumn<Property, String> nameCol;
 
     @FXML
-    private TableColumn<Animal, String> nameCol;
+    private TableColumn<Property, String> amenitiesCol;
+
+    @FXML
+    private TableColumn<Property, String> addressCol;
+
+    @FXML
+    private TableColumn<Property, Integer> freeUnitsCol;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        propertyIDCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<Property, String>("name"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<Property, String>("address"));
+        amenitiesCol.setCellValueFactory(new PropertyValueFactory<Property, String>("amenities"));
+        freeUnitsCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("free units"));
+        setupTable();
+    }
+    private void setupTable(){
+
+        Property property0 = new Property("Test", 0, "ABC", "Test", "test");
+        propertyTableView.getItems().addAll(property0);
+    }
 
 
     public void goHome(ActionEvent event) throws IOException {

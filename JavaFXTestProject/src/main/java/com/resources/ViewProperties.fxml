@@ -22,13 +22,13 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <TableView layoutX="63.0" layoutY="75.0" prefHeight="200.0" prefWidth="462.0">
+            <TableView fx:id="propertyTableView" layoutX="63.0" layoutY="75.0" prefHeight="200.0" prefWidth="462.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="propertyID" />
-                <TableColumn prefWidth="75.0" text="name" />
-                  <TableColumn prefWidth="75.0" text="address" />
-                  <TableColumn prefWidth="75.0" text="amenities" />
-                  <TableColumn fx:id="propertyTableView" prefWidth="75.0" text="freeUnits" />
+                <TableColumn fx:id="propertyIDCol" prefWidth="75.0" text="propertyID" />
+                <TableColumn fx:id="nameCol" prefWidth="75.0" text="name" />
+                  <TableColumn fx:id="addressCol" prefWidth="75.0" text="address" />
+                  <TableColumn fx:id="amenitiesCol" prefWidth="75.0" text="amenities" />
+                  <TableColumn fx:id="freeUnitsCol" prefWidth="75.0" text="freeUnits" />
               </columns>
             </TableView>
         </children>
