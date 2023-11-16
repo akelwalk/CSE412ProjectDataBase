@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -116,9 +117,21 @@ public class PropertyListViewController implements Initializable {
 
 
     public void goToPropertyPage(ActionEvent event) throws IOException {
-        System.out.println("Property View -> Customer Home Page");
+      /*  System.out.println("Property View -> Customer Home Page");
         MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/PropertyView.fxml");
+        m.changeScene("/com/resources/PropertyView.fxml");*/
+
+
+
+        URL url = getClass().getResource("/com/resources/propertyView.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        PropertyViewController propertyViewController = loader.getController();
+        propertyViewController.initializeValues(propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
 
     }
 

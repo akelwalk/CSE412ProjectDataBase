@@ -1,5 +1,6 @@
 package com.main;
 
+import com.components.Login;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class MainApplication extends Application {
 
@@ -18,10 +20,25 @@ public class MainApplication extends Application {
         // Calling MainApplication.class here so we need to ensure the fxml file is in the same package as the 
         // MainApplication file
         stg = primaryStage;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/resources/hello-view.fxml"));
+
+
+
+
+        /*FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/resources/hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 650 , 500);
         primaryStage.setTitle("Hello!");
         primaryStage.setScene(scene);
+        primaryStage.show();*/
+
+
+
+        URL url = getClass().getResource("/com/resources/hello-view.fxml");
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        /*Login loginController = loader.getController();
+        loginController.initService(primaryStage, loginService, nurseService, userService);*/
+        Scene loginScene = new Scene(root);
+        primaryStage.setScene(loginScene);
         primaryStage.show();
     }
 
