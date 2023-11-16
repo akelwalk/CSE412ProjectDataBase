@@ -22,7 +22,7 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <TableView fx:id="propertyTableView" layoutX="63.0" layoutY="75.0" prefHeight="200.0" prefWidth="462.0">
+            <TableView fx:id="propertyTableView" onMouseClicked="#rowClicked" layoutX="63.0" layoutY="75.0" prefHeight="200.0" prefWidth="462.0">
               <columns>
                 <TableColumn fx:id="propertyIDCol" prefWidth="75.0" text="propertyID" />
                 <TableColumn fx:id="nameCol" prefWidth="75.0" text="name" />
