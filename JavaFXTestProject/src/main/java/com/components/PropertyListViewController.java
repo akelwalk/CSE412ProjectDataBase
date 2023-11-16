@@ -30,6 +30,7 @@ import javafx.scene.control.ListView;
 
 import java.net.URL;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -87,8 +88,11 @@ public class PropertyListViewController implements Initializable {
     }
     private void setupTable(){
 
-        Property property0 = new Property("Test", 0, "ABC", "Test", "test");
-        propertyTableView.getItems().addAll(property0);
+        List<Property> getPropertyList = databaseHandler.propertyList();
+
+        for (int i = 0; i < getPropertyList.size(); i++) {
+            propertyTableView.getItems().addAll(getPropertyList.get(i));
+        }
     }
 
     @FXML
