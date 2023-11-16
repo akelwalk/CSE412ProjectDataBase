@@ -137,9 +137,9 @@ public class PropertyListViewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         PropertyViewController propertyViewController = loader.getController();
-        propertyViewController.initializeValues(propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
-        /*primaryStage.setScene(new Scene(root));
-        primaryStage.show();*/
+        propertyViewController.initializeValues(primaryStage, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
 
     }

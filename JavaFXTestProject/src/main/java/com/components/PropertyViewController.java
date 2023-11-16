@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +27,9 @@ public class PropertyViewController implements Initializable {
     private String name;
     private List<String> communityAnnouncements;
 
+    private Stage primaryStage;
+
+
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
@@ -35,8 +39,9 @@ public class PropertyViewController implements Initializable {
     @FXML
     private Text propertyIDText;
 
-    public void initializeValues(int propertyID)
+    public void initializeValues(Stage primaryStage, int propertyID)
     {
+        this.primaryStage = primaryStage;
         this.propertyID = propertyID;
         propertyIDText.setText(String.valueOf(this.propertyID));
     }
