@@ -43,6 +43,9 @@ public class PropertyViewController implements Initializable {
     private Button homeButton;
 
     @FXML
+    private Button viewUnitsButton;
+
+    @FXML
     private Text propertyIDText;
 
     @FXML
