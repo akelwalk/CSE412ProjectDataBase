@@ -6,7 +6,10 @@ import com.main.MainApplication;
 import com.models.Property;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
@@ -92,6 +95,19 @@ public class PropertyViewController implements Initializable {
         System.out.println("Property View -> Customer Home Page");
         MainApplication m = new MainApplication();
         m.changeScene("/com/resources/homepageCustomer.fxml");
+
+
+    }
+
+    public void goToUnitList(ActionEvent event) throws IOException {
+        URL url = getClass().getResource("/com/resources/ViewUnits.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        UnitListViewController unitListViewController = loader.getController();
+        unitListViewController.getParameters(primaryStage, currentProperty.getPropertyID());
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
 
     }

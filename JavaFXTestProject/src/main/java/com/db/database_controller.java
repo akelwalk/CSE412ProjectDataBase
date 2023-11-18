@@ -197,6 +197,48 @@ public class database_controller implements IDatabaseOperations {
         return null;
     }
 
+    public List<Unit> unitList()
+    {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String sql = "SELECT * FROM PROPERTY";
+            stmt = conn.prepareStatement(sql);
+
+
+            rs = stmt.executeQuery();
+
+            ArrayList returnValues = new ArrayList();
+
+            while (rs.next()) {
+   // public Unit(int unitID, boolean isFurnished, double rentAmount, String floorplan, String condition, boolean isRented, ArrayList<String> appliances, boolean rentPaid, Date rentDue, int propertyID, int userID) {
+
+
+              //  returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                returnValues.add(new Unit(rs.getInt("unitid"), rs.getBoolean("isFurnished"), rs.getDouble("rentAmount"), rs.getString("floorplan"), rs.getString("condition"), rs.getBoolean("isRented"), rs.getString("appliances"),rs.getBoolean("rentPaid"),rs.getDate("rentDue"), rs.getInt("propertyID"), rs.getInt("unitID")));
+
+            }
+
+            return returnValues;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        return null;
+    }
+
     public List<Users> userList()
     {
         return null;
@@ -216,12 +258,6 @@ public class database_controller implements IDatabaseOperations {
     {
         return null;
     }
-
-    public List<Unit> unitList()
-    {
-        return null;
-    }
-
 
 
 

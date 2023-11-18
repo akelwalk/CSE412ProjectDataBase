@@ -5,6 +5,7 @@ import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.main.MainApplication;
 import com.models.Property;
+import com.models.Unit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +31,9 @@ public class UnitListViewController implements Initializable {
 
     private Stage primaryStage;
 
-    private int selectedPropertyId;
+    private int currPropertyID = -1;
+
+    private int selectedUnitID;
     @FXML
     private Button homeButton;
 
@@ -41,54 +44,57 @@ public class UnitListViewController implements Initializable {
    // private ListView<Propery> propertyListView = new ListView(FXCollections.observableList(Arrays.asList("one", "2", "3")));
    // private ListView<String> propertyListView = new ListView<>();
 
-    private TableView<Property> propertyTableView;
+    private TableView<Unit> unitTableView;
 
     @FXML
-    private TableColumn<Property, Integer> propertyIDCol;
+    private TableColumn<Unit, Integer> unitIDCol;
 
     @FXML
-    private TableColumn<Property, String> nameCol;
+    private TableColumn<Unit, String> floorplanCol;
 
     @FXML
-    private TableColumn<Property, String> amenitiesCol;
+    private TableColumn<Unit, Boolean> isFurnishedCol;
 
     @FXML
-    private TableColumn<Property, String> addressCol;
+    private TableColumn<Unit, String> conditionCol;
 
     @FXML
-    private TableColumn<Property, Integer> freeUnitsCol;
+    private TableColumn<Unit, Boolean> isRented;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.selectedPropertyId = -1;
-        propertyIDCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("propertyID"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<Property, String>("name"));
-        addressCol.setCellValueFactory(new PropertyValueFactory<Property, String>("address"));
-        amenitiesCol.setCellValueFactory(new PropertyValueFactory<Property, String>("amenities"));
-        freeUnitsCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("free units"));
+        this.selectedUnitID = -1;
+        unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));
+        floorplanCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("floorplan"));
+        isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
+        conditionCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("condition"));
+        isRented.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
         setupTable();
     }
 
-    public void setStage(Stage primaryStage)
+    public void getParameters(Stage primaryStage, int propertyID)
     {
         this.primaryStage = primaryStage;
+        this.currPropertyID = propertyID;
     }
 
 
     private void setupTable(){
 
-        List<Property> getPropertyList = databaseHandler.propertyList();
+        List<Unit> getUnitList = databaseHandler.unitList();
 
-        for (int i = 0; i < getPropertyList.size(); i++) {
-            propertyTableView.getItems().addAll(getPropertyList.get(i));
+        for (int i = 0; i < getUnitList.size(); i++) {
+            if (getUnitList.get(i).getPropertyID() == currPropertyID) {
+                unitTableView.getItems().addAll(getUnitList.get(i));
+            }
         }
     }
 
     @FXML
     void rowClicked(MouseEvent event) {
-        Property clickedProperty = propertyTableView.getSelectionModel().getSelectedItem();
-        selectedPropertyId = clickedProperty.getPropertyID();
-        System.out.println("selected propertyID: " + clickedProperty);
+        Unit clickedUnit = unitTableView.getSelectionModel().getSelectedItem();
+        selectedUnitID = clickedUnit.getUnitID();
+        System.out.println("selected UnitID: " + clickedUnit);
     }
 
 
@@ -113,7 +119,7 @@ public class UnitListViewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         PropertyViewController propertyViewController = loader.getController();
-        propertyViewController.initializeValues(primaryStage, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
+        propertyViewController.initializeValues(primaryStage, unitTableView.getSelectionModel().getSelectedItem().getPropertyID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

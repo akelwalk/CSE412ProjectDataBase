@@ -14,16 +14,21 @@ public class Unit {
     private boolean rentPaid;
     private Date rentDue;
 
-    public Unit(int unitID, boolean isFurnished, double rentAmount, String floorplan, String condition, boolean isRented, ArrayList<String> appliances, boolean rentPaid, Date rentDue) {
+    private int propertyID;
+    private int userID;
+
+    public Unit(int unitID, boolean isFurnished, double rentAmount, String floorplan, String condition, boolean isRented, String appliances, boolean rentPaid, Date rentDue, int propertyID, int userID) {
         this.unitID = unitID;
         this.isFurnished = isFurnished;
         this.rentAmount = rentAmount;
         this.floorplan = floorplan;
         this.condition = condition;
         this.isRented = isRented;
-        this.appliances = appliances;
+        this.appliances = new ArrayList<String>(); //Placeholder until I figure out how to parse arrays.
         this.rentPaid = rentPaid;
         this.rentDue = rentDue;
+        this.propertyID = propertyID;
+        this.userID = userID;
     }
 
     public int getUnitID() {
@@ -98,6 +103,21 @@ public class Unit {
         this.rentDue = rentDue;
     }
 
+    public int getPropertyID() {
+        return propertyID;
+    }
+
+    public void setPropertyID(int propertyID) {
+        this.propertyID = propertyID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 
 
     @Override
