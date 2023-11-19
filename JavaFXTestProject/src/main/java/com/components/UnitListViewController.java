@@ -25,13 +25,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class UnitListViewController implements Initializable {
+public class UnitListViewController {
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
     private Stage primaryStage;
 
-    private int currPropertyID = -1;
+    private int currPropertyID;
 
     private int selectedUnitID;
     @FXML
@@ -61,21 +61,30 @@ public class UnitListViewController implements Initializable {
     @FXML
     private TableColumn<Unit, Boolean> isRented;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    /*@Override
+    public void initialize(URL url, ResourceBundle resourceBundle, Stage primaryStage, int propertyID) {
         this.selectedUnitID = -1;
+        this.currPropertyID = -1;
         unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));
         floorplanCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("floorplan"));
         //isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
         conditionCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("condition"));
        // isRented.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
         setupTable();
-    }
+    }*/
 
-    public void getParameters(Stage primaryStage, int propertyID)
+    public void initializeValues(Stage primaryStage, int propertyID)
     {
+        this.selectedUnitID = -1;
+        unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));
+        floorplanCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("floorplan"));
+        isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
+        conditionCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("condition"));
+         isRented.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
         this.primaryStage = primaryStage;
         this.currPropertyID = propertyID;
+        setupTable();
+
     }
 
 
@@ -83,6 +92,7 @@ public class UnitListViewController implements Initializable {
 
         List<Unit> getUnitList = databaseHandler.unitList();
         System.out.println(getUnitList.size());
+        System.out.println(currPropertyID);
 
         for (int i = 0; i < getUnitList.size(); i++) {
             if (getUnitList.get(i).getPropertyID() == currPropertyID) {

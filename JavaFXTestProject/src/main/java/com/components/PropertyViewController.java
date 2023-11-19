@@ -108,7 +108,8 @@ public class PropertyViewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         UnitListViewController unitListViewController = loader.getController();
-        unitListViewController.getParameters(primaryStage, currentProperty.getPropertyID());
+        System.out.println("Passing propertyID: "+ currentProperty.getPropertyID());
+        unitListViewController.initializeValues(primaryStage, currentProperty.getPropertyID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
