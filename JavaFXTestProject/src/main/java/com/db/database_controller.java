@@ -207,7 +207,7 @@ public class database_controller implements IDatabaseOperations {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL);
 
-            String sql = "SELECT * FROM PROPERTY";
+            String sql = "SELECT * FROM UNIT";
             stmt = conn.prepareStatement(sql);
 
 

@@ -66,9 +66,9 @@ public class UnitListViewController implements Initializable {
         this.selectedUnitID = -1;
         unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));
         floorplanCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("floorplan"));
-        isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
+        //isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
         conditionCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("condition"));
-        isRented.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
+       // isRented.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
         setupTable();
     }
 
