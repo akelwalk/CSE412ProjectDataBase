@@ -59,7 +59,7 @@ public class UnitListViewController {
     private TableColumn<Unit, String> conditionCol;
 
     @FXML
-    private TableColumn<Unit, Boolean> isRented;
+    private TableColumn<Unit, Boolean> isRentedCol;
 
     /*@Override
     public void initialize(URL url, ResourceBundle resourceBundle, Stage primaryStage, int propertyID) {
@@ -80,7 +80,7 @@ public class UnitListViewController {
         floorplanCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("floorplan"));
         isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
         conditionCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("condition"));
-         isRented.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
+        isRentedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
         this.primaryStage = primaryStage;
         this.currPropertyID = propertyID;
         setupTable();

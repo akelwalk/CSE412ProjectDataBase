@@ -26,7 +26,7 @@
               <columns>
                 <TableColumn fx:id="unitIDCol" prefWidth="75.0" text="unitID" />
                 <TableColumn fx:id="floorplanCol" prefWidth="75.0" text="floorplan" />
-                  <TableColumn fx:id="isfurnishedCol" prefWidth="75.0" text="isFurnished" />
+                  <TableColumn fx:id="isFurnishedCol" prefWidth="75.0" text="isFurnished" />
                   <TableColumn fx:id="conditionCol" prefWidth="75.0" text="condition" />
                   <TableColumn fx:id="isRentedCol" prefWidth="75.0" text="isRented" />
               </columns>

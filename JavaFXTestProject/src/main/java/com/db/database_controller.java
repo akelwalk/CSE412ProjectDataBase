@@ -220,7 +220,8 @@ public class database_controller implements IDatabaseOperations {
 
 
               //  returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
-                returnValues.add(new Unit(rs.getInt("unitid"), rs.getBoolean("isFurnished"), rs.getDouble("rentAmount"), rs.getString("floorplan"), rs.getString("condition"), rs.getBoolean("isRented"), rs.getString("appliances"),rs.getBoolean("rentPaid"),rs.getDate("rentDue"), rs.getInt("propertyID"), rs.getInt("unitID")));
+                System.out.println(rs.getBoolean("isFurnished"));
+                returnValues.add(new Unit(rs.getInt("unitid"), rs.getBoolean("isFurnished"), rs.getDouble("rentAmount"), rs.getString("floorplan"), rs.getString("condition"), rs.getBoolean("isRented"), rs.getString("appliances"),rs.getString("rentPaid"),rs.getDate("rentDue"), rs.getInt("propertyID"), rs.getInt("unitID")));
 
             }
 

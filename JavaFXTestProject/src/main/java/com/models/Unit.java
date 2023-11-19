@@ -17,15 +17,36 @@ public class Unit {
     private int propertyID;
     private int userID;
 
-    public Unit(int unitID, boolean isFurnished, double rentAmount, String floorplan, String condition, boolean isRented, String appliances, boolean rentPaid, Date rentDue, int propertyID, int userID) {
+    public Unit(int unitID, boolean isFurnished, double rentAmount, String floorplan, String condition, boolean isRented, String appliances, String rentPaid, Date rentDue, int propertyID, int userID) {
         this.unitID = unitID;
-        this.isFurnished = isFurnished;
+       /* if (isFurnished.equals("t"))
+        {
+            this.isFurnished = true;
+        }
+        else
+        {
+            this.isFurnished = false;
+        }*/
+
+
         this.rentAmount = rentAmount;
         this.floorplan = floorplan;
         this.condition = condition;
+
+
+        /*if (isRented.equals("t"))
+        {
+            this.isRented = true;
+        }
+        else
+        {
+            this.isRented = false;
+        }*/
+
         this.isRented = isRented;
+        this.isFurnished = isFurnished;
+
         this.appliances = new ArrayList<String>(); //Placeholder until I figure out how to parse arrays.
-        this.rentPaid = rentPaid;
         this.rentDue = rentDue;
         this.propertyID = propertyID;
         this.userID = userID;
