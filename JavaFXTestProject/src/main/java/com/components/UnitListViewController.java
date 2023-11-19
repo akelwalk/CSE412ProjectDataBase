@@ -82,6 +82,7 @@ public class UnitListViewController implements Initializable {
     private void setupTable(){
 
         List<Unit> getUnitList = databaseHandler.unitList();
+        System.out.println(getUnitList.size());
 
         for (int i = 0; i < getUnitList.size(); i++) {
             if (getUnitList.get(i).getPropertyID() == currPropertyID) {
