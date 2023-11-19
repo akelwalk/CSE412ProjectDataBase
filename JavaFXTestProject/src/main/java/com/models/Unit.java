@@ -14,10 +14,13 @@ public class Unit {
     private boolean rentPaid;
     private Date rentDue;
 
+    private String isRentedString;
+    private String isFurnishedString;
+
     private int propertyID;
     private int userID;
 
-    public Unit(int unitID, boolean isFurnished, double rentAmount, String floorplan, String condition, boolean isRented, String appliances, String rentPaid, Date rentDue, int propertyID, int userID) {
+    public Unit(int unitID, boolean isFurnished, double rentAmount, String floorplan, String condition, boolean isRented, String appliances, boolean rentPaid, Date rentDue, int propertyID, int userID) {
         this.unitID = unitID;
        /* if (isFurnished.equals("t"))
         {
@@ -50,6 +53,23 @@ public class Unit {
         this.rentDue = rentDue;
         this.propertyID = propertyID;
         this.userID = userID;
+        this.rentPaid = rentPaid;
+
+        if (isRented)
+        {
+            this.isRentedString = "T";
+        }
+        else {
+            this.isRentedString = "F";
+        }
+
+        if (isFurnished)
+        {
+            this.isFurnishedString = "T";
+        }
+        else {
+            this.isFurnishedString = "F";
+        }
     }
 
     public int getUnitID() {
@@ -138,6 +158,22 @@ public class Unit {
 
     public void setUserID(int userID) {
         this.userID = userID;
+    }
+
+    public String getIsRentedString() {
+        return isRentedString;
+    }
+
+    public void setIsRentedString(String isRentedString) {
+        this.isRentedString = isRentedString;
+    }
+
+    public String getIsFurnishedString() {
+        return isFurnishedString;
+    }
+
+    public void setIsFurnishedString(String isFurnishedString) {
+        this.isFurnishedString = isFurnishedString;
     }
 
 
