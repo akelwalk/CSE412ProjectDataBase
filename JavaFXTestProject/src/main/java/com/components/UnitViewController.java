@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class UnitViewController {
+public class UnitViewController implements Initializable {
 
     //Display Data
 
@@ -115,6 +115,8 @@ public class UnitViewController {
 
     }
 
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 
     public void goHome(ActionEvent event) throws IOException {
         System.out.println("Property View -> Customer Home Page");
