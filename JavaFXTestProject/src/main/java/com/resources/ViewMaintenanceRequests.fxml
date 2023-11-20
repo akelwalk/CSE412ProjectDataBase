@@ -17,18 +17,16 @@
                     <Font size="27.0" />
                 </font>
             </Button>
-            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Units" wrappingWidth="461.75390625">
+            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance Requests" wrappingWidth="461.75390625">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <TableView fx:id="unitTableView" layoutX="63.0" layoutY="75.0" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="462.0">
+            <TableView fx:id="maintenanceRequestTableView" layoutX="63.0" layoutY="75.0" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="462.0">
               <columns>
-                <TableColumn fx:id="unitIDCol" prefWidth="75.0" text="unitID" />
-                <TableColumn fx:id="floorplanCol" prefWidth="75.0" text="floorplan" />
-                  <TableColumn fx:id="isFurnishedCol" prefWidth="75.0" text="isFurnished" />
-                  <TableColumn fx:id="conditionCol" prefWidth="75.0" text="condition" />
-                  <TableColumn fx:id="isRentedCol" prefWidth="75.0" text="isRented" />
+                <TableColumn fx:id="isDealtWithCol" prefWidth="75.0" text="isDealtWith" />
+                <TableColumn fx:id="requestIDCol" prefWidth="75.0" text="requestID" />
+                  <TableColumn fx:id="timestampCol" prefWidth="75.0" text="timestamp" />
               </columns>
             </TableView>
             <Button fx:id="viewPropertyPage" layoutX="233.0" layoutY="297.0" mnemonicParsing="false" onAction="#goToPropertyPage" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: #FFC900;" text="viewUnit">
