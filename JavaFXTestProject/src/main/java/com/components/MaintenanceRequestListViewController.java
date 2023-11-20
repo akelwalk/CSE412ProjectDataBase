@@ -87,8 +87,9 @@ public class MaintenanceRequestListViewController {
     private void setupTable(){
 
         List<MaintenanceRequest> getMaintenanceRequestList = databaseHandler.maintenanceRequestList();
-        System.out.println(getMaintenanceRequestList.size());
         System.out.println(currPropertyID);
+
+        System.out.println(getMaintenanceRequestList.size());
 
         for (int i = 0; i < getMaintenanceRequestList.size(); i++) {
             if (getMaintenanceRequestList.get(i).getPropertyID() == currPropertyID && getMaintenanceRequestList.get(i).getUnitID() == currUnitID) {
