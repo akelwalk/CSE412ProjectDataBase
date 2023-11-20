@@ -127,13 +127,13 @@ public class UnitViewController implements Initializable {
     }
 
     public void goToUnitList(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/resources/ViewUnits.fxml");
+        URL url = getClass().getResource("/com/resources/ViewMaintenanceRequests.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        UnitListViewController unitListViewController = loader.getController();
+        MaintenanceRequestListViewController maintenanceRequestListViewController = loader.getController();
         System.out.println("Passing propertyID: "+ currentUnit.getPropertyID());
-        unitListViewController.initializeValues(primaryStage, currentUnit.getPropertyID());
+        maintenanceRequestListViewController.initializeValues(primaryStage, currentUnit.getPropertyID(), currentUnit.getUnitID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
