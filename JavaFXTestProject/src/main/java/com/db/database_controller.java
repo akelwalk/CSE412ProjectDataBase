@@ -240,6 +240,50 @@ public class database_controller implements IDatabaseOperations {
         return null;
     }
 
+    public List<MaintenanceRequest> maintenanceRequestList()
+    {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String sql = "SELECT * FROM MAINTENANCEREQUEST";
+            stmt = conn.prepareStatement(sql);
+
+
+            rs = stmt.executeQuery();
+
+            ArrayList returnValues = new ArrayList();
+
+            while (rs.next()) {
+                //     public MaintenanceRequest(boolean isDealtWith, int requestID, Date timeStamp, int propertyID, int unitID, int userID) {
+
+
+                //  returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                System.out.println(rs.getBoolean("isFurnished"));
+                returnValues.add(new MaintenanceRequest(rs.getBoolean("isdealtwith"), rs.getInt("requestID"), rs.getDate("timestamp"), rs.getInt("propertyid"), rs.getInt("unitID"), rs.getInt("userID") ));
+
+            }
+
+            return returnValues;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
     public List<Users> userList()
     {
         return null;
@@ -255,10 +299,6 @@ public class database_controller implements IDatabaseOperations {
         return null;
     }
 
-    public List<MaintenanceRequest> maintenanceRequestList()
-    {
-        return null;
-    }
 
 
 
