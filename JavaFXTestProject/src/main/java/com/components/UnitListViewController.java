@@ -78,9 +78,9 @@ public class UnitListViewController {
         this.selectedUnitID = -1;
         unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));
         floorplanCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("floorplan"));
-        isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnishedString"));
+        isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
         conditionCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("condition"));
-        isRentedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRentedString"));
+        isRentedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
         this.primaryStage = primaryStage;
         this.currPropertyID = propertyID;
         setupTable();
@@ -124,13 +124,12 @@ public class UnitListViewController {
         m.changeScene("/com/resources/PropertyView.fxml");*/
 
 
-
-        URL url = getClass().getResource("/com/resources/propertyView.fxml");
+        URL url = getClass().getResource("/com/resources/UnitView.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        PropertyViewController propertyViewController = loader.getController();
-        propertyViewController.initializeValues(primaryStage, unitTableView.getSelectionModel().getSelectedItem().getPropertyID());
+        UnitViewController unitViewController = loader.getController();
+        unitViewController.initializeValues(primaryStage, unitTableView.getSelectionModel().getSelectedItem().getPropertyID(), unitTableView.getSelectionModel().getSelectedItem().getUnitID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

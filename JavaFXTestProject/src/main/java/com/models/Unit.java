@@ -7,6 +7,8 @@ public class Unit {
     private int unitID;
     private boolean isFurnished;
     private double rentAmount;
+
+
     private String floorplan;
     private String condition;
     private boolean isRented;
@@ -144,22 +146,6 @@ public class Unit {
         this.rentDue = rentDue;
     }
 
-    public int getPropertyID() {
-        return propertyID;
-    }
-
-    public void setPropertyID(int propertyID) {
-        this.propertyID = propertyID;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
     public String getIsRentedString() {
         return isRentedString;
     }
@@ -174,6 +160,22 @@ public class Unit {
 
     public void setIsFurnishedString(String isFurnishedString) {
         this.isFurnishedString = isFurnishedString;
+    }
+
+    public int getPropertyID() {
+        return propertyID;
+    }
+
+    public void setPropertyID(int propertyID) {
+        this.propertyID = propertyID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
 
