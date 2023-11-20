@@ -37,7 +37,7 @@
                </font>
             </Button>
             <Label layoutX="59.0" layoutY="68.0" prefHeight="26.0" prefWidth="37.0" text="Property ID" textFill="WHITE" />
-            <Text fill="WHITE" layoutX="166.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+            <Text fx:id="propertyIDText" fill="WHITE" layoutX="166.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
         </children>
     </AnchorPane>
 </center>
