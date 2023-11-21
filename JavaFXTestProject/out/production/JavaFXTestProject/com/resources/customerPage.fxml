@@ -21,7 +21,7 @@
                     <Font size="27.0" />
                 </font>
             </Button>
-            <Button fx:id="logout1" layoutX="401.0" layoutY="299.0" mnemonicParsing="false" onAction="#goToPropertyPage" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="PropertyPage">
+            <Button fx:id="logout1" layoutX="401.0" layoutY="299.0" mnemonicParsing="false" onAction="#goToPropertyList" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="PropertyPage">
                <font>
                   <Font size="27.0" />
                </font>
