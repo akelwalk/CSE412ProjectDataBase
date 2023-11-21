@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class PropertyViewController implements Initializable {
+public class PropertyViewController {
 
     //Display Data
 
