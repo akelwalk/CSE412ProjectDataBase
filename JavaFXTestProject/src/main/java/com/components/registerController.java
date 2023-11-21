@@ -9,22 +9,17 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import com.db.database_controller;
-import com.main.MainApplication;
 
 import java.io.IOException;
 
-public class Register {
+public class registerController {
 
     private Stage primaryStage;
 
 
-    public Register() {
+    public registerController() {
 
     }
 
@@ -62,11 +57,11 @@ public class Register {
     private Button backButton;
 
     public void returnHome(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/resources/hello-view.fxml");
+        URL url = getClass().getResource("/com/resources/loginPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        Login login = loader.getController();
+        loginController login = loader.getController();
         login.setStage(primaryStage);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

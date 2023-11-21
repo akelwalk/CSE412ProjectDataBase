@@ -3,8 +3,6 @@ package com.components;
 
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
-import com.main.MainApplication;
-import com.models.MaintenanceRequest;
 import com.models.Unit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,11 +18,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.List;
 
 
-public class MaintenanceRequestListViewController {
+public class unitListController {
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
@@ -32,9 +29,7 @@ public class MaintenanceRequestListViewController {
 
     private int currPropertyID;
 
-    private int currUnitID;
-
-    private int selectedRequestID;
+    private int selectedUnitID;
     @FXML
     private Button homeButton;
 
@@ -45,18 +40,22 @@ public class MaintenanceRequestListViewController {
    // private ListView<Propery> propertyListView = new ListView(FXCollections.observableList(Arrays.asList("one", "2", "3")));
    // private ListView<String> propertyListView = new ListView<>();
 
-    private TableView<MaintenanceRequest> maintenanceRequestTableView;
+    private TableView<Unit> unitTableView;
 
     @FXML
-    private TableColumn<MaintenanceRequest, Boolean> isDealtWithCol;
+    private TableColumn<Unit, Integer> unitIDCol;
 
     @FXML
-    private TableColumn<MaintenanceRequest, Integer> requestIDCol;
+    private TableColumn<Unit, String> floorplanCol;
 
     @FXML
-    private TableColumn<MaintenanceRequest, Date> timestampCol;
+    private TableColumn<Unit, Boolean> isFurnishedCol;
 
+    @FXML
+    private TableColumn<Unit, String> conditionCol;
 
+    @FXML
+    private TableColumn<Unit, Boolean> isRentedCol;
 
     /*@Override
     public void initialize(URL url, ResourceBundle resourceBundle, Stage primaryStage, int propertyID) {
@@ -70,15 +69,16 @@ public class MaintenanceRequestListViewController {
         setupTable();
     }*/
 
-    public void initializeValues(Stage primaryStage, int propertyID, int unitID)
+    public void initializeValues(Stage primaryStage, int propertyID)
     {
-        this.selectedRequestID = -1;
-        isDealtWithCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Boolean>("isDealtWith"));
-        requestIDCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Integer>("requestID"));
-        timestampCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Date>("timestamp"));
+        this.selectedUnitID = -1;
+        unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));
+        floorplanCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("floorplan"));
+        isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
+        conditionCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("condition"));
+        isRentedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
         this.primaryStage = primaryStage;
         this.currPropertyID = propertyID;
-        this.currUnitID = unitID;
         setupTable();
 
     }
@@ -86,34 +86,33 @@ public class MaintenanceRequestListViewController {
 
     private void setupTable(){
 
-        List<MaintenanceRequest> getMaintenanceRequestList = databaseHandler.maintenanceRequestList();
+        List<Unit> getUnitList = databaseHandler.unitList();
+        System.out.println(getUnitList.size());
         System.out.println(currPropertyID);
 
-        System.out.println(getMaintenanceRequestList.size());
-
-        for (int i = 0; i < getMaintenanceRequestList.size(); i++) {
-            if (getMaintenanceRequestList.get(i).getPropertyID() == currPropertyID && getMaintenanceRequestList.get(i).getUnitID() == currUnitID) {
-                maintenanceRequestTableView.getItems().addAll(getMaintenanceRequestList.get(i));
+        for (int i = 0; i < getUnitList.size(); i++) {
+            if (getUnitList.get(i).getPropertyID() == currPropertyID) {
+                unitTableView.getItems().addAll(getUnitList.get(i));
             }
         }
     }
 
     @FXML
     void rowClicked(MouseEvent event) {
-        MaintenanceRequest clickedRequest = maintenanceRequestTableView.getSelectionModel().getSelectedItem();
-        selectedRequestID = clickedRequest.getUnitID();
-        System.out.println("selected UnitID: " + clickedRequest);
+        Unit clickedUnit = unitTableView.getSelectionModel().getSelectedItem();
+        selectedUnitID = clickedUnit.getUnitID();
+        System.out.println("selected UnitID: " + clickedUnit);
     }
 
 
 
     public void goHome(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/resources/UnitView.fxml");
+        URL url = getClass().getResource("/com/resources/propertyView.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        UnitViewController unitViewController = loader.getController();
-        unitViewController.initializeValues(primaryStage, currPropertyID, currUnitID);
+        propertyController propertyViewController = loader.getController();
+        propertyViewController.initialize(primaryStage, currPropertyID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
@@ -123,15 +122,15 @@ public class MaintenanceRequestListViewController {
     public void goToPropertyPage(ActionEvent event) throws IOException {
       /*  System.out.println("Property View -> Customer Home Page");
         MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/PropertyView.fxml");*/
+        m.changeScene("/com/resources/propertyPage.fxml");*/
 
 
-        URL url = getClass().getResource("/com/resources/UnitView.fxml");
+        URL url = getClass().getResource("/com/resources/unitPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        UnitViewController unitViewController = loader.getController();
-        unitViewController.initializeValues(primaryStage, -1, -1);
+        unitController unitViewController = loader.getController();
+        unitViewController.initializeValues(primaryStage, unitTableView.getSelectionModel().getSelectedItem().getPropertyID(), unitTableView.getSelectionModel().getSelectedItem().getUnitID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

@@ -2,26 +2,22 @@ package com.components;
 
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
-import com.main.MainApplication;
 import com.models.Property;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 
-public class PropertyViewController {
+public class propertyController {
 
     //Display Data
 
@@ -92,11 +88,11 @@ public class PropertyViewController {
 
 
     public void goHome(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/resources/ViewProperties.fxml");
+        URL url = getClass().getResource("/com/resources/propertyListPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        PropertyListViewController propertyListViewController = loader.getController();
+        propertyListViewController propertyListViewController = loader.getController();
         propertyListViewController.initialize(primaryStage);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -104,11 +100,11 @@ public class PropertyViewController {
     }
 
     public void goToUnitList(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/resources/ViewUnits.fxml");
+        URL url = getClass().getResource("/com/resources/unitListPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        UnitListViewController unitListViewController = loader.getController();
+        unitListController unitListViewController = loader.getController();
         System.out.println("Passing propertyID: "+ currentProperty.getPropertyID());
         unitListViewController.initializeValues(primaryStage, currentProperty.getPropertyID());
         primaryStage.setScene(new Scene(root));

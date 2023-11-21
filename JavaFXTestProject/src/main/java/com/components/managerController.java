@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import com.main.MainApplication;
 
-public class homepageManager {
+public class managerController {
 
     @FXML
     private Button logout;
@@ -19,14 +19,14 @@ public class homepageManager {
 
     public void userLogOut(ActionEvent event) throws IOException {
         MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/hello-view.fxml");
+        m.changeScene("/com/resources/loginPage.fxml");
 
     }
 
     public void getProperties(ActionEvent event)throws IOException 
     {
                 MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/hello-view.fxml");
+        m.changeScene("/com/resources/loginPage.fxml");
     }
 
     public void getTenants(ActionEvent event)throws IOException 

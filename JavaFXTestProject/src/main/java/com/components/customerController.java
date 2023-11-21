@@ -10,10 +10,9 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 
-import com.main.MainApplication;
 import javafx.stage.Stage;
 
-public class homepageCustomer {
+public class customerController {
 
     private Stage primaryStage;
 
@@ -27,13 +26,13 @@ public class homepageCustomer {
 
     public void userLogOut(ActionEvent event) throws IOException {
         /*MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/hello-view.fxml");*/
+        m.changeScene("/com/resources/loginPage.fxml");*/
 
-        URL url = getClass().getResource("/com/resources/hello-view.fxml");
+        URL url = getClass().getResource("/com/resources/loginPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        Login login = loader.getController();
+        loginController login = loader.getController();
         login.setStage(primaryStage);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -43,11 +42,11 @@ public class homepageCustomer {
 
     public void goToPropertyPage(ActionEvent event) throws IOException
     {
-        URL url = getClass().getResource("/com/resources/ViewProperties.fxml");
+        URL url = getClass().getResource("/com/resources/propertyListPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        PropertyListViewController propertyListViewController = loader.getController();
+        propertyListViewController propertyListViewController = loader.getController();
         propertyListViewController.initialize(primaryStage);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

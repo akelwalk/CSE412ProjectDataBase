@@ -2,7 +2,6 @@ package com.components;
 
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
-import com.main.MainApplication;
 import com.models.Unit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,7 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class UnitViewController implements Initializable {
+public class unitController implements Initializable {
 
     //Display Data
 
@@ -123,11 +122,11 @@ public class UnitViewController implements Initializable {
     }
 
     public void goHome(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/resources/ViewUnits.fxml");
+        URL url = getClass().getResource("/com/resources/unitListPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        UnitListViewController unitListViewController = loader.getController();
+        unitListController unitListViewController = loader.getController();
         System.out.println("Passing propertyID: "+ currentUnit.getPropertyID());
         unitListViewController.initializeValues(primaryStage, currentUnit.getPropertyID());
         primaryStage.setScene(new Scene(root));
@@ -141,7 +140,7 @@ public class UnitViewController implements Initializable {
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        MaintenanceRequestListViewController maintenanceRequestListViewController = loader.getController();
+        requestController maintenanceRequestListViewController = loader.getController();
         maintenanceRequestListViewController.initializeValues(primaryStage, currentUnit.getPropertyID(), currentUnit.getUnitID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

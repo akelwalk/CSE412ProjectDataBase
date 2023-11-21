@@ -1,10 +1,9 @@
 package com.main;
 
-import com.components.Login;
+import com.components.loginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
@@ -24,7 +23,7 @@ public class MainApplication extends Application {
 
 
 
-        /*FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/resources/hello-view.fxml"));
+        /*FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/resources/loginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 650 , 500);
         primaryStage.setTitle("Hello!");
         primaryStage.setScene(scene);
@@ -32,10 +31,10 @@ public class MainApplication extends Application {
 
 
 
-        URL url = getClass().getResource("/com/resources/hello-view.fxml");
+        URL url = getClass().getResource("/com/resources/loginPage.fxml");
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        Login loginController = loader.getController();
+        loginController loginController = loader.getController();
         loginController.setStage(primaryStage);
         Scene loginScene = new Scene(root);
         primaryStage.setScene(loginScene);

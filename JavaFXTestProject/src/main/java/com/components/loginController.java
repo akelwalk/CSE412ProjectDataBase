@@ -10,21 +10,17 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import com.db.database_controller;
 import com.main.MainApplication;
 
 import java.io.IOException;
-public class Login {
+public class loginController {
 
     private Stage primaryStage;
 
 
-    public Login() {
+    public loginController() {
 
     }
 
@@ -69,12 +65,12 @@ public class Login {
 
     public void userRegister(ActionEvent event) throws IOException {
         MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/Register.fxml");
+        m.changeScene("/com/resources/registerPage.fxml");
         URL url = getClass().getResource("/com/resources/register.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        Register register = loader.getController();
+        registerController register = loader.getController();
         register.setStage(primaryStage);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -90,19 +86,19 @@ public class Login {
         if (role != null) {
             switch (role) {
                 case "PropertyManager":
-                    m.changeScene("/com/resources/homepageManager.fxml");
+                    m.changeScene("/com/resources/managerPage.fxml");
                     break;
                 case "Customer":
-                    URL url = getClass().getResource("/com/resources/homepageCustomer.fxml");
+                    URL url = getClass().getResource("/com/resources/customerPage.fxml");
                     System.out.println(url.toString());
                     FXMLLoader loader = new FXMLLoader(url);
                     Parent root = loader.load();
-                    homepageCustomer homepageCustomerController = loader.getController();
+                    customerController homepageCustomerController = loader.getController();
                     homepageCustomerController.initialize(primaryStage);
                     primaryStage.setScene(new Scene(root));
                     primaryStage.show();
 
-                   // m.changeScene("/com/resources/homepageCustomer.fxml");
+                   // m.changeScene("/com/resources/customerPage.fxml");
                     break;
                 default:
                     wrongLogin.setText("Unrecognized role!");
