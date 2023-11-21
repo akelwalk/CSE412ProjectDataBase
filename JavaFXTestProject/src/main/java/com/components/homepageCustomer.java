@@ -34,8 +34,8 @@ public class homepageCustomer {
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        PropertyListViewController propertyListViewController = loader.getController();
-        propertyListViewController.setStage(primaryStage);
+        Login login = loader.getController();
+        login.setStage(primaryStage);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
