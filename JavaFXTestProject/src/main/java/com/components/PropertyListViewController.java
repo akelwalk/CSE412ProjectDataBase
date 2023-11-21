@@ -48,7 +48,7 @@ import javafx.scene.input.MouseEvent;
 
 
 
-public class PropertyListViewController implements Initializable {
+public class PropertyListViewController {
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
@@ -82,8 +82,8 @@ public class PropertyListViewController implements Initializable {
     @FXML
     private TableColumn<Property, Integer> freeUnitsCol;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(Stage primaryStage) {
+        this.primaryStage = primaryStage;
         this.selectedPropertyId = -1;
         propertyIDCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("propertyID"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Property, String>("name"));
