@@ -98,7 +98,7 @@ public class Login {
                     FXMLLoader loader = new FXMLLoader(url);
                     Parent root = loader.load();
                     homepageCustomer homepageCustomerController = loader.getController();
-                    homepageCustomerController.setStage(primaryStage);
+                    homepageCustomerController.initialize(primaryStage);
                     primaryStage.setScene(new Scene(root));
                     primaryStage.show();
 

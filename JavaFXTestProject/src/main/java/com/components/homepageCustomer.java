@@ -20,6 +20,11 @@ public class homepageCustomer {
     @FXML
     private Button logout;
 
+    public void initialize(Stage primaryStage)
+    {
+        this.primaryStage = primaryStage;
+    }
+
     public void setStage(Stage primaryStage)
     {
         this.primaryStage = primaryStage;

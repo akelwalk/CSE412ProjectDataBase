@@ -122,6 +122,15 @@ public class PropertyListViewController implements Initializable {
         MainApplication m = new MainApplication();
         m.changeScene("/com/resources/homepageCustomer.fxml");
 
+        URL url = getClass().getResource("/com/resources/homepageCustomer.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        homepageCustomer homepageCustomer = loader.getController();
+        homepageCustomer.initialize(primaryStage);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
     }
 
 
