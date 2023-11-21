@@ -70,6 +70,14 @@ public class Login {
     public void userRegister(ActionEvent event) throws IOException {
         MainApplication m = new MainApplication();
         m.changeScene("/com/resources/Register.fxml");
+        URL url = getClass().getResource("/com/resources/register.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        Register register = loader.getController();
+        register.setStage(primaryStage);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
     }
 
