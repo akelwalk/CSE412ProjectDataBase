@@ -111,9 +111,14 @@ public class UnitListViewController {
 
 
     public void goHome(ActionEvent event) throws IOException {
-        System.out.println("Property View -> Customer Home Page");
-        MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/homepageCustomer.fxml");
+        URL url = getClass().getResource("/com/resources/propertyView.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        PropertyViewController propertyViewController = loader.getController();
+        propertyViewController.initialize(primaryStage, currPropertyID);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
     }
 
@@ -124,12 +129,12 @@ public class UnitListViewController {
         m.changeScene("/com/resources/PropertyView.fxml");*/
 
 
-        URL url = getClass().getResource("/com/resources/propertyView.fxml");
+        URL url = getClass().getResource("/com/resources/UnitView.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        PropertyViewController propertyViewController = loader.getController();
-        propertyViewController.initialize(primaryStage, currPropertyID);
+        UnitViewController unitViewController = loader.getController();
+        unitViewController.initializeValues(primaryStage, unitTableView.getSelectionModel().getSelectedItem().getPropertyID(), unitTableView.getSelectionModel().getSelectedItem().getUnitID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
