@@ -23,7 +23,7 @@ public class propertyController {
 
     private Property currentProperty;
 
-    private String amenities;
+    private List<String> amenities;
     private int propertyID;
     private String address;
     private String name;
@@ -58,7 +58,7 @@ public class propertyController {
 
     public void initialize(Stage primaryStage, int propertyID)
     {
-        currentProperty = new Property("", -1, "", "", "");
+        currentProperty = new Property(new String[1], -1, "", "", new String[1]);
         this.primaryStage = primaryStage;
         this.propertyID = propertyID;
         propertyIDText.setText(String.valueOf(this.propertyID));
@@ -78,7 +78,7 @@ public class propertyController {
         this.name = currentProperty.getName();
         this.communityAnnouncements = currentProperty.getCommunityAnnouncements();
 
-        amenitiesText.setText(amenities);
+        amenitiesText.setText(amenities.get(0));
         addressText.setText(address);
         nameText.setText(name);
         communityAnnouncementsText.setText(communityAnnouncements.get(0));

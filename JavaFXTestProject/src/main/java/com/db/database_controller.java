@@ -179,7 +179,11 @@ public class database_controller implements IDatabaseOperations {
 
             while (rs.next()) {
 
-                returnValues.add(new Property(rs.getString("amenities"), rs.getInt("propertyID"), rs.getString("address"), rs.getString("name"), rs.getString("communityannouncements")));
+                String[] amenitiesString = (String[]) rs.getArray("amenities").getArray();
+                String[] communityAnnouncementsString = (String[]) rs.getArray("communityannouncements").getArray();
+
+
+                returnValues.add(new Property( amenitiesString , rs.getInt("propertyID"), rs.getString("address"), rs.getString("name"), communityAnnouncementsString));
             }
 
             return returnValues;
