@@ -64,9 +64,7 @@ public class loginController {
     }
 
     public void userRegister(ActionEvent event) throws IOException {
-        MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/registerPage.fxml");
-        URL url = getClass().getResource("/com/resources/register.fxml");
+        URL url = getClass().getResource("/com/resources/registerPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
@@ -93,8 +91,8 @@ public class loginController {
                     System.out.println(url.toString());
                     FXMLLoader loader = new FXMLLoader(url);
                     Parent root = loader.load();
-                    customerController homepageCustomerController = loader.getController();
-                    homepageCustomerController.initialize(primaryStage);
+                    customerController controller = loader.getController();
+                    controller.initialize(primaryStage);
                     primaryStage.setScene(new Scene(root));
                     primaryStage.show();
 

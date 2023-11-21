@@ -27,7 +27,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 
-public class propertyListViewController {
+public class propertyListController {
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
@@ -97,10 +97,6 @@ public class propertyListViewController {
 
 
     public void goHome(ActionEvent event) throws IOException {
-        System.out.println("Property View -> Customer Home Page");
-        MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/customerPage.fxml");
-
         URL url = getClass().getResource("/com/resources/customerPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
@@ -120,7 +116,7 @@ public class propertyListViewController {
 
 
 
-        URL url = getClass().getResource("/com/resources/propertyView.fxml");
+        URL url = getClass().getResource("/com/resources/propertyPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();

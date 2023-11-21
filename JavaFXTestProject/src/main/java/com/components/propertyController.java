@@ -92,7 +92,7 @@ public class propertyController {
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        propertyListViewController propertyListViewController = loader.getController();
+        propertyListController propertyListViewController = loader.getController();
         propertyListViewController.initialize(primaryStage);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

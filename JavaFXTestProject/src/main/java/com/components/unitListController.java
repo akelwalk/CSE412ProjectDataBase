@@ -107,7 +107,7 @@ public class unitListController {
 
 
     public void goHome(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/resources/propertyView.fxml");
+        URL url = getClass().getResource("/com/resources/propertyPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();

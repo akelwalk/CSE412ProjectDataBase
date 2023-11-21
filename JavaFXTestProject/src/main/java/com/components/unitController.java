@@ -136,7 +136,7 @@ public class unitController implements Initializable {
     }
 
     public void goToUnitList(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/resources/viewmaintenancerequests.fxml");
+        URL url = getClass().getResource("/com/resources/requestPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
