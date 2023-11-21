@@ -129,7 +129,7 @@ public class UnitListViewController {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         PropertyViewController propertyViewController = loader.getController();
-        propertyViewController.initialize(primaryStage, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
+        propertyViewController.initialize(primaryStage, currPropertyID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
