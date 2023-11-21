@@ -25,12 +25,6 @@ public class homepageCustomer {
         this.primaryStage = primaryStage;
     }
 
-    public void setStage(Stage primaryStage)
-    {
-        this.primaryStage = primaryStage;
-    }
-
-
     public void userLogOut(ActionEvent event) throws IOException {
         /*MainApplication m = new MainApplication();
         m.changeScene("/com/resources/hello-view.fxml");*/

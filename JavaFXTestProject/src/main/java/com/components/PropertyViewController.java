@@ -60,7 +60,7 @@ public class PropertyViewController implements Initializable {
     @FXML
     private Text communityAnnouncementsText;
 
-    public void initializeValues(Stage primaryStage, int propertyID)
+    public void initialize(Stage primaryStage, int propertyID)
     {
         currentProperty = new Property("", -1, "", "", "");
         this.primaryStage = primaryStage;
@@ -90,15 +90,16 @@ public class PropertyViewController implements Initializable {
 
     }
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
-
 
     public void goHome(ActionEvent event) throws IOException {
-        System.out.println("Property View -> Customer Home Page");
-        MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/homepageCustomer.fxml");
-
+        URL url = getClass().getResource("/com/resources/ViewProperties.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        PropertyListViewController propertyListViewController = loader.getController();
+        propertyListViewController.setStage(primaryStage);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
     }
 
