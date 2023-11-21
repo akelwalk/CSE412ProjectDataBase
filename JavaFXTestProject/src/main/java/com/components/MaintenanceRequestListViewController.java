@@ -108,9 +108,14 @@ public class MaintenanceRequestListViewController {
 
 
     public void goHome(ActionEvent event) throws IOException {
-        System.out.println("Property View -> Customer Home Page");
-        MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/homepageCustomer.fxml");
+        URL url = getClass().getResource("/com/resources/UnitView.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        UnitViewController unitViewController = loader.getController();
+        unitViewController.initializeValues(primaryStage, currPropertyID, currUnitID);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
     }
 

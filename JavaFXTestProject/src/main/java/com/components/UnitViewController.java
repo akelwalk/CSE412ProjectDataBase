@@ -123,14 +123,6 @@ public class UnitViewController implements Initializable {
     }
 
     public void goHome(ActionEvent event) throws IOException {
-        System.out.println("Property View -> Customer Home Page");
-        MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/homepageCustomer.fxml");
-
-
-    }
-
-    public void goToUnitList(ActionEvent event) throws IOException {
         URL url = getClass().getResource("/com/resources/ViewUnits.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
@@ -138,6 +130,19 @@ public class UnitViewController implements Initializable {
         UnitListViewController unitListViewController = loader.getController();
         System.out.println("Passing propertyID: "+ currentUnit.getPropertyID());
         unitListViewController.initializeValues(primaryStage, currentUnit.getPropertyID());
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
+
+    }
+
+    public void goToUnitList(ActionEvent event) throws IOException {
+        URL url = getClass().getResource("/com/resources/viewmaintenancerequests.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        MaintenanceRequestListViewController maintenanceRequestListViewController = loader.getController();
+        maintenanceRequestListViewController.initializeValues(primaryStage, currentUnit.getPropertyID(), currentUnit.getUnitID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
