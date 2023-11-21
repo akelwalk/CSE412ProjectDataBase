@@ -3,9 +3,12 @@ package com.components;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,6 +20,19 @@ import com.main.MainApplication;
 import java.io.IOException;
 
 public class Register {
+
+    private Stage primaryStage;
+
+
+    public Register() {
+
+    }
+
+    public void setStage(Stage primaryStage)
+    {
+        this.primaryStage = primaryStage;
+    }
+
 
     @FXML
     private TextField firstName;
@@ -46,8 +62,14 @@ public class Register {
     private Button backButton;
 
     public void returnHome(ActionEvent event) throws IOException {
-        MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/hello-view.fxml");
+        URL url = getClass().getResource("/com/resources/hello-view.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        Login login = loader.getController();
+        login.setStage(primaryStage);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
     }
 
