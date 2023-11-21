@@ -28,6 +28,8 @@ public class UnitViewController implements Initializable {
 
     private Unit currentUnit;
 
+    private int userID;
+    private int propertyID;
     private int unitID;
     private boolean isFurnished;
     private double rentAmount;
@@ -102,6 +104,8 @@ public class UnitViewController implements Initializable {
 
         unitIDText.setText(String.valueOf(unitID));
 
+        this.propertyID = propertyID;
+
         propertyIDText.setText(String.valueOf(propertyID));
 
         floorplanText.setText(floorplan);
@@ -127,16 +131,14 @@ public class UnitViewController implements Initializable {
     }
 
     public void goToUnitList(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/resources/ViewMaintenanceRequests.fxml");
+        URL url = getClass().getResource("/com/resources/propertyView.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        MaintenanceRequestListViewController maintenanceRequestListViewController = loader.getController();
-        System.out.println("Passing propertyID: "+ currentUnit.getPropertyID());
-        maintenanceRequestListViewController.initializeValues(primaryStage, currentUnit.getPropertyID(), currentUnit.getUnitID());
+        PropertyViewController propertyViewController = loader.getController();
+        propertyViewController.initialize(primaryStage, currentUnit.getPropertyID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
 
     }
 
