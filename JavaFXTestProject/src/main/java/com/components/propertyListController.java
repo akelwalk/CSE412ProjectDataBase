@@ -96,7 +96,7 @@ public class propertyListController {
 
 
 
-    public void goHome(ActionEvent event) throws IOException {
+    public void goBack(ActionEvent event) throws IOException {
         URL url = getClass().getResource("/com/resources/customerPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);

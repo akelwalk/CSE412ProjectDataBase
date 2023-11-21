@@ -106,7 +106,7 @@ public class unitListController {
 
 
 
-    public void goHome(ActionEvent event) throws IOException {
+    public void goBack(ActionEvent event) throws IOException {
         URL url = getClass().getResource("/com/resources/propertyPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
@@ -119,7 +119,7 @@ public class unitListController {
     }
 
 
-    public void goToPropertyPage(ActionEvent event) throws IOException {
+    public void goToUnitPage(ActionEvent event) throws IOException {
       /*  System.out.println("Property View -> Customer Home Page");
         MainApplication m = new MainApplication();
         m.changeScene("/com/resources/propertyPage.fxml");*/

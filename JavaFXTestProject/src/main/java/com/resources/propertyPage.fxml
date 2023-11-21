@@ -11,7 +11,7 @@
 <center>
     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
-            <Button fx:id="homeButton" layoutX="87.0" layoutY="297.0" mnemonicParsing="false" onAction="#goHome" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Home">
+            <Button fx:id="homeButton" layoutX="87.0" layoutY="297.0" mnemonicParsing="false" onAction="#goBack" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Home">
                 <font>
                     <Font size="27.0" />
                 </font>

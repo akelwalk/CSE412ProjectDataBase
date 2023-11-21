@@ -40,7 +40,7 @@ public class customerController {
 
     }
 
-    public void goToPropertyPage(ActionEvent event) throws IOException
+    public void goToPropertyList(ActionEvent event) throws IOException
     {
         URL url = getClass().getResource("/com/resources/propertyListPage.fxml");
         System.out.println(url.toString());

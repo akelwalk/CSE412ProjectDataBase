@@ -121,7 +121,7 @@ public class unitController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-    public void goHome(ActionEvent event) throws IOException {
+    public void goBack(ActionEvent event) throws IOException {
         URL url = getClass().getResource("/com/resources/unitListPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
@@ -135,7 +135,7 @@ public class unitController implements Initializable {
 
     }
 
-    public void goToUnitList(ActionEvent event) throws IOException {
+    public void goToRequestList(ActionEvent event) throws IOException {
         URL url = getClass().getResource("/com/resources/requestPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
