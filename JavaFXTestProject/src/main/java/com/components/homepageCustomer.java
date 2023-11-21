@@ -27,8 +27,18 @@ public class homepageCustomer {
 
 
     public void userLogOut(ActionEvent event) throws IOException {
-        MainApplication m = new MainApplication();
-        m.changeScene("/com/resources/hello-view.fxml");
+        /*MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/hello-view.fxml");*/
+
+        URL url = getClass().getResource("/com/resources/hello-view.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        PropertyListViewController propertyListViewController = loader.getController();
+        propertyListViewController.setStage(primaryStage);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
 
     }
 
