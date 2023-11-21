@@ -2,76 +2,38 @@ package com.models;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Unit {
     private int unitID;
     private boolean isFurnished;
-    private double rentAmount;
-
-
-    private String floorplan;
+    private int rentAmount;
+    private String floorPlan;
     private String condition;
     private boolean isRented;
-    private ArrayList<String> appliances;
+    private List<String> appliances;
+    private int propertyID;
     private boolean rentPaid;
     private Date rentDue;
-
-    private String isRentedString;
-    private String isFurnishedString;
-
-    private int propertyID;
     private int userID;
 
-    public Unit(int unitID, boolean isFurnished, double rentAmount, String floorplan, String condition, boolean isRented, String appliances, boolean rentPaid, Date rentDue, int propertyID, int userID) {
+    public Unit(int unitID, boolean isFurnished, int rentAmount, String floorPlan, String condition, boolean isRented, String[] appliances, int propertyID, boolean rentPaid, Date rentDue, int userID) {
         this.unitID = unitID;
-       /* if (isFurnished.equals("t"))
-        {
-            this.isFurnished = true;
-        }
-        else
-        {
-            this.isFurnished = false;
-        }*/
-
-
-        this.rentAmount = rentAmount;
-        this.floorplan = floorplan;
-        this.condition = condition;
-
-
-        /*if (isRented.equals("t"))
-        {
-            this.isRented = true;
-        }
-        else
-        {
-            this.isRented = false;
-        }*/
-
-        this.isRented = isRented;
         this.isFurnished = isFurnished;
+        this.rentAmount = rentAmount;
+        this.floorPlan = floorPlan;
+        this.condition = condition;
+        this.isRented = isRented;
 
-        this.appliances = new ArrayList<String>(); //Placeholder until I figure out how to parse arrays.
-        this.rentDue = rentDue;
+        for (int i = 0 ; i < appliances.length; i++)
+        {
+            this.appliances.add(appliances[i]);
+        }
+
         this.propertyID = propertyID;
-        this.userID = userID;
         this.rentPaid = rentPaid;
-
-        if (isRented)
-        {
-            this.isRentedString = "T";
-        }
-        else {
-            this.isRentedString = "F";
-        }
-
-        if (isFurnished)
-        {
-            this.isFurnishedString = "T";
-        }
-        else {
-            this.isFurnishedString = "F";
-        }
+        this.rentDue = rentDue;
+        this.userID = userID;
     }
 
     public int getUnitID() {
@@ -90,20 +52,20 @@ public class Unit {
         isFurnished = furnished;
     }
 
-    public double getRentAmount() {
+    public int getRentAmount() {
         return rentAmount;
     }
 
-    public void setRentAmount(double rentAmount) {
+    public void setRentAmount(int rentAmount) {
         this.rentAmount = rentAmount;
     }
 
-    public String getFloorplan() {
-        return floorplan;
+    public String getFloorPlan() {
+        return floorPlan;
     }
 
-    public void setFloorplan(String floorplan) {
-        this.floorplan = floorplan;
+    public void setFloorPlan(String floorPlan) {
+        this.floorPlan = floorPlan;
     }
 
     public String getCondition() {
@@ -122,12 +84,20 @@ public class Unit {
         isRented = rented;
     }
 
-    public ArrayList<String> getAppliances() {
+    public List<String> getAppliances() {
         return appliances;
     }
 
-    public void setAppliances(ArrayList<String> appliances) {
+    public void setAppliances(List<String> appliances) {
         this.appliances = appliances;
+    }
+
+    public int getPropertyID() {
+        return propertyID;
+    }
+
+    public void setPropertyID(int propertyID) {
+        this.propertyID = propertyID;
     }
 
     public boolean isRentPaid() {
@@ -146,30 +116,6 @@ public class Unit {
         this.rentDue = rentDue;
     }
 
-    public String getIsRentedString() {
-        return isRentedString;
-    }
-
-    public void setIsRentedString(String isRentedString) {
-        this.isRentedString = isRentedString;
-    }
-
-    public String getIsFurnishedString() {
-        return isFurnishedString;
-    }
-
-    public void setIsFurnishedString(String isFurnishedString) {
-        this.isFurnishedString = isFurnishedString;
-    }
-
-    public int getPropertyID() {
-        return propertyID;
-    }
-
-    public void setPropertyID(int propertyID) {
-        this.propertyID = propertyID;
-    }
-
     public int getUserID() {
         return userID;
     }
@@ -178,11 +124,10 @@ public class Unit {
         this.userID = userID;
     }
 
-
     @Override
     public String toString()
     {
-        return unitID+","+ isFurnished +"," + rentAmount+"," + floorplan+"," + condition+"," + isRented+"," + rentPaid+"," + rentDue.toString();
+        return unitID+","+ isFurnished +"," + rentAmount+"," + floorPlan+"," + condition+"," + isRented+"," + rentPaid+"," + rentDue.toString();
     }
 
 
