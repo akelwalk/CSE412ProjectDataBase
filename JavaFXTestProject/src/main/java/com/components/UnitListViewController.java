@@ -124,12 +124,12 @@ public class UnitListViewController {
         m.changeScene("/com/resources/PropertyView.fxml");*/
 
 
-        URL url = getClass().getResource("/com/resources/UnitView.fxml");
+        URL url = getClass().getResource("/com/resources/propertyView.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        UnitViewController unitViewController = loader.getController();
-        unitViewController.initializeValues(primaryStage, unitTableView.getSelectionModel().getSelectedItem().getPropertyID(), unitTableView.getSelectionModel().getSelectedItem().getUnitID());
+        PropertyViewController propertyViewController = loader.getController();
+        propertyViewController.initialize(primaryStage, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
