@@ -2,6 +2,9 @@ package com.controllers.homepages;
 
 import com.controllers.loginregister.loginController;
 import com.controllers.property.propertyListController;
+import com.db.IDatabaseOperations;
+import com.db.database_controller;
+import com.models.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,14 +19,19 @@ import javafx.stage.Stage;
 
 public class customerController {
 
+    private int userID;
     private Stage primaryStage;
+    private Users currentUser;
+
+    IDatabaseOperations databaseHandler = database_controller.getInstance();
 
     @FXML
     private Button logout;
 
-    public void initialize(Stage primaryStage)
+    public void initialize(Stage primaryStage, int userID)
     {
         this.primaryStage = primaryStage;
+        this.userID = userID;
     }
 
     public void userLogOut(ActionEvent event) throws IOException {

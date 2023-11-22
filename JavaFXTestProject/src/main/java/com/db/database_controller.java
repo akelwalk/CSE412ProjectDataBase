@@ -102,6 +102,42 @@ public class database_controller implements IDatabaseOperations {
         return role;
     }
 
+    // Get User ID for given email
+    public int getUserID(String email) {
+        int userID = -1;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String sql = "SELECT USERID FROM USERS WHERE email = ? ;";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                userID = rs.getInt("USERID");
+            }
+
+            return userID;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        return userID;
+    }
+
     public String registerUser(String email, String firstName, String lastName, String password, String phoneNumber) {
         Connection conn = null;
         PreparedStatement stmt = null;
