@@ -79,6 +79,7 @@ public class loginController {
     private void checkLogin() throws IOException {
         database_controller dbController = new database_controller();
         String role = dbController.checkLogin(email.getText(), password.getText());
+        int userID = dbController.getUserID(email.getText());
     
         MainApplication m = new MainApplication();
     
@@ -93,7 +94,7 @@ public class loginController {
                     FXMLLoader loader = new FXMLLoader(url);
                     Parent root = loader.load();
                     customerController controller = loader.getController();
-                    controller.initialize(primaryStage);
+                    controller.initialize(primaryStage, userID);
                     primaryStage.setScene(new Scene(root));
                     primaryStage.show();
 
