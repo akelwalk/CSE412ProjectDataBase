@@ -113,8 +113,11 @@ public class propertyController {
         System.out.println(currentUser.getRole());
 
 
-        if (currentUser.getRole() != "Customer")
+        if (currentUser.getRole().equals("Manager"))
         {
+            announcementsButton.setVisible(true);
+        }
+        else {
             announcementsButton.setVisible(false);
         }
 
