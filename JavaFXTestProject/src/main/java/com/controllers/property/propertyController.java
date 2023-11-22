@@ -109,7 +109,11 @@ public class propertyController {
         nameText.setText(name);
         communityAnnouncementsText.setText(communityAnnouncements.get(0));
 
-        if (currentUser.getRole() != "Manager")
+        System.out.println(currentUser.getUserID());
+        System.out.println(currentUser.getRole());
+
+
+        if (currentUser.getRole() != "Customer")
         {
             announcementsButton.setVisible(false);
         }
