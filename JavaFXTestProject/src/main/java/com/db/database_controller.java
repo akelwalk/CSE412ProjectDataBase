@@ -295,6 +295,40 @@ public class database_controller implements IDatabaseOperations {
 
     public List<Users> userList()
     {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String sql = "SELECT * FROM USERS";
+            stmt = conn.prepareStatement(sql);
+
+
+            rs = stmt.executeQuery();
+
+            ArrayList returnValues = new ArrayList();
+
+            while (rs.next()) {
+                System.out.println("fetched user");
+                returnValues.add(new Users(rs.getInt("userid"), rs.getString("role"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"), rs.getString("password"), rs.getString("phonenumber")));
+
+            }
+
+            return returnValues;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
         return null;
     }
 
