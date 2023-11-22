@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.unit.unitListController">
+<center>
+    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <children>
+            <Button fx:id="homeButton" layoutX="63.0" layoutY="297.0" mnemonicParsing="false" onAction="#goBack" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Home">
+                <font>
+                    <Font size="27.0" />
+                </font>
+            </Button>
+            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Units" wrappingWidth="461.75390625">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <TableView fx:id="unitTableView" layoutX="63.0" layoutY="75.0" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="462.0">
+              <columns>
+                <TableColumn fx:id="unitIDCol" prefWidth="75.0" text="unitID" />
+                <TableColumn fx:id="floorplanCol" prefWidth="75.0" text="floorplan" />
+                  <TableColumn fx:id="isFurnishedCol" prefWidth="75.0" text="isFurnished" />
+                  <TableColumn fx:id="conditionCol" prefWidth="75.0" text="condition" />
+                  <TableColumn fx:id="isRentedCol" prefWidth="75.0" text="isRented" />
+              </columns>
+            </TableView>
+            <Button fx:id="viewPropertyPage" layoutX="233.0" layoutY="297.0" mnemonicParsing="false" onAction="#goToUnitPage" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: #FFC900;" text="viewUnit">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Button>
+        </children>
+    </AnchorPane>
+</center>
+</BorderPane>

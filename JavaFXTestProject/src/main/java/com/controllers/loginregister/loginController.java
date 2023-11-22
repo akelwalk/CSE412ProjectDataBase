@@ -1,0 +1,116 @@
+package com.controllers.loginregister;
+
+import com.controllers.homepages.customerController;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
+import java.net.URL;
+
+import com.db.database_controller;
+import com.main.MainApplication;
+
+import java.io.IOException;
+public class loginController {
+
+    private Stage primaryStage;
+
+
+    public loginController() {
+
+    }
+
+    public void setStage(Stage primaryStage)
+    {
+        this.primaryStage = primaryStage;
+    }
+
+    @FXML
+    private Button button;
+    @FXML
+    private Label wrongLogin;
+    @FXML
+    private TextField email;
+    @FXML
+    private PasswordField password;
+
+    @FXML
+    private CheckBox isPropertyManager;
+
+    public void initialize() {
+        // Set the same action for email and password fields to respond to Enter key press
+        EventHandler<ActionEvent> loginHandler = event -> {
+            try {
+                userLogin(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+                wrongLogin.setText("An error occurred while trying to log in.");
+            }
+        };
+
+        email.setOnAction(loginHandler);
+        password.setOnAction(loginHandler);
+    }
+
+
+
+    public void userLogin(ActionEvent event) throws IOException {
+        checkLogin();
+
+    }
+
+    public void userRegister(ActionEvent event) throws IOException {
+        URL url = getClass().getResource("/com/pages/loginregister/registerPage.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        registerController register = loader.getController();
+        register.setStage(primaryStage);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
+    }
+
+    private void checkLogin() throws IOException {
+        database_controller dbController = new database_controller();
+        String role = dbController.checkLogin(email.getText(), password.getText());
+    
+        MainApplication m = new MainApplication();
+    
+        if (role != null) {
+            switch (role) {
+                case "PropertyManager":
+                    m.changeScene("/com/pages/homepages/managerPage.fxml");
+                    break;
+                case "Customer":
+                    URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
+                    System.out.println(url.toString());
+                    FXMLLoader loader = new FXMLLoader(url);
+                    Parent root = loader.load();
+                    customerController controller = loader.getController();
+                    controller.initialize(primaryStage);
+                    primaryStage.setScene(new Scene(root));
+                    primaryStage.show();
+
+                   // m.changeScene("/com/resources/customerPage.fxml");
+                    break;
+                default:
+                    wrongLogin.setText("Unrecognized role!");
+                    break;
+            }
+        } else if (email.getText().isEmpty() && password.getText().isEmpty()) {
+            wrongLogin.setText("Please enter your data.");
+        } else {
+            wrongLogin.setText("Wrong email or password!");
+        }
+    }
+    
+
+
+
+}

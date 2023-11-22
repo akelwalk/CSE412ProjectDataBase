@@ -1,6 +1,6 @@
 package com.main;
 
-import com.components.loginController;
+import com.controllers.loginregister.loginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -31,7 +31,7 @@ public class MainApplication extends Application {
 
 
 
-        URL url = getClass().getResource("/com/resources/loginPage.fxml");
+        URL url = getClass().getResource("/com/pages/loginregister/loginPage.fxml");
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         loginController loginController = loader.getController();
