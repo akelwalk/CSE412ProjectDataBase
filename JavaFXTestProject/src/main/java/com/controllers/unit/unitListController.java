@@ -28,6 +28,8 @@ public class unitListController {
 
     private Stage primaryStage;
 
+    private int userID;
+
     private int currPropertyID;
 
     private int selectedUnitID;
@@ -70,9 +72,10 @@ public class unitListController {
         setupTable();
     }*/
 
-    public void initializeValues(Stage primaryStage, int propertyID)
+    public void initializeValues(Stage primaryStage, int userID, int propertyID)
     {
         this.selectedUnitID = -1;
+        this.userID = userID;
         unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));
         floorplanCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("floorplan"));
         isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
@@ -113,7 +116,7 @@ public class unitListController {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         propertyController propertyViewController = loader.getController();
-        propertyViewController.initialize(primaryStage, currPropertyID);
+        propertyViewController.initialize(primaryStage, userID, currPropertyID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
@@ -131,7 +134,7 @@ public class unitListController {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         unitController unitViewController = loader.getController();
-        unitViewController.initializeValues(primaryStage, unitTableView.getSelectionModel().getSelectedItem().getPropertyID(), unitTableView.getSelectionModel().getSelectedItem().getUnitID());
+        unitViewController.initializeValues(primaryStage, userID, unitTableView.getSelectionModel().getSelectedItem().getPropertyID(), unitTableView.getSelectionModel().getSelectedItem().getUnitID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

@@ -24,7 +24,9 @@ public class unitController implements Initializable {
 
     //Display Data
 
+
     private Unit currentUnit;
+
 
     private int userID;
     private int propertyID;
@@ -67,12 +69,13 @@ public class unitController implements Initializable {
     @FXML
     private Text isRentedText;
 
-    public void initializeValues(Stage primaryStage, int propertyID, int unitID)
+    public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
     {
 
         List<Unit> getUnitList = databaseHandler.unitList();
         currentUnit = getUnitList.get(0);
         this.primaryStage = primaryStage;
+        this.userID = userID;
         this.unitID = unitID;
 
 
@@ -129,7 +132,7 @@ public class unitController implements Initializable {
         Parent root = loader.load();
         unitListController unitListViewController = loader.getController();
         System.out.println("Passing propertyID: "+ currentUnit.getPropertyID());
-        unitListViewController.initializeValues(primaryStage, currentUnit.getPropertyID());
+        unitListViewController.initializeValues(primaryStage, userID, currentUnit.getPropertyID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
@@ -142,7 +145,7 @@ public class unitController implements Initializable {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         requestController maintenanceRequestListViewController = loader.getController();
-        maintenanceRequestListViewController.initializeValues(primaryStage, currentUnit.getPropertyID(), currentUnit.getUnitID());
+        maintenanceRequestListViewController.initializeValues(primaryStage, userID, currentUnit.getPropertyID(), currentUnit.getUnitID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

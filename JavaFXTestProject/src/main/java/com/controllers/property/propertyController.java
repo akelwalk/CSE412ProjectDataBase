@@ -32,6 +32,8 @@ public class propertyController {
 
     private Stage primaryStage;
 
+    private int userID;
+
 
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
@@ -57,10 +59,11 @@ public class propertyController {
     @FXML
     private Text communityAnnouncementsText;
 
-    public void initialize(Stage primaryStage, int propertyID)
+    public void initialize(Stage primaryStage, int userID, int propertyID)
     {
         currentProperty = new Property(new String[1], -1, "", "", new String[1]);
         this.primaryStage = primaryStage;
+        this.userID = userID;
         this.propertyID = propertyID;
         propertyIDText.setText(String.valueOf(this.propertyID));
 
@@ -94,7 +97,7 @@ public class propertyController {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         propertyListController propertyListViewController = loader.getController();
-        propertyListViewController.initialize(primaryStage);
+        propertyListViewController.initialize(primaryStage, userID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
@@ -107,7 +110,7 @@ public class propertyController {
         Parent root = loader.load();
         unitListController unitListViewController = loader.getController();
         System.out.println("Passing propertyID: "+ currentProperty.getPropertyID());
-        unitListViewController.initializeValues(primaryStage, currentProperty.getPropertyID());
+        unitListViewController.initializeValues(primaryStage, userID, currentProperty.getPropertyID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

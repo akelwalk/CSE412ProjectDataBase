@@ -29,6 +29,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class propertyListController {
 
+    private int userID;
+
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
     private Stage primaryStage;
@@ -61,8 +63,9 @@ public class propertyListController {
     @FXML
     private TableColumn<Property, Integer> freeUnitsCol;
 
-    public void initialize(Stage primaryStage) {
+    public void initialize(Stage primaryStage, int userID) {
         this.primaryStage = primaryStage;
+        this.userID = userID;
         this.selectedPropertyId = -1;
         propertyIDCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("propertyID"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Property, String>("name"));
@@ -72,7 +75,7 @@ public class propertyListController {
         setupTable();
     }
 
-    public void setStage(Stage primaryStage)
+    public void setStage(Stage primaryStagem)
     {
         this.primaryStage = primaryStage;
     }
@@ -102,7 +105,7 @@ public class propertyListController {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         customerController homepageCustomer = loader.getController();
-        homepageCustomer.initialize(primaryStage);
+        homepageCustomer.initialize(primaryStage, userID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
@@ -121,7 +124,7 @@ public class propertyListController {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         propertyController propertyViewController = loader.getController();
-        propertyViewController.initialize(primaryStage, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
+        propertyViewController.initialize(primaryStage, userID, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

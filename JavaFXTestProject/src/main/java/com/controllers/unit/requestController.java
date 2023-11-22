@@ -28,6 +28,8 @@ public class requestController {
 
     private Stage primaryStage;
 
+    private int userID;
+
     private int currPropertyID;
 
     private int currUnitID;
@@ -68,9 +70,10 @@ public class requestController {
         setupTable();
     }*/
 
-    public void initializeValues(Stage primaryStage, int propertyID, int unitID)
+    public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
     {
         this.selectedRequestID = -1;
+        this.userID = userID;
         isDealtWithCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Boolean>("isDealtWith"));
         requestIDCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Integer>("requestID"));
         timestampCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Date>("timestamp"));
@@ -111,7 +114,7 @@ public class requestController {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         unitController unitViewController = loader.getController();
-        unitViewController.initializeValues(primaryStage, currPropertyID, currUnitID);
+        unitViewController.initializeValues(primaryStage, userID, currPropertyID, currUnitID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
@@ -129,7 +132,7 @@ public class requestController {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         unitController unitViewController = loader.getController();
-        unitViewController.initializeValues(primaryStage, -1, -1);
+        unitViewController.initializeValues(primaryStage, userID,-1, -1);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

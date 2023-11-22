@@ -57,7 +57,7 @@ public class customerController {
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         propertyListController propertyListViewController = loader.getController();
-        propertyListViewController.initialize(primaryStage);
+        propertyListViewController.initialize(primaryStage, userID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
