@@ -2,7 +2,8 @@ package com.models;
 
 public class PropertyManager extends Users{
 
-    // inheriting from Users will allow us to modify details later 
+    // inheriting from Users will allow us to modify details later
+
 
     private int userID;
     private boolean isOwner;
