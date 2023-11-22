@@ -70,11 +70,13 @@ public class unitController implements Initializable {
 
     public void initializeValues(Stage primaryStage, int propertyID, int unitID)
     {
-        currentUnit = new Unit(-1, false, 0.0, "", "", false, "", false, new Date(), -1, -1);
+
+        List<Unit> getUnitList = databaseHandler.unitList();
+        currentUnit = getUnitList.get(0);
         this.primaryStage = primaryStage;
         this.unitID = unitID;
 
-        List<Unit> getUnitList = databaseHandler.unitList();
+
 
         for (int i = 0; i < getUnitList.size(); i++) {
             if (getUnitList.get(i).getPropertyID() == propertyID && getUnitList.get(i).getUnitID() == unitID)
@@ -87,7 +89,7 @@ public class unitController implements Initializable {
         this.unitID = currentUnit.getUnitID();
         this.isFurnished = currentUnit.isFurnished();
         this.rentAmount = currentUnit.getRentAmount();
-        this.floorplan = currentUnit.getFloorplan();
+        this.floorplan = currentUnit.getFloorPlan();
         this.condition = currentUnit.getCondition();
         this.isRented = currentUnit.isRented();
         this.appliances = currentUnit.getAppliances();

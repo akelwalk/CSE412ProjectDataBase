@@ -222,10 +222,15 @@ public class database_controller implements IDatabaseOperations {
             while (rs.next()) {
    // public Unit(int unitID, boolean isFurnished, double rentAmount, String floorplan, String condition, boolean isRented, ArrayList<String> appliances, boolean rentPaid, Date rentDue, int propertyID, int userID) {
 
+                String[] appliancesString = (String[]) rs.getArray("appliances").getArray();
 
-              //  returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+
+                //  returnValues.add(new Property(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
                 System.out.println(rs.getBoolean("isFurnished"));
-                returnValues.add(new Unit(rs.getInt("unitid"), rs.getBoolean("isFurnished"), rs.getDouble("rentAmount"), rs.getString("floorplan"), rs.getString("condition"), rs.getBoolean("isRented"), rs.getString("appliances"),rs.getBoolean("rentPaid"),rs.getDate("rentDue"), rs.getInt("propertyID"), rs.getInt("unitID")));
+//                returnValues.add(new Unit(rs.getInt("unitid"), rs.getBoolean("isFurnished"), rs.getDouble("rentAmount"), rs.getString("floorplan"), rs.getString("condition"), rs.getBoolean("isRented"), rs.getString("appliances"),rs.getBoolean("rentPaid"),rs.getDate("rentDue"), rs.getInt("propertyID"), rs.getInt("unitID")));
+
+                returnValues.add(new Unit(rs.getInt("unitid"), rs.getBoolean("isFurnished"), rs.getDouble("rentAmount"), rs.getString("floorplan"), rs.getString("condition"), rs.getBoolean("isRented"), appliancesString, rs.getInt("propertyid"), rs.getBoolean("rentPaid"), rs.getDate("rentDue"), rs.getInt("userID") ));
+
 
             }
 
