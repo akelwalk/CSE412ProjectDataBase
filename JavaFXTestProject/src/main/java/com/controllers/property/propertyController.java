@@ -4,6 +4,7 @@ import com.controllers.unit.unitListController;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.Property;
+import com.models.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ public class propertyController {
     //Display Data
 
     private Property currentProperty;
+    private Users currentUser;
 
     private List<String> amenities;
     private int propertyID;
@@ -45,6 +47,9 @@ public class propertyController {
     private Button viewUnitsButton;
 
     @FXML
+    private Button announcementsButton;
+
+    @FXML
     private Text propertyIDText;
 
     @FXML
@@ -61,7 +66,6 @@ public class propertyController {
 
     public void initialize(Stage primaryStage, int userID, int propertyID)
     {
-        currentProperty = new Property(new String[1], -1, "", "", new String[1]);
         this.primaryStage = primaryStage;
         this.userID = userID;
         this.propertyID = propertyID;
@@ -69,13 +73,31 @@ public class propertyController {
 
         List<Property> getPropertyList = databaseHandler.propertyList();
 
+        currentProperty = getPropertyList.get(0);
+
         for (int i = 0; i < getPropertyList.size(); i++) {
             if (getPropertyList.get(i).getPropertyID() == propertyID)
             {
                 currentProperty = getPropertyList.get(i);
                 break;
             }
+
         }
+
+        List<Users> getUsersList = databaseHandler.userList();
+        currentUser = getUsersList.get(0);
+
+        for (int i = 0; i < getUsersList.size(); i++) {
+            if (getUsersList.get(i).getUserID() == userID)
+            {
+                currentUser = getUsersList.get(i);
+                break;
+            }
+
+        }
+
+
+
 
         this.amenities = currentProperty.getAmenities();
         this.address = currentProperty.getAddress();
@@ -86,6 +108,11 @@ public class propertyController {
         addressText.setText(address);
         nameText.setText(name);
         communityAnnouncementsText.setText(communityAnnouncements.get(0));
+
+        if (currentUser.getRole() != "Manager")
+        {
+            announcementsButton.setVisible(false);
+        }
 
 
     }
