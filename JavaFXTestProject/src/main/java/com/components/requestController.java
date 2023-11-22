@@ -84,7 +84,7 @@ public class requestController {
 
     private void setupTable(){
 
-        List<MaintenanceRequest> getMaintenanceRequestList = databaseHandler.maintenanceRequestList();
+        List<MaintenanceRequest> getMaintenanceRequestList = databaseHandler.requestList();
         System.out.println(currPropertyID);
 
         System.out.println(getMaintenanceRequestList.size());

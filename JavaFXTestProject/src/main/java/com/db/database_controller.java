@@ -249,7 +249,7 @@ public class database_controller implements IDatabaseOperations {
         return null;
     }
 
-    public List<MaintenanceRequest> maintenanceRequestList()
+    public List<MaintenanceRequest> requestList()
     {
         Connection conn = null;
         PreparedStatement stmt = null;
