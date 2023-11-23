@@ -34,6 +34,7 @@ public class managerController {
     private Button properties; 
     private Button tenants; 
     private Button leases;
+    private Button viewPropertyButton;
 
 
     public void initialize(Stage primaryStage, int userID)
