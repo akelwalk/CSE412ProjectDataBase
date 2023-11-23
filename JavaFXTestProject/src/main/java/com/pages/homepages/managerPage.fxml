@@ -71,4 +71,7 @@
          </children>
       </HBox>
    </top>
+   <center>
+      <Button fx:id="viewPropertyButton" mnemonicParsing="false" onAction="#goToMyProperty" text="View My Property" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

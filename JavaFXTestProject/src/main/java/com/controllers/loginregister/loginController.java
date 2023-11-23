@@ -2,7 +2,7 @@ package com.controllers.loginregister;
 
 import com.controllers.homepages.customerController;
 import com.controllers.sessions.UserSession;
-
+import com.controllers.homepages.managerController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -92,17 +92,22 @@ public class loginController {
 
             switch (role) {
                 case "PropertyManager":
-                    m.changeScene("/com/pages/homepages/managerPage.fxml");
-                    break;
-                case "Customer":
-                    URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
+                    URL url = getClass().getResource("/com/pages/homepages/managerPage.fxml");
+                    System.out.println(url.toString());
                     FXMLLoader loader = new FXMLLoader(url);
                     Parent root = loader.load();
-                    customerController controller = loader.getController();
-
-                    // Pass the session information to the controller
-                    controller.initialize(primaryStage, userID);
-
+                    managerController mcController = loader.getController();
+                    mcController.initialize(primaryStage, userID);
+                    primaryStage.setScene(new Scene(root));
+                    primaryStage.show();
+                    break;
+                case "Customer":
+                    url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
+                    System.out.println(url.toString());
+                    loader = new FXMLLoader(url);
+                    root = loader.load();
+                    customerController cController = loader.getController();
+                    cController.initialize(primaryStage, userID);
                     primaryStage.setScene(new Scene(root));
                     primaryStage.show();
                     break;

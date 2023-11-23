@@ -14,17 +14,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class propertyController {
+public class announcementsController {
 
     //Display Data
 
@@ -47,31 +48,18 @@ public class propertyController {
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
     @FXML
-    private ListView announcementsListView;
+    private TextField enterAnnouncementField;
 
     @FXML
-    private Button homeButton;
+    private Button backButton;
 
     @FXML
-    private Button viewUnitsButton;
+    private Button createButton;
 
     @FXML
-    private Button announcementsButton;
+    private Label errorLabel;
 
-    @FXML
-    private Text propertyIDText;
 
-    @FXML
-    private Text nameText;
-
-    @FXML
-    private Text addressText;
-
-    @FXML
-    private Text amenitiesText;
-
-    @FXML
-    private Text communityAnnouncementsText;
 
 
 
@@ -80,7 +68,6 @@ public class propertyController {
         this.primaryStage = primaryStage;
         this.userID = userID;
         this.propertyID = propertyID;
-        propertyIDText.setText(String.valueOf(this.propertyID));
 
 
         List<Property> getPropertyList = databaseHandler.propertyList();
@@ -110,36 +97,6 @@ public class propertyController {
 
         }
 
-
-
-
-        this.amenities = currentProperty.getAmenities();
-        this.address = currentProperty.getAddress();
-        this.name = currentProperty.getName();
-
-        List<String> getAnnouncements = currentProperty.getCommunityAnnouncements();
-
-
-        for (int i = 0; i < getAnnouncements.size(); i++)
-        {
-            System.out.println(getAnnouncements.get(i));
-            communityAnnouncements.add(getAnnouncements.get(i));
-        }
-
-
-
-        amenitiesText.setText(amenities.get(0));
-        addressText.setText(address);
-        nameText.setText(name);
-
-        announcementsListView.setItems(communityAnnouncements);
-
-        System.out.println(currentUser.getUserID());
-        System.out.println(currentUser.getRole());
-
-
-        if (currentUser.getRole().equals("PropertyManager"))
-        {
             List<PropertyManager> getManagerList = databaseHandler.propertyManagerList();
 
             PropertyManager currentManager = getManagerList.get(0);
@@ -153,45 +110,59 @@ public class propertyController {
 
             }
 
-            if (currentManager.getPropertyID() == propertyID) {
-                announcementsButton.setVisible(true);
-            }
-            else
-            {
 
-            }
-        }
-        else {
-            announcementsButton.setVisible(false);
-        }
 
 
     }
 
 
     public void goBack(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/pages/property/propertyListPage.fxml");
+
+
+        URL url = getClass().getResource("/com/pages/property/propertyPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        propertyListController propertyListViewController = loader.getController();
-        propertyListViewController.initialize(primaryStage, userID);
+        propertyController pc = loader.getController();
+        pc.initialize(primaryStage, userID, propertyID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
     }
 
-    public void goToUnitList(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/pages/unit/unitListPage.fxml");
-        System.out.println(url.toString());
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-        unitListController unitListViewController = loader.getController();
-        System.out.println("Passing propertyID: "+ currentProperty.getPropertyID());
-        unitListViewController.initializeValues(primaryStage, userID, currentProperty.getPropertyID());
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+    public void createAnnouncement(ActionEvent event) throws IOException {
 
+        boolean check = checkCreated();
+
+        if (check) {
+            URL url = getClass().getResource("/com/pages/property/propertyPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            propertyController pc = loader.getController();
+            pc.initialize(primaryStage, userID, propertyID);
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        }
+
+
+    }
+
+    private boolean checkCreated() throws IOException {
+
+        // password contraints
+
+        if (enterAnnouncementField.getLength() < 1) {
+            errorLabel.setText("Password cannot be blank!");
+            return false;
+        } else {
+
+            database_controller dbController = new database_controller();
+           // String registrationResult = dbController.registerUser(email.getText(), firstName.getText(), lastName.getText(), password.getText(), phoneNumber.getText());
+            String registrationResult = "Not implemented yet!";
+            errorLabel.setText(registrationResult);
+            return "Success!".equals(registrationResult);
+        }
 
     }
 

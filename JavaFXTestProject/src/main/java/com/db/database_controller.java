@@ -35,7 +35,6 @@ public class database_controller implements IDatabaseOperations {
     //Instances to allow it to be used in controllers.
 
     //This constructor will connect to the database.
-
     public database_controller()
     {
         this.initializePostgresqlDatabase();
@@ -195,6 +194,64 @@ public class database_controller implements IDatabaseOperations {
         }
     }
 
+      /* public String createAnnouncement(int propertyID, String newAnnouncement) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            // Check if user already exists
+            String checkUserSql = "SELECT * FROM users WHERE email = ?";
+            stmt = conn.prepareStatement(checkUserSql);
+            stmt.setString(1, email);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return "An account already exists with that email!";
+            } else {
+                // Insert new user
+                String insertUserSql = "INSERT INTO Users VALUES ((SELECT MAX(coalesce(UserID, -1)) FROM USERS) + 1, ?, ?, ?, ?, ?, ?)";
+                stmt = conn.prepareStatement(insertUserSql);
+                stmt.setString(1, "Customer");
+                stmt.setString(2, firstName);
+                stmt.setString(3, lastName);
+                stmt.setString(4, email);
+                stmt.setString(5, password);
+                stmt.setString(6, phoneNumber);
+                int affectedRows = stmt.executeUpdate();
+
+                // this creates a Customer for this user -- if we change the role later on we should delete the customer
+                // database row for the user so they do not have dual accounts
+                if (affectedRows > 0) {
+                    String insertCustomerSql = "INSERT INTO Customer VALUES ((SELECT UserID FROM USERS WHERE USERS.EMAIL = ?), NULL, NULL, NULL, NULL, NULL);";
+                    stmt = conn.prepareStatement(insertCustomerSql);
+                    stmt.setString(1, email);
+                    int affectedRowsCustomer = stmt.executeUpdate();
+
+                    if (affectedRowsCustomer > 0) {
+                        return "Success!";
+                    }
+                }
+                return "Failed.";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error connecting to the database.";
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    }
+    */
+
     public List<Property> propertyList()
     {
         Connection conn = null;
@@ -217,7 +274,7 @@ public class database_controller implements IDatabaseOperations {
 
                 String[] amenitiesString = (String[]) rs.getArray("amenities").getArray();
                 String[] communityAnnouncementsString = (String[]) rs.getArray("communityannouncements").getArray();
-
+                System.out.println(rs.getString("communityAnnouncements"));
 
                 returnValues.add(new Property( amenitiesString , rs.getInt("propertyID"), rs.getString("address"), rs.getString("name"), communityAnnouncementsString));
             }
