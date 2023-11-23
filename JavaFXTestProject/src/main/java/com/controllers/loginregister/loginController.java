@@ -1,6 +1,8 @@
 package com.controllers.loginregister;
 
 import com.controllers.homepages.customerController;
+import com.controllers.sessions.UserSession;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import java.net.URL;
+
+import org.postgresql.shaded.com.ongres.scram.common.util.UsAsciiUtils;
 
 import com.db.database_controller;
 import com.main.MainApplication;
@@ -80,25 +84,27 @@ public class loginController {
         database_controller dbController = new database_controller();
         String role = dbController.checkLogin(email.getText(), password.getText());
         int userID = dbController.getUserID(email.getText());
-    
+
         MainApplication m = new MainApplication();
-    
+
         if (role != null) {
+            UserSession.getInstance(userID,email.getText(),role); // create user session object 
+
             switch (role) {
                 case "PropertyManager":
                     m.changeScene("/com/pages/homepages/managerPage.fxml");
                     break;
                 case "Customer":
                     URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
-                    System.out.println(url.toString());
                     FXMLLoader loader = new FXMLLoader(url);
                     Parent root = loader.load();
                     customerController controller = loader.getController();
+
+                    // Pass the session information to the controller
                     controller.initialize(primaryStage, userID);
+
                     primaryStage.setScene(new Scene(root));
                     primaryStage.show();
-
-                   // m.changeScene("/com/resources/customerPage.fxml");
                     break;
                 default:
                     wrongLogin.setText("Unrecognized role!");
@@ -110,6 +116,7 @@ public class loginController {
             wrongLogin.setText("Wrong email or password!");
         }
     }
+
     
 
 

@@ -447,13 +447,43 @@ public class database_controller implements IDatabaseOperations {
         return null;
     }
 
-
-
-
-    // Future SQL Queries use a string format for the sql string being used to the function call 
-    // - To further abstract this process we can seperate the implementation by concerns to ensure 
-    //   that input captures are done in the source class and then passed to the database class return 
-    //   values should be though out as to seperates the two as much as possible 
-
+    public String getName(String email) {
+        String fullName = "";
+    
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+    
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+    
+            String sql = "SELECT firstname, lastname FROM USERS WHERE email = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+    
+            rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                String firstName = rs.getString("firstname");
+                String lastName = rs.getString("lastname");
+                fullName = firstName + " " + lastName;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    
+        return fullName;
+    }
+    
 
 }
