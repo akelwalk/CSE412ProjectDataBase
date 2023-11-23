@@ -4,6 +4,7 @@ import com.controllers.unit.unitListController;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.Property;
+import com.models.PropertyManager;
 import com.models.Users;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -135,9 +136,28 @@ public class propertyController {
         System.out.println(currentUser.getRole());
 
 
-        if (currentUser.getRole().equals("Manager"))
+        if (currentUser.getRole().equals("PropertyManager"))
         {
-            announcementsButton.setVisible(true);
+            List<PropertyManager> getManagerList = databaseHandler.propertyManagerList();
+
+            PropertyManager currentManager = getManagerList.get(0);
+
+            for (int i = 0; i < getManagerList.size(); i++) {
+                if (getManagerList.get(i).getUserID() == userID)
+                {
+                    currentManager = getManagerList.get(i);
+                    break;
+                }
+
+            }
+
+            if (currentManager.getPropertyID() == propertyID) {
+                announcementsButton.setVisible(true);
+            }
+            else
+            {
+
+            }
         }
         else {
             announcementsButton.setVisible(false);
