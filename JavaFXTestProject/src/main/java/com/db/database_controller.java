@@ -35,7 +35,6 @@ public class database_controller implements IDatabaseOperations {
     //Instances to allow it to be used in controllers.
 
     //This constructor will connect to the database.
-
     public database_controller()
     {
         this.initializePostgresqlDatabase();
@@ -275,7 +274,7 @@ public class database_controller implements IDatabaseOperations {
 
                 String[] amenitiesString = (String[]) rs.getArray("amenities").getArray();
                 String[] communityAnnouncementsString = (String[]) rs.getArray("communityannouncements").getArray();
-
+                System.out.println(rs.getString("communityAnnouncements"));
 
                 returnValues.add(new Property( amenitiesString , rs.getInt("propertyID"), rs.getString("address"), rs.getString("name"), communityAnnouncementsString));
             }
