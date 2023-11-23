@@ -87,7 +87,7 @@ public class loginController {
         if (role != null) {
             switch (role) {
                 case "PropertyManager":
-                    URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
+                    URL url = getClass().getResource("/com/pages/homepages/managerPage.fxml");
                     System.out.println(url.toString());
                     FXMLLoader loader = new FXMLLoader(url);
                     Parent root = loader.load();
