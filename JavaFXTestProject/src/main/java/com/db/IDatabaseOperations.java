@@ -12,12 +12,16 @@ public interface IDatabaseOperations {
     public List<Customers> customerList();
     public List<MaintenanceRequest> requestList();
     public List<Unit> unitList();
+    public List<String> getAmmenities(int property_id);
 
 
-    String checkLogin(String email, String password);
-    String registerUser(String email, String firstName, String lastName, String password, String phoneNumber);
+    public String checkLogin(String email, String password);
+    public String registerUser(String email, String firstName, String lastName, String password, String phoneNumber);
     public String getName(String email);
     public String getPropertyName(int property_id);
+    public String getPropertyAddress(int property_id);
+
     public int getPropertyId(int usr_id);
+
 
 }
