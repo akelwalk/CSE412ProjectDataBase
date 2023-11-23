@@ -1,6 +1,7 @@
 package com.controllers.homepages;
 
 import com.controllers.loginregister.loginController;
+import com.controllers.property.managerPropertyController;
 import com.controllers.property.propertyController;
 import com.controllers.property.propertyListController;
 import com.db.IDatabaseOperations;
@@ -40,7 +41,7 @@ public class managerController {
     private Button properties; 
     private Button tenants; 
     private Button leases; 
-        private Button viewPropertyButton;
+    private Button viewPropertyButton;
     @FXML
     private Label user_name; 
 
@@ -99,12 +100,6 @@ public class managerController {
         primaryStage.show();
     }
 
-    public void getProperties(ActionEvent event)throws IOException 
-    {
-                MainApplication m = new MainApplication();
-        m.changeScene("/com/pages/loginregister/loginPage.fxml");
-    }
-
     public void getTenants(ActionEvent event)throws IOException 
     {
 
@@ -126,5 +121,16 @@ public class managerController {
         primaryStage.show();
 
 
+    }
+
+    public void getProperties(ActionEvent event) throws IOException {
+        URL url = getClass().getResource("/com/pages/property/managerProperties.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        managerPropertyController mpc = loader.getController(); 
+        mpc.initialize(primaryStage);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 }
