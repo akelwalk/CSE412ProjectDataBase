@@ -5,17 +5,21 @@ import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.Property;
 import com.models.Users;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,7 +34,8 @@ public class propertyController {
     private int propertyID;
     private String address;
     private String name;
-    private List<String> communityAnnouncements;
+    private ObservableList<String> communityAnnouncements = FXCollections.observableArrayList();
+
 
     private Stage primaryStage;
 
@@ -39,6 +44,9 @@ public class propertyController {
 
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
+
+    @FXML
+    private ListView announcementsListView;
 
     @FXML
     private Button homeButton;
@@ -64,6 +72,8 @@ public class propertyController {
     @FXML
     private Text communityAnnouncementsText;
 
+
+
     public void initialize(Stage primaryStage, int userID, int propertyID)
     {
         this.primaryStage = primaryStage;
@@ -71,7 +81,10 @@ public class propertyController {
         this.propertyID = propertyID;
         propertyIDText.setText(String.valueOf(this.propertyID));
 
+
         List<Property> getPropertyList = databaseHandler.propertyList();
+
+
 
         currentProperty = getPropertyList.get(0);
 
@@ -102,12 +115,21 @@ public class propertyController {
         this.amenities = currentProperty.getAmenities();
         this.address = currentProperty.getAddress();
         this.name = currentProperty.getName();
-        this.communityAnnouncements = currentProperty.getCommunityAnnouncements();
+
+        List<String> getAnnouncements = currentProperty.getCommunityAnnouncements();
+
+        for (int i = 0; i < getAnnouncements.size(); i++)
+        {
+            communityAnnouncements.add(getAnnouncements.get(i));
+        }
+
+
 
         amenitiesText.setText(amenities.get(0));
         addressText.setText(address);
         nameText.setText(name);
-        communityAnnouncementsText.setText(communityAnnouncements.get(0));
+
+        announcementsListView.setItems(communityAnnouncements);
 
         System.out.println(currentUser.getUserID());
         System.out.println(currentUser.getRole());
