@@ -31,6 +31,9 @@ public class database_controller implements IDatabaseOperations {
 
     private Connection connection = null;
 
+    // TO-DO: I think we will need to start thinking about database permissions at some point 
+    //        when creating new 'propery managers' we will need to figure out when to create these 
+    //        accounts as well as when and how to elevate permissions
 
     //Instances to allow it to be used in controllers.
 
