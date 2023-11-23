@@ -119,8 +119,10 @@ public class propertyController {
 
         List<String> getAnnouncements = currentProperty.getCommunityAnnouncements();
 
+
         for (int i = 0; i < getAnnouncements.size(); i++)
         {
+            System.out.println(getAnnouncements.get(i));
             communityAnnouncements.add(getAnnouncements.get(i));
         }
 
