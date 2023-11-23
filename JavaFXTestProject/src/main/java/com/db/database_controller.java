@@ -10,6 +10,8 @@ import javafx.event.ActionEvent;
 
 import java.sql.*;
 
+import com.controllers.sessions.UserSession;
+
 //Import models:
 
 import com.models.*;
@@ -545,5 +547,162 @@ public class database_controller implements IDatabaseOperations {
         return fullName;
     }
     
+    public String getPropertyName(int property_id)
+    {
+        String property_name = "";
+    
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+    
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+    
+            String sql = "SELECT name FROM property WHERE propertyid = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, property_id);
+    
+            rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                property_name = rs.getString("name");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    
+        return property_name;
+    }
+
+    public int getPropertyId(int usr_id)
+    {
+        int property_id = 0;
+    
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+    
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+    
+            String sql = "SELECT propertyid FROM propertymanager WHERE userid = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, usr_id);
+    
+            rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                property_id = rs.getInt("propertyid");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    
+        return property_id;
+    }
+
+    public String getPropertyAddress(int property_id)
+    {
+        String address = "";
+    
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+    
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+    
+            String sql = "SELECT address FROM property WHERE propertyid = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, property_id);
+    
+            rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                address = rs.getString("address");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    
+        return address;
+    }
+
+    public List<String> getAmmenities(int property_id)
+    {
+        List<String> amenities = new ArrayList<>();
+    
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+    
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+    
+            String sql = "SELECT amenities FROM property WHERE propertyid = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, property_id);
+    
+            rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                String amenities_string = rs.getString("amenities"); 
+
+                amenities_string = amenities_string.substring(1, amenities_string.length() - 1);
+                String[] amenitiesArray = amenities_string.split(",");
+    
+                for (String amenity : amenitiesArray) {
+                    String[] parts = amenity.trim().split("\\s+"); 
+                    for (String part : parts) {
+                        amenities.add(part.trim());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    
+        return amenities;
+    }
 
 }

@@ -32,20 +32,19 @@ public class managerPropertyController {
     
     private Stage primaryStage;
     @FXML
-    private Button addButton;
-    private Button deleteButton;
+    private Button editButton;
+    private Button deleteButton; 
     private Button backButton; 
 
     @FXML
-    private Label property_id; 
     private Label name; 
-    private Label address; 
+    @FXML
+    private Label address;
+    @FXML 
     private Label amenities;
     @FXML 
     private Label user_name; 
 
-    @FXML
-    private ListView properties_list;
 
     public void initialize(Stage primaryStage)
     {
@@ -53,6 +52,11 @@ public class managerPropertyController {
         try {
             String usr = UserSession.getInstance().getEmail();
             database_controller dbController = database_controller.getInstance(); 
+            int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
+            name.setText("Property Name: " + dbController.getPropertyName(property_id));
+            address.setText("Address: "+ dbController.getPropertyAddress(property_id));
+            List<String> amenities_list = dbController.getAmmenities(property_id);
+            amenities.setText("Amenities: "+String.join(",", amenities_list));
             user_name.setText(dbController.getName(usr));
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
@@ -71,7 +75,7 @@ public class managerPropertyController {
         primaryStage.show();
     }
 
-    public void addProperty(ActionEvent event) throws IOException {
+    public void editProperty(ActionEvent event) throws IOException {
 
     }
 

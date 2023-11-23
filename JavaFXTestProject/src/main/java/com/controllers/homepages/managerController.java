@@ -42,6 +42,8 @@ public class managerController {
     private Button tenants; 
     private Button leases; 
     private Button viewPropertyButton;
+    private Button announcement_button;
+
     @FXML
     private Label user_name; 
 
@@ -132,5 +134,9 @@ public class managerController {
         mpc.initialize(primaryStage);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+    }
+
+    public void announcement(ActionEvent event) throws IOException {
+        
     }
 }

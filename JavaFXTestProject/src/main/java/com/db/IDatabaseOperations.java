@@ -16,5 +16,8 @@ public interface IDatabaseOperations {
 
     String checkLogin(String email, String password);
     String registerUser(String email, String firstName, String lastName, String password, String phoneNumber);
+    public String getName(String email);
+    public String getPropertyName(int property_id);
+    public int getPropertyId(int usr_id);
 
 }
