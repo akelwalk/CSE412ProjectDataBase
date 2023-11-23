@@ -1,6 +1,8 @@
 package com.controllers.homepages;
 
 import com.controllers.loginregister.loginController;
+import com.controllers.property.propertyController;
+import com.controllers.property.propertyListController;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.Property;
@@ -99,6 +101,19 @@ public class managerController {
 
     public void getLeases(ActionEvent event)throws IOException 
     {
+
+    }
+
+    public void goToMyProperty(ActionEvent event) throws IOException {
+        URL url = getClass().getResource("/com/pages/property/propertyPage.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        propertyController propertyViewController = loader.getController();
+        propertyViewController.initialize(primaryStage, userID, currentManager.getPropertyID());
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
 
     }
 }
