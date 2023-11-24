@@ -52,10 +52,40 @@
                 </BorderPane>
             </content>
         </Tab>
-        <Tab text="Untitled Tab 2">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
+        <Tab text="Maintenance Requests">
+         <content>
+             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                 <center>
+                     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                         <children>
+                             <Button fx:id="homeButton" layoutX="63.0" layoutY="297.0" mnemonicParsing="false" onAction="#goHome" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Home">
+                                 <font>
+                                     <Font size="27.0" />
+                                 </font>
+                             </Button>
+                             <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance Requests" wrappingWidth="461.75390625">
+                                 <font>
+                                     <Font size="30.0" />
+                                 </font>
+                             </Text>
+                             <TableView fx:id="maintenanceRequestTableView" layoutX="63.0" layoutY="75.0" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="462.0">
+                                 <columns>
+                                     <TableColumn fx:id="isDealtWithCol" prefWidth="75.0" text="isDealtWith" />
+                                     <TableColumn fx:id="requestIDCol" prefWidth="75.0" text="requestID" />
+                                     <TableColumn fx:id="timestampCol" prefWidth="75.0" text="timestamp" />
+                                 </columns>
+                             </TableView>
+                             <Button fx:id="viewPropertyPage" layoutX="233.0" layoutY="297.0" mnemonicParsing="false" onAction="#goToPropertyPage" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: #FFC900;" text="viewUnit">
+                                 <font>
+                                     <Font size="27.0" />
+                                 </font>
+                             </Button>
+                         </children>
+                     </AnchorPane>
+                 </center>
+             </BorderPane>
+
+         </content>
         </Tab>
     </tabs>
 
