@@ -19,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -205,8 +206,8 @@ public class unitController implements Initializable {
 
 
 
-
     }
+
 
     private void setupTable(){
 
