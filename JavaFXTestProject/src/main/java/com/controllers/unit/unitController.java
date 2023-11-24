@@ -4,6 +4,7 @@ import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.MaintenanceRequest;
 import com.models.Unit;
+import com.models.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -75,6 +77,18 @@ public class unitController implements Initializable {
 
     @FXML
     private Text isRentedText;
+
+    @FXML
+    private Label tenantFirstName;
+
+    @FXML
+    private Label tenantLastName;
+
+    @FXML
+    private Label tenantPhoneNumber;
+
+    @FXML
+    private Label tenantEmail;
 
 
     @FXML
@@ -150,6 +164,28 @@ public class unitController implements Initializable {
         isRentedText.setText(String.valueOf(isRented));
 
         setupTable();
+
+        //Tenant Details Tab:
+
+        List<Users> getUserList = databaseHandler.userList();
+
+        Users tenantUser = getUserList.get(0);
+
+        for (int i = 0; i < getUserList.size(); i++)
+        {
+            if (getUserList.get(i).getUserID() == currentUnit.getUserID())
+            {
+                tenantUser = getUserList.get(i);
+            }
+        }
+
+
+        tenantFirstName.setText(tenantUser.getFirstName());
+        tenantLastName.setText(tenantUser.getLastName());
+        tenantEmail.setText(tenantUser.getEmail());
+        tenantPhoneNumber.setText(tenantUser.getPhoneNumber());
+
+
 
     }
 

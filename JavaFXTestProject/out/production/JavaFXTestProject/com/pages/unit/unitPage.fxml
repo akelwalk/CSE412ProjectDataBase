@@ -54,8 +54,16 @@
                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
                     <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                            <children>
-                            </children>
+                     <children>
+                        <Label layoutX="41.0" layoutY="68.0" text="First name:" textFill="WHITE" />
+                        <Label layoutX="41.0" layoutY="94.0" text="Last name:" textFill="WHITE" />
+                        <Label layoutX="41.0" layoutY="127.0" text="Email:" textFill="WHITE" />
+                        <Label layoutX="41.0" layoutY="160.0" text="Phone Number:" textFill="WHITE" />
+                        <Label fx:id="tenantFirstName" layoutX="262.0" layoutY="68.0" text="First name " textFill="WHITE" />
+                        <Label fx:id="tenantLastName" layoutX="262.0" layoutY="94.0" text="Last name" textFill="WHITE" />
+                        <Label fx:id="tenantEmail" layoutX="262.0" layoutY="127.0" text="Email" textFill="WHITE" />
+                        <Label fx:id="tenantPhoneNumber" layoutX="262.0" layoutY="160.0" text="Phone Number" textFill="WHITE" />
+                     </children>
                         </AnchorPane>
                     </center>
                     <top>
