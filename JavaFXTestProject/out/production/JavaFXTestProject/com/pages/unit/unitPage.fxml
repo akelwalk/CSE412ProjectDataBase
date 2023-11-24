@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -37,11 +39,6 @@
                                 <Text fx:id="isFurnishedText" fill="WHITE" layoutX="153.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="425.21630859375" />
                                 <Label layoutX="52.0" layoutY="212.0" text="isRented" textFill="WHITE" />
                                 <Text fx:id="isRentedText" fill="WHITE" layoutX="232.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="359.21630859375" />
-                                <Button fx:id="viewUnitsButton" layoutX="269.0" layoutY="297.0" mnemonicParsing="false" onAction="#goToRequestList" prefHeight="51.0" prefWidth="227.0" style="-fx-background-color: #FFC900;" text="View Maintenance Requests">
-                                    <font>
-                                        <Font size="27.0" />
-                                    </font>
-                                </Button>
                                 <Label layoutX="59.0" layoutY="68.0" prefHeight="26.0" prefWidth="37.0" text="Property ID" textFill="WHITE" />
                                 <Text fx:id="propertyIDText" fill="WHITE" layoutX="166.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
                             </children>
@@ -52,10 +49,30 @@
                 </BorderPane>
             </content>
         </Tab>
-        <Tab text="Untitled Tab 2">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
+        <Tab text="Maintenance Requests">
+         <content>
+             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                 <center>
+                     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                         <children>
+                             <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance Requests" wrappingWidth="461.75390625">
+                                 <font>
+                                     <Font size="30.0" />
+                                 </font>
+                             </Text>
+                        <TableView fx:id="maintenanceRequestTableView" layoutX="52.0" layoutY="66.0" prefHeight="279.0" prefWidth="459.0">
+                          <columns>
+                            <TableColumn fx:id="isDealtWithCol" prefWidth="75.0" text="isDealtWith" />
+                            <TableColumn fx:id="requestIDCol" prefWidth="75.0" text="requestID" />
+                              <TableColumn fx:id="timestampCol" prefWidth="75.0" text="timestamp" />
+                          </columns>
+                        </TableView>
+                         </children>
+                     </AnchorPane>
+                 </center>
+             </BorderPane>
+
+         </content>
         </Tab>
     </tabs>
 

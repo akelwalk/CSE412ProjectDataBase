@@ -2,6 +2,7 @@ package com.controllers.unit;
 
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
+import com.models.MaintenanceRequest;
 import com.models.Unit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,12 +11,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -26,6 +32,7 @@ public class unitController implements Initializable {
 
 
     private Unit currentUnit;
+    private int selectedRequestID;
 
 
     private int userID;
@@ -69,6 +76,22 @@ public class unitController implements Initializable {
     @FXML
     private Text isRentedText;
 
+
+    @FXML
+    // private ListView<Propery> propertyListView = new ListView(FXCollections.observableList(Arrays.asList("one", "2", "3")));
+    // private ListView<String> propertyListView = new ListView<>();
+
+    private TableView<MaintenanceRequest> maintenanceRequestTableView;
+
+    @FXML
+    private TableColumn<MaintenanceRequest, Boolean> isDealtWithCol;
+
+    @FXML
+    private TableColumn<MaintenanceRequest, Integer> requestIDCol;
+
+    @FXML
+    private TableColumn<MaintenanceRequest, Date> timestampCol;
+
     public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
     {
 
@@ -77,6 +100,13 @@ public class unitController implements Initializable {
         this.primaryStage = primaryStage;
         this.userID = userID;
         this.unitID = unitID;
+
+        this.selectedRequestID = -1;
+
+        isDealtWithCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Boolean>("isDealtWith"));
+        requestIDCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Integer>("requestID"));
+        timestampCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Date>("timestamp"));
+
 
 
 
@@ -119,8 +149,31 @@ public class unitController implements Initializable {
 
         isRentedText.setText(String.valueOf(isRented));
 
+        setupTable();
 
     }
+
+    private void setupTable(){
+
+        List<MaintenanceRequest> getMaintenanceRequestList = databaseHandler.requestList();
+        System.out.println(currentUnit.getPropertyID());
+
+        System.out.println(getMaintenanceRequestList.size());
+
+        for (int i = 0; i < getMaintenanceRequestList.size(); i++) {
+            if (getMaintenanceRequestList.get(i).getPropertyID() == currentUnit.getPropertyID() && getMaintenanceRequestList.get(i).getUnitID() == currentUnit.getUnitID()) {
+                maintenanceRequestTableView.getItems().addAll(getMaintenanceRequestList.get(i));
+            }
+        }
+    }
+
+    @FXML
+    void rowClicked(MouseEvent event) {
+        MaintenanceRequest clickedRequest = maintenanceRequestTableView.getSelectionModel().getSelectedItem();
+        selectedRequestID = clickedRequest.getUnitID();
+        System.out.println("selected UnitID: " + clickedRequest);
+    }
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
@@ -139,7 +192,9 @@ public class unitController implements Initializable {
 
     }
 
-    public void goToRequestList(ActionEvent event) throws IOException {
+  /* No longer needed
+
+   public void goToRequestList(ActionEvent event) throws IOException {
         URL url = getClass().getResource("/com/pages/unit/requestPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
@@ -149,6 +204,6 @@ public class unitController implements Initializable {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
-    }
+    }*/
 
 }
