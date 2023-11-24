@@ -90,6 +90,17 @@ public class unitController implements Initializable {
     @FXML
     private Label tenantEmail;
 
+    //Rent Tab:
+
+    @FXML
+    private Label rentAmountLabel;
+
+    @FXML
+    private Label rentDueLabel;
+
+    @FXML
+    private Label rentPaidLabel;
+
 
     @FXML
     // private ListView<Propery> propertyListView = new ListView(FXCollections.observableList(Arrays.asList("one", "2", "3")));
@@ -184,6 +195,14 @@ public class unitController implements Initializable {
         tenantLastName.setText(tenantUser.getLastName());
         tenantEmail.setText(tenantUser.getEmail());
         tenantPhoneNumber.setText(tenantUser.getPhoneNumber());
+
+        //Rent Tab:
+
+        rentAmountLabel.setText(String.valueOf(currentUnit.getRentAmount()));
+        rentDueLabel.setText(String.valueOf(currentUnit.getRentDue()));
+        rentPaidLabel.setText(String.valueOf(currentUnit.isRentPaid()));
+
+
 
 
 
