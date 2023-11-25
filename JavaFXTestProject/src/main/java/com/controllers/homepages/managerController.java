@@ -25,6 +25,8 @@ import com.controllers.sessions.UserSession;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.main.MainApplication;
+
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class managerController {
@@ -190,8 +192,21 @@ public class managerController {
     }
 
     public void editProperty(ActionEvent event) throws IOException {
-        
+        URL url = getClass().getResource("/com/pages/editor/propertyManagerEditor.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL); // This line ensures the popup blocks interaction with other windows until it's closed
+        popupStage.setTitle("Edit Property");
+
+        Scene scene = new Scene(root);
+        popupStage.setScene(scene);
+
+        popupStage.showAndWait();
     }
+
 
     public void deleteProperty(ActionEvent event) throws IOException {
         
