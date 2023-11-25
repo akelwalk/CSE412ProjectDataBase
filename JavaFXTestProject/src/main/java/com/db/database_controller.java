@@ -705,4 +705,44 @@ public class database_controller implements IDatabaseOperations {
         return amenities;
     }
 
+    public List<Tenants> tenantsList() {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String sql = "SELECT * FROM USERS, UNIT WHERE USERS.USERID = UNIT.USERID AND UNIT.isrented = true;";
+            stmt = conn.prepareStatement(sql);
+
+
+            rs = stmt.executeQuery();
+
+            ArrayList returnValues = new ArrayList();
+
+            while (rs.next()) {
+                System.out.println("fetched user");
+                returnValues.add(new Tenants(rs.getInt("propertyid"), rs.getInt("unitID"), rs.getInt("userID"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"), rs.getString("phoneNumber")));
+
+            }
+
+            return returnValues;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
+
 }

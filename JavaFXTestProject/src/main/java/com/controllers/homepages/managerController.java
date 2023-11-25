@@ -4,10 +4,7 @@ import com.controllers.loginregister.loginController;
 import com.controllers.property.managerPropertyController;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
-import com.models.Property;
-import com.models.PropertyManager;
-import com.models.Unit;
-import com.models.Users;
+import com.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,6 +79,26 @@ public class managerController {
     @FXML
     private TableColumn<Unit, Boolean> isRentedCol;
 
+    //Tenants Page Stuff
+
+    @FXML
+    private TableView<Tenants> tenantsTableView;
+    @FXML
+    private TableColumn<Tenants, Integer> unitIDColTenant;
+
+    @FXML
+    private TableColumn<Tenants, String> firstNameColTenant;
+
+    @FXML
+    private TableColumn<Tenants, String> lastNameColTenant;
+
+    @FXML
+    private TableColumn<Tenants, String> emailColTenant;
+
+    @FXML
+    private TableColumn<Tenants, String> phoneNumberColTenant;
+
+
 
     public void initialize(Stage primaryStage, int userID)
     {
@@ -97,17 +114,29 @@ public class managerController {
             user_name4.setText(dbController.getName(usr));
             user_name5.setText(dbController.getName(usr));
             this.selectedUnitID = -1;
+
+            //Unit Tab Table initialization
             unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));
             floorplanCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("floorplan"));
             isFurnishedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isFurnished"));
             conditionCol.setCellValueFactory(new PropertyValueFactory<Unit, String>("condition"));
             isRentedCol.setCellValueFactory(new PropertyValueFactory<Unit, Boolean>("isRented"));
+
+
+           //Tenant Tab Table initialization
+            unitIDColTenant.setCellValueFactory(new PropertyValueFactory<Tenants, Integer>("unitID"));
+            firstNameColTenant.setCellValueFactory(new PropertyValueFactory<Tenants, String>("firstName"));
+            lastNameColTenant.setCellValueFactory(new PropertyValueFactory<Tenants, String>("lastName"));
+            emailColTenant.setCellValueFactory(new PropertyValueFactory<Tenants, String>("email"));
+            phoneNumberColTenant.setCellValueFactory(new PropertyValueFactory<Tenants, String>("phoneNumber"));
+
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
             name.setText("Property Name: " + dbController.getPropertyName(property_id));
             address.setText("Address: "+ dbController.getPropertyAddress(property_id));
             List<String> amenities_list = dbController.getAmmenities(property_id);
             amenities.setText("Amenities: "+String.join(",", amenities_list));
             setupTable();
+            setUpTableTenants();
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");
@@ -189,6 +218,26 @@ public class managerController {
             if (getUnitList.get(i).getPropertyID() == property_id) {
                 
                 unitTableView.getItems().addAll(getUnitList.get(i));
+            }
+        }
+    }
+
+    private void setUpTableTenants(){
+
+        database_controller db = new database_controller();
+        int property_id = db.getPropertyId(UserSession.getInstance().getUserID());
+        List<Tenants> getTenantsList = databaseHandler.tenantsList();
+        System.out.println(getTenantsList.size());
+        System.out.println(property_id);
+
+        System.out.println("Adding tenants");
+
+        for (int i = 0; i < getTenantsList.size(); i++) {
+
+            if (getTenantsList.get(i).getPropertyID() == property_id) {
+                System.out.println("added tenants");
+
+                tenantsTableView.getItems().addAll(getTenantsList.get(i));
             }
         }
     }

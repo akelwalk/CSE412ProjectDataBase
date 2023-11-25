@@ -12,7 +12,9 @@ public interface IDatabaseOperations {
     public List<Customers> customerList();
     public List<MaintenanceRequest> requestList();
     public List<Unit> unitList();
+    public List<Tenants> tenantsList();
     public List<String> getAmmenities(int property_id);
+
 
 
     public String checkLogin(String email, String password);
