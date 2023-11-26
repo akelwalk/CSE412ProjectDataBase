@@ -1,44 +1,48 @@
 package com.models;
 
 public class LeaseRequests {
-    private int userID;
-    private String role;
+
+    private int propertyid;
+    private int unitid;
+    private String paymentType;
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
     private String phoneNumber;
 
-    // default constructor.
-    public LeaseRequests()
-    {
 
-    }
-    public LeaseRequests(int userID, String role, String firstName, String lastName, String email, String password, String phoneNumber)
-    {
-        this.userID = userID;
-        this.role = role;
+    public LeaseRequests(int propertyid, int unitid, String paymentType, String firstName, String lastName, String email, String phoneNumber) {
+        this.propertyid = propertyid;
+        this.unitid = unitid;
+        this.paymentType = paymentType;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
         this.phoneNumber = phoneNumber;
     }
 
-    public int getUserID() {
-        return userID;
+    public int getPropertyid() {
+        return propertyid;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setPropertyid(int propertyid) {
+        this.propertyid = propertyid;
     }
 
-    public String getRole() {
-        return role;
+    public int getUnitid() {
+        return unitid;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setUnitid(int unitid) {
+        this.unitid = unitid;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
     }
 
     public String getFirstName() {
@@ -65,14 +69,6 @@ public class LeaseRequests {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -82,10 +78,19 @@ public class LeaseRequests {
     }
 
     @Override
-    public String toString()
-    {
-        return userID+","+role+","+firstName+","+lastName;
+    public String toString() {
+        return "LeaseRequests{" +
+                "propertyid=" + propertyid +
+                ", unitid=" + unitid +
+                ", paymentType='" + paymentType + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
+
+
 
 
 }
