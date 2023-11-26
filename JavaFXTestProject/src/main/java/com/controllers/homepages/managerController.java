@@ -55,7 +55,8 @@ public class managerController {
     @FXML
     private Label user_name4; 
     @FXML
-    private Label user_name5; 
+    private Label user_name5;
+
     @FXML
     private Label name; 
     @FXML
@@ -99,6 +100,27 @@ public class managerController {
 
     @FXML
     private TableColumn<Tenants, String> phoneNumberColTenant;
+
+    //Lease Page Stuff
+    @FXML
+    private Label user_nameLease;
+    
+    @FXML
+    private TableView<LeaseRequest> leaseTableView;
+    @FXML
+    private TableColumn<LeaseRequest, Integer> unitIDColLease;
+
+    @FXML
+    private TableColumn<LeaseRequest, String> paymentColLease;
+
+    @FXML
+    private TableColumn<LeaseRequest, String> firstNameColLease;
+
+    @FXML
+    private TableColumn<LeaseRequest, String> lastNameColLease;
+
+    @FXML
+    private TableColumn<LeaseRequest, String> phoneNumberColLease;
 
 
 

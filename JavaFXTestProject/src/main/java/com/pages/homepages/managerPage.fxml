@@ -167,7 +167,7 @@
                                               <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                           </image>
                                       </ImageView>
-                                      <Label fx:id="user_name5" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                                      <Label fx:id="user_nameLease" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
                                   </children>
                               </AnchorPane>
                           </left>
