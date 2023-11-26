@@ -154,16 +154,20 @@ public class customerController {
 
         currentCustomer = getCustomerList.get(0);
 
+        System.out.println("The current userID is: " + UserSession.getInstance().getUserID());
+
 
         for (int i = 0; i < getCustomerList.size(); i++)
         {
-            if (getCustomerList.get(i).getUserID() == userID)
+            if (getCustomerList.get(i).getUserID() == UserSession.getInstance().getUserID())
             {
                 currentCustomer = getCustomerList.get(i);
                 System.out.println("Current customer FOUND! ->" + getCustomerList.get(i).getUnitID());
                 break;
             }
         }
+
+        System.out.println("Could not find the given user on customers!");
 
         leaseStatus ="Error";
 

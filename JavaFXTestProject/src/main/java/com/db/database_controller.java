@@ -489,7 +489,6 @@ public class database_controller implements IDatabaseOperations {
             ArrayList returnValues = new ArrayList();
 
             while (rs.next()) {
-                System.out.println("fetched customers");
                 returnValues.add(new Customers(rs.getInt("userid"), rs.getString("paymentType"), rs.getDate("leaseStart"), rs.getDate("leaseEnd"), rs.getBoolean("isApproved"), rs.getInt("unitID"), rs.getInt("propertyID")));
 
             }
