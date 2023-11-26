@@ -179,7 +179,7 @@ public class managerController {
             amenities.setText("Amenities: "+String.join(",", amenities_list));
             setupTable();
             setUpTableTenants();
-            //setUpTableLeaseRequests();
+            setUpTableLeaseRequests();
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");
