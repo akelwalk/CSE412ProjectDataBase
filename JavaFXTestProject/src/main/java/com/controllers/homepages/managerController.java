@@ -103,7 +103,7 @@ public class managerController {
 
     //Lease Page Stuff
 
-
+/*
     @FXML
     private Label user_nameLease;
 
@@ -127,7 +127,7 @@ public class managerController {
     @FXML
     private TableColumn<LeaseRequest, String> phoneNumberColLease;
 
-
+*/
 
 
 
@@ -163,14 +163,14 @@ public class managerController {
 
             //Lease Requests Tab Table initialization
 
-            unitIDColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, Integer>("unitID"));
+           /* unitIDColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, Integer>("unitID"));
             paymentColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("paymentType"));
             firstNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("firstName"));
             lastNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("lastName"));
             emailColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("email"));
             phoneNumberColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("phoneNumber"));
 
-
+*/
 
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
             name.setText("Property Name: " + dbController.getPropertyName(property_id));
@@ -179,7 +179,7 @@ public class managerController {
             amenities.setText("Amenities: "+String.join(",", amenities_list));
             setupTable();
             setUpTableTenants();
-            setUpTableLeaseRequests();
+            //setUpTableLeaseRequests();
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");
@@ -300,7 +300,7 @@ public class managerController {
 
 
 
-    private void setUpTableLeaseRequests(){
+   /* private void setUpTableLeaseRequests(){
 
         database_controller db = new database_controller();
         int property_id = db.getPropertyId(UserSession.getInstance().getUserID());
@@ -316,7 +316,7 @@ public class managerController {
                 leaseTableView.getItems().addAll(getLeaseRequests.get(i));
             }
         }
-    }
+    }*/
 
 
     /*
