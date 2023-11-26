@@ -128,6 +128,8 @@ public class customerController {
 
         //Remove these tabs if the user does not have unit.
 
+        System.out.println(leaseStatus);
+
         if (leaseStatus == "none") {
 
             tabPane.getTabs().remove(myUnitTab);
