@@ -102,6 +102,8 @@ public class managerController {
     private TableColumn<Tenants, String> phoneNumberColTenant;
 
     //Lease Page Stuff
+
+    /*
     @FXML
     private Label user_nameLease;
 
@@ -124,7 +126,7 @@ public class managerController {
 
     @FXML
     private TableColumn<LeaseRequest, String> emailColLease;
-
+*/
 
 
     public void initialize(Stage primaryStage, int userID)
@@ -158,13 +160,15 @@ public class managerController {
             phoneNumberColTenant.setCellValueFactory(new PropertyValueFactory<Tenants, String>("phoneNumber"));
 
             //Lease Requests Tab Table initialization
-            unitIDColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, Integer>("unitID"));
+
+            /*unitIDColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, Integer>("unitID"));
             paymentColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("paymentType"));
             firstNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("firstName"));
             lastNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("lastName"));
             phoneNumberColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("phoneNumber"));
             emailColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("email"));
 
+*/
 
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
             name.setText("Property Name: " + dbController.getPropertyName(property_id));
@@ -292,6 +296,8 @@ public class managerController {
         }
     }
 
+    /*
+
     private void setUpTableLeaseRequests(){
 
         database_controller db = new database_controller();
@@ -311,6 +317,53 @@ public class managerController {
             }
         }
     }
+    */
+
+    /*
+    Lease Table Stored here:
+          <Tab text="Lease Requests">
+          <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                      <BorderPane prefHeight="372.0" prefWidth="600.0">
+                          <left>
+                              <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                                  <children>
+                                      <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                              <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                                          </image>
+                                      </ImageView>
+                                      <Label fx:id="user_nameLease" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                                  </children>
+                              </AnchorPane>
+                          </left>
+                          <center>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                  <children>
+                                      <TableView fx:id="leaseTableView" layoutX="16.0" layoutY="94.0" onMouseClicked="#rowClicked" prefHeight="184.0" prefWidth="441.0">
+                                          <columns>
+                                              <TableColumn fx:id="unitIDColLease" prefWidth="60.0" text="UnitID" />
+                                              <TableColumn fx:id="paymentColLease" text="Payment" />
+                                              <TableColumn fx:id="firstNameColLease" prefWidth="93.0" text="First Name" />
+                                              <TableColumn fx:id="lastNameColLease" prefWidth="67.0" text="Last Name" />
+                                              <TableColumn fx:id="emailColLease" prefWidth="82.0" text="Email" />
+                                              <TableColumn fx:id="phoneNumberColLease" prefWidth="82.0" text="Phone No." />
+                                          </columns>
+                                          <columnResizePolicy>
+                                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                          </columnResizePolicy>
+                                      </TableView>
+                                  </children>
+                              </AnchorPane>
+                          </center>
+                      </BorderPane>
+                  </children>
+              </AnchorPane>
+          </content>
+      </Tab>s
+     */
+
 
 
 
