@@ -54,7 +54,7 @@
 .table-row-cell {
     -fx-background-color: #3c3f41;
     -fx-text-fill: white; /* White text by default */
-    -fx-table-cell-border-color: #fdfdfd;
+    -fx-table-cell-border-color: #000000;
 }
 
 /* Hover effect on rows */
@@ -85,6 +85,7 @@
 /* Button hover effect */
 .button:hover {
     -fx-background-color: #710000; 
+    -fx-text-fill: rgb(255, 255, 255); 
 }
 
 
