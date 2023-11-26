@@ -300,7 +300,7 @@ public class managerController {
 
 
 
-   /* private void setUpTableLeaseRequests(){
+    private void setUpTableLeaseRequests(){
 
         database_controller db = new database_controller();
         int property_id = db.getPropertyId(UserSession.getInstance().getUserID());
@@ -316,7 +316,7 @@ public class managerController {
                 leaseTableView.getItems().addAll(getLeaseRequests.get(i));
             }
         }
-    }*/
+    }
 
 
     /*
