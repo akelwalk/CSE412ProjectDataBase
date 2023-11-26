@@ -103,7 +103,7 @@ public class managerController {
 
     //Lease Page Stuff
 
-/*
+
     @FXML
     private Label user_nameLease;
 
@@ -127,7 +127,7 @@ public class managerController {
     @FXML
     private TableColumn<LeaseRequest, String> phoneNumberColLease;
 
-*/
+
 
 
 
