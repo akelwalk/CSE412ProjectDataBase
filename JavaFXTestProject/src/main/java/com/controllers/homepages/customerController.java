@@ -160,6 +160,7 @@ public class customerController {
             if (getCustomerList.get(i).getUserID() == userID)
             {
                 currentCustomer = getCustomerList.get(i);
+                System.out.println("Current customer FOUND! ->" + getCustomerList.get(i).getUnitID());
                 break;
             }
         }
@@ -168,6 +169,7 @@ public class customerController {
 
 
         //Check if the customer does not have any lease requests
+
 
         if (currentCustomer.getUnitID() == 0 && currentCustomer.isApproved() == false)
         {
