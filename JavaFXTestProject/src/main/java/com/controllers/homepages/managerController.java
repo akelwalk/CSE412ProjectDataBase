@@ -163,14 +163,14 @@ public class managerController {
 
             //Lease Requests Tab Table initialization
 
-           /* unitIDColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, Integer>("unitID"));
+            unitIDColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, Integer>("unitID"));
             paymentColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("paymentType"));
             firstNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("firstName"));
             lastNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("lastName"));
             emailColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("email"));
             phoneNumberColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("phoneNumber"));
 
-*/
+
 
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
             name.setText("Property Name: " + dbController.getPropertyName(property_id));
