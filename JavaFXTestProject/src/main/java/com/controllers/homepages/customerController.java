@@ -1,22 +1,26 @@
 package com.controllers.homepages;
 
 import com.controllers.loginregister.loginController;
+import com.controllers.property.propertyController;
 import com.controllers.property.propertyListController;
 import com.controllers.sessions.UserSession;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
+import com.models.Property;
 import com.models.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class customerController {
@@ -26,12 +30,48 @@ public class customerController {
     private Users currentUser;
 
     @FXML
+    private TabPane navbar;
+
+    @FXML
     private Label user_name; 
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
     @FXML
     private Button logout;
+
+    //View Property Tab Stuff
+
+    @FXML
+    private Button homeButton;
+
+    @FXML
+    private Button viewPropertyPage;
+
+    @FXML
+    // private ListView<Propery> propertyListView = new ListView(FXCollections.observableList(Arrays.asList("one", "2", "3")));
+    // private ListView<String> propertyListView = new ListView<>();
+
+    private TableView<Property> propertyTableView;
+
+    @FXML
+    private TableColumn<Property, Integer> propertyIDCol;
+
+    @FXML
+    private TableColumn<Property, String> nameCol;
+
+    @FXML
+    private TableColumn<Property, String> amenitiesCol;
+
+    @FXML
+    private TableColumn<Property, String> addressCol;
+
+    @FXML
+    private TableColumn<Property, Integer> freeUnitsCol;
+
+    private int selectedPropertyId;
+
+
 
     public void initialize(Stage primaryStage, int userID)
     {
@@ -45,6 +85,22 @@ public class customerController {
         }
         this.primaryStage = primaryStage;
         this.userID = userID;
+
+        //View Property Tab Stuff
+        this.selectedPropertyId = -1;
+        propertyIDCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("propertyID"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<Property, String>("name"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<Property, String>("address"));
+        amenitiesCol.setCellValueFactory(new PropertyValueFactory<Property, String>("amenities"));
+        freeUnitsCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("free units"));
+        setupTable();
+
+        navbar.getTabs().get(2).getContent().setVisible(false);
+        navbar.getTabs().get(3).getContent().setVisible(false);
+        navbar.getTabs().get(4).getContent().setVisible(false);
+        navbar.getTabs().get(5).getContent().setVisible(false);
+
+
     }
 
     public void userLogOut(ActionEvent event) throws IOException {
@@ -63,15 +119,42 @@ public class customerController {
 
     }
 
-    public void goToPropertyList(ActionEvent event) throws IOException
-    {
-        URL url = getClass().getResource("/com/pages/property/propertyListPage.fxml");
+    //Property Tab Stuff
+
+    private void setupTable(){
+
+        List<Property> getPropertyList = databaseHandler.propertyList();
+
+        for (int i = 0; i < getPropertyList.size(); i++) {
+            propertyTableView.getItems().addAll(getPropertyList.get(i));
+        }
+    }
+
+    @FXML
+    void rowClicked(MouseEvent event) {
+        Property clickedProperty = propertyTableView.getSelectionModel().getSelectedItem();
+        selectedPropertyId = clickedProperty.getPropertyID();
+        System.out.println("selected propertyID: " + clickedProperty);
+    }
+
+    public void goToPropertyPage(ActionEvent event) throws IOException {
+      /*  System.out.println("Property View -> Customer Home Page");
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/propertyPage.fxml");*/
+
+
+
+        URL url = getClass().getResource("/com/pages/property/propertyPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        propertyListController propertyListViewController = loader.getController();
-        propertyListViewController.initialize(primaryStage, userID);
+        propertyController propertyViewController = loader.getController();
+        propertyViewController.initialize(primaryStage, userID, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+
     }
+
+
 }
