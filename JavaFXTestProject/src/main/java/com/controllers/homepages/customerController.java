@@ -6,6 +6,7 @@ import com.controllers.property.propertyListController;
 import com.controllers.sessions.UserSession;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
+import com.models.Customers;
 import com.models.Property;
 import com.models.Users;
 import javafx.event.ActionEvent;
@@ -28,6 +29,9 @@ public class customerController {
     private int userID;
     private Stage primaryStage;
     private Users currentUser;
+    private Customers currentCustomer;
+    private String leaseStatus;
+
 
     @FXML
     private TabPane tabPane;
@@ -106,8 +110,12 @@ public class customerController {
             UserSession.cleanUserSession();
             //username.setText("ERROR");
         }
+
+        checkStatus();
+
+
         this.primaryStage = primaryStage;
-        this.userID = userID;
+        this.userID = UserSession.getInstance().getUserID();
 
         //View Property Tab Stuff
         this.selectedPropertyId = -1;
@@ -120,11 +128,57 @@ public class customerController {
 
         //Remove these tabs if the user does not have unit.
 
-        tabPane.getTabs().remove(myUnitTab);
-        tabPane.getTabs().remove(myPropertyTab);
-        tabPane.getTabs().remove(maintenanceTab);
-        tabPane.getTabs().remove(rentTab);
-        tabPane.getTabs().remove(leaseTab);
+        if (leaseStatus == "none") {
+
+            tabPane.getTabs().remove(myUnitTab);
+            tabPane.getTabs().remove(myPropertyTab);
+            tabPane.getTabs().remove(maintenanceTab);
+            tabPane.getTabs().remove(rentTab);
+            tabPane.getTabs().remove(leaseTab);
+        }
+        else if (leaseStatus == "pending")
+        {
+            tabPane.getTabs().remove(myUnitTab);
+            tabPane.getTabs().remove(myPropertyTab);
+            tabPane.getTabs().remove(leaseTab);
+        }
+    }
+
+    public void checkStatus()
+    {
+        //Fetch the customer object
+
+        List<Customers> getCustomerList = databaseHandler.customerList();
+
+        currentCustomer = getCustomerList.get(0);
+
+
+        for (int i = 0; i < getCustomerList.size(); i++)
+        {
+            if (getCustomerList.get(i).getUserID() == userID)
+            {
+                currentCustomer = getCustomerList.get(i);
+                break;
+            }
+        }
+
+        leaseStatus ="Error";
+
+
+        //Check if the customer does not have any lease requests
+
+        if (currentCustomer.getUnitID() == 0 && currentCustomer.isApproved() == false)
+        {
+            leaseStatus = "none";
+        }
+        else if (currentCustomer.getUnitID() != 0 && currentCustomer.isApproved() == false)
+        {
+            leaseStatus = "pending";
+        }
+        else {
+            leaseStatus = "approved";
+        }
+
     }
 
     public void userLogOut(ActionEvent event) throws IOException {
