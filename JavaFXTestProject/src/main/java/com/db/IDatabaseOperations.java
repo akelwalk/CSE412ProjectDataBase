@@ -13,6 +13,7 @@ public interface IDatabaseOperations {
     public List<MaintenanceRequest> requestList();
     public List<Unit> unitList();
     public List<Tenants> tenantsList();
+    public List<LeaseRequest> leaseRequestList();
     public List<String> getAmmenities(int property_id);
 
 

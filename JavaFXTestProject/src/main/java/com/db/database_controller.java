@@ -743,6 +743,44 @@ public class database_controller implements IDatabaseOperations {
         return null;
     }
 
+    public List<LeaseRequest> leaseRequestList() {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String sql = "SELECT * FROM UNIT, USERS, CUSTOMER WHERE users.userID = customer.userID AND customer.unitid = UNIT.unitid AND CUSTOMER.isapproved = false;";
+            stmt = conn.prepareStatement(sql);
+
+
+            rs = stmt.executeQuery();
+
+            ArrayList returnValues = new ArrayList();
+
+            while (rs.next()) {
+                System.out.println("fetched lease requests");
+                returnValues.add(new LeaseRequest(rs.getInt("propertyid"), rs.getInt("unitid"), rs.getString("paymenttype"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"), rs.getString("phonenumber")));
+
+            }
+
+            return returnValues;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 
 
 }

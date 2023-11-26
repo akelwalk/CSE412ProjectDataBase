@@ -1,6 +1,6 @@
 package com.models;
 
-public class LeaseRequests {
+public class LeaseRequest {
 
     private int propertyid;
     private int unitid;
@@ -11,7 +11,7 @@ public class LeaseRequests {
     private String phoneNumber;
 
 
-    public LeaseRequests(int propertyid, int unitid, String paymentType, String firstName, String lastName, String email, String phoneNumber) {
+    public LeaseRequest(int propertyid, int unitid, String paymentType, String firstName, String lastName, String email, String phoneNumber) {
         this.propertyid = propertyid;
         this.unitid = unitid;
         this.paymentType = paymentType;
