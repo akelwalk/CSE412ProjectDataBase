@@ -30,7 +30,27 @@ public class customerController {
     private Users currentUser;
 
     @FXML
-    private TabPane navbar;
+    private TabPane tabPane;
+
+    @FXML
+    private Tab homeTab;
+
+    @FXML
+    private Tab viewPropertiesTab;
+
+    @FXML
+    private Tab myUnitTab;
+
+    @FXML
+    private Tab myPropertyTab;
+
+    @FXML
+    private Tab maintenanceTab;
+
+    @FXML
+    private Tab rentTab;
+
+
 
     @FXML
     private Label user_name; 
@@ -95,12 +115,12 @@ public class customerController {
         freeUnitsCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("free units"));
         setupTable();
 
-        navbar.getTabs().get(2).getContent().setVisible(false);
-        navbar.getTabs().get(3).getContent().setVisible(false);
-        navbar.getTabs().get(4).getContent().setVisible(false);
-        navbar.getTabs().get(5).getContent().setVisible(false);
+        //Remove these tabs if the user does not have unit.
 
-
+        tabPane.getTabs().remove(myUnitTab);
+        tabPane.getTabs().remove(myPropertyTab);
+        tabPane.getTabs().remove(maintenanceTab);
+        tabPane.getTabs().remove(rentTab);
     }
 
     public void userLogOut(ActionEvent event) throws IOException {
