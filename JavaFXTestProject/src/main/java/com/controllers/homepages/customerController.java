@@ -50,6 +50,9 @@ public class customerController {
     @FXML
     private Tab rentTab;
 
+    @FXML
+    private Tab leaseTab;
+
 
 
     @FXML
@@ -121,6 +124,7 @@ public class customerController {
         tabPane.getTabs().remove(myPropertyTab);
         tabPane.getTabs().remove(maintenanceTab);
         tabPane.getTabs().remove(rentTab);
+        tabPane.getTabs().remove(leaseTab);
     }
 
     public void userLogOut(ActionEvent event) throws IOException {
