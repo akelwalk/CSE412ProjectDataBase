@@ -315,6 +315,11 @@ public class customerController {
 
     private void initializeMaintenance(){
 
+        isDealtWithCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Boolean>("isDealtWith"));
+        requestIDCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Integer>("requestID"));
+        timestampCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Date>("timestamp"));
+
+
         List<MaintenanceRequest> getMaintenanceRequestList = databaseHandler.requestList();
         System.out.println(currentUnit.getPropertyID());
 
