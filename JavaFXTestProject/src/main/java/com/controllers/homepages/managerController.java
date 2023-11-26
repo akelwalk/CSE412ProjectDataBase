@@ -104,7 +104,7 @@ public class managerController {
     //Lease Page Stuff
     @FXML
     private Label user_nameLease;
-    
+
     @FXML
     private TableView<LeaseRequest> leaseTableView;
     @FXML
@@ -121,6 +121,9 @@ public class managerController {
 
     @FXML
     private TableColumn<LeaseRequest, String> phoneNumberColLease;
+
+    @FXML
+    private TableColumn<LeaseRequest, String> emailColLease;
 
 
 
@@ -154,6 +157,15 @@ public class managerController {
             emailColTenant.setCellValueFactory(new PropertyValueFactory<Tenants, String>("email"));
             phoneNumberColTenant.setCellValueFactory(new PropertyValueFactory<Tenants, String>("phoneNumber"));
 
+            //Lease Requests Tab Table initialization
+            unitIDColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, Integer>("unitID"));
+            paymentColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("paymentType"));
+            firstNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("firstName"));
+            lastNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("lastName"));
+            phoneNumberColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("phoneNumber"));
+            emailColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("email"));
+
+
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
             name.setText("Property Name: " + dbController.getPropertyName(property_id));
             address.setText("Address: "+ dbController.getPropertyAddress(property_id));
@@ -161,6 +173,7 @@ public class managerController {
             amenities.setText("Amenities: "+String.join(",", amenities_list));
             setupTable();
             setUpTableTenants();
+            setUpTableLeaseRequests();
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");
@@ -275,6 +288,26 @@ public class managerController {
                 System.out.println("added tenants");
 
                 tenantsTableView.getItems().addAll(getTenantsList.get(i));
+            }
+        }
+    }
+
+    private void setUpTableLeaseRequests(){
+
+        database_controller db = new database_controller();
+        int property_id = db.getPropertyId(UserSession.getInstance().getUserID());
+        List<LeaseRequest> getLeaseRequests = databaseHandler.leaseRequestList();
+        System.out.println(getLeaseRequests.size());
+        System.out.println(property_id);
+
+        System.out.println("Adding tenants");
+
+        for (int i = 0; i < getLeaseRequests.size(); i++) {
+
+            if (getLeaseRequests.get(i).getPropertyID() == property_id) {
+                System.out.println("added tenants");
+
+                leaseTableView.getItems().addAll(getLeaseRequests.get(i));
             }
         }
     }

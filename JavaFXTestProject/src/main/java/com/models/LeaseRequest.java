@@ -2,8 +2,8 @@ package com.models;
 
 public class LeaseRequest {
 
-    private int propertyid;
-    private int unitid;
+    private int propertyID;
+    private int unitID;
     private String paymentType;
     private String firstName;
     private String lastName;
@@ -12,8 +12,8 @@ public class LeaseRequest {
 
 
     public LeaseRequest(int propertyid, int unitid, String paymentType, String firstName, String lastName, String email, String phoneNumber) {
-        this.propertyid = propertyid;
-        this.unitid = unitid;
+        this.propertyID = propertyid;
+        this.unitID = unitid;
         this.paymentType = paymentType;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -21,20 +21,20 @@ public class LeaseRequest {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getPropertyid() {
-        return propertyid;
+    public int getPropertyID() {
+        return propertyID;
     }
 
-    public void setPropertyid(int propertyid) {
-        this.propertyid = propertyid;
+    public void setPropertyID(int propertyid) {
+        this.propertyID = propertyid;
     }
 
-    public int getUnitid() {
-        return unitid;
+    public int getUnitID() {
+        return unitID;
     }
 
-    public void setUnitid(int unitid) {
-        this.unitid = unitid;
+    public void setUnitID(int unitid) {
+        this.unitID = unitid;
     }
 
     public String getPaymentType() {
@@ -80,8 +80,8 @@ public class LeaseRequest {
     @Override
     public String toString() {
         return "LeaseRequests{" +
-                "propertyid=" + propertyid +
-                ", unitid=" + unitid +
+                "propertyid=" + propertyID +
+                ", unitid=" + unitID +
                 ", paymentType='" + paymentType + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
