@@ -103,7 +103,7 @@ public class managerController {
 
     //Lease Page Stuff
 
-    /*
+
     @FXML
     private Label user_nameLease;
 
@@ -122,11 +122,13 @@ public class managerController {
     private TableColumn<LeaseRequest, String> lastNameColLease;
 
     @FXML
-    private TableColumn<LeaseRequest, String> phoneNumberColLease;
+    private TableColumn<LeaseRequest, String> emailColLease;
 
     @FXML
-    private TableColumn<LeaseRequest, String> emailColLease;
-*/
+    private TableColumn<LeaseRequest, String> phoneNumberColLease;
+
+
+
 
 
     public void initialize(Stage primaryStage, int userID)
@@ -161,14 +163,14 @@ public class managerController {
 
             //Lease Requests Tab Table initialization
 
-            /*unitIDColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, Integer>("unitID"));
+            unitIDColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, Integer>("unitID"));
             paymentColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("paymentType"));
             firstNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("firstName"));
             lastNameColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("lastName"));
-            phoneNumberColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("phoneNumber"));
             emailColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("email"));
+            phoneNumberColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("phoneNumber"));
 
-*/
+
 
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
             name.setText("Property Name: " + dbController.getPropertyName(property_id));
@@ -177,7 +179,7 @@ public class managerController {
             amenities.setText("Amenities: "+String.join(",", amenities_list));
             setupTable();
             setUpTableTenants();
-            //setUpTableLeaseRequests();
+            setUpTableLeaseRequests();
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");
@@ -296,7 +298,7 @@ public class managerController {
         }
     }
 
-    /*
+
 
     private void setUpTableLeaseRequests(){
 
@@ -306,18 +308,16 @@ public class managerController {
         System.out.println(getLeaseRequests.size());
         System.out.println(property_id);
 
-        System.out.println("Adding tenants");
+        System.out.println("Adding lease requests");
 
         for (int i = 0; i < getLeaseRequests.size(); i++) {
 
             if (getLeaseRequests.get(i).getPropertyID() == property_id) {
-                System.out.println("added tenants");
-
                 leaseTableView.getItems().addAll(getLeaseRequests.get(i));
             }
         }
     }
-    */
+
 
     /*
     Lease Table Stored here:
@@ -361,7 +361,7 @@ public class managerController {
                   </children>
               </AnchorPane>
           </content>
-      </Tab>s
+      </Tab>
      */
 
 
