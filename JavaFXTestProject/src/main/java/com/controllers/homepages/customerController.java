@@ -123,6 +123,26 @@ public class customerController {
     @FXML
     private Text isRentedText;
 
+    // My Property Tab Stuff
+
+    private Property currentProperty;
+
+
+    @FXML
+    private Text propertyIDText1;
+
+    @FXML
+    private Text nameText;
+
+    @FXML
+    private Text addressText;
+
+    @FXML
+    private Text amenitiesText;
+
+    @FXML
+    private Text communityAnnouncementsText;
+
 
 
 
@@ -178,6 +198,7 @@ public class customerController {
         if (leaseStatus != "none")
         {
             initializeMyUnit();
+            initializeMyProperty();
         }
 
 
@@ -249,6 +270,29 @@ public class customerController {
         isFurnishedText.setText(String.valueOf(currentUnit.isFurnished()));
         isRentedText.setText(String.valueOf(currentUnit.isRented()));
     }
+
+    public void initializeMyProperty()
+    {
+        List<Property> getPropertyList = databaseHandler.propertyList();
+
+        currentProperty = getPropertyList.get(0);
+
+        for (int i = 0; i < getPropertyList.size(); i++) {
+            if (getPropertyList.get(i).getPropertyID() == databaseHandler.getPropertyId(UserSession.getInstance().getUserID()))
+            {
+                currentProperty = getPropertyList.get(i);
+                break;
+            }
+
+        }
+
+        propertyIDText1.setText(String.valueOf(currentProperty.getPropertyID()));
+        nameText.setText(String.valueOf(currentProperty.getName()));
+        addressText.setText(String.valueOf(currentProperty.getAddress()));
+        amenitiesText.setText(String.valueOf(currentProperty.getAmenities()));
+    }
+
+
 
     public void userLogOut(ActionEvent event) throws IOException {
         /*MainApplication m = new MainApplication();
