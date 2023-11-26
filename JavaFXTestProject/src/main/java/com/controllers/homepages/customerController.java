@@ -6,10 +6,7 @@ import com.controllers.property.propertyListController;
 import com.controllers.sessions.UserSession;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
-import com.models.Customers;
-import com.models.Property;
-import com.models.Unit;
-import com.models.Users;
+import com.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +16,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -143,6 +141,26 @@ public class customerController {
     @FXML
     private Text communityAnnouncementsText;
 
+    // Maintenace  Tab Stuff
+
+    private int selectedRequestID;
+
+
+    @FXML
+
+    private TableView<MaintenanceRequest> maintenanceRequestTableView;
+
+    @FXML
+    private TableColumn<MaintenanceRequest, Boolean> isDealtWithCol;
+
+    @FXML
+    private TableColumn<MaintenanceRequest, Integer> requestIDCol;
+
+    @FXML
+    private TableColumn<MaintenanceRequest, Date> timestampCol;
+
+
+
 
 
 
@@ -199,6 +217,7 @@ public class customerController {
         {
             initializeMyUnit();
             initializeMyProperty();
+            initializeMaintenance();
         }
 
 
@@ -292,6 +311,28 @@ public class customerController {
         amenitiesText.setText(String.valueOf(currentProperty.getAmenities()));
     }
 
+    //Maintenance Tabs stuff
+
+    private void initializeMaintenance(){
+
+        List<MaintenanceRequest> getMaintenanceRequestList = databaseHandler.requestList();
+        System.out.println(currentUnit.getPropertyID());
+
+        System.out.println(getMaintenanceRequestList.size());
+
+        for (int i = 0; i < getMaintenanceRequestList.size(); i++) {
+            if (getMaintenanceRequestList.get(i).getPropertyID() == currentUnit.getPropertyID() && getMaintenanceRequestList.get(i).getUnitID() == currentUnit.getUnitID()) {
+                maintenanceRequestTableView.getItems().addAll(getMaintenanceRequestList.get(i));
+            }
+        }
+    }
+
+    @FXML
+    void rowClickedProperty(MouseEvent event) {
+        MaintenanceRequest clickedRequest = maintenanceRequestTableView.getSelectionModel().getSelectedItem();
+        selectedRequestID = clickedRequest.getUnitID();
+        System.out.println("selected UnitID: " + clickedRequest);
+    }
 
 
     public void userLogOut(ActionEvent event) throws IOException {
@@ -322,7 +363,7 @@ public class customerController {
     }
 
     @FXML
-    void rowClicked(MouseEvent event) {
+    void rowClickedMaintenance(MouseEvent event) {
         Property clickedProperty = propertyTableView.getSelectionModel().getSelectedItem();
         selectedPropertyId = clickedProperty.getPropertyID();
         System.out.println("selected propertyID: " + clickedProperty);

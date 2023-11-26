@@ -49,7 +49,7 @@
                                     <Font size="30.0" />
                                 </font>
                             </Text>
-                            <TableView fx:id="propertyTableView" layoutX="63.0" layoutY="75.0" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="462.0">
+                            <TableView fx:id="propertyTableView" layoutX="63.0" layoutY="75.0" onMouseClicked="#rowClickedProperty" prefHeight="200.0" prefWidth="462.0">
                                 <columns>
                                     <TableColumn fx:id="propertyIDCol" prefWidth="75.0" text="propertyID" />
                                     <TableColumn fx:id="nameCol" prefWidth="75.0" text="name" />
@@ -126,8 +126,26 @@
       </Tab>
       <Tab fx:id="maintenanceTab" text="Maintenance">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                <center>
+                    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <children>
+                            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance Requests" wrappingWidth="461.75390625">
+                                <font>
+                                    <Font size="30.0" />
+                                </font>
+                            </Text>
+                            <TableView fx:id="maintenanceRequestTableView" layoutX="52.0" layoutY="66.0" prefHeight="279.0" prefWidth="459.0">
+                                <columns>
+                                    <TableColumn fx:id="isDealtWithCol" prefWidth="83.0" text="isDealtWith" />
+                                    <TableColumn fx:id="requestIDCol" prefWidth="92.0" text="requestID" />
+                                    <TableColumn fx:id="timestampCol" prefWidth="89.0" text="timestamp" />
+                                </columns>
+                            </TableView>
+                        </children>
+                    </AnchorPane>
+                </center>
+            </BorderPane>        </content>
       </Tab>
       <Tab fx:id="rentTab" text="Rent">
          <content>
@@ -139,5 +157,10 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
         </Tab>
+      <Tab fx:id="leaseTab1" text="Announcements">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+         </content>
+      </Tab>
     </tabs>
 </TabPane>
