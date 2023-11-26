@@ -8,6 +8,7 @@ import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.Customers;
 import com.models.Property;
+import com.models.Unit;
 import com.models.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class customerController {
@@ -99,6 +101,31 @@ public class customerController {
     private int selectedPropertyId;
 
 
+    //My UNITS TAB STUFF
+
+    private Unit currentUnit;
+
+    @FXML
+    private Text unitIDText;
+
+    @FXML
+    private Text propertyIDText;
+
+    @FXML
+    private Text floorplanText;
+
+    @FXML
+    private Text conditionText;
+
+    @FXML
+    private Text isFurnishedText;
+
+    @FXML
+    private Text isRentedText;
+
+
+
+
 
     public void initialize(Stage primaryStage, int userID)
     {
@@ -144,6 +171,16 @@ public class customerController {
             tabPane.getTabs().remove(myPropertyTab);
             tabPane.getTabs().remove(leaseTab);
         }
+
+
+        //Unit Tabs Stuff
+
+        if (leaseStatus != "none")
+        {
+            initializeMyUnit();
+        }
+
+
     }
 
     public void checkStatus()
@@ -187,6 +224,30 @@ public class customerController {
             leaseStatus = "approved";
         }
 
+    }
+
+    public void initializeMyUnit()
+    {
+        List<Unit> getUnitList = databaseHandler.unitList();
+
+        currentUnit = getUnitList.get(0);
+
+        for (int i = 0; i < getUnitList.size(); i++) {
+            if (getUnitList.get(i).getUserID() == UserSession.getInstance().getUserID() )
+            {
+                currentUnit = getUnitList.get(i);
+                break;
+            }
+        }
+
+
+
+        unitIDText.setText(String.valueOf(currentUnit.getUnitID()));
+        propertyIDText.setText(String.valueOf(currentUnit.getPropertyID()));
+        floorplanText.setText(String.valueOf(currentUnit.getFloorPlan()));
+        conditionText.setText(String.valueOf(currentUnit.getCondition()));
+        isFurnishedText.setText(String.valueOf(currentUnit.isFurnished()));
+        isRentedText.setText(String.valueOf(currentUnit.isRented()));
     }
 
     public void userLogOut(ActionEvent event) throws IOException {
