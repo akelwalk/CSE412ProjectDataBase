@@ -159,6 +159,17 @@ public class customerController {
     @FXML
     private TableColumn<MaintenanceRequest, Date> timestampCol;
 
+    //Rent Tab Stuff:
+
+    @FXML
+    private Label rentAmountLabel;
+
+    @FXML
+    private Label rentDueLabel;
+
+    @FXML
+    private Label rentPaidLabel;
+
 
 
 
@@ -218,6 +229,7 @@ public class customerController {
             initializeMyUnit();
             initializeMyProperty();
             initializeMaintenance();
+            initializeRent();
         }
 
 
@@ -336,7 +348,17 @@ public class customerController {
     void rowClickedProperty(MouseEvent event) {
         MaintenanceRequest clickedRequest = maintenanceRequestTableView.getSelectionModel().getSelectedItem();
         selectedRequestID = clickedRequest.getUnitID();
-        System.out.println("selected UnitID: " + clickedRequest);
+        System.out.println("selected maintenance request: " + clickedRequest);
+    }
+
+    //Rent tab Stuff
+
+    private void initializeRent()
+    {
+        rentAmountLabel.setText(String.valueOf(currentUnit.getRentAmount()));
+        rentDueLabel.setText(String.valueOf(currentUnit.getRentDue()));
+        rentPaidLabel.setText(String.valueOf(currentUnit.isRentPaid()));
+
     }
 
 
