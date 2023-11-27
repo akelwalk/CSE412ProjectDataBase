@@ -7,6 +7,8 @@ import com.controllers.sessions.UserSession;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,6 +58,9 @@ public class customerController {
 
     @FXML
     private Tab leaseTab;
+
+    @FXML
+    private Tab announcementsTab;
 
 
 
@@ -187,6 +192,22 @@ public class customerController {
     @FXML
     private Button viewLeaseUnit;
 
+    //Announcements Tab Stuff:
+
+    @FXML
+    private Label user_name5;
+
+    @FXML
+    private Button newAnnounce;
+    private Button delAnnounce;
+
+    @FXML
+    private ListView announcementsListView;
+
+    @FXML
+
+    private ObservableList<String> communityAnnouncements = FXCollections.observableArrayList();
+
 
 
 
@@ -221,7 +242,7 @@ public class customerController {
         //Remove these tabs if the user does not have unit.
 
         System.out.println(leaseStatus);
-
+        
         if (leaseStatus == "none") {
 
             tabPane.getTabs().remove(myUnitTab);
@@ -229,24 +250,29 @@ public class customerController {
             tabPane.getTabs().remove(maintenanceTab);
             tabPane.getTabs().remove(rentTab);
             tabPane.getTabs().remove(leaseTab);
+            tabPane.getTabs().remove(announcementsTab);
         }
         else if (leaseStatus == "pending")
         {
             tabPane.getTabs().remove(myUnitTab);
             tabPane.getTabs().remove(myPropertyTab);
-            tabPane.getTabs().remove(leaseTab);
+            tabPane.getTabs().remove(maintenanceTab);
+            tabPane.getTabs().remove(rentTab);
+            tabPane.getTabs().remove(announcementsTab);
+            initializeLease();
         }
 
 
         //Unit Tabs Stuff
 
-        if (leaseStatus != "none")
+        else
         {
             initializeMyUnit();
             initializeMyProperty();
             initializeMaintenance();
             initializeRent();
             initializeLease();
+            initializeAnnouncements();
         }
 
 
@@ -393,6 +419,23 @@ public class customerController {
             viewLeaseUnit.setVisible(false);
         }
 
+
+    }
+
+    //Announcemnets Tab Stuff
+
+    private void initializeAnnouncements()
+    {
+        List<String> getAnnouncements = currentProperty.getCommunityAnnouncements();
+
+
+        for (int i = 0; i < getAnnouncements.size(); i++)
+        {
+            System.out.println(getAnnouncements.get(i));
+            communityAnnouncements.add(getAnnouncements.get(i));
+        }
+
+        announcementsListView.setItems(communityAnnouncements);
 
     }
 

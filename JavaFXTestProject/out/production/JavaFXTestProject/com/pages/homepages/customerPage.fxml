@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -191,10 +192,35 @@
                 </BorderPane>
             </content>
         </Tab>
-      <Tab fx:id="leaseTab1" text="Announcements">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-         </content>
+      <Tab fx:id="announcementsTab" text="Announcements">
+          <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                      <BorderPane prefHeight="371.0" prefWidth="600.0">
+                          <left>
+                              <AnchorPane prefHeight="371.0" prefWidth="136.0" BorderPane.alignment="CENTER">
+                                  <children>
+                                      <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                              <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                                          </image>
+                                      </ImageView>
+                                      <Label fx:id="user_name5" layoutX="14.0" layoutY="77.0" text="username" textFill="#f2f2f2" />
+                                  </children>
+                              </AnchorPane>
+                          </left>
+                          <center>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                  <children>
+                                      <ListView fx:id="announcementsListView" layoutX="27.0" layoutY="111.0" prefHeight="150.0" prefWidth="411.0" />
+                                      <Text fill="WHITE" layoutX="176.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Announcements" />
+                                  </children>
+                              </AnchorPane>
+                          </center>
+                      </BorderPane>
+                  </children>
+              </AnchorPane>
+          </content>
       </Tab>
     </tabs>
 </TabPane>
