@@ -129,11 +129,11 @@ public class unitListController {
         m.changeScene("/com/resources/propertyPage.fxml");*/
 
 
-        URL url = getClass().getResource("/com/pages/unit/unitPage.fxml");
+        URL url = getClass().getResource("/com/pages/unit/unitPageCustomer.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        unitController unitViewController = loader.getController();
+        unitCustomerController unitViewController = loader.getController();
         unitViewController.initializeValues(primaryStage, userID, unitTableView.getSelectionModel().getSelectedItem().getPropertyID(), unitTableView.getSelectionModel().getSelectedItem().getUnitID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
