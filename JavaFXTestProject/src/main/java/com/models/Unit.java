@@ -50,6 +50,10 @@ public class Unit {
         return isFurnished;
     }
 
+    public boolean getIsFurnished() {
+        return isFurnished;
+    }
+
     public void setFurnished(boolean furnished) {
         isFurnished = furnished;
     }
@@ -79,6 +83,10 @@ public class Unit {
     }
 
     public boolean isRented() {
+        return isRented;
+    }
+
+    public boolean getIsRented() {
         return isRented;
     }
 

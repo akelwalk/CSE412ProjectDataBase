@@ -1,5 +1,6 @@
 package com.controllers.property;
 
+import com.controllers.homepages.customerController;
 import com.controllers.unit.unitListController;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
@@ -170,12 +171,12 @@ public class propertyController {
 
 
     public void goBack(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/pages/property/propertyListPage.fxml");
+        URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        propertyListController propertyListViewController = loader.getController();
-        propertyListViewController.initialize(primaryStage, userID);
+        customerController cController = loader.getController();
+        cController.initialize(primaryStage, userID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

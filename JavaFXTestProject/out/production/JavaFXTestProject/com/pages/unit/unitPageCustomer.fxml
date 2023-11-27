@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -9,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/unitPage.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.unit.unitCustomerController">
+<TabPane fx:id="tabPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/unitPage.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.unit.unitCustomerController">
     <tabs>
-        <Tab text="Unit Details">
+        <Tab fx:id="homeTab" text="Unit Details">
             <content>
                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
                     <center>
@@ -39,13 +40,6 @@
                                 <Text fx:id="isRentedText" fill="WHITE" layoutX="232.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="isRented" wrappingWidth="359.21630859375" />
                                 <Label layoutX="59.0" layoutY="68.0" prefHeight="26.0" prefWidth="37.0" text="Property ID" textFill="WHITE" />
                                 <Text fx:id="propertyIDText" fill="WHITE" layoutX="166.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-                        <Button fx:id="leaseRequest" layoutX="262.0" layoutY="299.0" mnemonicParsing="false" onAction="#goBack" text="Send Lease Request">
-                           <font>
-                              <Font size="27.0" />
-                           </font>
-                        </Button>
-                        <Label layoutX="50.0" layoutY="239.0" prefHeight="17.0" prefWidth="92.0" text="rent Amount" textFill="WHITE" />
-                        <Text fx:id="rentAmountLabel" fill="WHITE" layoutX="228.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rentAmount" wrappingWidth="359.21630859375" />
                         <Button fx:id="propertyButton" layoutX="154.0" layoutY="299.0" mnemonicParsing="false" onAction="#goBack" text="Property Page">
                            <font>
                               <Font size="27.0" />
@@ -59,6 +53,50 @@
                 </BorderPane>
             </content>
         </Tab>
+        <Tab fx:id="leaseTab" text="Lease Details">
+            <content>
+                <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                    <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <Button fx:id="homeButton1" layoutX="87.0" layoutY="297.0" mnemonicParsing="false" onAction="#goHome" text="Home">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                </Button>
+                                <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lease Request" wrappingWidth="461.75390625">
+                                    <font>
+                                        <Font size="30.0" />
+                                    </font>
+                                </Text>
+                                <Label layoutX="59.0" layoutY="101.0" prefHeight="17.0" prefWidth="72.0" text="Lease start:" textFill="WHITE" />
+                                <Label layoutX="58.0" layoutY="127.0" prefHeight="17.0" prefWidth="66.0" text="Lease end:" textFill="WHITE" />
+                                <Text fx:id="conditionText1" fill="WHITE" layoutX="153.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+                                <Label layoutX="59.0" layoutY="68.0" prefHeight="26.0" prefWidth="82.0" text="Rent Amount" textFill="WHITE" />
+                                <Button fx:id="leaseRequest1" layoutX="262.0" layoutY="299.0" mnemonicParsing="false" onAction="#goBack" text="Send Lease Request">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="propertyButton1" layoutX="154.0" layoutY="299.0" mnemonicParsing="false" onAction="#goBack" text="Property Page">
+                                    <font>
+                                        <Font size="27.0" />
+                                    </font>
+                                </Button>
+                        <Label fx:id="rentAmountLabel" layoutX="168.0" layoutY="73.0" text="Rent Amount" textFill="WHITE" />
+                        <Label fx:id="leaseStartLabel" layoutX="168.0" layoutY="101.0" text="Lease Start" textFill="WHITE" />
+                        <Label fx:id="leaseEndLabel" layoutX="168.0" layoutY="127.0" text="Lease End" textFill="WHITE" />
+                        <Label layoutX="54.0" layoutY="161.0" prefHeight="17.0" prefWidth="90.0" text="Payment Type:" textFill="WHITE" />
+                        <ComboBox fx:id="paymentType" layoutX="155.0" layoutY="157.0" prefWidth="150.0" />
+                            </children>
+                        </AnchorPane>
+                    </center>
+                    <top>
+                    </top>
+                </BorderPane>
+            </content>
+        </Tab>
+
     </tabs>
 
 </TabPane>

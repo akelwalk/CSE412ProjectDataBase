@@ -13,10 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -57,6 +54,18 @@ public class unitCustomerController implements Initializable {
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
     @FXML
+    private TabPane tabPane;
+
+    @FXML
+    private Tab homeTab;
+
+    @FXML
+    private Tab leaseTab;
+
+
+    @FXML
+    private Button propertyButton;
+    @FXML
     private Button homeButton;
     @FXML
     private Button leaseRequest;
@@ -79,10 +88,40 @@ public class unitCustomerController implements Initializable {
     @FXML
     private Text isRentedText;
 
-    //Rent Tab:
+    @FXML
+    private Label rentAmountLabel;
+
+    //Lease Tab:
 
     @FXML
-    private Text rentAmountLabel;
+    private Button propertyButton1;
+
+    @FXML
+    private Button homeButton1;
+    @FXML
+    private Button leaseRequest1;
+
+    @FXML
+    private Text unitIDText1;
+
+    @FXML
+    private Text propertyIDText1;
+
+    @FXML
+    private Text floorplanText1;
+
+    @FXML
+    private Text conditionText1;
+
+    @FXML
+    private Text isFurnishedText1;
+
+    @FXML
+    private Text isRentedText1;
+
+    @FXML
+    private Text rentAmountLabel1;
+
 
 
     public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
@@ -139,28 +178,13 @@ public class unitCustomerController implements Initializable {
         isRentedText.setText(String.valueOf(isRented));
 
 
-        //Tenant Details Tab:
-
-        List<Users> getUserList = databaseHandler.userList();
-
-        Users tenantUser = getUserList.get(0);
-
-        for (int i = 0; i < getUserList.size(); i++)
-        {
-            if (getUserList.get(i).getUserID() == currentUnit.getUserID())
-            {
-                tenantUser = getUserList.get(i);
-            }
-        }
-
-
         //Rent Tab:
 
         rentAmountLabel.setText(String.valueOf(currentUnit.getRentAmount()));
 
         if (isRented == true)
         {
-            leaseRequest.setVisible(false);
+            tabPane.getTabs().remove(leaseTab);
         }
 
 
@@ -197,19 +221,4 @@ public class unitCustomerController implements Initializable {
 
 
     }
-
-  /* No longer needed
-
-   public void goToRequestList(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/pages/unit/requestPage.fxml");
-        System.out.println(url.toString());
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-        requestController maintenanceRequestListViewController = loader.getController();
-        maintenanceRequestListViewController.initializeValues(primaryStage, userID, currentUnit.getPropertyID(), currentUnit.getUnitID());
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-
-    }*/
-
 }
