@@ -170,6 +170,22 @@ public class customerController {
     @FXML
     private Label rentPaidLabel;
 
+    //Lease Tab Stuff:
+
+    @FXML
+    private Label leasePaymentLabel;
+
+    @FXML
+    private Label leaseStartLabel;
+
+    @FXML
+    private Label leaseEndLabel;
+
+    @FXML
+    private Label leaseApprovedLabel;
+
+    @FXML
+    private Button viewLeaseUnit;
 
 
 
@@ -230,6 +246,7 @@ public class customerController {
             initializeMyProperty();
             initializeMaintenance();
             initializeRent();
+            initializeLease();
         }
 
 
@@ -358,6 +375,24 @@ public class customerController {
         rentAmountLabel.setText(String.valueOf(currentUnit.getRentAmount()));
         rentDueLabel.setText(String.valueOf(currentUnit.getRentDue()));
         rentPaidLabel.setText(String.valueOf(currentUnit.isRentPaid()));
+
+    }
+
+    //Lease tab Stuff
+
+    private void initializeLease()
+    {
+
+        leasePaymentLabel.setText(String.valueOf(currentCustomer.getPaymentType()));
+        leaseStartLabel.setText(String.valueOf(currentCustomer.getLeaseStart()));
+        leaseEndLabel.setText(String.valueOf(currentCustomer.getLeaseEnd()));
+        leaseApprovedLabel.setText(String.valueOf(currentCustomer.isApproved()));
+
+        if (currentCustomer.isApproved() == true)
+        {
+            viewLeaseUnit.setVisible(false);
+        }
+
 
     }
 

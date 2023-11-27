@@ -170,7 +170,25 @@
       </Tab>
         <Tab fx:id="leaseTab" text="Lease Details">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                    <center>
+                        <AnchorPane fx:id="payRentButton1" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <Label layoutX="63.0" layoutY="55.0" text="Payment Type" textFill="WHITE" />
+                                <Label fx:id="leasePaymentLabel" layoutX="309.0" layoutY="55.0" text="Payment Type" textFill="WHITE" />
+                                <Label layoutX="63.0" layoutY="97.0" text="Lease Start" textFill="WHITE" />
+                                <Label layoutX="63.0" layoutY="141.0" text="Lease End" textFill="WHITE" />
+                                <Label fx:id="leaseStartLabel" layoutX="309.0" layoutY="97.0" text="Lease Start" textFill="WHITE" />
+                                <Label fx:id="leaseEndLabel" layoutX="309.0" layoutY="141.0" text="rentPaid" textFill="WHITE" />
+                                <Button fx:id="viewLeaseUnit" layoutX="135.0" layoutY="237.0" mnemonicParsing="false" text="Visit Unit" />
+                        <Label layoutX="63.0" layoutY="183.0" text="isApproved" textFill="WHITE" />
+                        <Label fx:id="leaseApprovedLabel" layoutX="309.0" layoutY="183.0" text="rentPaid" textFill="WHITE" />
+                            </children>
+                        </AnchorPane>
+                    </center>
+                    <top>
+                    </top>
+                </BorderPane>
             </content>
         </Tab>
       <Tab fx:id="leaseTab1" text="Announcements">
