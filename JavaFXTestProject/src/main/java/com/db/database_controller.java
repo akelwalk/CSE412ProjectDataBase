@@ -762,7 +762,6 @@ public class database_controller implements IDatabaseOperations {
 
             while (rs.next()) {
                 System.out.println("fetched lease requests");
-                System.out.println(rs.getInt("users.userid"));
 
                 int userID = rs.getInt("userID");
                 int propertyID = rs.getInt("propertyID");
@@ -778,7 +777,7 @@ public class database_controller implements IDatabaseOperations {
                 String sql2 = "SELECT USERID FROM USERS WHERE USERS.email = ?"
                         ;
 
-                stmt = conn.prepareStatement(sql);
+                stmt = conn.prepareStatement(sql2);
                 stmt.setString(1, email);
 
                 ResultSet rs1 = stmt.executeQuery();
