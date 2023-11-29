@@ -260,6 +260,8 @@ public class customerController {
             tabPane.getTabs().remove(rentTab);
             tabPane.getTabs().remove(announcementsTab);
             initializeLease();
+            initializeMyUnit();
+            initializeMyProperty();
         }
 
 
@@ -267,8 +269,6 @@ public class customerController {
 
         else
         {
-            initializeMyUnit();
-            initializeMyProperty();
             initializeMaintenance();
             initializeRent();
             initializeLease();
