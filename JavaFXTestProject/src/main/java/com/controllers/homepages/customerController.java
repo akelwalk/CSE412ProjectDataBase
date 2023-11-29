@@ -192,6 +192,9 @@ public class customerController {
     @FXML
     private Button viewLeaseUnit;
 
+    @FXML
+    private Button cancelLeaseButton;
+
     //Announcements Tab Stuff:
 
     @FXML
@@ -495,6 +498,40 @@ public class customerController {
 
 
     }
+
+    public void cancelLease(ActionEvent event) throws IOException {
+      /*  System.out.println("Property View -> Customer Home Page");
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/propertyPage.fxml");*/
+        if (checkRequest())
+        {
+            URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            customerController cController = loader.getController();
+            cController.initialize(primaryStage, userID);
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        }
+
+
+    }
+
+
+
+    public boolean checkRequest()
+    {
+
+
+            database_controller dbController = new database_controller();
+            String registrationResult = dbController.cancelLeaseRequest(currentUnit.getUnitID(), currentUnit.getPropertyID(), UserSession.getInstance().getUserID());
+            return "Success".equals(registrationResult);
+
+
+    }
+
+
 
 
 }
