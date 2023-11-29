@@ -139,14 +139,15 @@ public class managerController {
     void acceptLease(MouseEvent event) {
 
         if (selectedLease != null) {
-            System.out.println("selected Lease: " + selectedLease.getUser);
+            System.out.println("selected Lease: " + selectedLease.getUserID());
         }
     }
 
     @FXML
     void rejectLease(MouseEvent event) {
-        System.out.println("selected Lease: " + clickedLease);
-    }
+        if (selectedLease != null) {
+            System.out.println("selected Lease: " + selectedLease.getUserID());
+        }    }
 
     @FXML
     void rowClickedLease(MouseEvent event) {
