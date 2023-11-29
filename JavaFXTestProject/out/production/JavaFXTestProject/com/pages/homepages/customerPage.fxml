@@ -19,7 +19,20 @@
     <Tab fx:id="homeTab" text="Home">
     <content>
     <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-<center>
+        <left>
+            <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                <children>
+                    <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                        </image>
+                    </ImageView>
+                    <Label fx:id="userName1" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                </children>
+            </AnchorPane>
+        </left>
+
+        <center>
     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
             <ImageView fitHeight="177.0" fitWidth="248.0" layoutX="231.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -42,6 +55,18 @@
       <Tab fx:id="viewPropertiesTab" text="View Properties">
         <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+                <left>
+                    <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                        <children>
+                            <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                                </image>
+                            </ImageView>
+                            <Label fx:id="userName2" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                        </children>
+                    </AnchorPane>
+                </left>
                 <center>
                     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                         <children>
@@ -72,6 +97,18 @@
       <Tab fx:id="myUnitTab" text="My Unit">
          <content>
              <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                 <left>
+                     <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                         <children>
+                             <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                     <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                                 </image>
+                             </ImageView>
+                             <Label fx:id="userName3" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                         </children>
+                     </AnchorPane>
+                 </left>
                  <center>
                      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                          <children>
@@ -102,6 +139,18 @@
       <Tab fx:id="myPropertyTab" text="My Property">
         <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+                <left>
+                    <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                        <children>
+                            <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                                </image>
+                            </ImageView>
+                            <Label fx:id="userName4" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                        </children>
+                    </AnchorPane>
+                </left>
                 <center>
                     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                         <children>
@@ -128,6 +177,18 @@
       <Tab fx:id="maintenanceTab" text="Maintenance">
         <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                <left>
+                    <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                        <children>
+                            <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                                </image>
+                            </ImageView>
+                            <Label fx:id="userName5" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                        </children>
+                    </AnchorPane>
+                </left>
                 <center>
                     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                         <children>
@@ -136,7 +197,7 @@
                                     <Font size="30.0" />
                                 </font>
                             </Text>
-                            <TableView fx:id="maintenanceRequestTableView" layoutX="52.0" layoutY="66.0" prefHeight="279.0" prefWidth="459.0">
+                            <TableView fx:id="maintenanceRequestTableView" layoutX="154.0" layoutY="68.0" prefHeight="264.0" prefWidth="401.0">
                                 <columns>
                                     <TableColumn fx:id="isDealtWithCol" prefWidth="83.0" text="isDealtWith" />
                                     <TableColumn fx:id="requestIDCol" prefWidth="92.0" text="requestID" />
@@ -151,8 +212,22 @@
       <Tab fx:id="rentTab" text="Rent">
           <content>
               <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                  <left>
+                      <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                          <children>
+                              <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                                  </image>
+                              </ImageView>
+                              <Label fx:id="userName6" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                              <Button fx:id="payRentButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#payRent" prefHeight="24.0" prefWidth="140.0" text="Pay Rent" />
+
+                          </children>
+                      </AnchorPane>
+                  </left>
                   <center>
-                      <AnchorPane fx:id="payRentButton" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                           <children>
                               <Label layoutX="63.0" layoutY="55.0" text="Rent Amount" textFill="WHITE" />
                               <Label fx:id="rentAmountLabel" layoutX="309.0" layoutY="55.0" text="Rent Amount" textFill="WHITE" />
@@ -160,7 +235,6 @@
                               <Label layoutX="63.0" layoutY="141.0" text="Rent Paid?" textFill="WHITE" />
                               <Label fx:id="rentDueLabel" layoutX="309.0" layoutY="97.0" text="Rent Due" textFill="WHITE" />
                               <Label fx:id="rentPaidLabel" layoutX="309.0" layoutY="141.0" text="rentPaid" textFill="WHITE" />
-                              <Button layoutX="135.0" layoutY="237.0" mnemonicParsing="false" text="Pay Rent" />
                           </children>
                       </AnchorPane>
                   </center>
@@ -172,6 +246,18 @@
         <Tab fx:id="leaseTab" text="Lease Details">
             <content>
                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                    <left>
+                        <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                                    </image>
+                                </ImageView>
+                                <Label fx:id="userName7" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                            </children>
+                        </AnchorPane>
+                    </left>
                     <center>
                         <AnchorPane fx:id="payRentButton1" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
@@ -195,9 +281,7 @@
         </Tab>
       <Tab fx:id="announcementsTab" text="Announcements">
           <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                  <children>
-                      <BorderPane prefHeight="371.0" prefWidth="600.0">
+                      <BorderPane prefHeight="371.0" prefWidth="600.0" style="-fx-background-color: #171717;">
                           <left>
                               <AnchorPane prefHeight="371.0" prefWidth="136.0" BorderPane.alignment="CENTER">
                                   <children>
@@ -206,7 +290,7 @@
                                               <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                           </image>
                                       </ImageView>
-                                      <Label fx:id="user_name5" layoutX="14.0" layoutY="77.0" text="username" textFill="#f2f2f2" />
+                                      <Label fx:id="userName8" layoutX="14.0" layoutY="77.0" text="username" textFill="#f2f2f2" />
                                   </children>
                               </AnchorPane>
                           </left>
@@ -219,8 +303,6 @@
                               </AnchorPane>
                           </center>
                       </BorderPane>
-                  </children>
-              </AnchorPane>
           </content>
       </Tab>
     </tabs>

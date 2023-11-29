@@ -404,13 +404,29 @@ public class customerController {
 
     //Rent tab Stuff
 
+    @FXML
+    private Button payRentButton;
+
+
     private void initializeRent()
     {
         rentAmountLabel.setText(String.valueOf(currentUnit.getRentAmount()));
         rentDueLabel.setText(String.valueOf(currentUnit.getRentDue()));
         rentPaidLabel.setText(String.valueOf(currentUnit.isRentPaid()));
 
+        if (currentUnit.isRentPaid())
+        {
+            payRentButton.isDisabled();
+        }
+
     }
+
+    @FXML
+    void payRent(ActionEvent event) throws IOException {
+
+    }
+
+
 
     //Lease tab Stuff
 

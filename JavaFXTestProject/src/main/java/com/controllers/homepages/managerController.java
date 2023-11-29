@@ -163,13 +163,13 @@ public class managerController {
         if (selectedLease != null) {
             System.out.println("selected Lease: " + selectedLease.getUserID());
 
-            if (rejectLease())
+            if (checkReject())
             {
                 initialize(primaryStage, UserSession.getInstance().getUserID());
             }
         }    }
 
-    public boolean rejectLease()
+    public boolean checkReject()
     {
         database_controller dbController = new database_controller();
         String registrationResult = dbController.cancelLeaseRequest(selectedLease.getUserID());

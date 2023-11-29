@@ -221,11 +221,13 @@
                                   </image>
                               </ImageView>
                               <Label fx:id="userName6" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                              <Button fx:id="payRentButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#payRent" prefHeight="24.0" prefWidth="140.0" text="Pay Rent" />
+
                           </children>
                       </AnchorPane>
                   </left>
                   <center>
-                      <AnchorPane fx:id="payRentButton" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                           <children>
                               <Label layoutX="63.0" layoutY="55.0" text="Rent Amount" textFill="WHITE" />
                               <Label fx:id="rentAmountLabel" layoutX="309.0" layoutY="55.0" text="Rent Amount" textFill="WHITE" />
@@ -233,7 +235,6 @@
                               <Label layoutX="63.0" layoutY="141.0" text="Rent Paid?" textFill="WHITE" />
                               <Label fx:id="rentDueLabel" layoutX="309.0" layoutY="97.0" text="Rent Due" textFill="WHITE" />
                               <Label fx:id="rentPaidLabel" layoutX="309.0" layoutY="141.0" text="rentPaid" textFill="WHITE" />
-                              <Button layoutX="135.0" layoutY="237.0" mnemonicParsing="false" text="Pay Rent" />
                           </children>
                       </AnchorPane>
                   </center>
