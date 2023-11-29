@@ -133,18 +133,25 @@ public class managerController {
     @FXML
     private Button rejectLeaseButton;
 
+    private LeaseRequest selectedLease;
+
     @FXML
     void acceptLease(MouseEvent event) {
-        LeaseRequest clickedLease = leaseTableView.getSelectionModel().getSelectedItem();
-       // selectedUnitID = clickedLease.getUnitID();
-        System.out.println("selected Lease: " + clickedLease);
+
+        if (selectedLease != null) {
+            System.out.println("selected Lease: " + selectedLease.getUser);
+        }
     }
 
     @FXML
     void rejectLease(MouseEvent event) {
-        LeaseRequest clickedLease = leaseTableView.getSelectionModel().getSelectedItem();
-        //selectedUnitID = clickedUnit.getUnitID();
         System.out.println("selected Lease: " + clickedLease);
+    }
+
+    @FXML
+    void rowClickedLease(MouseEvent event) {
+        LeaseRequest clickedLease = leaseTableView.getSelectionModel().getSelectedItem();
+        selectedLease = clickedLease;
     }
 
 

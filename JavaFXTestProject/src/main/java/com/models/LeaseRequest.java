@@ -2,6 +2,7 @@ package com.models;
 
 public class LeaseRequest {
 
+    private int userID;
     private int propertyID;
     private int unitID;
     private String paymentType;
@@ -11,7 +12,8 @@ public class LeaseRequest {
     private String phoneNumber;
 
 
-    public LeaseRequest(int propertyid, int unitid, String paymentType, String firstName, String lastName, String email, String phoneNumber) {
+    public LeaseRequest(int userID, int propertyid, int unitid, String paymentType, String firstName, String lastName, String email, String phoneNumber) {
+        this.userID = userID;
         this.propertyID = propertyid;
         this.unitID = unitid;
         this.paymentType = paymentType;
@@ -19,6 +21,14 @@ public class LeaseRequest {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public int getPropertyID() {
