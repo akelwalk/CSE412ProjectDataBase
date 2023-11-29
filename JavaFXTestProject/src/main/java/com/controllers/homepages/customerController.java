@@ -272,7 +272,9 @@ public class customerController {
 
         else
         {
-           // initializeMaintenance();
+            initializeMyUnit();
+            initializeMyProperty();
+            initializeMaintenance();
             initializeRent();
             initializeLease();
             initializeAnnouncements();
