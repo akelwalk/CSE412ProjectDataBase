@@ -800,9 +800,17 @@ public class database_controller implements IDatabaseOperations {
             stmt.setInt(4, userID);
 
             System.out.println(stmt.toString());
-            rs = stmt.executeQuery();
+           // rs = stmt.executeQuery();
 
-            int affectedRows = stmt.executeUpdate();
+            int count = stmt.executeUpdate();
+
+            if (count > 0)
+            {
+                return "Success";
+            }
+
+
+            /*int affectedRows = stmt.executeUpdate();
 
                 // this creates a Customer for this user -- if we change the role later on we should delete the customer
                 // database row for the user so they do not have dual accounts
@@ -812,6 +820,9 @@ public class database_controller implements IDatabaseOperations {
             else {
                 return "Fail";
             }
+            *?
+
+             */
         } catch (Exception e) {
             e.printStackTrace();
             return "Error connecting to the database.";
@@ -841,7 +852,14 @@ public class database_controller implements IDatabaseOperations {
             stmt.setInt(1, userID);
 
             System.out.println(stmt.toString());
-            rs = stmt.executeQuery();
+            int count = stmt.executeUpdate();
+
+            if (count > 0)
+            {
+                return "Success";
+            }
+
+            /*
 
             int affectedRows = stmt.executeUpdate();
 
@@ -854,6 +872,8 @@ public class database_controller implements IDatabaseOperations {
             else {
                 return "Fail";
             }
+            */
+
         } catch (Exception e) {
             e.printStackTrace();
             return "Error connecting to the database.";
