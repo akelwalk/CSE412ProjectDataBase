@@ -279,6 +279,7 @@ public class unitCustomerController implements Initializable {
 
             database_controller dbController = new database_controller();
             String registrationResult = dbController.createLeaseRequest(selectedPayment, currentUnit.getUnitID(), currentUnit.getPropertyID(), UserSession.getInstance().getUserID());
+            System.out.println(registrationResult);
             return "Success".equals(registrationResult);
 
         }

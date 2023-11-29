@@ -505,15 +505,7 @@ public class customerController {
         m.changeScene("/com/resources/propertyPage.fxml");*/
         if (checkRequest())
         {
-            checkStatus();
-            URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
-            System.out.println(url.toString());
-            FXMLLoader loader = new FXMLLoader(url);
-            Parent root = loader.load();
-            customerController cController = loader.getController();
-            cController.initialize(primaryStage, userID);
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+            initialize(primaryStage, UserSession.getInstance().getUserID());
         }
 
 
