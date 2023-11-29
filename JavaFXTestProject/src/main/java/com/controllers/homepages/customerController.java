@@ -416,7 +416,9 @@ public class customerController {
 
         if (currentUnit.isRentPaid())
         {
+            payRentButton.setText("Rent Paid");
             payRentButton.isDisabled();
+            payRentButton.setOnAction(null);
         }
 
     }
