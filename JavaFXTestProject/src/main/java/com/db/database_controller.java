@@ -880,12 +880,18 @@ public class database_controller implements IDatabaseOperations {
             stmt.setInt(1, userID);
 
             System.out.println(stmt.toString());
-            int count = stmt.executeUpdate();
+            stmt.executeUpdate();
 
-            if (count > 0)
+            /*if (count > 0)
             {
                 return "Success";
-            }
+            }*/
+
+            String deleteUnit = "UPDATE UNIT SET isrented = false, userid = null WHERE userID = ?";
+            stmt = conn.prepareStatement(deleteUnit);
+            stmt.setInt(1, userID);
+
+            stmt.executeUpdate();
 
             /*
 

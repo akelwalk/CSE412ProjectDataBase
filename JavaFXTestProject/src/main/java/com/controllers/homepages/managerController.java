@@ -327,6 +327,8 @@ public class managerController {
         System.out.println(getUnitList.size());
         System.out.println(property_id);
 
+        unitTableView.getItems().clear();
+
         for (int i = 0; i < getUnitList.size(); i++) {
             
             if (getUnitList.get(i).getPropertyID() == property_id) {
@@ -345,6 +347,8 @@ public class managerController {
         System.out.println(property_id);
 
         System.out.println("Adding tenants");
+
+        tenantsTableView.getItems().clear();
 
         for (int i = 0; i < getTenantsList.size(); i++) {
 
@@ -367,6 +371,8 @@ public class managerController {
         System.out.println(property_id);
 
         System.out.println("Adding lease requests");
+
+        leaseTableView.getItems().clear();
 
         for (int i = 0; i < getLeaseRequests.size(); i++) {
 
