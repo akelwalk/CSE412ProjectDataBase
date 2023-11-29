@@ -73,7 +73,7 @@
                                 <Label layoutX="58.0" layoutY="127.0" prefHeight="17.0" prefWidth="66.0" text="Lease end:" textFill="WHITE" />
                                 <Text fx:id="conditionText1" fill="WHITE" layoutX="153.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
                                 <Label layoutX="59.0" layoutY="68.0" prefHeight="26.0" prefWidth="82.0" text="Rent Amount" textFill="WHITE" />
-                                <Button fx:id="leaseRequest1" layoutX="262.0" layoutY="299.0" mnemonicParsing="false" onAction="#goBack" text="Send Lease Request">
+                                <Button fx:id="leaseRequest1" layoutX="262.0" layoutY="299.0" mnemonicParsing="false" onAction="#sendRequest" text="Send Lease Request">
                                     <font>
                                         <Font size="27.0" />
                                     </font>
@@ -87,7 +87,7 @@
                         <Label fx:id="leaseStartLabel" layoutX="168.0" layoutY="101.0" text="Lease Start" textFill="WHITE" />
                         <Label fx:id="leaseEndLabel" layoutX="168.0" layoutY="127.0" text="Lease End" textFill="WHITE" />
                         <Label layoutX="54.0" layoutY="161.0" prefHeight="17.0" prefWidth="90.0" text="Payment Type:" textFill="WHITE" />
-                        <ComboBox fx:id="paymentType" layoutX="155.0" layoutY="157.0" prefWidth="150.0" />
+                        <ComboBox fx:id="paymentBox" layoutX="155.0" layoutY="165.0" prefWidth="150.0" />
                             </children>
                         </AnchorPane>
                     </center>

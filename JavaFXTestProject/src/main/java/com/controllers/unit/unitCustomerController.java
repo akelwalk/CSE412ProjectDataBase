@@ -7,13 +7,16 @@ import com.db.database_controller;
 import com.models.MaintenanceRequest;
 import com.models.Unit;
 import com.models.Users;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -122,10 +125,23 @@ public class unitCustomerController implements Initializable {
     @FXML
     private Text rentAmountLabel1;
 
+    String selectedPayment;
+
+    @FXML
+    private ComboBox paymentBox = new ComboBox();
+
+
+
+
 
 
     public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
     {
+
+        selectedPayment = "None";
+
+        paymentBox.getItems().addAll("Cash", "Credit", "Debit");
+
 
         List<Unit> getUnitList = databaseHandler.unitList();
         currentUnit = getUnitList.get(0);
@@ -188,6 +204,18 @@ public class unitCustomerController implements Initializable {
         }
 
 
+        paymentBox.setOnAction((event) -> {
+            int selectedIndex = paymentBox.getSelectionModel().getSelectedIndex();
+            Object selectedItem = paymentBox.getSelectionModel().getSelectedItem();
+
+            selectedPayment = (String) selectedItem;
+
+            System.out.println("Selection made: [" + selectedIndex + "] " + selectedItem);
+            System.out.println("   ComboBox.getValue(): " + paymentBox.getValue());
+
+            System.out.print(selectedPayment);
+        });
+
 
 
     }
@@ -221,4 +249,11 @@ public class unitCustomerController implements Initializable {
 
 
     }
+
+    public void sendRequest(ActionEvent event) throws IOException {
+
+    }
+
+    //Lease stuff
+
 }
