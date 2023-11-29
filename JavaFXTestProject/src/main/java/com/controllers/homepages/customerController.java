@@ -301,6 +301,8 @@ public class customerController {
 
         System.out.println("Could not find the given user on customers!");
 
+        System.out.println("Current Unit ID: " + currentCustomer.getUnitID());
+
         leaseStatus ="Error";
 
 
@@ -335,6 +337,7 @@ public class customerController {
             }
         }
 
+        System.out.println("Intialized unit!");
 
 
         unitIDText.setText(String.valueOf(currentUnit.getUnitID()));
