@@ -272,7 +272,7 @@ public class customerController {
 
         else
         {
-            initializeMaintenance();
+           // initializeMaintenance();
             initializeRent();
             initializeLease();
             initializeAnnouncements();

@@ -934,35 +934,30 @@ public class database_controller implements IDatabaseOperations {
             System.out.println(stmt.toString());
             // rs = stmt.executeQuery();
 
-            int count = stmt.executeUpdate();
+                stmt.executeUpdate();
 
-            if (count > 0)
-            {
+                String updateUnit = "UPDATE UNIT SET userid = ? WHERE propertyid = ? AND unitid = ?";
+                stmt = conn.prepareStatement(updateUnit);
+                stmt.setInt(1, userID);
+                stmt.setInt(2, propertyID);
+                stmt.setInt(3, unitID);
+
+            System.out.println(stmt.toString());
+
+                stmt.executeUpdate();
+
 
 
                 String deleteRequests = "UPDATE Customer SET paymentType = null, leaseStart = null, leaseEnd = null, unitID = null, propertyID = null WHERE unitid = ? AND propertyid = ? AND isApproved = false";
                 stmt = conn.prepareStatement(deleteRequests);
-                stmt.setInt(2, unitID);
-                stmt.setInt(3, propertyID);
+                stmt.setInt(1, unitID);
+                stmt.setInt(2, propertyID);
+
+            System.out.println(stmt.toString());
 
                 stmt.executeUpdate();
                 return "Success";
-            }
 
-
-            /*int affectedRows = stmt.executeUpdate();
-
-                // this creates a Customer for this user -- if we change the role later on we should delete the customer
-                // database row for the user so they do not have dual accounts
-            if (affectedRows > 0) {
-                return "Success";
-            }
-            else {
-                return "Fail";
-            }
-            *?
-
-             */
         } catch (Exception e) {
             e.printStackTrace();
             return "Error connecting to the database.";
@@ -975,7 +970,7 @@ public class database_controller implements IDatabaseOperations {
                 se.printStackTrace();
             }
         }
-        return null;
+        //return null;
     }
 
 
