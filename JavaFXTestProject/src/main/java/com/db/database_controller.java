@@ -835,6 +835,7 @@ public class database_controller implements IDatabaseOperations {
                 se.printStackTrace();
             }
         }
+        return null;
     }
 
     public String cancelLeaseRequest(int userID) {
@@ -886,6 +887,7 @@ public class database_controller implements IDatabaseOperations {
                 se.printStackTrace();
             }
         }
+        return null;
     }
 
 
