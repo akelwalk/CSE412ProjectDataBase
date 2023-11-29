@@ -152,9 +152,7 @@ public class database_controller implements IDatabaseOperations {
             conn = DriverManager.getConnection(DB_URL);
 
             // Check if user already exists
-            String
-
-                    = "SELECT * FROM users WHERE email = ?";
+            String checkUserSql = "SELECT * FROM users WHERE email = ?";
             stmt = conn.prepareStatement(checkUserSql);
             stmt.setString(1, email);
             rs = stmt.executeQuery();
