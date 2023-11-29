@@ -940,9 +940,8 @@ public class database_controller implements IDatabaseOperations {
             {
 
 
-                String deleteRequests = "UPDATE Customer SET paymentType = null, leaseStart = null, leaseEnd = null, isApproved = false, unitID = null, propertyID = null WHERE userid = ? AND unitid = ? AND propertyid = ?";
+                String deleteRequests = "UPDATE Customer SET paymentType = null, leaseStart = null, leaseEnd = null, unitID = null, propertyID = null WHERE unitid = ? AND propertyid = ? AND isApproved = false";
                 stmt = conn.prepareStatement(deleteRequests);
-                stmt.setInt(1, userID);
                 stmt.setInt(2, unitID);
                 stmt.setInt(3, propertyID);
 
