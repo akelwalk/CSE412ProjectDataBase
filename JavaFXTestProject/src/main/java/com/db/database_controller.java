@@ -762,8 +762,35 @@ public class database_controller implements IDatabaseOperations {
 
             while (rs.next()) {
                 System.out.println("fetched lease requests");
-                System.out.println(rs.getInt("userid"));
-                returnValues.add(new LeaseRequest(rs.getInt("userid"), rs.getInt("propertyid"), rs.getInt("unitid"), rs.getString("paymenttype"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"), rs.getString("phonenumber")));
+                System.out.println(rs.getInt("users.userid"));
+
+                int userID = rs.getInt("userID");
+                int propertyID = rs.getInt("propertyID");
+                int unitID = rs.getInt("unitID");
+                String paymentType = rs.getString("paymenttype");
+                String firstName = rs.getString("firstname");
+                String lastName = rs.getString("lastname");
+                String email = rs.getString("email");
+                String phonenumber =  rs.getString("phonenumber");
+
+
+
+                String sql2 = "SELECT USERID FROM USERS WHERE USERS.email = ?"
+                        ;
+
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, email);
+
+                ResultSet rs1 = stmt.executeQuery();
+
+                while (rs1.next())
+                {
+                    userID = rs1.getInt("userid");
+                }
+
+
+
+                returnValues.add(new LeaseRequest(userID, propertyID, unitID, paymentType, firstName, lastName, email, phonenumber));
 
             }
 

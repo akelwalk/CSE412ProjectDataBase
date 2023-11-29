@@ -153,6 +153,8 @@ public class managerController {
     void rowClickedLease(MouseEvent event) {
         selectedLease = leaseTableView.getSelectionModel().getSelectedItem();
         System.out.println("Clcked Lease: " + selectedLease.getUnitID());
+        System.out.println(selectedLease.getUserID());
+        System.out.println(selectedLease.getPropertyID());
     }
 
 
