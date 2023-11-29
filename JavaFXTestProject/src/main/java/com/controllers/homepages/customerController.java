@@ -423,6 +423,17 @@ public class customerController {
 
     @FXML
     void payRent(ActionEvent event) throws IOException {
+        if (checkPayRent())
+        {
+
+        }
+    }
+
+    boolean checkPayRent()
+    {
+        database_controller dbController = new database_controller();
+        String payRentResult = dbController.payRent(currentUnit.getPropertyID(), currentUnit.getUnitID());
+        return "Success".equals(payRentResult);
 
     }
 
