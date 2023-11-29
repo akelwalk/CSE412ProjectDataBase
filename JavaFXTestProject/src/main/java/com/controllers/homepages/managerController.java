@@ -152,7 +152,7 @@ public class managerController {
     public boolean checkAcceptLease()
     {
         database_controller dbController = new database_controller();
-        String registrationResult = dbController.acceptLeaseRequest(currentManager.getPropertyID(), selectedLease.getUnitID(), selectedLease.getUserID());
+        String registrationResult = dbController.acceptLeaseRequest(dbController.getPropertyId(UserSession.getInstance().getUserID()), selectedLease.getUnitID(), selectedLease.getUserID());
         System.out.println(registrationResult);
         return "Success".equals(registrationResult);
 
