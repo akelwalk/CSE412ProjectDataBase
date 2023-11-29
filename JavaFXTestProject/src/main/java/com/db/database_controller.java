@@ -918,5 +918,68 @@ public class database_controller implements IDatabaseOperations {
     }
 
 
+    public String acceptLeaseRequest(int propertyID, int unitID, int userID) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            // Check if user already exists
+            String createRequest = "UPDATE Customer SET isApproved = true WHERE userid = ?";
+            stmt = conn.prepareStatement(createRequest);
+            stmt.setInt(1, userID);
+            System.out.println(stmt.toString());
+            // rs = stmt.executeQuery();
+
+            int count = stmt.executeUpdate();
+
+            if (count > 0)
+            {
+
+
+                String deleteRequests = "UPDATE Customer SET paymentType = null, leaseStart = null, leaseEnd = null, isApproved = false, unitID = null, propertyID = null WHERE userid = ? AND unitid = ? AND propertyid = ?";
+                stmt = conn.prepareStatement(deleteRequests);
+                stmt.setInt(1, userID);
+                stmt.setInt(2, unitID);
+                stmt.setInt(3, propertyID);
+
+                stmt.executeUpdate();
+                return "Success";
+            }
+
+
+            /*int affectedRows = stmt.executeUpdate();
+
+                // this creates a Customer for this user -- if we change the role later on we should delete the customer
+                // database row for the user so they do not have dual accounts
+            if (affectedRows > 0) {
+                return "Success";
+            }
+            else {
+                return "Fail";
+            }
+            *?
+
+             */
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error connecting to the database.";
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
+
 
 }
