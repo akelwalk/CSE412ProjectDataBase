@@ -176,7 +176,7 @@
                           <center>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                                   <children>
-                                      <TableView fx:id="leaseTableView" layoutX="16.0" layoutY="94.0" onMouseClicked="#rowClicked" prefHeight="184.0" prefWidth="441.0">
+                                      <TableView fx:id="leaseTableView" layoutX="16.0" layoutY="94.0" onMouseClicked="#rowClickedLease" prefHeight="184.0" prefWidth="441.0">
                                           <columns>
                                               <TableColumn fx:id="unitIDColLease" prefWidth="60.0" text="UnitID" />
                                               <TableColumn fx:id="paymentColLease" text="Payment" />

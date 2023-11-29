@@ -151,8 +151,8 @@ public class managerController {
 
     @FXML
     void rowClickedLease(MouseEvent event) {
-        LeaseRequest clickedLease = leaseTableView.getSelectionModel().getSelectedItem();
-        selectedLease = clickedLease;
+        selectedLease = leaseTableView.getSelectionModel().getSelectedItem();
+        System.out.println("Clcked Lease: " + selectedLease.getUnitID());
     }
 
 

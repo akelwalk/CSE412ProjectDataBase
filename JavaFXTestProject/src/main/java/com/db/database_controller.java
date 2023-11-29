@@ -762,6 +762,7 @@ public class database_controller implements IDatabaseOperations {
 
             while (rs.next()) {
                 System.out.println("fetched lease requests");
+                System.out.println(rs.getInt("userid"));
                 returnValues.add(new LeaseRequest(rs.getInt("userid"), rs.getInt("propertyid"), rs.getInt("unitid"), rs.getString("paymenttype"), rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"), rs.getString("phonenumber")));
 
             }
