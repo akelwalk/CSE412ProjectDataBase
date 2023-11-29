@@ -826,7 +826,7 @@ public class database_controller implements IDatabaseOperations {
         }
     }
 
-    public String cancelLeaseRequest(int unitID, int propertyID, int userID) {
+    public String cancelLeaseRequest(int userID) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -836,11 +836,9 @@ public class database_controller implements IDatabaseOperations {
             conn = DriverManager.getConnection(DB_URL);
 
             // Check if user already exists
-            String createRequest = "UPDATE Customer SET paymentType = null, leaseStart = null, leaseEnd = null, isApproved = false, unitID = ?, propertyID = ? WHERE userid = ?";
+            String createRequest = "UPDATE Customer SET paymentType = null, leaseStart = null, leaseEnd = null, isApproved = false, unitID = null, propertyID = null WHERE userid = ?";
             stmt = conn.prepareStatement(createRequest);
-            stmt.setInt(1, unitID);
-            stmt.setInt(2, propertyID);
-            stmt.setInt(3, userID);
+            stmt.setInt(1, userID);
 
             System.out.println(stmt.toString());
             rs = stmt.executeQuery();
@@ -850,6 +848,7 @@ public class database_controller implements IDatabaseOperations {
             // this creates a Customer for this user -- if we change the role later on we should delete the customer
             // database row for the user so they do not have dual accounts
             if (affectedRows > 0) {
+                System.out.println("Succesfully cancelled lease!");
                 return "Success";
             }
             else {
