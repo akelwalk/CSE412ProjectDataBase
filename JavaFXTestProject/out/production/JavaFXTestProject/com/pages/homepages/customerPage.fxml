@@ -184,6 +184,7 @@
                                 <Button fx:id="viewLeaseUnit" layoutX="135.0" layoutY="237.0" mnemonicParsing="false" text="Visit Unit" />
                         <Label layoutX="63.0" layoutY="183.0" text="isApproved" textFill="WHITE" />
                         <Label fx:id="leaseApprovedLabel" layoutX="309.0" layoutY="183.0" text="rentPaid" textFill="WHITE" />
+                        <Button fx:id="cancelLeaseButton" layoutX="246.0" layoutY="237.0" mnemonicParsing="false" onAction="#cancelLease" text="cancelLease" />
                             </children>
                         </AnchorPane>
                     </center>

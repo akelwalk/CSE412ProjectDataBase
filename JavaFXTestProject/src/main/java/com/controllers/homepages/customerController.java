@@ -505,6 +505,7 @@ public class customerController {
         m.changeScene("/com/resources/propertyPage.fxml");*/
         if (checkRequest())
         {
+            checkStatus();
             URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
             System.out.println(url.toString());
             FXMLLoader loader = new FXMLLoader(url);

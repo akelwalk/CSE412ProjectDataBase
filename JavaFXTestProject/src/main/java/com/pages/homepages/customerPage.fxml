@@ -198,7 +198,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
                       <BorderPane prefHeight="371.0" prefWidth="600.0">
-                          <left>cancelLeaseButton
+                          <left>
                               <AnchorPane prefHeight="371.0" prefWidth="136.0" BorderPane.alignment="CENTER">
                                   <children>
                                       <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
