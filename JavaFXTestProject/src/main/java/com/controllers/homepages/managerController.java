@@ -140,14 +140,42 @@ public class managerController {
 
         if (selectedLease != null) {
             System.out.println("selected Lease: " + selectedLease.getUserID());
+
+            if (checkAcceptLease()) {
+                initialize(primaryStage, UserSession.getInstance().getUserID());
+            }
+
         }
+    }
+
+    public boolean checkAcceptLease()
+    {
+        database_controller dbController = new database_controller();
+        String registrationResult = dbController.acceptLeaseRequest(currentManager.getPropertyID(), selectedLease.getUnitID(), selectedLease.getUserID());
+        System.out.println(registrationResult);
+        return "Success".equals(registrationResult);
+
     }
 
     @FXML
     void rejectLease(MouseEvent event) {
         if (selectedLease != null) {
             System.out.println("selected Lease: " + selectedLease.getUserID());
+
+            if (rejectLease())
+            {
+                initialize(primaryStage, UserSession.getInstance().getUserID());
+            }
         }    }
+
+    public boolean rejectLease()
+    {
+        database_controller dbController = new database_controller();
+        String registrationResult = dbController.cancelLeaseRequest(selectedLease.getUserID());
+        System.out.println(registrationResult);
+        return "Success".equals(registrationResult);
+
+    }
 
     @FXML
     void rowClickedLease(MouseEvent event) {
