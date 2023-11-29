@@ -2,6 +2,7 @@ package com.controllers.unit;
 
 import com.controllers.homepages.customerController;
 import com.controllers.property.propertyController;
+import com.controllers.sessions.UserSession;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.MaintenanceRequest;
@@ -251,6 +252,36 @@ public class unitCustomerController implements Initializable {
     }
 
     public void sendRequest(ActionEvent event) throws IOException {
+
+        if (checkRequest())
+        {
+            URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            customerController cController = loader.getController();
+            cController.initialize(primaryStage, userID);
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        }
+
+    }
+
+
+
+    public boolean checkRequest()
+    {
+        if (selectedPayment == "None")
+        {
+            return false;
+        }
+        else {
+
+            database_controller dbController = new database_controller();
+            String registrationResult = dbController.createLeaseRequest(selectedPayment, currentUnit.getUnitID(), currentUnit.getPropertyID(), UserSession.getInstance().getUserID());
+            return "Success".equals(registrationResult);
+
+        }
 
     }
 
