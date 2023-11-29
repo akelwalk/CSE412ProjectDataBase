@@ -136,9 +136,10 @@ public class managerController {
     private LeaseRequest selectedLease;
 
     @FXML
-    void acceptLease(MouseEvent event) {
+    void acceptLease(ActionEvent event) throws IOException {
 
         if (selectedLease != null) {
+            System.out.println("Approving lease");
             System.out.println("selected Lease: " + selectedLease.getUserID());
 
             if (checkAcceptLease()) {
@@ -158,7 +159,7 @@ public class managerController {
     }
 
     @FXML
-    void rejectLease(MouseEvent event) {
+    void rejectLease(ActionEvent event) throws IOException {
         if (selectedLease != null) {
             System.out.println("selected Lease: " + selectedLease.getUserID());
 
