@@ -936,7 +936,7 @@ public class database_controller implements IDatabaseOperations {
 
                 stmt.executeUpdate();
 
-                String updateUnit = "UPDATE UNIT SET userid = ? WHERE propertyid = ? AND unitid = ?";
+                String updateUnit = "UPDATE UNIT SET userid = ? AND isrented = true WHERE propertyid = ? AND unitid = ?";
                 stmt = conn.prepareStatement(updateUnit);
                 stmt.setInt(1, userID);
                 stmt.setInt(2, propertyID);
