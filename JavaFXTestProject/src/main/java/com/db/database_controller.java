@@ -981,6 +981,41 @@ public class database_controller implements IDatabaseOperations {
         //return null;
     }
 
+    public String payRent(int propertyID, int unitID) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            // Check if user already exists
+            String query = "UPDATE UNIT SET rentPaid = true WHERE propertyID = ? AND unitID = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, propertyID);
+            stmt.setInt(2, unitID);
+            System.out.println(stmt.toString());
+            // rs = stmt.executeQuery();
+
+            stmt.executeUpdate();
+            return "Success";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error connecting to the database.";
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        //return null;
+    }
+
 
 
 
