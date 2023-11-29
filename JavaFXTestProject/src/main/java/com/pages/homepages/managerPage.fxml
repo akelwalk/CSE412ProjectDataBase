@@ -160,14 +160,16 @@
                   <children>
                       <BorderPane prefHeight="372.0" prefWidth="600.0">
                           <left>
-                              <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                                   <children>
                                       <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                           <image>
                                               <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                           </image>
                                       </ImageView>
-                                      <Label fx:id="user_nameLease" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                                      <Label fx:id="user_nameLease" layoutX="14.0" layoutY="77.0" text="username" textFill="#f8f8f8" />
+                                      <Button fx:id="approveLeaseButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#acceptLease" prefHeight="24.0" prefWidth="140.0" text="Approve Lease" />
+                                      <Button fx:id="rejectLeaseButton" layoutX="14.0" layoutY="147.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rejectLease" prefHeight="24.0" prefWidth="140.0" text="Reject Lease" />
                                   </children>
                               </AnchorPane>
                           </left>

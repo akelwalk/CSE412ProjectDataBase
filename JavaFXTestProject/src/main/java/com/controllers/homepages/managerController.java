@@ -127,6 +127,25 @@ public class managerController {
     @FXML
     private TableColumn<LeaseRequest, String> phoneNumberColLease;
 
+    @FXML
+    private Button approveLeaseButton;
+
+    @FXML
+    private Button rejectLeaseButton;
+
+    @FXML
+    void acceptLease(MouseEvent event) {
+        Unit clickedUnit = unitTableView.getSelectionModel().getSelectedItem();
+        selectedUnitID = clickedUnit.getUnitID();
+        System.out.println("selected UnitID: " + clickedUnit);
+    }
+
+    @FXML
+    void rejectLease(MouseEvent event) {
+        Unit clickedUnit = unitTableView.getSelectionModel().getSelectedItem();
+        selectedUnitID = clickedUnit.getUnitID();
+        System.out.println("selected UnitID: " + clickedUnit);
+    }
 
 
 
