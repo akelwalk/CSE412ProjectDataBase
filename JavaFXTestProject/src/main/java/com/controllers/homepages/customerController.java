@@ -526,7 +526,7 @@ public class customerController {
 
 
             database_controller dbController = new database_controller();
-            String registrationResult = dbController.cancelLeaseRequest(currentUnit.getUnitID(), currentUnit.getPropertyID(), UserSession.getInstance().getUserID());
+            String registrationResult = dbController.cancelLeaseRequest(UserSession.getInstance().getUserID());
             return "Success".equals(registrationResult);
 
 
