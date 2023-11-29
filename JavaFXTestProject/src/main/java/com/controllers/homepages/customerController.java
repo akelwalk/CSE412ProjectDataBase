@@ -254,8 +254,8 @@ public class customerController {
         }
         else if (leaseStatus == "pending")
         {
-            tabPane.getTabs().remove(myUnitTab);
-            tabPane.getTabs().remove(myPropertyTab);
+            //tabPane.getTabs().remove(myUnitTab);
+            //tabPane.getTabs().remove(myPropertyTab);
             tabPane.getTabs().remove(maintenanceTab);
             tabPane.getTabs().remove(rentTab);
             tabPane.getTabs().remove(announcementsTab);
@@ -328,7 +328,7 @@ public class customerController {
         currentUnit = getUnitList.get(0);
 
         for (int i = 0; i < getUnitList.size(); i++) {
-            if (getUnitList.get(i).getUserID() == UserSession.getInstance().getUserID() )
+            if (getUnitList.get(i).getUnitID() == currentCustomer.getUnitID())
             {
                 currentUnit = getUnitList.get(i);
                 break;
@@ -352,7 +352,7 @@ public class customerController {
         currentProperty = getPropertyList.get(0);
 
         for (int i = 0; i < getPropertyList.size(); i++) {
-            if (getPropertyList.get(i).getPropertyID() == databaseHandler.getPropertyId(UserSession.getInstance().getUserID()))
+            if (getPropertyList.get(i).getPropertyID() == currentUnit.getPropertyID())
             {
                 currentProperty = getPropertyList.get(i);
                 break;

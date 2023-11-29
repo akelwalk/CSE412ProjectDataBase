@@ -798,6 +798,8 @@ public class database_controller implements IDatabaseOperations {
             stmt.setInt(2, unitID);
             stmt.setInt(3, propertyID);
             stmt.setInt(4, userID);
+
+            System.out.println(stmt.toString());
             rs = stmt.executeQuery();
 
             int affectedRows = stmt.executeUpdate();
@@ -805,7 +807,7 @@ public class database_controller implements IDatabaseOperations {
                 // this creates a Customer for this user -- if we change the role later on we should delete the customer
                 // database row for the user so they do not have dual accounts
             if (affectedRows > 0) {
-                return "Sucess";
+                return "Success";
             }
             else {
                 return "Fail";
