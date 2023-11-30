@@ -416,7 +416,6 @@ public class customerController {
 
         if (checkMaintenanceRequest())
         {
-            initialize(primaryStage, userID);
             /*
             URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
             System.out.println(url.toString());
@@ -427,6 +426,8 @@ public class customerController {
             primaryStage.setScene(new Scene(root));
             primaryStage.show();*/
         }
+        initialize(primaryStage, userID);
+
 
     }
 
@@ -476,6 +477,7 @@ public class customerController {
         {
 
         }
+        initialize(primaryStage, userID);
     }
 
     boolean checkPayRent()
@@ -601,8 +603,9 @@ public class customerController {
         m.changeScene("/com/resources/propertyPage.fxml");*/
         if (checkRequest())
         {
-            initialize(primaryStage, UserSession.getInstance().getUserID());
+
         }
+            initialize(primaryStage, UserSession.getInstance().getUserID());
 
 
     }
