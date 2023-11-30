@@ -126,6 +126,13 @@ public class unitCustomerController implements Initializable {
     @FXML
     private Text rentAmountLabel1;
 
+    @FXML
+    private Label leaseStartLabel;
+
+    @FXML
+    private Label leaseEndLabel;
+
+
     String selectedPayment;
 
     @FXML
@@ -217,7 +224,13 @@ public class unitCustomerController implements Initializable {
             System.out.print(selectedPayment);
         });
 
+        database_controller dbController = new database_controller();
+        String leaseStart = dbController.getCurrentDate();
+        String leaseEnd = dbController.getCurrentDate1Year();
 
+
+        leaseStartLabel.setText(leaseStart);
+        leaseEndLabel.setText(leaseEnd);
 
     }
 

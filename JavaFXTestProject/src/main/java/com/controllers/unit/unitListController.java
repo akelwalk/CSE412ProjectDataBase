@@ -80,6 +80,7 @@ public class unitListController {
 
     public void initializeValues(Stage primaryStage, int userID, int propertyID)
     {
+        checkStatus();
         this.selectedUnitID = -1;
         this.userID = userID;
         unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));

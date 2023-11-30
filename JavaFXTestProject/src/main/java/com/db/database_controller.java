@@ -1055,8 +1055,74 @@ public class database_controller implements IDatabaseOperations {
             }
         }
     }
+    public String getCurrentDate()
+    {
+        String result = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
 
+            String sql = "SELECT CURRENT_DATE";
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                result = rs.getString("current_date");
+            }
+
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+    public String getCurrentDate1Year()
+    {
+        String result = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String sql = "SELECT CURRENT_DATE + INTERVAL '1 year' AS current_date";
+            stmt = conn.prepareStatement(sql);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                result = rs.getString("current_date");
+            }
+
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        return result;
+    }
 
 
 }
