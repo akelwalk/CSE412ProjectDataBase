@@ -399,6 +399,7 @@ public class customerController {
     }
 
     public void createMaintenanceRequest(ActionEvent event) throws IOException {
+        System.out.println("Creating maintenance request");
 
         if (checkMaintenanceRequest())
         {
@@ -420,6 +421,7 @@ public class customerController {
     {
             database_controller dbController = new database_controller();
             String registrationResult = dbController.createRequest(currentUnit.getPropertyID(), currentUnit.getUnitID(), UserSession.getInstance().getUserID());
+            System.out.println("Request creation below: ");
             System.out.println(registrationResult);
             return "Success".equals(registrationResult);
 

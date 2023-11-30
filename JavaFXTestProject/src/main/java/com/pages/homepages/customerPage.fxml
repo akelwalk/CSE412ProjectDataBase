@@ -186,7 +186,7 @@
                                 </image>
                             </ImageView>
                             <Label fx:id="userName5" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
-                            <Button fx:id="createRequestButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#createMaintenanceRequest" prefHeight="24.0" prefWidth="140.0" text="Pay Rent" />
+                            <Button fx:id="createRequestButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#createMaintenanceRequest" prefHeight="24.0" prefWidth="140.0" text="Send Request" />
                         </children>
                     </AnchorPane>
                 </left>

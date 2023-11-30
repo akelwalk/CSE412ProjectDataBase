@@ -1024,16 +1024,16 @@ public class database_controller implements IDatabaseOperations {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL);
+            
+            String createRequest = "INSERT INTO MaintenanceRequest VALUES(false, ((SELECT MAX(RequestID) + 1 FROM MAINTENANCEREQUEST)), (SELECT CURRENT_DATE) , ?, ?, ?)";
 
-            // Check if user already exists
-            String createRequest = "INSERT INTO MaintenanceRequest VALUES(false,(SELECT MAX(coalesce(RequestID, -1)) FROM MAINTENANCEREQUEST WHERE PROPERTYID = ? AND UNIT = ?),(SELECT SELECT CURRENT_DATE\n" +
-                    ") , ?, ?, ?)";
             stmt = conn.prepareStatement(createRequest);
             stmt.setInt(1, propertyID);
             stmt.setInt(2, unitID);
-            stmt.setInt(3, propertyID);
-            stmt.setInt(4, unitID);
-            stmt.setInt(5, userID);
+            stmt.setInt(3, userID);
+
+            System.out.println("Create request SQL query below: ");
+            System.out.println(stmt.toString());
             int affectedRows = stmt.executeUpdate();
 
                 // this creates a Customer for this user -- if we change the role later on we should delete the customer
