@@ -119,7 +119,25 @@ public class unitController implements Initializable {
     //Edit Tab
 
     @FXML
-    TextField floorplanField;
+    private TextField floorplanField;
+
+    @FXML
+    private TextField conditionField;
+
+    @FXML
+    private ComboBox isFurnishedCombo;
+
+    @FXML
+    private TextField rentField;
+
+    @FXML
+    private ComboBox rentCombo;
+
+    @FXML
+    private Button saveButton;
+
+    @FXML
+    private Button resetButton;
 
 
 
