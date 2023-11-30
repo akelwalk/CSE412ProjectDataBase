@@ -147,7 +147,7 @@ public class managerController {
 
     @FXML
     private void goToUnitTenants() throws IOException {
-        if (selectedUnitID != -1)
+        if (selectedTenant != null)
         {
             URL url = getClass().getResource("/com/pages/unit/unitPage.fxml");
             System.out.println(url.toString());

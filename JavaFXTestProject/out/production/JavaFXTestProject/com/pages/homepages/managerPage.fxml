@@ -131,13 +131,15 @@
                                           </image>
                                       </ImageView>
                                       <Label fx:id="user_name4" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                                      <Button fx:id="unitButtonTenants" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#goToUnitTenants" prefHeight="24.0" prefWidth="140.0" text="Visit Unit" />
+
                                   </children>
                               </AnchorPane>
                           </left>
                           <center>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                                   <children>
-                                      <TableView fx:id="tenantsTableView" layoutX="16.0" layoutY="94.0" prefHeight="184.0" prefWidth="441.0">
+                                      <TableView fx:id="tenantsTableView" onMouseClicked="#rowClickedTenants" layoutX="16.0" layoutY="94.0" prefHeight="184.0" prefWidth="441.0">
                                           <columns>
                                               <TableColumn fx:id="unitIDColTenant" prefWidth="60.0" text="UnitID" />
                                               <TableColumn fx:id="firstNameColTenant" text="First Name" />
@@ -173,7 +175,7 @@
                                       <Label fx:id="user_nameLease" layoutX="14.0" layoutY="77.0" text="username" textFill="#f8f8f8" />
                                       <Button fx:id="approveLeaseButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#acceptLease" prefHeight="24.0" prefWidth="140.0" text="Approve Lease" />
                                       <Button fx:id="rejectLeaseButton" layoutX="14.0" layoutY="147.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rejectLease" prefHeight="24.0" prefWidth="140.0" text="Reject Lease" />
-                              <Button fx:id="unitLeaseButton" layoutX="14.0" layoutY="186.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rejectLease" prefHeight="24.0" prefWidth="140.0" text="Visit Unit" />
+                              <Button fx:id="unitLeaseButton" layoutX="14.0" layoutY="186.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToUnitLease" prefHeight="24.0" prefWidth="140.0" text="Visit Unit" />
                                   </children>
                               </AnchorPane>
                           </left>
@@ -249,7 +251,7 @@
                               </ImageView>
                               <Label fx:id="user_nameMaintenance" layoutX="14.0" layoutY="77.0" text="username" textFill="#f8f8f8" />
                               <Button fx:id="resolveMaintenance" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#resolveRequests" prefHeight="24.0" prefWidth="140.0" text="Resolve " />
-                              <Button fx:id="visitUnitMaintenance" layoutX="14.0" layoutY="147.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rejectLease" prefHeight="24.0" prefWidth="140.0" text="Visit Unit" />
+                              <Button fx:id="visitUnitMaintenance" layoutX="14.0" layoutY="147.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToUnitMaintenance" prefHeight="24.0" prefWidth="140.0" text="Visit Unit" />
                            </children>
                         </AnchorPane>
                      </left>
