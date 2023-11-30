@@ -1,9 +1,12 @@
 package com.controllers.unit;
 
 
+import com.controllers.homepages.customerController;
 import com.controllers.property.propertyController;
+import com.controllers.sessions.UserSession;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
+import com.models.Customers;
 import com.models.Unit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +34,9 @@ public class unitListController {
     private int userID;
 
     private int currPropertyID;
+
+    private Customers currentCustomer;
+    private String leaseStatus;
 
     private int selectedUnitID;
     @FXML
@@ -95,7 +101,7 @@ public class unitListController {
         System.out.println(currPropertyID);
 
         for (int i = 0; i < getUnitList.size(); i++) {
-            if (getUnitList.get(i).getPropertyID() == currPropertyID) {
+            if (getUnitList.get(i).getPropertyID() == currPropertyID && getUnitList.get(i).getUnitID() != currentCustomer.getUnitID()) {
                 unitTableView.getItems().addAll(getUnitList.get(i));
             }
         }
@@ -111,14 +117,27 @@ public class unitListController {
 
 
     public void goBack(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/pages/property/propertyPage.fxml");
-        System.out.println(url.toString());
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-        propertyController propertyViewController = loader.getController();
-        propertyViewController.initialize(primaryStage, userID, currPropertyID);
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+
+        if (leaseStatus == "approved") {
+            URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            customerController cController = loader.getController();
+            cController.initialize(primaryStage, userID);
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        }
+        else {
+            URL url = getClass().getResource("/com/pages/property/propertyPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            propertyController propertyViewController = loader.getController();
+            propertyViewController.initialize(primaryStage, userID, currPropertyID);
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        }
 
     }
 
@@ -127,7 +146,6 @@ public class unitListController {
       /*  System.out.println("Property View -> Customer Home Page");
         MainApplication m = new MainApplication();
         m.changeScene("/com/resources/propertyPage.fxml");*/
-
 
         URL url = getClass().getResource("/com/pages/unit/unitPageCustomer.fxml");
         System.out.println(url.toString());
@@ -138,6 +156,44 @@ public class unitListController {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
+
+    }
+
+    public void checkStatus()
+    {
+        //Fetch the customer object
+
+        List<Customers> getCustomerList = databaseHandler.customerList();
+
+        currentCustomer = getCustomerList.get(0);
+
+        System.out.println("The current userID is: " + UserSession.getInstance().getUserID());
+
+
+        for (int i = 0; i < getCustomerList.size(); i++)
+        {
+            if (getCustomerList.get(i).getUserID() == UserSession.getInstance().getUserID())
+            {
+                currentCustomer = getCustomerList.get(i);
+                System.out.println("Current customer FOUND! ->" + getCustomerList.get(i).getUnitID());
+                break;
+            }
+        }
+
+        System.out.println("Could not find the given user on customers!");
+
+        System.out.println("Current Unit ID: " + currentCustomer.getUnitID());
+
+        leaseStatus ="Error";
+
+
+        //Check if the customer does not have any lease requests
+
+
+        if (currentCustomer.getPropertyID() == currPropertyID)
+        {
+            leaseStatus = "approved";
+        }
 
     }
 

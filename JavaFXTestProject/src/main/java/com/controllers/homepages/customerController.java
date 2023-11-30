@@ -4,6 +4,7 @@ import com.controllers.loginregister.loginController;
 import com.controllers.property.propertyController;
 import com.controllers.property.propertyListController;
 import com.controllers.sessions.UserSession;
+import com.controllers.unit.unitListController;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.*;
@@ -556,6 +557,20 @@ public class customerController {
         Parent root = loader.load();
         propertyController propertyViewController = loader.getController();
         propertyViewController.initialize(primaryStage, userID, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
+
+    }
+
+    public void goToUnitList(ActionEvent event) throws IOException {
+        URL url = getClass().getResource("/com/pages/unit/unitListPage.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        unitListController unitListViewController = loader.getController();
+        System.out.println("Passing propertyID: "+ currentProperty.getPropertyID());
+        unitListViewController.initializeValues(primaryStage, userID, currentProperty.getPropertyID());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
