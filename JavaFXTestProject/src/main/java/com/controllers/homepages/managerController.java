@@ -214,7 +214,21 @@ public class managerController {
 
     @FXML
     void resolveRequests(ActionEvent even) throws IOException{
-        System.out.println("Selected!");
+            System.out.println("calling resolveRequests()");
+            System.out.println("selected Maintenance: " + selectedMaintenance);
+
+        database_controller dbController = new database_controller();
+        String registrationResult = dbController.resolveRequest(selectedMaintenance.getRequestID(), selectedMaintenance.getUnitID(), selectedMaintenance.getPropertyID(),selectedMaintenance.getUserID()) ;
+        System.out.println(registrationResult);
+        System.out.println("Success".equals(registrationResult));
+
+        initialize(primaryStage, UserSession.getInstance().getUserID());
+
+
+            /*if (checkAcceptLease()) {
+                initialize(primaryStage, UserSession.getInstance().getUserID());
+            }*/
+
     }
 
     /*
