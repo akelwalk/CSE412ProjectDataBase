@@ -292,12 +292,18 @@ public class managerController {
     Button delAnnounceButton;
 
     @FXML
+    TextArea newAnnounceBox;
+
+    @FXML
     public void newAnnounce(ActionEvent event) throws IOException {
-        System.out.println ("Adding new announcment!");
-        database_controller dbController = new database_controller();
-        String registrationResult = dbController.addAnnouncements(dbController.getPropertyId(UserSession.getInstance().getUserID()), "Test");
-        System.out.println("Added announcement");
-       // initialize(primaryStage, UserSession.getInstance().getUserID());
+
+        if (newAnnounceBox.getLength() > 0) {
+            System.out.println("Adding new announcment!");
+            database_controller dbController = new database_controller();
+            String registrationResult = dbController.addAnnouncements(dbController.getPropertyId(UserSession.getInstance().getUserID()), newAnnounceBox.getText());
+            System.out.println("Added announcement");
+            // initialize(primaryStage, UserSession.getInstance().getUserID());
+        }
 
     }
 

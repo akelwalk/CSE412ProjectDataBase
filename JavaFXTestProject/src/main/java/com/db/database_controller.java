@@ -1216,7 +1216,7 @@ public class database_controller implements IDatabaseOperations {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL);
 
-            String addAnnouncement = "UPDATE PROPERTY SET communityannouncements = array_remove(communityannouncements, ?) WHERE PROPERTYID = ?"
+            String addAnnouncement = "UPDATE PROPERTY SET communityannouncements = array_remove(communityannouncements, ?) WHERE PROPERTYID = ?";
             stmt = conn.prepareStatement(addAnnouncement);
             stmt.setString(1, message);
             stmt.setInt(2, propertyID);
