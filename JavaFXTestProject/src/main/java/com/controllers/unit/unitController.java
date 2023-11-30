@@ -198,7 +198,13 @@ public class unitController implements Initializable {
         }
 
         if (countErrors == 0) {
+            errorLabel.setText("");
             System.out.println("New values: :" + newFurnished + "," + newRent + ", " + newAmount + ", " + newFloorplan + ", " + newCondition);
+
+            database_controller dbController = new database_controller();
+            dbController.editUnit(currentUnit.getPropertyID(), currentUnit.getUnitID(), newFloorplan, newCondition, newFurnished, newAmount, newRent);
+
+
         }
         else {
             errorLabel.setText(errors.toString());

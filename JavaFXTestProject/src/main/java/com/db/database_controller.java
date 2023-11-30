@@ -1245,5 +1245,50 @@ public class database_controller implements IDatabaseOperations {
         }
     }
 
+    public String editUnit(int propertyID, int unitID, String floorplan, String condition, boolean isFurnished, double rentAmount, boolean rentPaid) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String addAnnouncement = "UPDATE UNIT SET floorplan = ?, condition = ?, isFurnished = ?, rentAmount = ?, rentPaid = ? WHERE UNITID =? AND PROPERTYID = ?"
+            stmt = conn.prepareStatement(addAnnouncement);
+
+            stmt.setString(1, floorplan);
+            stmt.setString(2, condition);
+            stmt.setBoolean(3, isFurnished);
+            stmt.setDouble(4, rentAmount);
+            stmt.setBoolean(5, rentPaid);
+            stmt.setInt(6, unitID);
+            stmt.setInt(7, propertyID);
+
+            System.out.println("Changed unit: ");
+            System.out.println(stmt.toString());
+            int affectedRows = stmt.executeUpdate();
+
+            // this creates a Customer for this user -- if we change the role later on we should delete the customer
+            // database row for the user so they do not have dual accounts
+            if (affectedRows > 0) {
+                return "Success";
+            }
+            return "Failed to create request.";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error connecting to the database.";
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
 
 }
