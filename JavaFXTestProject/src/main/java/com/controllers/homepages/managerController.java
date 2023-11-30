@@ -10,10 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -283,6 +280,32 @@ public class managerController {
         System.out.println(selectedMaintenance);
     }
 
+    //Announcements Tab Stuff
+
+    @FXML
+    ListView announcementsListView;
+
+    @FXML
+    Button newAnnounceButton;
+
+    @FXML
+    Button delAnnounceButton;
+
+    @FXML
+    public void newAnnounce(ActionEvent event) throws IOException {
+        database_controller dbController = new database_controller();
+        String registrationResult = dbController.addAnnouncements(dbController.getPropertyId(UserSession.getInstance().getUserID()), "Test");
+        System.out.println("Added announcement");
+
+    }
+
+    @FXML
+    public void delAnnounce(ActionEvent event) throws IOException {
+
+    }
+
+
+
 
 
 
@@ -331,16 +354,18 @@ public class managerController {
             unitIDColMaintenance.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Integer>("unitID"));
             timestampColMaintenance.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Date>("timestamp"));
 
-
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
             name.setText("Property Name: " + dbController.getPropertyName(property_id));
             address.setText("Address: "+ dbController.getPropertyAddress(property_id));
             List<String> amenities_list = dbController.getAmmenities(property_id);
             amenities.setText("Amenities: "+String.join(",", amenities_list));
+
+            //initialize all the tables.
             setupTable();
             setUpTableTenants();
             setUpTableLeaseRequests();
             setupTableMaintenanceRequests();
+            setupAnnouncements();
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");
@@ -411,14 +436,6 @@ public class managerController {
 
 
     public void deleteProperty(ActionEvent event) throws IOException {
-        
-    }
-
-    public void newAnnounce(ActionEvent event) throws IOException {
-        
-    }
-
-    public void delAnnounce(ActionEvent event) throws IOException {
         
     }
 
@@ -504,6 +521,39 @@ public class managerController {
             }
         }
     }
+
+    private void setupAnnouncements(){
+
+        database_controller db = new database_controller();
+        int property_id = db.getPropertyId(UserSession.getInstance().getUserID());
+        List<Property> getPropertyList = databaseHandler.propertyList();
+        System.out.println(getPropertyList.size());
+        System.out.println(property_id);
+
+        System.out.println("Adding tenants");
+
+        announcementsListView.getItems().clear();
+
+        Property currentProperty = getPropertyList.get(0);
+
+
+        for (int i = 0; i < getPropertyList.size(); i++) {
+
+            if (getPropertyList.get(i).getPropertyID() == property_id) {
+                currentProperty = getPropertyList.get(i);
+                break;
+            }
+        }
+
+        List<String> announcements = currentProperty.getCommunityAnnouncements();
+
+        announcementsListView.getItems().addAll(announcements);
+    }
+
+
+
+
+
 
 
 
