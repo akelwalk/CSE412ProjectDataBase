@@ -305,10 +305,22 @@ public class managerController {
             // initialize(primaryStage, UserSession.getInstance().getUserID());
         }
 
+        initialize(primaryStage, UserSession.getInstance().getUserID());
+
     }
 
     @FXML
     public void delAnnounce(ActionEvent event) throws IOException {
+        if (announcementsListView.getSelectionModel().getSelectedItem() != null)
+        {
+            String message = announcementsListView.getSelectionModel().getSelectedItem().toString();
+            System.out.println("Deleting announcement!");
+            database_controller dbController = new database_controller();
+            String registrationResult = dbController.removeAnnouncement(dbController.getPropertyId(UserSession.getInstance().getUserID()), message);
+
+        }
+
+        initialize(primaryStage, UserSession.getInstance().getUserID());
 
     }
 
