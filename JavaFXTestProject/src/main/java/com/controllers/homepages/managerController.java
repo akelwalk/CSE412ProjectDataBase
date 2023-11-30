@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 
 import com.controllers.sessions.UserSession;
@@ -198,10 +199,10 @@ public class managerController {
     private TableColumn<MaintenanceRequest, Integer> requestIDColMaintenance;
 
     @FXML
-    private TableColumn<MaintenanceRequest, String> unitIDColMaintenance;
+    private TableColumn<MaintenanceRequest, Integer> unitIDColMaintenance;
 
     @FXML
-    private TableColumn<MaintenanceRequest, String> timestampColMaintenance;
+    private TableColumn<MaintenanceRequest, Date> timestampColMaintenance;
 
     @FXML
     private Button resolveMaintenance;
@@ -210,6 +211,11 @@ public class managerController {
     private Button visitUnitMaintenance;
 
     private MaintenanceRequest selectedMaintenance;
+
+    @FXML
+    void resolveRequests(ActionEvent even) throws IOException{
+        System.out.println("Selected!");
+    }
 
     /*
     @FXML
@@ -305,6 +311,11 @@ public class managerController {
             emailColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("email"));
             phoneNumberColLease.setCellValueFactory(new PropertyValueFactory<LeaseRequest, String>("phoneNumber"));
 
+            //Maintenance Requests Table Initialization
+
+            requestIDColMaintenance.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Integer>("requestID"));
+            unitIDColMaintenance.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Integer>("unitID"));
+            timestampColMaintenance.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Date>("timestamp"));
 
 
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
