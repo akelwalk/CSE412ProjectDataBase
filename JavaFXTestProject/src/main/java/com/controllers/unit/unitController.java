@@ -198,6 +198,8 @@ public class unitController implements Initializable {
         tenantEmail.setText(tenantUser.getEmail());
         tenantPhoneNumber.setText(tenantUser.getPhoneNumber());
 
+
+
         //Rent Tab:
 
         rentAmountLabel.setText(String.valueOf(currentUnit.getRentAmount()));

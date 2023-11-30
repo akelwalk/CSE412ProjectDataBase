@@ -84,6 +84,7 @@ public class managerController {
     @FXML
     private TableColumn<Unit, Boolean> isRentedCol;
 
+    @FXML
     private Button unitButton1;
 
 
@@ -133,6 +134,38 @@ public class managerController {
     @FXML
     private TableColumn<Tenants, String> phoneNumberColTenant;
 
+    Tenants selectedTenant;
+
+    @FXML
+    private Button unitButtonTenants;
+
+    @FXML
+    void rowClickedTenants(MouseEvent event) {
+        selectedTenant = tenantsTableView.getSelectionModel().getSelectedItem();
+        System.out.println(selectedTenant);
+    }
+
+    @FXML
+    private void goToUnitTenants() throws IOException {
+        if (selectedUnitID != -1)
+        {
+            URL url = getClass().getResource("/com/pages/unit/unitPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            unitController unit = loader.getController();
+            database_controller dbController = new database_controller();;
+            int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
+
+            unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), property_id, selectedTenant.getUnitID());
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        }
+    }
+
+
+
     //Lease Page Stuff
 
 
@@ -164,6 +197,9 @@ public class managerController {
 
     @FXML
     private Button rejectLeaseButton;
+
+    @FXML
+    private Button unitLeaseButton;
 
     private LeaseRequest selectedLease;
 
@@ -217,6 +253,26 @@ public class managerController {
         System.out.println(selectedLease.getUserID());
         System.out.println(selectedLease.getPropertyID());
     }
+
+    @FXML
+    private void goToUnitLease() throws IOException {
+        if (selectedLease != null)
+        {
+            URL url = getClass().getResource("/com/pages/unit/unitPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            unitController unit = loader.getController();
+            database_controller dbController = new database_controller();;
+            int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
+
+            unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), property_id, selectedLease.getUnitID());
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        }
+    }
+
 
     //Maintenance Page Stuff
 
@@ -312,6 +368,25 @@ public class managerController {
     void rowClickedMaintenance(MouseEvent event) {
         selectedMaintenance = maintenanceTableView.getSelectionModel().getSelectedItem();
         System.out.println(selectedMaintenance);
+    }
+
+    @FXML
+    private void goToUnitMaintenance() throws IOException {
+        if (selectedMaintenance != null)
+        {
+            URL url = getClass().getResource("/com/pages/unit/unitPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            unitController unit = loader.getController();
+            database_controller dbController = new database_controller();;
+            int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
+
+            unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), property_id, selectedMaintenance.getUnitID());
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        }
     }
 
     //Announcements Tab Stuff
