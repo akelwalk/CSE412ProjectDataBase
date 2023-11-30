@@ -1024,7 +1024,7 @@ public class database_controller implements IDatabaseOperations {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL);
-            
+
             String createRequest = "INSERT INTO MaintenanceRequest VALUES(false, ((SELECT MAX(RequestID) + 1 FROM MAINTENANCEREQUEST)), (SELECT CURRENT_DATE) , ?, ?, ?)";
 
             stmt = conn.prepareStatement(createRequest);
