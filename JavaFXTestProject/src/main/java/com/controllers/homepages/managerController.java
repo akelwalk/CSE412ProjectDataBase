@@ -186,6 +186,83 @@ public class managerController {
         System.out.println(selectedLease.getPropertyID());
     }
 
+    //Maintenance Page Stuff
+
+
+    @FXML
+    private Label user_nameMaintenance;
+
+    @FXML
+    private TableView<MaintenanceRequest> maintenanceTableView;
+    @FXML
+    private TableColumn<MaintenanceRequest, Integer> requestIDColMaintenance;
+
+    @FXML
+    private TableColumn<MaintenanceRequest, String> unitIDColMaintenance;
+
+    @FXML
+    private TableColumn<MaintenanceRequest, String> timestampColMaintenance;
+
+    @FXML
+    private Button resolveMaintenance;
+
+    @FXML
+    private Button visitUnitMaintenance;
+
+    private MaintenanceRequest selectedMaintenance;
+
+    /*
+    @FXML
+    void acceptLease(ActionEvent event) throws IOException {
+
+        if (selectedLease != null) {
+            System.out.println("Approving lease");
+            System.out.println("selected Lease: " + selectedLease.getUserID());
+
+            if (checkAcceptLease()) {
+                initialize(primaryStage, UserSession.getInstance().getUserID());
+            }
+
+        }
+    }
+
+    public boolean checkAcceptLease()
+    {
+        database_controller dbController = new database_controller();
+        String registrationResult = dbController.acceptLeaseRequest(dbController.getPropertyId(UserSession.getInstance().getUserID()), selectedLease.getUnitID(), selectedLease.getUserID());
+        System.out.println(registrationResult);
+        return "Success".equals(registrationResult);
+
+    }
+
+    @FXML
+    void rejectLease(ActionEvent event) throws IOException {
+        if (selectedLease != null) {
+            System.out.println("selected Lease: " + selectedLease.getUserID());
+
+            if (checkReject())
+            {
+                initialize(primaryStage, UserSession.getInstance().getUserID());
+            }
+        }    }
+
+    public boolean checkReject()
+    {
+        database_controller dbController = new database_controller();
+        String registrationResult = dbController.cancelLeaseRequest(selectedLease.getUserID());
+        System.out.println(registrationResult);
+        return "Success".equals(registrationResult);
+
+    }
+    */
+
+
+    @FXML
+    void rowClickedMaintenance(MouseEvent event) {
+        selectedMaintenance = maintenanceTableView.getSelectionModel().getSelectedItem();
+        System.out.println(selectedMaintenance);
+    }
+
 
 
 
@@ -238,6 +315,7 @@ public class managerController {
             setupTable();
             setUpTableTenants();
             setUpTableLeaseRequests();
+            setupTableMaintenanceRequests();
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");
@@ -378,6 +456,26 @@ public class managerController {
 
             if (getLeaseRequests.get(i).getPropertyID() == property_id) {
                 leaseTableView.getItems().addAll(getLeaseRequests.get(i));
+            }
+        }
+    }
+
+    private void setupTableMaintenanceRequests(){
+
+        database_controller db = new database_controller();
+        int property_id = db.getPropertyId(UserSession.getInstance().getUserID());
+        List<MaintenanceRequest> getRequests = databaseHandler.requestList();
+        System.out.println(getRequests.size());
+        System.out.println(property_id);
+
+        System.out.println("Adding lease requests");
+
+        maintenanceTableView.getItems().clear();
+
+        for (int i = 0; i < getRequests.size(); i++) {
+
+            if (getRequests.get(i).getPropertyID() == property_id && getRequests.get(i).isDealtWith() == false) {
+                maintenanceTableView.getItems().addAll(getRequests.get(i));
             }
         }
     }
