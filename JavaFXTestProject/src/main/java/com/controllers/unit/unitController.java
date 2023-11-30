@@ -143,19 +143,67 @@ public class unitController implements Initializable {
     private boolean selectedRent;
     private boolean selectedFurnished;
 
+    @FXML
+    private Label errorLabel;
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
 
     @FXML
     void saveEdit(ActionEvent event) throws IOException {
 
+        int countErrors = 0;
+
+        StringBuilder errors = new StringBuilder();
+        errors.append("Errors in the following fields: ");
+
     boolean newFurnished = selectedFurnished;
     boolean newRent = selectedRent;
+    double newAmount = 0.0;
 
-    double newAmount = Double.valueOf(rentField.getText());
+        if (!isNumeric(rentField.getText()))
+        {
+            errors.append("rent amount ");
+            countErrors++;
+        }
+        else {
+
+            newAmount = Double.valueOf(rentField.getText());
+        }
 
     String newFloorplan = floorplanField.getText();
+
+    if (newFloorplan.isBlank())
+    {
+        errors.append("floorplan ");
+                countErrors++;
+    }
     String newCondition = conditionField.getText();
 
-    System.out.println("New values: :" + newFurnished + "," + newRent + ", " + newAmount +", " + newFloorplan +", " + newCondition);
+        if (newCondition.isBlank())
+        {
+            errors.append("condition ");
+            countErrors++;
+
+        }
+
+        if (countErrors == 0) {
+            System.out.println("New values: :" + newFurnished + "," + newRent + ", " + newAmount + ", " + newFloorplan + ", " + newCondition);
+        }
+        else {
+            errorLabel.setText(errors.toString());
+        }
+
 
         }
 
