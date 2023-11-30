@@ -8,7 +8,7 @@ public class Unit {
     private int unitID;
     private boolean isFurnished;
     private double rentAmount;
-    private String floorPlan;
+    private String floorplan;
     private String condition;
     private boolean isRented;
     private ArrayList<String> appliances;
@@ -21,7 +21,7 @@ public class Unit {
         this.unitID = unitID;
         this.isFurnished = isFurnished;
         this.rentAmount = rentAmount;
-        this.floorPlan = floorPlan;
+        this.floorplan = floorPlan;
         this.condition = condition;
         this.isRented = isRented;
 
@@ -67,11 +67,11 @@ public class Unit {
     }
 
     public String getFloorPlan() {
-        return floorPlan;
+        return floorplan;
     }
 
     public void setFloorPlan(String floorPlan) {
-        this.floorPlan = floorPlan;
+        this.floorplan = floorPlan;
     }
 
     public String getCondition() {
@@ -137,7 +137,7 @@ public class Unit {
     @Override
     public String toString()
     {
-        return unitID+","+ isFurnished +"," + rentAmount+"," + floorPlan+"," + condition+"," + isRented+"," + rentPaid+"," + rentDue.toString();
+        return unitID+","+ isFurnished +"," + rentAmount+"," + floorplan+"," + condition+"," + isRented+"," + rentPaid+"," + rentDue.toString();
     }
 
 
