@@ -376,6 +376,9 @@ public class customerController {
 
     //Maintenance Tabs stuff
 
+    @FXML
+    private Button createRequestButton;
+
     private void initializeMaintenance(){
 
         isDealtWithCol.setCellValueFactory(new PropertyValueFactory<MaintenanceRequest, Boolean>("isDealtWith"));
@@ -393,6 +396,33 @@ public class customerController {
                 maintenanceRequestTableView.getItems().addAll(getMaintenanceRequestList.get(i));
             }
         }
+    }
+
+    public void createMaintenanceRequest(ActionEvent event) throws IOException {
+
+        if (checkMaintenanceRequest())
+        {
+            URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            customerController cController = loader.getController();
+            cController.initialize(primaryStage, userID);
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        }
+
+    }
+
+
+
+    public boolean checkMaintenanceRequest()
+    {
+            database_controller dbController = new database_controller();
+            String registrationResult = dbController.createRequest(currentUnit.getPropertyID(), currentUnit.getUnitID(), UserSession.getInstance().getUserID());
+            System.out.println(registrationResult);
+            return "Success".equals(registrationResult);
+
     }
 
     @FXML

@@ -190,6 +190,7 @@
                     </AnchorPane>
                 </left>
                 <center>
+
                     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                         <children>
                             <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance Requests" wrappingWidth="461.75390625">

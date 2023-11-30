@@ -1016,6 +1016,46 @@ public class database_controller implements IDatabaseOperations {
         //return null;
     }
 
+    public String createRequest(int propertyID, int unitID, int userID) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            // Check if user already exists
+            String createRequest = "INSERT INTO MaintenanceRequest VALUES(false,(SELECT MAX(coalesce(RequestID, -1)) FROM MAINTENANCEREQUEST WHERE PROPERTYID = ? AND UNIT = ?),(SELECT SELECT CURRENT_DATE\n" +
+                    ") , ?, ?, ?)";
+            stmt = conn.prepareStatement(createRequest);
+            stmt.setInt(1, propertyID);
+            stmt.setInt(2, unitID);
+            stmt.setInt(3, propertyID);
+            stmt.setInt(4, unitID);
+            stmt.setInt(5, userID);
+            int affectedRows = stmt.executeUpdate();
+
+                // this creates a Customer for this user -- if we change the role later on we should delete the customer
+                // database row for the user so they do not have dual accounts
+                if (affectedRows > 0) {
+                    return "Success";
+                }
+                return "Failed to create request.";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error connecting to the database.";
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
 
 
 
