@@ -1,6 +1,6 @@
 # CSE412ProjectDataBase
 
-Project currently being edited by: **Arjun**.
+Project currently being edited by: **No one**.
 
 ## How to use? 
 
