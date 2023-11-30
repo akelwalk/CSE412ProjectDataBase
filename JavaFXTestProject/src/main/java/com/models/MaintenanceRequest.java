@@ -20,6 +20,10 @@ public class MaintenanceRequest {
         this.userID = userID;
     }
 
+    public boolean getIsDealtWith(){
+        return isDealtWith;
+    }
+
     public boolean isDealtWith() {
         return isDealtWith;
     }

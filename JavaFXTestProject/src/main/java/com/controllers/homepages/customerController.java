@@ -19,6 +19,8 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -388,12 +390,22 @@ public class customerController {
 
 
         List<MaintenanceRequest> getMaintenanceRequestList = databaseHandler.requestList();
+
+        Collections.sort(getMaintenanceRequestList, new Comparator<MaintenanceRequest>() {
+            @Override
+            public int compare(MaintenanceRequest a, MaintenanceRequest b) {
+                return Boolean.compare(a.getIsDealtWith(),b.getIsDealtWith());
+            }
+        });
+
         System.out.println(currentUnit.getPropertyID());
 
         System.out.println(getMaintenanceRequestList.size());
 
+        maintenanceRequestTableView.getItems().clear();
+
         for (int i = 0; i < getMaintenanceRequestList.size(); i++) {
-            if (getMaintenanceRequestList.get(i).getPropertyID() == currentUnit.getPropertyID() && getMaintenanceRequestList.get(i).getUnitID() == currentUnit.getUnitID()) {
+            if (getMaintenanceRequestList.get(i).getPropertyID() == currentUnit.getPropertyID() && getMaintenanceRequestList.get(i).getUnitID() == currentUnit.getUnitID() && getMaintenanceRequestList.get(i).getUserID() == UserSession.getInstance().getUserID() ) {
                 maintenanceRequestTableView.getItems().addAll(getMaintenanceRequestList.get(i));
             }
         }
@@ -404,6 +416,8 @@ public class customerController {
 
         if (checkMaintenanceRequest())
         {
+            initialize(primaryStage, userID);
+            /*
             URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
             System.out.println(url.toString());
             FXMLLoader loader = new FXMLLoader(url);
@@ -411,7 +425,7 @@ public class customerController {
             customerController cController = loader.getController();
             cController.initialize(primaryStage, userID);
             primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+            primaryStage.show();*/
         }
 
     }
@@ -498,6 +512,8 @@ public class customerController {
     {
         List<String> getAnnouncements = currentProperty.getCommunityAnnouncements();
 
+        announcementsListView.getItems().clear();
+
 
         for (int i = 0; i < getAnnouncements.size(); i++)
         {
@@ -531,6 +547,8 @@ public class customerController {
     private void setupTable(){
 
         List<Property> getPropertyList = databaseHandler.propertyList();
+
+        propertyTableView.getItems().clear();
 
         for (int i = 0; i < getPropertyList.size(); i++) {
             propertyTableView.getItems().addAll(getPropertyList.get(i));
