@@ -148,7 +148,7 @@
                                 </image>
                             </ImageView>
                             <Label fx:id="userName4" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
-                            <Button fx:id="Unit List" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#goToUnitList" prefHeight="24.0" prefWidth="140.0" text="Send Request" />
+                            <Button fx:id="UnitList" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#goToUnitList" prefHeight="24.0" prefWidth="140.0" text="Send Request" />
                         </children>
                     </AnchorPane>
                 </left>
