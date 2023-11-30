@@ -1,5 +1,6 @@
 package com.controllers.unit;
 
+import com.controllers.homepages.managerController;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.MaintenanceRequest;
@@ -235,13 +236,12 @@ public class unitController implements Initializable {
     }
 
     public void goBack(ActionEvent event) throws IOException {
-        URL url = getClass().getResource("/com/pages/unit/unitListPage.fxml");
+        URL url = getClass().getResource("/com/pages/homepages/managerPage.fxml");
         System.out.println(url.toString());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
-        unitListController unitListViewController = loader.getController();
-        System.out.println("Passing propertyID: "+ currentUnit.getPropertyID());
-        unitListViewController.initializeValues(primaryStage, userID, currentUnit.getPropertyID());
+        managerController mcController = loader.getController();
+        mcController.initialize(primaryStage, userID);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

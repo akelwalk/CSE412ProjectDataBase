@@ -2,6 +2,8 @@ package com.controllers.homepages;
 
 import com.controllers.loginregister.loginController;
 import com.controllers.property.managerPropertyController;
+import com.controllers.unit.unitController;
+import com.controllers.unit.unitCustomerController;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.*;
@@ -60,7 +62,9 @@ public class managerController {
     @FXML
     private Label address;
     @FXML
-    private Label amenities; 
+    private Label amenities;
+
+    //Units Table Stuff
 
     @FXML
     private TableView<Unit> unitTableView;
@@ -79,6 +83,36 @@ public class managerController {
 
     @FXML
     private TableColumn<Unit, Boolean> isRentedCol;
+
+    private Button unitButton1;
+
+
+
+    @FXML
+    void rowClickedUnit(MouseEvent event) {
+        Unit clickedUnit = unitTableView.getSelectionModel().getSelectedItem();
+        selectedUnitID = clickedUnit.getUnitID();
+        System.out.println("selected UnitID: " + clickedUnit);
+    }
+
+    @FXML
+    private void goToUnit() throws IOException {
+        if (selectedUnitID != -1)
+        {
+            URL url = getClass().getResource("/com/pages/unit/unitPage.fxml");
+            System.out.println(url.toString());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+            unitController unit = loader.getController();
+            database_controller dbController = new database_controller();;
+            int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
+
+            unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), property_id, selectedUnitID);
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        }
+    }
 
     //Tenants Page Stuff
 
@@ -324,6 +358,9 @@ public class managerController {
 
     }
 
+    //Units Page Stuff
+
+
 
 
 
@@ -393,12 +430,6 @@ public class managerController {
 
     }
 
-    @FXML
-    void rowClicked(MouseEvent event) {
-        Unit clickedUnit = unitTableView.getSelectionModel().getSelectedItem();
-        selectedUnitID = clickedUnit.getUnitID();
-        System.out.println("selected UnitID: " + clickedUnit);
-    }
 
     public void userLogOut(ActionEvent event) throws IOException {
         UserSession.cleanUserSession();
