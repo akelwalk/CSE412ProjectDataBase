@@ -1170,13 +1170,16 @@ public class database_controller implements IDatabaseOperations {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
+        String toAdd = "'{" +message + "}'";
+        System.out.println("STarting addAnnoucements DATABASE CONTROLLER!");
+
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL);
 
-            String addAnnouncement = "UPDATE Property SET communityannouncements = '{?}'|| communityannouncements WHERE PROPERTYID = ?";
+            String addAnnouncement = "UPDATE Property SET communityannouncements = ?|| communityannouncements WHERE PROPERTYID = ?";
             stmt = conn.prepareStatement(addAnnouncement);
-            stmt.setString(1, message);
+            stmt.setString(1, toAdd);
             stmt.setInt(2, propertyID);
 
             System.out.println("Added announcement: ");

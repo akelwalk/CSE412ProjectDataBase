@@ -211,7 +211,7 @@
                                  </image>
                               </ImageView>
                               <Label fx:id="user_name5" layoutX="14.0" layoutY="77.0" text="username" textFill="#f2f2f2" />
-                              <Button fx:id="newAnnounceButton" layoutX="10.0" layoutY="109.0" mnemonicParsing="false" onAction="#newAnnounce" prefHeight="25.0" prefWidth="58.0" text="New" />
+                              <Button fx:id="newAnnounceButton" layoutX="10.0" layoutY="109.0" mnemonicParsing="false" onAction="#newAnnounce" prefHeight="25.0" prefWidth="58.0" text="New Announcement" />
                               <Button fx:id="delAnnounceButton" layoutX="10.0" layoutY="141.0" mnemonicParsing="false" onAction="#delAnnounce" prefHeight="25.0" prefWidth="58.0" text="Delete" />
                            </children>
                         </AnchorPane>
