@@ -1,6 +1,7 @@
 package com.controllers.unit;
 
 import com.controllers.homepages.managerController;
+import com.controllers.sessions.UserSession;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
 import com.models.MaintenanceRequest;
@@ -139,6 +140,32 @@ public class unitController implements Initializable {
     @FXML
     private Button resetButton;
 
+    private boolean selectedRent;
+    private boolean selectedFurnished;
+
+
+    @FXML
+    void saveEdit(ActionEvent event) throws IOException {
+
+    boolean newFurnished = selectedFurnished;
+    boolean newRent = selectedRent;
+
+    double newAmount = Double.valueOf(rentField.getText());
+
+    String newFloorplan = floorplanField.getText();
+    String newCondition = conditionField.getText();
+
+    System.out.println("New values: :" + newFurnished + "," + newRent + ", " + newAmount +", " + newFloorplan +", " + newCondition);
+
+        }
+
+    @FXML
+    void resetEdit(ActionEvent event) throws IOException {
+            initializeEdit();
+           }
+
+
+
 
 
     public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
@@ -228,10 +255,82 @@ public class unitController implements Initializable {
         rentDueLabel.setText(String.valueOf(currentUnit.getRentDue()));
         rentPaidLabel.setText(String.valueOf(currentUnit.isRentPaid()));
 
-        //
+        //Edit Tab
+
+        isFurnishedCombo.setOnAction((event) -> {
+            int selectedIndex = isFurnishedCombo.getSelectionModel().getSelectedIndex();
+            Object selectedItem = isFurnishedCombo.getSelectionModel().getSelectedItem();
+
+            String selected = (String) selectedItem;
+
+            if (selected == "True")
+            {
+                selectedFurnished = true;
+            }
+            else if (selected == "False")
+            {
+                selectedFurnished = false;
+            }
+            else {
+                selectedFurnished = isFurnished;
+            }
+        });
+
+        rentCombo.setOnAction((event) -> {
+            int selectedIndex = rentCombo.getSelectionModel().getSelectedIndex();
+            Object selectedItem = rentCombo.getSelectionModel().getSelectedItem();
+
+            String selected = (String) selectedItem;
+
+            if (selected == "True")
+            {
+                selectedRent = true;
+            }
+            else if (selected == "False")
+            {
+                selectedRent = false;
+            }
+            else {
+                selectedRent = rentPaid;
+            }
+        });
+
+        initializeEdit();
 
 
 
+
+
+    }
+
+    public void initializeEdit()
+    {
+        floorplanField.setText(floorplan);
+        conditionField.setText(condition);
+        rentField.setText(Double.toString(rentAmount));
+
+        isFurnishedCombo.getItems().addAll("True", "False");
+        rentCombo.getItems().addAll("True", "False");
+
+        if (isFurnished)
+        {
+            isFurnishedCombo.getSelectionModel().select(0);
+            selectedFurnished = true;
+        }
+        else {
+            isFurnishedCombo.getSelectionModel().select(1);
+            selectedFurnished = false;
+        }
+
+        if (rentPaid)
+        {
+            rentCombo.getSelectionModel().select(0);
+            selectedRent = true;
+        }
+        else {
+            rentCombo.getSelectionModel().select(1);
+            selectedRent = false;
+        }
 
     }
 
