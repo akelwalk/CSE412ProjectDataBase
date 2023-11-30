@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -88,6 +90,7 @@
                         <Label fx:id="tenantLastName" layoutX="262.0" layoutY="94.0" text="Last name" textFill="WHITE" />
                         <Label fx:id="tenantEmail" layoutX="262.0" layoutY="127.0" text="Email" textFill="WHITE" />
                         <Label fx:id="tenantPhoneNumber" layoutX="262.0" layoutY="160.0" text="Phone Number" textFill="WHITE" />
+                        <Button fx:id="terminateButton" layoutX="107.0" layoutY="245.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="131.0" text="Terminate Lease" />
                      </children>
                         </AnchorPane>
                     </center>
@@ -144,6 +147,7 @@
                              </ImageView>
                              <Label fx:id="user_name5" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
                              <Button fx:id="homeButton3" layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="84.0" text="Home" />
+                        <Button fx:id="homeButton31" layoutX="10.0" layoutY="153.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="84.0" text="Resolve" />
 
                          </children>
                      </AnchorPane>
@@ -170,6 +174,48 @@
 
          </content>
         </Tab>
+      <Tab text="Edit">
+         <content>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+               <left>
+                  <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="https://i.imgur.com/xCvzudWb.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="user_nameEdit" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                        <Button fx:id="homeButtonEdit" layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="84.0" text="Home" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Unit" wrappingWidth="461.75390625">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                        <Label layoutX="43.0" layoutY="92.0" text="Floorplan" textFill="WHITE" />
+                        <Label layoutX="43.0" layoutY="120.0" text="Condition" textFill="WHITE" />
+                        <Label layoutX="42.0" layoutY="153.0" text="isFurnished" textFill="WHITE" />
+                        <Label layoutX="38.0" layoutY="192.0" text="rentAmount" textFill="WHITE" />
+                        <Label layoutX="41.0" layoutY="228.0" text="rentPaid" textFill="WHITE" />
+                        <TextField fx:id="floorplanField" layoutX="133.0" layoutY="88.0" prefHeight="9.0" prefWidth="160.0" />
+                        <TextField fx:id="conditionField" layoutX="133.0" layoutY="124.0" />
+                        <ComboBox fx:id="isFurnishedCombo" layoutX="133.0" layoutY="158.0" prefWidth="150.0" />
+                        <TextField fx:id="rentField" layoutX="133.0" layoutY="188.0" />
+                        <ComboBox fx:id="rentCombo" layoutX="133.0" layoutY="224.0" prefWidth="150.0" />
+                        <Button fx:id="saveButton" layoutX="78.0" layoutY="296.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="112.0" text="Save changes" />
+                        <Button fx:id="resetButton" layoutX="251.0" layoutY="296.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="84.0" text="Reset" />
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </content>
+      </Tab>
     </tabs>
 
 </TabPane>

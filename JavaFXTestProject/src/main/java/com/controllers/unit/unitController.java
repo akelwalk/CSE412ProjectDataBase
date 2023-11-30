@@ -12,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -119,6 +116,13 @@ public class unitController implements Initializable {
     @FXML
     private TableColumn<MaintenanceRequest, Date> timestampCol;
 
+    //Edit Tab
+
+    @FXML
+    TextField floorplanField;
+
+
+
     public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
     {
 
@@ -205,6 +209,8 @@ public class unitController implements Initializable {
         rentAmountLabel.setText(String.valueOf(currentUnit.getRentAmount()));
         rentDueLabel.setText(String.valueOf(currentUnit.getRentDue()));
         rentPaidLabel.setText(String.valueOf(currentUnit.isRentPaid()));
+
+        //
 
 
 
