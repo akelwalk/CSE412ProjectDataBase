@@ -140,6 +140,9 @@ public class managerController {
     private Button unitButtonTenants;
 
     @FXML
+    private Button terminateButton;
+
+    @FXML
     void rowClickedTenants(MouseEvent event) {
         selectedTenant = tenantsTableView.getSelectionModel().getSelectedItem();
         System.out.println(selectedTenant);
@@ -161,6 +164,17 @@ public class managerController {
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
 
+        }
+    }
+
+    @FXML
+    void terminateTenant(ActionEvent event) throws IOException {
+        if (selectedTenant != null) {
+            System.out.println("selected Lease: " + selectedTenant);
+            database_controller dbController = new database_controller();
+            String registrationResult = dbController.cancelLeaseRequest(selectedTenant.getUserID());
+            System.out.println(registrationResult);
+                initialize(primaryStage, UserSession.getInstance().getUserID());
         }
     }
 
@@ -211,8 +225,8 @@ public class managerController {
             System.out.println("selected Lease: " + selectedLease.getUserID());
 
             if (checkAcceptLease()) {
-                initialize(primaryStage, UserSession.getInstance().getUserID());
             }
+            initialize(primaryStage, UserSession.getInstance().getUserID());
 
         }
     }
@@ -233,8 +247,8 @@ public class managerController {
 
             if (checkReject())
             {
-                initialize(primaryStage, UserSession.getInstance().getUserID());
             }
+            initialize(primaryStage, UserSession.getInstance().getUserID());
         }    }
 
     public boolean checkReject()

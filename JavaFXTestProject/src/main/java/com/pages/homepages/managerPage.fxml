@@ -132,6 +132,7 @@
                                       </ImageView>
                                       <Label fx:id="user_name4" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
                                       <Button fx:id="unitButtonTenants" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#goToUnitTenants" prefHeight="24.0" prefWidth="140.0" text="Visit Unit" />
+                              <Button fx:id="terminateButton" layoutX="12.0" layoutY="150.0" mnemonicParsing="false" onAction="#terminateTenant" prefHeight="24.0" prefWidth="140.0" text="Terminate Lease" />
 
                                   </children>
                               </AnchorPane>
@@ -139,7 +140,7 @@
                           <center>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                                   <children>
-                                      <TableView fx:id="tenantsTableView" onMouseClicked="#rowClickedTenants" layoutX="16.0" layoutY="94.0" prefHeight="184.0" prefWidth="441.0">
+                                      <TableView fx:id="tenantsTableView" layoutX="16.0" layoutY="94.0" onMouseClicked="#rowClickedTenants" prefHeight="184.0" prefWidth="441.0">
                                           <columns>
                                               <TableColumn fx:id="unitIDColTenant" prefWidth="60.0" text="UnitID" />
                                               <TableColumn fx:id="firstNameColTenant" text="First Name" />
