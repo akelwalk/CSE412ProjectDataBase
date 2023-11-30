@@ -350,7 +350,7 @@ public class customerController {
 
         unitIDText.setText(String.valueOf(currentUnit.getUnitID()));
         propertyIDText.setText(String.valueOf(currentUnit.getPropertyID()));
-        floorplanText.setText(String.valueOf(currentUnit.getFloorPlan()));
+        floorplanText.setText(String.valueOf(currentUnit.getFloorplan()));
         conditionText.setText(String.valueOf(currentUnit.getCondition()));
         isFurnishedText.setText(String.valueOf(currentUnit.isFurnished()));
         isRentedText.setText(String.valueOf(currentUnit.isRented()));

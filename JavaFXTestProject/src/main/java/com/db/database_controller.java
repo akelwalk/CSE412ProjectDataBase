@@ -1255,7 +1255,7 @@ public class database_controller implements IDatabaseOperations {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL);
 
-            String addAnnouncement = "UPDATE UNIT SET floorplan = ?, condition = ?, isFurnished = ?, rentAmount = ?, rentPaid = ? WHERE UNITID =? AND PROPERTYID = ?"
+            String addAnnouncement = "UPDATE UNIT SET floorplan = ?, condition = ?, isFurnished = ?, rentAmount = ?, rentPaid = ? WHERE UNITID =? AND PROPERTYID = ?";
             stmt = conn.prepareStatement(addAnnouncement);
 
             stmt.setString(1, floorplan);

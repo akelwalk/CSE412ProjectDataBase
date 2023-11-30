@@ -66,7 +66,7 @@ public class Unit {
         this.rentAmount = rentAmount;
     }
 
-    public String getFloorPlan() {
+    public String getFloorplan() {
         return floorplan;
     }
 

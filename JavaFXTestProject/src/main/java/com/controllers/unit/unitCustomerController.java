@@ -173,7 +173,7 @@ public class unitCustomerController implements Initializable {
         this.unitID = currentUnit.getUnitID();
         this.isFurnished = currentUnit.isFurnished();
         this.rentAmount = currentUnit.getRentAmount();
-        this.floorplan = currentUnit.getFloorPlan();
+        this.floorplan = currentUnit.getFloorplan();
         this.condition = currentUnit.getCondition();
         this.isRented = currentUnit.isRented();
         this.appliances = currentUnit.getAppliances();
