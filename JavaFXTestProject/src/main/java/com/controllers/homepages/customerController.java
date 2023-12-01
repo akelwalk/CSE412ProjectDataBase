@@ -553,7 +553,19 @@ public class customerController {
         propertyTableView.getItems().clear();
 
         for (int i = 0; i < getPropertyList.size(); i++) {
-            propertyTableView.getItems().addAll(getPropertyList.get(i));
+            if (leaseStatus != "none")
+            {
+                if (getPropertyList.get(i).getPropertyID() != currentCustomer.getPropertyID())
+                {
+                    propertyTableView.getItems().addAll(getPropertyList.get(i));
+                }
+                else {
+
+                }
+            }
+            else {
+                propertyTableView.getItems().addAll(getPropertyList.get(i));
+            }
         }
     }
 
