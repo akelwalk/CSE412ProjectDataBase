@@ -471,7 +471,7 @@ public class unitController implements Initializable {
 
             for (int i = 0; i < getCustomerList.size(); i++)
             {
-                if (getCustomerList.get(i).getUserID() == UserSession.getInstance().getUserID())
+                if (getCustomerList.get(i).getUserID() == currentUnit.getUserID())
                 {
                     currentCustomer = getCustomerList.get(i);
                     System.out.println("Current customer FOUND! ->" + getCustomerList.get(i).getUnitID());
