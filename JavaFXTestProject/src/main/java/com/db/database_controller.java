@@ -1290,5 +1290,41 @@ public class database_controller implements IDatabaseOperations {
         }
     }
 
+    // Get User ID for given email
+    public int getFreeUnits(int propertyID) {
+        int freeUnits = 0;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String sql = "SELECT COUNT(DISTINCT UNITID) FROM UNIT WHERE PROPERTYID = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, propertyID);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                freeUnits = rs.getInt("count");
+            }
+
+            return freeUnits;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+        return freeUnits;
+    }
+
 
 }

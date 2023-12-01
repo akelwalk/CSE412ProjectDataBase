@@ -1,5 +1,7 @@
 package com.models;
 
+import com.db.database_controller;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +12,8 @@ public class Property {
     private String address;
     private String name;
     private List<String> communityAnnouncements;
+
+    private int freeUnits;
 
     public Property(String[] amenities, int propertyID, String address, String name, String[] communityAnnouncements)
     {
@@ -29,6 +33,10 @@ public class Property {
         for (int i = 0 ; i < communityAnnouncements.length; i++) {
             this.communityAnnouncements.add(communityAnnouncements[i]);
         }
+
+        database_controller dbController = new database_controller();
+        this.freeUnits = dbController.getFreeUnits(propertyID);
+
 
 
     }
@@ -55,6 +63,14 @@ public class Property {
     public List<String> getCommunityAnnouncements ()
     {
     return this.communityAnnouncements;
+    }
+
+    public int getFreeUnits() {
+        return freeUnits;
+    }
+
+    public void setFreeUnits(int freeUnits) {
+        this.freeUnits = freeUnits;
     }
 
     @Override
