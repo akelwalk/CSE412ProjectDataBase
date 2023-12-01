@@ -119,7 +119,8 @@ public class unitListController {
 
     public void goBack(ActionEvent event) throws IOException {
 
-        if (leaseStatus == "approved") {
+        System.out.println(leaseStatus);
+        if (currentCustomer.getPropertyID() == currPropertyID) {
             URL url = getClass().getResource("/com/pages/homepages/customerPage.fxml");
             System.out.println(url.toString());
             FXMLLoader loader = new FXMLLoader(url);
@@ -186,9 +187,6 @@ public class unitListController {
         System.out.println("Current Unit ID: " + currentCustomer.getUnitID());
 
         leaseStatus ="Error";
-
-
-        //Check if the customer does not have any lease requests
 
 
         if (currentCustomer.getPropertyID() == currPropertyID)
