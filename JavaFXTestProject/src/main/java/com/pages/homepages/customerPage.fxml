@@ -18,7 +18,7 @@
     <tabs>
     <Tab fx:id="homeTab" text="Home">
     <content>
-    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
         <left>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="152.0" BorderPane.alignment="CENTER">
                 <children>
@@ -53,7 +53,7 @@
     </Tab>
       <Tab fx:id="viewPropertiesTab" text="View Properties">
         <content>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
                 <left>
                     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
                         <children>
@@ -98,7 +98,7 @@
       </Tab>
       <Tab fx:id="myUnitTab" text="My Unit">
          <content>
-             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                  <left>
                      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="108.0" BorderPane.alignment="CENTER">
                          <children>
@@ -140,7 +140,7 @@
       </Tab>
       <Tab fx:id="myPropertyTab" text="My Property">
         <content>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
                 <left>
                     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="152.0" BorderPane.alignment="CENTER">
                         <children>
@@ -179,7 +179,7 @@
       </Tab>
       <Tab fx:id="maintenanceTab" text="Maintenance">
         <content>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                 <left>
                     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="119.0" BorderPane.alignment="CENTER">
                         <children>
@@ -219,7 +219,7 @@
       </Tab>
       <Tab fx:id="rentTab" text="Rent">
           <content>
-              <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+              <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                   <left>
                       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="124.0" BorderPane.alignment="CENTER">
                           <children>
@@ -237,9 +237,9 @@
                   <center>
                       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                           <children>
-                              <Label fx:id="rentAmountLabel" layoutX="41.0" layoutY="76.0" prefWidth="74.0" text="Rent Amount" textFill="WHITE" />
-                              <Label fx:id="rentDueLabel" layoutX="43.0" layoutY="118.0" text="Rent Due" textFill="WHITE" />
-                              <Label fx:id="rentPaidLabel" layoutX="43.0" layoutY="162.0" text="rentPaid" textFill="WHITE" />
+                              <Label fx:id="rentAmountLabel" layoutX="43.0" layoutY="77.0" prefHeight="17.0" prefWidth="365.0" text="Rent Amount" textFill="WHITE" />
+                              <Label fx:id="rentDueLabel" layoutX="43.0" layoutY="118.0" prefHeight="17.0" prefWidth="369.0" text="Rent Due" textFill="WHITE" />
+                              <Label fx:id="rentPaidLabel" layoutX="43.0" layoutY="162.0" prefHeight="17.0" prefWidth="401.0" text="rentPaid" textFill="WHITE" />
                           </children>
                       </AnchorPane>
                   </center>
@@ -250,7 +250,7 @@
       </Tab>
         <Tab fx:id="leaseTab" text="Lease Details">
             <content>
-                <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                     <left>
                         <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
                             <children>
@@ -266,12 +266,12 @@
                     <center>
                         <AnchorPane fx:id="payRentButton1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
-                                <Label fx:id="leasePaymentLabel" layoutX="56.0" layoutY="55.0" text="Payment Type" textFill="WHITE" />
-                                <Label fx:id="leaseStartLabel" layoutX="56.0" layoutY="97.0" text="Lease Start" textFill="WHITE" />
-                                <Label fx:id="leaseEndLabel" layoutX="56.0" layoutY="141.0" text="rentPaid" textFill="WHITE" />
-                                <Button fx:id="viewLeaseUnit" layoutX="135.0" layoutY="237.0" mnemonicParsing="false" text="Visit Unit" />
-                        <Label fx:id="leaseApprovedLabel" layoutX="56.0" layoutY="183.0" text="rentPaid" textFill="WHITE" />
-                        <Button fx:id="cancelLeaseButton" layoutX="246.0" layoutY="237.0" mnemonicParsing="false" onAction="#cancelLease" text="cancelLease" />
+                                <Label fx:id="leasePaymentLabel" layoutX="56.0" layoutY="55.0" prefHeight="17.0" prefWidth="350.0" text="Payment Type" textFill="WHITE" />
+                                <Label fx:id="leaseStartLabel" layoutX="56.0" layoutY="97.0" prefHeight="17.0" prefWidth="366.0" text="Lease Start" textFill="WHITE" />
+                                <Label fx:id="leaseEndLabel" layoutX="56.0" layoutY="141.0" prefHeight="17.0" prefWidth="374.0" text="rentPaid" textFill="WHITE" />
+                                <Button fx:id="viewLeaseUnit" layoutX="56.0" layoutY="237.0" mnemonicParsing="false" text="Visit Unit" />
+                        <Label fx:id="leaseApprovedLabel" layoutX="56.0" layoutY="183.0" prefHeight="17.0" prefWidth="377.0" text="rentPaid" textFill="WHITE" />
+                        <Button fx:id="cancelLeaseButton" layoutX="192.0" layoutY="237.0" mnemonicParsing="false" onAction="#cancelLease" text="cancelLease" />
                             </children>
                         </AnchorPane>
                     </center>
@@ -282,7 +282,7 @@
         </Tab>
       <Tab fx:id="announcementsTab" text="Announcements">
           <content>
-                      <BorderPane prefHeight="371.0" prefWidth="600.0" style="-fx-background-color: #171717;">
+                      <BorderPane prefHeight="371.0" prefWidth="600.0">
                           <left>
                               <AnchorPane prefHeight="371.0" prefWidth="136.0" BorderPane.alignment="CENTER">
                                   <children>

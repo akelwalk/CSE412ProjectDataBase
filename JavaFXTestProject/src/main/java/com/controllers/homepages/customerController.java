@@ -68,7 +68,21 @@ public class customerController {
 
 
     @FXML
-    private Label user_name; 
+    private Label userName1; 
+    @FXML
+    private Label userName2; 
+    @FXML
+    private Label userName3; 
+    @FXML
+    private Label userName4; 
+    @FXML
+    private Label userName5; 
+    @FXML
+    private Label userName6; 
+    @FXML
+    private Label userName7; 
+    @FXML
+    private Label userName8; 
 
     IDatabaseOperations databaseHandler = database_controller.getInstance();
 
@@ -200,8 +214,6 @@ public class customerController {
 
     //Announcements Tab Stuff:
 
-    @FXML
-    private Label user_name5;
 
     @FXML
     private Button newAnnounce;
@@ -224,7 +236,14 @@ public class customerController {
         try {
             String usr = UserSession.getInstance().getEmail();
             database_controller dbController = database_controller.getInstance(); 
-            user_name.setText(dbController.getName(usr));
+            userName1.setText(dbController.getName(usr));
+            userName2.setText(dbController.getName(usr));
+            userName3.setText(dbController.getName(usr));
+            userName4.setText(dbController.getName(usr));
+            userName5.setText(dbController.getName(usr));
+            userName6.setText(dbController.getName(usr));
+            userName7.setText(dbController.getName(usr));
+            userName8.setText(dbController.getName(usr));
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");
@@ -458,9 +477,18 @@ public class customerController {
 
     private void initializeRent()
     {
-        rentAmountLabel.setText(String.valueOf(currentUnit.getRentAmount()));
-        rentDueLabel.setText(String.valueOf(currentUnit.getRentDue()));
-        rentPaidLabel.setText(String.valueOf(currentUnit.isRentPaid()));
+        rentAmountLabel.setText("Rent Amount: $" + String.valueOf(currentUnit.getRentAmount()));
+        rentDueLabel.setText("Rent Due:    " + String.valueOf(currentUnit.getRentDue()));
+        String rentStatus = "";
+        if (String.valueOf(currentUnit.isRentPaid()).toLowerCase().equals("true")) 
+        {
+            rentStatus = "Paid";
+        }
+        else 
+        {
+            rentStatus = "Due";
+        }
+        rentPaidLabel.setText("Rent Status: " + rentStatus);
 
         if (currentUnit.isRentPaid())
         {
@@ -495,10 +523,20 @@ public class customerController {
     private void initializeLease()
     {
 
-        leasePaymentLabel.setText(String.valueOf(currentCustomer.getPaymentType()));
-        leaseStartLabel.setText(String.valueOf(currentCustomer.getLeaseStart()));
-        leaseEndLabel.setText(String.valueOf(currentCustomer.getLeaseEnd()));
-        leaseApprovedLabel.setText(String.valueOf(currentCustomer.isApproved()));
+        leasePaymentLabel.setText("Payment Type: " + String.valueOf(currentCustomer.getPaymentType()));
+        leaseStartLabel.setText("Lease Start:  " + String.valueOf(currentCustomer.getLeaseStart()));
+        leaseEndLabel.setText("Lease End:    " + String.valueOf(currentCustomer.getLeaseEnd()));
+
+        String leaseStatus = "";
+        if (String.valueOf(currentCustomer.isApproved()).toLowerCase().equals("true"))
+        {
+            leaseStatus = "Current";
+        }
+        else 
+        {
+            leaseStatus = "Expired";
+        }
+        leaseApprovedLabel.setText("Lease Status: " + leaseStatus);
 
         if (currentCustomer.isApproved() == true)
         {
