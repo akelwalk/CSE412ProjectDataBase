@@ -482,8 +482,9 @@ public class unitController implements Initializable {
             this.leaseStart = currentCustomer.getLeaseStart();
             this.leaseEnd = currentCustomer.getLeaseEnd();
 
-            leaseStartLabel.setText(leaseStart.toString());
-            leaseEndLabel.setText(leaseEnd.toString());
+        leaseStartLabel.setText(String.valueOf(currentCustomer.getLeaseStart()));
+        leaseEndLabel.setText(String.valueOf(currentCustomer.getLeaseEnd()));
+
 
 
 
