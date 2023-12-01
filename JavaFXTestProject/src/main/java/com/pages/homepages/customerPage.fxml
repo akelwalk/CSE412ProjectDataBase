@@ -14,13 +14,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.homepages.customerController">
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/managerPage.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.homepages.customerController">
     <tabs>
     <Tab fx:id="homeTab" text="Home">
     <content>
     <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
         <left>
-            <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="152.0" BorderPane.alignment="CENTER">
                 <children>
                     <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -28,24 +28,23 @@
                         </image>
                     </ImageView>
                     <Label fx:id="userName1" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+            <Button fx:id="logout" layoutX="14.0" layoutY="301.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="22.0" prefWidth="82.0" style="-fx-background-color: #FFC900;" text="Log Out">
+                <font>
+                    <Font size="27.0" />
+                </font>
+            </Button>
                 </children>
             </AnchorPane>
         </left>
 
         <center>
-    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="426.0" BorderPane.alignment="CENTER">
         <children>
-            <ImageView fitHeight="177.0" fitWidth="248.0" layoutX="231.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="https://i.imgur.com/HSxmAVC.png" />
                 </image>
             </ImageView>
-            <Button fx:id="logout" layoutX="233.0" layoutY="299.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Log Out">
-                <font>
-                    <Font size="27.0" />
-                </font>
-            </Button>
-            <Label fx:id="user_name" layoutX="233.0" layoutY="241.0" prefHeight="30.0" prefWidth="108.0" text="Username" textFill="WHITE" />
         </children>
     </AnchorPane>
 </center>
@@ -56,7 +55,7 @@
         <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
                 <left>
-                    <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
                         <children>
                             <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -68,14 +67,14 @@
                     </AnchorPane>
                 </left>
                 <center>
-                    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="504.0" BorderPane.alignment="CENTER">
                         <children>
-                            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Properties" wrappingWidth="461.75390625">
+                            <Text fill="WHITE" layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Properties" wrappingWidth="461.75390625">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
                             </Text>
-                            <TableView fx:id="propertyTableView" layoutX="63.0" layoutY="75.0" onMouseClicked="#rowClickedProperty" prefHeight="200.0" prefWidth="462.0">
+                            <TableView fx:id="propertyTableView" layoutX="14.0" layoutY="76.0" onMouseClicked="#rowClickedProperty" prefHeight="200.0" prefWidth="462.0">
                                 <columns>
                                     <TableColumn fx:id="propertyIDCol" prefWidth="75.0" text="propertyID" />
                                     <TableColumn fx:id="nameCol" prefWidth="75.0" text="name" />
@@ -83,8 +82,11 @@
                                     <TableColumn fx:id="amenitiesCol" prefWidth="75.0" text="amenities" />
                                     <TableColumn fx:id="freeUnitsCol" prefWidth="75.0" text="freeUnits" />
                                 </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                             </TableView>
-                            <Button fx:id="viewPropertyPage" layoutX="233.0" layoutY="297.0" mnemonicParsing="false" onAction="#goToPropertyPage" prefHeight="51.0" prefWidth="231.0" style="-fx-background-color: #FFC900;" text="viewProperty">
+                            <Button fx:id="viewPropertyPage" layoutX="14.0" layoutY="299.0" mnemonicParsing="false" onAction="#goToPropertyPage" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #FFC900;" text="viewProperty">
                                 <font>
                                     <Font size="27.0" />
                                 </font>
@@ -98,7 +100,7 @@
          <content>
              <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
                  <left>
-                     <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="108.0" BorderPane.alignment="CENTER">
                          <children>
                              <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -110,25 +112,25 @@
                      </AnchorPane>
                  </left>
                  <center>
-                     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                          <children>
-                             <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Page" wrappingWidth="461.75390625">
+                             <Text fill="WHITE" layoutX="53.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Information" wrappingWidth="461.75390625">
                                  <font>
                                      <Font size="30.0" />
                                  </font>
                              </Text>
-                             <Label layoutX="59.0" layoutY="101.0" text="Unit ID" textFill="WHITE" />
-                             <Text fx:id="unitIDText" fill="WHITE" layoutX="154.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-                             <Label layoutX="58.0" layoutY="127.0" text="floorplan" textFill="WHITE" />
-                             <Text fx:id="floorplanText" fill="WHITE" layoutX="153.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-                             <Label layoutX="58.0" layoutY="154.0" text="condition" textFill="WHITE" />
-                             <Text fx:id="conditionText" fill="WHITE" layoutX="153.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-                             <Label layoutX="58.0" layoutY="183.0" text="isFurnished" textFill="WHITE" />
-                             <Text fx:id="isFurnishedText" fill="WHITE" layoutX="153.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="425.21630859375" />
-                             <Label layoutX="52.0" layoutY="212.0" text="isRented" textFill="WHITE" />
-                             <Text fx:id="isRentedText" fill="WHITE" layoutX="232.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="359.21630859375" />
-                             <Label layoutX="59.0" layoutY="68.0" prefHeight="26.0" prefWidth="37.0" text="Property ID" textFill="WHITE" />
-                             <Text fx:id="propertyIDText" fill="WHITE" layoutX="166.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+                             <Label layoutX="55.0" layoutY="101.0" prefHeight="17.0" prefWidth="349.0" text="Unit ID" textFill="WHITE" />
+                             <Text fx:id="unitIDText" fill="WHITE" layoutX="150.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+                             <Label layoutX="54.0" layoutY="127.0" prefHeight="17.0" prefWidth="366.0" text="floorplan" textFill="WHITE" />
+                             <Text fx:id="floorplanText" fill="WHITE" layoutX="149.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+                             <Label layoutX="54.0" layoutY="154.0" prefHeight="17.0" prefWidth="360.0" text="condition" textFill="WHITE" />
+                             <Text fx:id="conditionText" fill="WHITE" layoutX="149.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
+                             <Label layoutX="54.0" layoutY="183.0" prefHeight="17.0" prefWidth="371.0" text="isFurnished" textFill="WHITE" />
+                             <Text fx:id="isFurnishedText" fill="WHITE" layoutX="149.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="425.21630859375" />
+                             <Label layoutX="55.0" layoutY="212.0" prefHeight="17.0" prefWidth="366.0" text="isRented" textFill="WHITE" />
+                             <Text fx:id="isRentedText" fill="WHITE" layoutX="228.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="359.21630859375" />
+                             <Label layoutX="55.0" layoutY="68.0" prefHeight="26.0" prefWidth="380.0" text="Property ID" textFill="WHITE" />
+                             <Text fx:id="propertyIDText" fill="WHITE" layoutX="162.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
                          </children>
                      </AnchorPane>
                  </center>
@@ -140,7 +142,7 @@
         <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
                 <left>
-                    <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="152.0" BorderPane.alignment="CENTER">
                         <children>
                             <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -148,25 +150,25 @@
                                 </image>
                             </ImageView>
                             <Label fx:id="userName4" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
-                            <Button fx:id="UnitList" layoutX="7.0" layoutY="115.0" mnemonicParsing="false" onAction="#goToUnitList" prefHeight="24.0" prefWidth="140.0" text="View Units" />
+                            <Button fx:id="UnitList" layoutX="14.0" layoutY="120.0" mnemonicParsing="false" onAction="#goToUnitList" prefHeight="12.0" prefWidth="75.0" text="View Units" />
                         </children>
                     </AnchorPane>
                 </left>
                 <center>
-                    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="540.0" BorderPane.alignment="CENTER">
                         <children>
-                            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Property Page" wrappingWidth="461.75390625">
+                            <Text fill="WHITE" layoutX="58.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Property Page" wrappingWidth="461.75390625">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
                             </Text>
-                            <Label layoutX="59.0" layoutY="101.0" text="Property ID" textFill="WHITE" />
+                            <Label layoutX="59.0" layoutY="78.0" prefHeight="17.0" prefWidth="307.0" text="Property ID" textFill="WHITE" />
                             <Text fx:id="propertyIDText1" fill="WHITE" layoutX="154.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-                            <Label layoutX="58.0" layoutY="127.0" text="Name" textFill="WHITE" />
+                            <Label layoutX="58.0" layoutY="104.0" prefHeight="17.0" prefWidth="307.0" text="Name" textFill="WHITE" />
                             <Text fx:id="nameText" fill="WHITE" layoutX="153.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-                            <Label layoutX="58.0" layoutY="154.0" text="Address" textFill="WHITE" />
+                            <Label layoutX="58.0" layoutY="131.0" prefHeight="17.0" prefWidth="331.0" text="Address" textFill="WHITE" />
                             <Text fx:id="addressText" fill="WHITE" layoutX="153.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-                            <Label layoutX="58.0" layoutY="183.0" text="Amenities" textFill="WHITE" />
+                            <Label layoutX="58.0" layoutY="160.0" prefHeight="17.0" prefWidth="335.0" text="Amenities" textFill="WHITE" />
                             <Text fx:id="amenitiesText" fill="WHITE" layoutX="153.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="425.21630859375" />
                             <Text fx:id="communityAnnouncementsText" fill="WHITE" layoutX="232.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="359.21630859375" />
                         </children>
@@ -179,7 +181,7 @@
         <content>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
                 <left>
-                    <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="119.0" BorderPane.alignment="CENTER">
                         <children>
                             <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -187,26 +189,29 @@
                                 </image>
                             </ImageView>
                             <Label fx:id="userName5" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
-                            <Button fx:id="createRequestButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#createMaintenanceRequest" prefHeight="24.0" prefWidth="140.0" text="Send Request" />
                         </children>
                     </AnchorPane>
                 </left>
                 <center>
 
-                    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                         <children>
-                            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance Requests" wrappingWidth="461.75390625">
+                            <Text fill="WHITE" layoutX="37.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance Requests" wrappingWidth="461.75390625">
                                 <font>
                                     <Font size="30.0" />
                                 </font>
                             </Text>
-                            <TableView fx:id="maintenanceRequestTableView" layoutX="37.0" layoutY="68.0" prefHeight="264.0" prefWidth="401.0">
+                            <TableView fx:id="maintenanceRequestTableView" layoutX="37.0" layoutY="68.0" prefHeight="222.0" prefWidth="401.0">
                                 <columns>
                                     <TableColumn fx:id="isDealtWithCol" prefWidth="83.0" text="isDealtWith" />
                                     <TableColumn fx:id="requestIDCol" prefWidth="92.0" text="requestID" />
                                     <TableColumn fx:id="timestampCol" prefWidth="89.0" text="timestamp" />
                                 </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                             </TableView>
+                            <Button fx:id="createRequestButton" layoutX="37.0" layoutY="310.0" mnemonicParsing="false" onAction="#createMaintenanceRequest" prefHeight="28.0" prefWidth="101.0" text="Send Request" />
                         </children>
                     </AnchorPane>
                 </center>
@@ -216,7 +221,7 @@
           <content>
               <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
                   <left>
-                      <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="124.0" BorderPane.alignment="CENTER">
                           <children>
                               <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
@@ -224,20 +229,17 @@
                                   </image>
                               </ImageView>
                               <Label fx:id="userName6" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
-                              <Button fx:id="payRentButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#payRent" prefHeight="24.0" prefWidth="140.0" text="Pay Rent" />
+                              <Button fx:id="payRentButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#payRent" prefHeight="19.0" prefWidth="82.0" text="Pay Rent" />
 
                           </children>
                       </AnchorPane>
                   </left>
                   <center>
-                      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                           <children>
-                              <Label layoutX="63.0" layoutY="55.0" text="Rent Amount" textFill="WHITE" />
-                              <Label fx:id="rentAmountLabel" layoutX="309.0" layoutY="55.0" text="Rent Amount" textFill="WHITE" />
-                              <Label layoutX="63.0" layoutY="97.0" text="Rent Due Date" textFill="WHITE" />
-                              <Label layoutX="63.0" layoutY="141.0" text="Rent Paid?" textFill="WHITE" />
-                              <Label fx:id="rentDueLabel" layoutX="309.0" layoutY="97.0" text="Rent Due" textFill="WHITE" />
-                              <Label fx:id="rentPaidLabel" layoutX="309.0" layoutY="141.0" text="rentPaid" textFill="WHITE" />
+                              <Label fx:id="rentAmountLabel" layoutX="41.0" layoutY="76.0" prefWidth="74.0" text="Rent Amount" textFill="WHITE" />
+                              <Label fx:id="rentDueLabel" layoutX="43.0" layoutY="118.0" text="Rent Due" textFill="WHITE" />
+                              <Label fx:id="rentPaidLabel" layoutX="43.0" layoutY="162.0" text="rentPaid" textFill="WHITE" />
                           </children>
                       </AnchorPane>
                   </center>
@@ -250,7 +252,7 @@
             <content>
                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;">
                     <left>
-                        <AnchorPane prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+                        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="128.0" BorderPane.alignment="CENTER">
                             <children>
                                 <ImageView fitHeight="48.0" fitWidth="51.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -262,17 +264,13 @@
                         </AnchorPane>
                     </left>
                     <center>
-                        <AnchorPane fx:id="payRentButton1" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <AnchorPane fx:id="payRentButton1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
-                                <Label layoutX="63.0" layoutY="55.0" text="Payment Type" textFill="WHITE" />
-                                <Label fx:id="leasePaymentLabel" layoutX="309.0" layoutY="55.0" text="Payment Type" textFill="WHITE" />
-                                <Label layoutX="63.0" layoutY="97.0" text="Lease Start" textFill="WHITE" />
-                                <Label layoutX="63.0" layoutY="141.0" text="Lease End" textFill="WHITE" />
-                                <Label fx:id="leaseStartLabel" layoutX="309.0" layoutY="97.0" text="Lease Start" textFill="WHITE" />
-                                <Label fx:id="leaseEndLabel" layoutX="309.0" layoutY="141.0" text="rentPaid" textFill="WHITE" />
+                                <Label fx:id="leasePaymentLabel" layoutX="56.0" layoutY="55.0" text="Payment Type" textFill="WHITE" />
+                                <Label fx:id="leaseStartLabel" layoutX="56.0" layoutY="97.0" text="Lease Start" textFill="WHITE" />
+                                <Label fx:id="leaseEndLabel" layoutX="56.0" layoutY="141.0" text="rentPaid" textFill="WHITE" />
                                 <Button fx:id="viewLeaseUnit" layoutX="135.0" layoutY="237.0" mnemonicParsing="false" text="Visit Unit" />
-                        <Label layoutX="63.0" layoutY="183.0" text="isApproved" textFill="WHITE" />
-                        <Label fx:id="leaseApprovedLabel" layoutX="309.0" layoutY="183.0" text="rentPaid" textFill="WHITE" />
+                        <Label fx:id="leaseApprovedLabel" layoutX="56.0" layoutY="183.0" text="rentPaid" textFill="WHITE" />
                         <Button fx:id="cancelLeaseButton" layoutX="246.0" layoutY="237.0" mnemonicParsing="false" onAction="#cancelLease" text="cancelLease" />
                             </children>
                         </AnchorPane>
