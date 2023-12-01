@@ -167,13 +167,15 @@ public class unitController implements Initializable {
 
     //Maintenance Tab
 
+    private MaintenanceRequest currentRequest;
+
     @FXML
     void resolveRequest(ActionEvent even) throws IOException{
         System.out.println("calling resolveRequests()");
         System.out.println("selected Maintenance: " );
 
         database_controller dbController = new database_controller();
-        String registrationResult = dbController.resolveRequest(selectedRequestID, currentUnit.getUnitID(), currentUnit.getPropertyID(),selectedMaintenance.getUserID()) ;
+        String registrationResult = dbController.resolveRequest(currentRequest.getRequestID(), currentRequest.getUnitID(), currentRequest.getPropertyID(),currentRequest.getUserID()) ;
         System.out.println(registrationResult);
         System.out.println("Success".equals(registrationResult));
 
@@ -458,9 +460,9 @@ public class unitController implements Initializable {
 
     @FXML
     void rowClicked(MouseEvent event) {
-        MaintenanceRequest clickedRequest = maintenanceRequestTableView.getSelectionModel().getSelectedItem();
-        selectedRequestID = clickedRequest.getUnitID();
-        System.out.println("selected UnitID: " + clickedRequest);
+        currentRequest = maintenanceRequestTableView.getSelectionModel().getSelectedItem();
+        selectedRequestID = currentRequest.getUnitID();
+        System.out.println("selected UnitID: " + currentRequest);
     }
 
 
