@@ -242,7 +242,7 @@ public class customerController {
         nameCol.setCellValueFactory(new PropertyValueFactory<Property, String>("name"));
         addressCol.setCellValueFactory(new PropertyValueFactory<Property, String>("address"));
         amenitiesCol.setCellValueFactory(new PropertyValueFactory<Property, String>("amenities"));
-        freeUnitsCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("free units"));
+        freeUnitsCol.setCellValueFactory(new PropertyValueFactory<Property, Integer>("freeUnits"));
         setupTable();
 
         //Remove these tabs if the user does not have unit.

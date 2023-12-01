@@ -1301,7 +1301,7 @@ public class database_controller implements IDatabaseOperations {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL);
 
-            String sql = "SELECT COUNT(DISTINCT UNITID) FROM UNIT WHERE PROPERTYID = ?";
+            String sql = "SELECT COUNT(DISTINCT UNITID) FROM UNIT WHERE PROPERTYID = ? AND isrented = false";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, propertyID);
 
