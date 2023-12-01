@@ -177,7 +177,7 @@ public class propertyController {
         Parent root = loader.load();
         customerController cController = loader.getController();
         cController.initialize(primaryStage, userID);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
     }
@@ -190,7 +190,7 @@ public class propertyController {
         unitListController unitListViewController = loader.getController();
         System.out.println("Passing propertyID: "+ currentProperty.getPropertyID());
         unitListViewController.initializeValues(primaryStage, userID, currentProperty.getPropertyID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 

@@ -71,7 +71,7 @@ public class managerPropertyController {
         Parent root = loader.load();
         managerController mc = loader.getController(); 
         mc.initialize(primaryStage, UserSession.getInstance().getUserID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
     }
 

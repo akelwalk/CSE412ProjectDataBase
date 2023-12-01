@@ -199,12 +199,20 @@ public class unitCustomerController implements Initializable {
 
         isFurnishedText.setText(String.valueOf(isFurnished));
 
-        isRentedText.setText(String.valueOf(isRented));
+
+        String rentStatus = "";
+        if (String.valueOf(isRented).toLowerCase().equals("true")) {
+            rentStatus = "Occupied";
+        }
+        else {
+            rentStatus = "Vacant";
+        }
+        isRentedText.setText(rentStatus);
 
 
         //Rent Tab:
 
-        rentAmountLabel.setText(String.valueOf(currentUnit.getRentAmount()));
+        rentAmountLabel.setText("$"+String.valueOf(currentUnit.getRentAmount()));
 
         if (isRented == true)
         {
@@ -245,7 +253,7 @@ public class unitCustomerController implements Initializable {
         unitListController unitListViewController = loader.getController();
         System.out.println("Passing propertyID: "+ currentUnit.getPropertyID());
         unitListViewController.initializeValues(primaryStage, userID, currentUnit.getPropertyID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 
@@ -258,7 +266,7 @@ public class unitCustomerController implements Initializable {
         Parent root = loader.load();
         customerController cController = loader.getController();
         cController.initialize(primaryStage, userID);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 
@@ -274,7 +282,7 @@ public class unitCustomerController implements Initializable {
             Parent root = loader.load();
             customerController cController = loader.getController();
             cController.initialize(primaryStage, userID);
-            primaryStage.setScene(new Scene(root));
+            primaryStage.setScene(new Scene(root,800,600));
             primaryStage.show();
         }
 

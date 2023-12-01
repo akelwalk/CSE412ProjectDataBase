@@ -106,7 +106,7 @@ public class propertyListController {
         Parent root = loader.load();
         customerController homepageCustomer = loader.getController();
         homepageCustomer.initialize(primaryStage, userID);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
     }
@@ -125,7 +125,7 @@ public class propertyListController {
         Parent root = loader.load();
         propertyController propertyViewController = loader.getController();
         propertyViewController.initialize(primaryStage, userID, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 

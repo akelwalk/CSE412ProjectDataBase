@@ -23,6 +23,7 @@ public class MainApplication extends Application {
 
 
 
+
         /*FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/resources/loginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 650 , 500);
         primaryStage.setTitle("Hello!");
@@ -36,7 +37,7 @@ public class MainApplication extends Application {
         Parent root = loader.load();
         loginController loginController = loader.getController();
         loginController.setStage(primaryStage);
-        Scene loginScene = new Scene(root);
+        Scene loginScene = new Scene(root,800,600);
         primaryStage.setScene(loginScene);
         primaryStage.show();
     }

@@ -63,7 +63,7 @@ public class registerController {
         Parent root = loader.load();
         loginController login = loader.getController();
         login.setStage(primaryStage);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
     }

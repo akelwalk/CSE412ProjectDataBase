@@ -75,7 +75,7 @@ public class loginController {
         Parent root = loader.load();
         registerController register = loader.getController();
         register.setStage(primaryStage);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
     }
@@ -98,7 +98,7 @@ public class loginController {
                     Parent root = loader.load();
                     managerController mcController = loader.getController();
                     mcController.initialize(primaryStage, userID);
-                    primaryStage.setScene(new Scene(root));
+                    primaryStage.setScene(new Scene(root,800,600));
                     primaryStage.show();
                     break;
                 case "Customer":
@@ -108,7 +108,7 @@ public class loginController {
                     root = loader.load();
                     customerController cController = loader.getController();
                     cController.initialize(primaryStage, userID);
-                    primaryStage.setScene(new Scene(root));
+                    primaryStage.setScene(new Scene(root,800,600));
                     primaryStage.show();
                     break;
                 default:

@@ -125,7 +125,7 @@ public class announcementsController {
         Parent root = loader.load();
         propertyController pc = loader.getController();
         pc.initialize(primaryStage, userID, propertyID);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
     }
@@ -141,7 +141,7 @@ public class announcementsController {
             Parent root = loader.load();
             propertyController pc = loader.getController();
             pc.initialize(primaryStage, userID, propertyID);
-            primaryStage.setScene(new Scene(root));
+            primaryStage.setScene(new Scene(root,800,600));
             primaryStage.show();
         }
 

@@ -115,7 +115,7 @@ public class requestController {
         Parent root = loader.load();
         unitController unitViewController = loader.getController();
         unitViewController.initializeValues(primaryStage, userID, currPropertyID, currUnitID);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
     }
@@ -133,7 +133,7 @@ public class requestController {
         Parent root = loader.load();
         unitController unitViewController = loader.getController();
         unitViewController.initializeValues(primaryStage, userID,-1, -1);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 

@@ -127,7 +127,7 @@ public class unitListController {
             Parent root = loader.load();
             customerController cController = loader.getController();
             cController.initialize(primaryStage, userID);
-            primaryStage.setScene(new Scene(root));
+            primaryStage.setScene(new Scene(root,800,600));
             primaryStage.show();
         }
         else {
@@ -137,7 +137,7 @@ public class unitListController {
             Parent root = loader.load();
             propertyController propertyViewController = loader.getController();
             propertyViewController.initialize(primaryStage, userID, currPropertyID);
-            primaryStage.setScene(new Scene(root));
+            primaryStage.setScene(new Scene(root,800,600));
             primaryStage.show();
         }
 
@@ -155,7 +155,7 @@ public class unitListController {
         Parent root = loader.load();
         unitCustomerController unitViewController = loader.getController();
         unitViewController.initializeValues(primaryStage, userID, unitTableView.getSelectionModel().getSelectedItem().getPropertyID(), unitTableView.getSelectionModel().getSelectedItem().getUnitID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 

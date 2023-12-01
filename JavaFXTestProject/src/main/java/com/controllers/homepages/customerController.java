@@ -576,7 +576,7 @@ public class customerController {
         Parent root = loader.load();
         loginController login = loader.getController();
         login.setStage(primaryStage);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 
@@ -627,7 +627,7 @@ public class customerController {
         Parent root = loader.load();
         propertyController propertyViewController = loader.getController();
         propertyViewController.initialize(primaryStage, userID, propertyTableView.getSelectionModel().getSelectedItem().getPropertyID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 
@@ -641,7 +641,7 @@ public class customerController {
         unitListController unitListViewController = loader.getController();
         System.out.println("Passing propertyID: "+ currentProperty.getPropertyID());
         unitListViewController.initializeValues(primaryStage, userID, currentProperty.getPropertyID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 

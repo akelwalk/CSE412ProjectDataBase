@@ -1,0 +1,54 @@
+.border-pane {
+    -fx-background-color: #000000;
+}
+
+/* Button appearance */
+.button {
+    -fx-background-color: #ffd500; 
+    -fx-text-fill: rgb(0, 0, 0); 
+    -fx-font-family: 'Arial'; 
+    -fx-font-size: 12px; 
+    -fx-padding: 5px 5px;
+    -fx-background-radius: 5px; 
+}
+
+/* Button hover effect */
+.button:hover {
+    -fx-background-color: #710000; 
+    -fx-text-fill: rgb(255, 255, 255); 
+}
+
+/* TableView appearance */
+.table-view {
+    -fx-background-color: #000000;
+    -fx-table-cell-border-color: transparent;
+    -fx-base: #2b2b2b;
+    -fx-text-fill: white;
+}
+
+/* TableView appearance */
+.table-view .label {
+    -fx-text-fill: white;
+}
+
+/* Table column headers */
+.table-view .column-header-background .label {
+    -fx-text-fill: white;
+    -fx-font-family: 'Arial';
+    -fx-font-size: 12px;
+    -fx-background-color: #5d5b5b;
+    -fx-padding: 5px;
+}
+
+/* Table row appearance */
+.table-row-cell {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: white; /* White text by default */
+    -fx-table-cell-border-color: #000000;
+}
+
+/* Hover effect on rows */
+.table-row-cell:hover {
+    -fx-background-color: #f9bf00;
+    -fx-text-fill: black; /* Black text when hovered */
+}

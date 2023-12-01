@@ -8,42 +8,48 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.property.propertyController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="border-pane" stylesheets="@../styles/utils.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.property.propertyController">
 <center>
-    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="497.0" BorderPane.alignment="CENTER">
         <children>
-            <Button fx:id="homeButton" layoutX="87.0" layoutY="297.0" mnemonicParsing="false" onAction="#goBack" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #FFC900;" text="Home">
-                <font>
-                    <Font size="27.0" />
-                </font>
-            </Button>
-            <Text fill="WHITE" layoutX="52.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Property Page" wrappingWidth="461.75390625">
+            <Text fill="WHITE" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Property Information" wrappingWidth="286.75390625">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Label layoutX="59.0" layoutY="101.0" text="Property ID" textFill="WHITE" />
-            <Text fx:id="propertyIDText" fill="WHITE" layoutX="154.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-            <Label layoutX="58.0" layoutY="127.0" text="Name" textFill="WHITE" />
-            <Text fx:id="nameText" fill="WHITE" layoutX="153.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-            <Label layoutX="58.0" layoutY="154.0" text="Address" textFill="WHITE" />
-            <Text fx:id="addressText" fill="WHITE" layoutX="153.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.21630859375" />
-            <Label layoutX="58.0" layoutY="183.0" text="Amenities" textFill="WHITE" />
-            <Text fx:id="amenitiesText" fill="WHITE" layoutX="153.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="425.21630859375" />
-            <Label layoutX="372.0" layoutY="37.0" text="communityAnnouncements" textFill="WHITE" />
-            <Text fx:id="communityAnnouncementsText" fill="WHITE" layoutX="232.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="359.21630859375" />
-            <Button fx:id="viewUnitsButton" layoutX="313.0" layoutY="308.0" mnemonicParsing="false" onAction="#goToUnitList" prefHeight="51.0" prefWidth="227.0" style="-fx-background-color: #FFC900;" text="View Units">
-               <font>
-                  <Font size="27.0" />
-               </font>
-            </Button>
-            <ListView fx:id="announcementsListView" layoutX="356.0" layoutY="58.0" prefHeight="172.0" prefWidth="200.0" />
-            <Button fx:id="announcementsButton" layoutX="327.0" layoutY="236.0" mnemonicParsing="false" onAction="#goBack" prefHeight="51.0" prefWidth="233.0" style="-fx-background-color: #FFC900;" text="Make announcements">
-               <font>
-                  <Font size="27.0" />
-               </font>
-            </Button>
+            <Label layoutX="15.0" layoutY="80.0" text="Property ID" textFill="WHITE" />
+            <Text fx:id="propertyIDText" fill="WHITE" layoutX="110.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="f" wrappingWidth="232.21630859375" />
+            <Label layoutX="14.0" layoutY="106.0" text="Name" textFill="WHITE" />
+            <Text fx:id="nameText" fill="WHITE" layoutX="109.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="f" wrappingWidth="232.21630859375" />
+            <Label layoutX="14.0" layoutY="133.0" text="Address" textFill="WHITE" />
+            <Text fx:id="addressText" fill="WHITE" layoutX="110.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="f" wrappingWidth="232.21630859375" />
+            <Label layoutX="14.0" layoutY="162.0" text="Amenities" textFill="WHITE" />
+            <Text fx:id="amenitiesText" fill="WHITE" layoutX="109.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="f" wrappingWidth="425.21630859375" />
+            <Label layoutX="14.0" layoutY="219.0" text="Community Announcements" textFill="WHITE" />
+            <Text fx:id="communityAnnouncementsText" fill="WHITE" layoutX="199.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="359.21630859375" />
+            <ListView fx:id="announcementsListView" layoutX="14.0" layoutY="243.0" prefHeight="139.0" prefWidth="394.0" />
         </children>
     </AnchorPane>
 </center>
+   <left>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="170.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="homeButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #FFC900;" text="Home">
+                <font>
+                    <Font size="27.0" />
+                </font>
+            </Button>
+            <Button fx:id="viewUnitsButton" layoutX="14.0" layoutY="327.0" mnemonicParsing="false" onAction="#goToUnitList" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #FFC900;" text="View Units">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="announcementsButton" layoutX="14.0" layoutY="293.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #FFC900;" text="Announcement">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>

@@ -48,6 +48,7 @@ public class unitController implements Initializable {
     private boolean isRented;
     private ArrayList<String> appliances;
     private boolean rentPaid;
+    private String r_paid; 
 
     private Stage primaryStage;
 
@@ -102,6 +103,21 @@ public class unitController implements Initializable {
     @FXML
     private Label rentPaidLabel;
 
+    @FXML
+    private Label userName1; 
+
+    @FXML
+    private Label userName2; 
+
+    @FXML
+    private Label userName3; 
+
+    @FXML
+    private Label userName4; 
+    
+    @FXML
+    private Label userName5; 
+
 
     @FXML
     // private ListView<Propery> propertyListView = new ListView(FXCollections.observableList(Arrays.asList("one", "2", "3")));
@@ -141,7 +157,7 @@ public class unitController implements Initializable {
     @FXML
     private Button resetButton;
 
-    private boolean selectedRent;
+    private String selectedRent;
     private boolean selectedFurnished;
 
     @FXML
@@ -163,6 +179,8 @@ public class unitController implements Initializable {
     private Date leaseEnd;
 
     @FXML
+
+    
     public void terminateLease(ActionEvent event) throws IOException {
       /*  System.out.println("Property View -> Customer Home Page");
         MainApplication m = new MainApplication();
@@ -178,7 +196,7 @@ public class unitController implements Initializable {
         unitController unit = loader.getController();
         database_controller dbcontroller = new database_controller();;
         unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), currentUnit.getPropertyID(), currentUnit.getUnitID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
     }
@@ -200,7 +218,7 @@ public class unitController implements Initializable {
         unitController unit = loader.getController();
         database_controller dbcontroller = new database_controller();;
         unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), currentUnit.getPropertyID(), currentUnit.getUnitID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
     }
@@ -266,7 +284,17 @@ public class unitController implements Initializable {
         errors.append("Errors in the following fields: ");
 
     boolean newFurnished = selectedFurnished;
-    boolean newRent = selectedRent;
+    boolean temp_nr = false; 
+
+    if (selectedRent.equals("Paid"))
+    {
+        temp_nr = true;
+    }
+    else
+    {
+        temp_nr = false;
+    }
+    boolean newRent = temp_nr;
     double newAmount = 0.0;
 
         if (!isNumeric(rentField.getText()))
@@ -327,6 +355,19 @@ public class unitController implements Initializable {
 
     public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
     {
+
+        try {
+            String usr = UserSession.getInstance().getEmail();
+            database_controller dbController = database_controller.getInstance(); 
+            userName1.setText(dbController.getName(usr));
+            userName2.setText(dbController.getName(usr));
+            userName3.setText(dbController.getName(usr));
+            userName4.setText(dbController.getName(usr));
+            userName5.setText(dbController.getName(usr));
+        } catch (IllegalStateException e) {
+            UserSession.cleanUserSession();
+            //username.setText("ERROR");
+        }
 
         List<Unit> getUnitList = databaseHandler.unitList();
         currentUnit = getUnitList.get(0);
@@ -417,6 +458,16 @@ public class unitController implements Initializable {
         rentDueLabel.setText(String.valueOf(currentUnit.getRentDue()));
         rentPaidLabel.setText(String.valueOf(currentUnit.isRentPaid()));
 
+
+        if (rentPaid) 
+        {
+            r_paid = "Paid";
+        }
+        else
+        {
+            r_paid = "Unpaid";
+        }
+
         //Edit Tab
 
         isFurnishedCombo.setOnAction((event) -> {
@@ -444,16 +495,16 @@ public class unitController implements Initializable {
 
             String selected = (String) selectedItem;
 
-            if (selected == "True")
+            if (selected == "Paid")
             {
-                selectedRent = true;
+                selectedRent = "Paid";
             }
-            else if (selected == "False")
+            else if (selected == "Unpaid")
             {
-                selectedRent = false;
+                selectedRent = "Unpaid";
             }
             else {
-                selectedRent = rentPaid;
+                selectedRent = r_paid;
             }
         });
 
@@ -515,11 +566,11 @@ public class unitController implements Initializable {
         if (rentPaid)
         {
             rentCombo.getSelectionModel().select(0);
-            selectedRent = true;
+            selectedRent = "Paid";
         }
         else {
             rentCombo.getSelectionModel().select(1);
-            selectedRent = false;
+            selectedRent = "Unpaid";
         }
 
     }
@@ -557,7 +608,7 @@ public class unitController implements Initializable {
         Parent root = loader.load();
         managerController mcController = loader.getController();
         mcController.initialize(primaryStage, userID);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
 
@@ -572,7 +623,7 @@ public class unitController implements Initializable {
         Parent root = loader.load();
         requestController maintenanceRequestListViewController = loader.getController();
         maintenanceRequestListViewController.initializeValues(primaryStage, userID, currentUnit.getPropertyID(), currentUnit.getUnitID());
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
 
     }*/

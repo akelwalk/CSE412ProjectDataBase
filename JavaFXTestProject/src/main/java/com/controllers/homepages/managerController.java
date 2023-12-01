@@ -41,8 +41,6 @@ public class managerController {
 
     @FXML
     private Button logout;
-    private Button ediButton; 
-    private Button deleteButton; 
     private Button newAnnounce; 
     private Button delAnnounce;
 
@@ -56,6 +54,10 @@ public class managerController {
     private Label user_name4; 
     @FXML
     private Label user_name5;
+    @FXML
+    private Label user_name6;
+    @FXML
+    private Label user_name7;
 
     @FXML
     private Label name; 
@@ -109,7 +111,7 @@ public class managerController {
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
 
             unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), property_id, selectedUnitID);
-            primaryStage.setScene(new Scene(root));
+            primaryStage.setScene(new Scene(root,800,600));
             primaryStage.show();
 
         }
@@ -161,7 +163,7 @@ public class managerController {
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
 
             unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), property_id, selectedTenant.getUnitID());
-            primaryStage.setScene(new Scene(root));
+            primaryStage.setScene(new Scene(root,800,600));
             primaryStage.show();
 
         }
@@ -181,10 +183,6 @@ public class managerController {
 
 
     //Lease Page Stuff
-
-
-    @FXML
-    private Label user_nameLease;
 
     @FXML
     private TableView<LeaseRequest> leaseTableView;
@@ -281,7 +279,7 @@ public class managerController {
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
 
             unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), property_id, selectedLease.getUnitID());
-            primaryStage.setScene(new Scene(root));
+            primaryStage.setScene(new Scene(root,800,600));
             primaryStage.show();
 
         }
@@ -290,9 +288,6 @@ public class managerController {
 
     //Maintenance Page Stuff
 
-
-    @FXML
-    private Label user_nameMaintenance;
 
     @FXML
     private TableView<MaintenanceRequest> maintenanceTableView;
@@ -397,7 +392,7 @@ public class managerController {
             int property_id = dbController.getPropertyId(UserSession.getInstance().getUserID());
 
             unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), property_id, selectedMaintenance.getUnitID());
-            primaryStage.setScene(new Scene(root));
+            primaryStage.setScene(new Scene(root,800,600));
             primaryStage.show();
 
         }
@@ -468,6 +463,8 @@ public class managerController {
             user_name3.setText(dbController.getName(usr));
             user_name4.setText(dbController.getName(usr));
             user_name5.setText(dbController.getName(usr));
+            user_name6.setText(dbController.getName(usr));
+            user_name7.setText(dbController.getName(usr));
             this.selectedUnitID = -1;
 
             //Unit Tab Table initialization
@@ -528,7 +525,7 @@ public class managerController {
         Parent root = loader.load();
         loginController login = loader.getController();
         login.setStage(primaryStage);
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root,800,600));
         primaryStage.show();
     }
 
@@ -550,7 +547,7 @@ public class managerController {
     //     Parent root = loader.load();
     //     managerPropertyController mpc = loader.getController(); 
     //     mpc.initialize(primaryStage);
-    //     primaryStage.setScene(new Scene(root));
+    //     primaryStage.setScene(new Scene(root,800,600));
     //     primaryStage.show();
     // }
 
@@ -568,7 +565,7 @@ public class managerController {
         popupStage.initModality(Modality.APPLICATION_MODAL); // This line ensures the popup blocks interaction with other windows until it's closed
         popupStage.setTitle("Edit Property");
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,800,600);
         popupStage.setScene(scene);
 
         popupStage.showAndWait();
