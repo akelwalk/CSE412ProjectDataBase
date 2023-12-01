@@ -146,6 +146,59 @@ public class unitController implements Initializable {
     @FXML
     private Label errorLabel;
 
+    //Lease Tab
+
+    @FXML
+    private Button terminateButton;
+
+    @FXML
+    public void terminateLease(ActionEvent event) throws IOException {
+      /*  System.out.println("Property View -> Customer Home Page");
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/propertyPage.fxml");*/
+        if (checkRequest())
+        {
+
+        }
+        initializeValues(primaryStage, UserSession.getInstance().getUserID(), currentUnit.getPropertyID(), currentUnit.getUnitID());
+
+
+    }
+
+    //Maintenance Tab
+
+    @FXML
+    void resolveRequest(ActionEvent even) throws IOException{
+        System.out.println("calling resolveRequests()");
+        System.out.println("selected Maintenance: " );
+
+        database_controller dbController = new database_controller();
+        String registrationResult = dbController.resolveRequest(selectedRequestID, currentUnit.getUnitID(), currentUnit.getPropertyID(),selectedMaintenance.getUserID()) ;
+        System.out.println(registrationResult);
+        System.out.println("Success".equals(registrationResult));
+
+        initializeValues(primaryStage, UserSession.getInstance().getUserID(), currentUnit.getPropertyID(), currentUnit.getUnitID());
+
+
+            /*if (checkAcceptLease()) {
+                initialize(primaryStage, UserSession.getInstance().getUserID());
+            }*/
+
+    }
+
+
+
+    public boolean checkRequest()
+    {
+
+
+        database_controller dbController = new database_controller();
+        String registrationResult = dbController.cancelLeaseRequest(currentUnit.getUserID());
+        return "Success".equals(registrationResult);
+
+
+    }
+
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;

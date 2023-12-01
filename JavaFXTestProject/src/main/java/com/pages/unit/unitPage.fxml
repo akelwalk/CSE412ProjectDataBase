@@ -90,7 +90,7 @@
                         <Label fx:id="tenantLastName" layoutX="262.0" layoutY="94.0" text="Last name" textFill="WHITE" />
                         <Label fx:id="tenantEmail" layoutX="262.0" layoutY="127.0" text="Email" textFill="WHITE" />
                         <Label fx:id="tenantPhoneNumber" layoutX="262.0" layoutY="160.0" text="Phone Number" textFill="WHITE" />
-                        <Button fx:id="terminateButton" layoutX="107.0" layoutY="245.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="131.0" text="Terminate Lease" />
+                        <Button fx:id="terminateButton" layoutX="107.0" layoutY="245.0" mnemonicParsing="false" onAction="#terminateLease" prefHeight="25.0" prefWidth="131.0" text="Terminate Lease" />
                      </children>
                         </AnchorPane>
                     </center>
@@ -125,7 +125,6 @@
                         <Label layoutX="63.0" layoutY="141.0" text="Rent Paid?" textFill="WHITE" />
                         <Label fx:id="rentDueLabel" layoutX="309.0" layoutY="97.0" text="Rent Due" textFill="WHITE" />
                         <Label fx:id="rentPaidLabel" layoutX="309.0" layoutY="141.0" text="rentPaid" textFill="WHITE" />
-                        <Button layoutX="135.0" layoutY="237.0" mnemonicParsing="false" text="Pay Rent" />
                      </children>
                         </AnchorPane>
                     </center>
@@ -147,7 +146,7 @@
                              </ImageView>
                              <Label fx:id="user_name5" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
                              <Button fx:id="homeButton3" layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="84.0" text="Home" />
-                        <Button fx:id="homeButton31" layoutX="10.0" layoutY="153.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="84.0" text="Resolve" />
+                        <Button fx:id="homeButton31" layoutX="10.0" layoutY="153.0" mnemonicParsing="false" onAction="#resolveRequest" prefHeight="25.0" prefWidth="84.0" text="Resolve" />
 
                          </children>
                      </AnchorPane>
