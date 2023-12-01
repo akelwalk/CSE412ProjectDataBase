@@ -92,6 +92,10 @@
                         <Label fx:id="tenantPhoneNumber" layoutX="262.0" layoutY="160.0" text="Phone Number" textFill="WHITE" />
                         <Button fx:id="terminateButton" layoutX="26.0" layoutY="245.0" mnemonicParsing="false" onAction="#terminateLease" prefHeight="25.0" prefWidth="131.0" text="Terminate Lease" />
                         <Button fx:id="renewButton" layoutX="204.0" layoutY="245.0" mnemonicParsing="false" onAction="#renewLease" prefHeight="25.0" prefWidth="131.0" text="Renew Lease" />
+                        <Label layoutX="41.0" layoutY="183.0" text="Lease Start" textFill="WHITE" />
+                        <Label fx:id="leaseStartLabel" layoutX="262.0" layoutY="183.0" text="Lease Start" textFill="WHITE" />
+                        <Label layoutX="31.0" layoutY="206.0" text="Lease End" textFill="WHITE" />
+                        <Label fx:id="leaseEndLabel" layoutX="262.0" layoutY="206.0" text="Lease End" textFill="WHITE" />
                      </children>
                         </AnchorPane>
                     </center>

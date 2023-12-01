@@ -4,6 +4,7 @@ import com.controllers.homepages.managerController;
 import com.controllers.sessions.UserSession;
 import com.db.IDatabaseOperations;
 import com.db.database_controller;
+import com.models.Customers;
 import com.models.MaintenanceRequest;
 import com.models.Unit;
 import com.models.Users;
@@ -149,7 +150,17 @@ public class unitController implements Initializable {
     //Lease Tab
 
     @FXML
+    private Label leaseStartLabel;
+
+    @FXML
+    private Label leaseEndLabel;
+
+    @FXML
     private Button terminateButton;
+
+    private Date leaseStart;
+
+    private Date leaseEnd;
 
     @FXML
     public void terminateLease(ActionEvent event) throws IOException {
@@ -447,6 +458,33 @@ public class unitController implements Initializable {
         });
 
         initializeEdit();
+
+
+            //Fetch the customer object
+
+            List<Customers> getCustomerList = databaseHandler.customerList();
+
+            Customers currentCustomer = getCustomerList.get(0);
+
+            System.out.println("The current userID is: " + UserSession.getInstance().getUserID());
+
+
+            for (int i = 0; i < getCustomerList.size(); i++)
+            {
+                if (getCustomerList.get(i).getUserID() == UserSession.getInstance().getUserID())
+                {
+                    currentCustomer = getCustomerList.get(i);
+                    System.out.println("Current customer FOUND! ->" + getCustomerList.get(i).getUnitID());
+                    break;
+                }
+            }
+
+            this.leaseStart = currentCustomer.getLeaseStart();
+            this.leaseEnd = currentCustomer.getLeaseEnd();
+
+            leaseStartLabel.setText(leaseStart.toString());
+            leaseEndLabel.setText(leaseEnd.toString());
+
 
 
 
