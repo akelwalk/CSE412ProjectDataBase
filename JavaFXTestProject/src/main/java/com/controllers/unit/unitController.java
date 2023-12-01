@@ -172,6 +172,28 @@ public class unitController implements Initializable {
 
     }
 
+    @FXML
+    public void renewLease(ActionEvent event) throws IOException {
+      /*  System.out.println("Property View -> Customer Home Page");
+        MainApplication m = new MainApplication();
+        m.changeScene("/com/resources/propertyPage.fxml");*/
+
+        database_controller dbController = new database_controller();
+        String registrationResult = dbController.renewLease(currentUnit.getUserID());
+
+
+        URL url = getClass().getResource("/com/pages/unit/unitPage.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        unitController unit = loader.getController();
+        database_controller dbcontroller = new database_controller();;
+        unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), currentUnit.getPropertyID(), currentUnit.getUnitID());
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
+    }
+
     //Maintenance Tab
 
     private MaintenanceRequest currentRequest;

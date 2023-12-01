@@ -1327,4 +1327,43 @@ public class database_controller implements IDatabaseOperations {
     }
 
 
+    public String renewLease(int userID) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String addAnnouncement = "UPDATE CUSTOMER SET leaseend = leaseend + interval '1 year' WHERE userid = ?";
+            stmt = conn.prepareStatement(addAnnouncement);
+            stmt.setInt(1, userID);
+
+            System.out.println("Added announcement: ");
+            System.out.println(stmt.toString());
+            int affectedRows = stmt.executeUpdate();
+
+            // this creates a Customer for this user -- if we change the role later on we should delete the customer
+            // database row for the user so they do not have dual accounts
+            if (affectedRows > 0) {
+                return "Success";
+            }
+            return "Failed to create request.";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error connecting to the database.";
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
+
+
 }

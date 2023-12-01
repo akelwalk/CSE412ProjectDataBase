@@ -90,7 +90,8 @@
                         <Label fx:id="tenantLastName" layoutX="262.0" layoutY="94.0" text="Last name" textFill="WHITE" />
                         <Label fx:id="tenantEmail" layoutX="262.0" layoutY="127.0" text="Email" textFill="WHITE" />
                         <Label fx:id="tenantPhoneNumber" layoutX="262.0" layoutY="160.0" text="Phone Number" textFill="WHITE" />
-                        <Button fx:id="terminateButton" layoutX="107.0" layoutY="245.0" mnemonicParsing="false" onAction="#terminateLease" prefHeight="25.0" prefWidth="131.0" text="Terminate Lease" />
+                        <Button fx:id="terminateButton" layoutX="26.0" layoutY="245.0" mnemonicParsing="false" onAction="#terminateLease" prefHeight="25.0" prefWidth="131.0" text="Terminate Lease" />
+                        <Button fx:id="renewButton" layoutX="204.0" layoutY="245.0" mnemonicParsing="false" onAction="#renewLease" prefHeight="25.0" prefWidth="131.0" text="Renew Lease" />
                      </children>
                         </AnchorPane>
                     </center>
@@ -159,7 +160,7 @@
                                      <Font size="30.0" />
                                  </font>
                              </Text>
-                        <TableView fx:id="maintenanceRequestTableView" onMouseClicked="#rowClicked" layoutX="52.0" layoutY="66.0" prefHeight="279.0" prefWidth="459.0">
+                        <TableView fx:id="maintenanceRequestTableView" layoutX="52.0" layoutY="66.0" onMouseClicked="#rowClicked" prefHeight="279.0" prefWidth="459.0">
                           <columns>
                             <TableColumn fx:id="isDealtWithCol" prefWidth="83.0" text="isDealtWith" />
                             <TableColumn fx:id="requestIDCol" prefWidth="92.0" text="requestID" />
