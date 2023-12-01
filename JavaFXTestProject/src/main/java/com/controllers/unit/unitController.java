@@ -160,8 +160,15 @@ public class unitController implements Initializable {
         {
 
         }
-        initializeValues(primaryStage, UserSession.getInstance().getUserID(), currentUnit.getPropertyID(), currentUnit.getUnitID());
-
+        URL url = getClass().getResource("/com/pages/unit/unitPage.fxml");
+        System.out.println(url.toString());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        unitController unit = loader.getController();
+        database_controller dbcontroller = new database_controller();;
+        unit.initializeValues(primaryStage, UserSession.getInstance().getUserID(), currentUnit.getPropertyID(), currentUnit.getUnitID());
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
 
     }
 
@@ -181,10 +188,13 @@ public class unitController implements Initializable {
 
         initializeValues(primaryStage, UserSession.getInstance().getUserID(), currentUnit.getPropertyID(), currentUnit.getUnitID());
 
+        //initializeValues(primaryStage, UserSession.getInstance().getUserID(), currentUnit.getPropertyID(), currentUnit.getUnitID());
+
 
             /*if (checkAcceptLease()) {
                 initialize(primaryStage, UserSession.getInstance().getUserID());
             }*/
+
 
     }
 
@@ -275,6 +285,11 @@ public class unitController implements Initializable {
 
 
 
+    @FXML
+    private TabPane tabPane;
+
+    @FXML
+    private Tab tenantTab;
 
 
     public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
@@ -301,6 +316,11 @@ public class unitController implements Initializable {
                 currentUnit = getUnitList.get(i);
                 break;
             }
+        }
+
+        if (currentUnit.isRented() == false)
+        {
+            tabPane.getTabs().remove(tenantTab);
         }
 
         this.unitID = currentUnit.getUnitID();
