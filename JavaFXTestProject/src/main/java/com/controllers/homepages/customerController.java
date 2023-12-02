@@ -89,6 +89,18 @@ public class customerController {
     @FXML
     private Button logout;
 
+    //Home page Stuff
+
+    //Home page Stuff
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label emailLabel;
+
+    @FXML
+    private Label phoneNumberLabel;
+
     //View Property Tab Stuff
 
     @FXML
@@ -243,6 +255,13 @@ public class customerController {
             userName6.setText(dbController.getName(usr));
             userName7.setText(dbController.getName(usr));
             userName8.setText(dbController.getName(usr));
+
+            //Initialize homeTab
+
+            nameLabel.setText(dbController.getName(usr));
+            emailLabel.setText(UserSession.getInstance().getEmail());
+            phoneNumberLabel.setText(dbController.getPhone(usr));
+
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");

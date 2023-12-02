@@ -59,6 +59,16 @@ public class managerController {
     @FXML
     private Label user_name7;
 
+    //Home page Stuff
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label emailLabel;
+
+    @FXML
+    private Label phoneNumberLabel;
+
     @FXML
     private Label name; 
     @FXML
@@ -466,6 +476,12 @@ public class managerController {
             user_name6.setText(dbController.getName(usr));
             user_name7.setText(dbController.getName(usr));
             this.selectedUnitID = -1;
+
+            //Initialize homeTab
+
+            nameLabel.setText(dbController.getName(usr));
+            emailLabel.setText(UserSession.getInstance().getEmail());
+            phoneNumberLabel.setText(dbController.getPhone(usr));
 
             //Unit Tab Table initialization
             unitIDCol.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("unitID"));

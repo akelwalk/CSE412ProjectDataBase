@@ -39,6 +39,18 @@
                            </children>
                         </AnchorPane>
                      </left>
+                      <center>
+                          <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                              <children>
+                                  <Label layoutX="41.0" layoutY="68.0" text="First name:" textFill="WHITE" />
+                                  <Label layoutX="41.0" layoutY="94.0" text="Last name:" textFill="WHITE" />
+                                  <Label layoutX="41.0" layoutY="127.0" text="Phone Number:" textFill="WHITE" />
+                                  <Label fx:id="nameLabel" layoutX="170.0" layoutY="68.0" text="First name " textFill="WHITE" />
+                                  <Label fx:id="emailLabel" layoutX="170.0" layoutY="94.0" text="Email" textFill="WHITE" />
+                                  <Label fx:id="phoneNumberLabel" layoutX="170.0" layoutY="127.0" text="Phone Number" textFill="WHITE" />
+                              </children>
+                          </AnchorPane>
+                      </center>
                   </BorderPane>
                </children></AnchorPane>
       </content>
@@ -57,8 +69,6 @@
                                  </image>
                               </ImageView>
                               <Label fx:id="user_name2" layoutX="14.0" layoutY="77.0" text="username" textFill="#f8f8f8" />
-                              <Button fx:id="editButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#editProperty" prefHeight="24.0" prefWidth="140.0" text="Edit Property" />
-                              <Button fx:id="deleteButton" layoutX="14.0" layoutY="147.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteProperty" prefHeight="24.0" prefWidth="140.0" text="Delete Property" />
                            </children>
                         </AnchorPane>
                      </left>
@@ -173,7 +183,7 @@
                                               <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                           </image>
                                       </ImageView>
-                                      <Label fx:id="user_nameLease" layoutX="14.0" layoutY="77.0" text="username" textFill="#f8f8f8" />
+                                      <Label fx:id="user_name5" layoutX="14.0" layoutY="77.0" text="username" textFill="#f8f8f8" />
                                       <Button fx:id="approveLeaseButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#acceptLease" prefHeight="24.0" prefWidth="140.0" text="Approve Lease" />
                                       <Button fx:id="rejectLeaseButton" layoutX="14.0" layoutY="147.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rejectLease" prefHeight="24.0" prefWidth="140.0" text="Reject Lease" />
                               <Button fx:id="unitLeaseButton" layoutX="14.0" layoutY="186.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToUnitLease" prefHeight="24.0" prefWidth="140.0" text="Visit Unit" />
@@ -217,7 +227,7 @@
                                     <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="user_name5" layoutX="14.0" layoutY="77.0" text="username" textFill="#f2f2f2" />
+                              <Label fx:id="user_name6" layoutX="14.0" layoutY="77.0" text="username" textFill="#f2f2f2" />
                               <Button fx:id="delAnnounceButton" layoutX="10.0" layoutY="141.0" mnemonicParsing="false" onAction="#delAnnounce" prefHeight="25.0" prefWidth="58.0" text="Delete" />
                            </children>
                         </AnchorPane>
@@ -250,7 +260,7 @@
                                     <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="user_nameMaintenance" layoutX="14.0" layoutY="77.0" text="username" textFill="#f8f8f8" />
+                              <Label fx:id="user_name7" layoutX="14.0" layoutY="77.0" text="username" textFill="#f8f8f8" />
                               <Button fx:id="resolveMaintenance" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#resolveRequests" prefHeight="24.0" prefWidth="140.0" text="Resolve " />
                               <Button fx:id="visitUnitMaintenance" layoutX="14.0" layoutY="147.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToUnitMaintenance" prefHeight="24.0" prefWidth="140.0" text="Visit Unit" />
                            </children>

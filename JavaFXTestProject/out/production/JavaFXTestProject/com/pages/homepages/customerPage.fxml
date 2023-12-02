@@ -38,16 +38,17 @@
         </left>
 
         <center>
-    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="426.0" BorderPane.alignment="CENTER">
-        <children>
-            <ImageView fitHeight="80.0" fitWidth="137.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="https://i.imgur.com/HSxmAVC.png" />
-                </image>
-            </ImageView>
-        </children>
-    </AnchorPane>
-</center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <children>
+                    <Label layoutX="41.0" layoutY="68.0" text="First name:" textFill="WHITE" />
+                    <Label layoutX="41.0" layoutY="94.0" text="Last name:" textFill="WHITE" />
+                    <Label layoutX="41.0" layoutY="127.0" text="Phone Number:" textFill="WHITE" />
+                    <Label fx:id="nameLabel" layoutX="170.0" layoutY="68.0" text="First name " textFill="WHITE" />
+                    <Label fx:id="emailLabel" layoutX="170.0" layoutY="94.0" text="Email" textFill="WHITE" />
+                    <Label fx:id="phoneNumberLabel" layoutX="170.0" layoutY="127.0" text="Phone Number" textFill="WHITE" />
+                </children>
+            </AnchorPane>
+        </center>
 </BorderPane>
     </content>
     </Tab>

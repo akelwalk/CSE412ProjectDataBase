@@ -39,6 +39,18 @@
                            </children>
                         </AnchorPane>
                      </left>
+                      <center>
+                          <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                              <children>
+                                  <Label layoutX="41.0" layoutY="68.0" text="First name:" textFill="WHITE" />
+                                  <Label layoutX="41.0" layoutY="94.0" text="Last name:" textFill="WHITE" />
+                                  <Label layoutX="41.0" layoutY="127.0" text="Phone Number:" textFill="WHITE" />
+                                  <Label fx:id="nameLabel" layoutX="170.0" layoutY="68.0" text="First name " textFill="WHITE" />
+                                  <Label fx:id="emailLabel" layoutX="170.0" layoutY="94.0" text="Email" textFill="WHITE" />
+                                  <Label fx:id="phoneNumberLabel" layoutX="170.0" layoutY="127.0" text="Phone Number" textFill="WHITE" />
+                              </children>
+                          </AnchorPane>
+                      </center>
                   </BorderPane>
                </children></AnchorPane>
       </content>

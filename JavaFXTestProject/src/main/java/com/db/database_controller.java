@@ -546,6 +546,42 @@ public class database_controller implements IDatabaseOperations {
     
         return fullName;
     }
+
+    public String getPhone(String email) {
+        String result = "";
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL);
+
+            String sql = "SELECT phonenumber FROM USERS WHERE email = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                result = rs.getString("phoneNumber");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (Exception se) {
+                se.printStackTrace();
+            }
+        }
+
+        return result;
+    }
     
     public String getPropertyName(int property_id)
     {
