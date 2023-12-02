@@ -583,6 +583,8 @@ public class unitController implements Initializable {
 
         System.out.println(getMaintenanceRequestList.size());
 
+        maintenanceRequestTableView.getItems().clear();
+
         for (int i = 0; i < getMaintenanceRequestList.size(); i++) {
             if (getMaintenanceRequestList.get(i).getPropertyID() == currentUnit.getPropertyID() && getMaintenanceRequestList.get(i).getUnitID() == currentUnit.getUnitID()) {
                 maintenanceRequestTableView.getItems().addAll(getMaintenanceRequestList.get(i));
