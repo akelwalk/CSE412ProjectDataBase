@@ -355,6 +355,11 @@ public class unitController implements Initializable {
 
     public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
     {
+        userName1.setText("");
+        userName2.setText("");
+        userName3.setText("");
+        userName4.setText("");
+        userName5.setText("");
 
         try {
             String usr = UserSession.getInstance().getEmail();
