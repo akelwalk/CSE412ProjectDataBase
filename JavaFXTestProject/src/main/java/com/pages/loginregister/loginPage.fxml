@@ -11,16 +11,24 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="650.0" styleClass="border-pane" stylesheets="@../styles/utils.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.loginregister.loginController">
     <left>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="500.0" prefWidth="136.0" style="-fx-background-color: #fffff;" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="96.0" fitWidth="141.0" layoutX="27.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="https://i.imgur.com/HSxmAVC.png" />
-                </ImageView>
                 <Button fx:id="button" layoutX="15.0" layoutY="130.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: #ffc900;" text="Log In" />
             <Button fx:id="registerButton" layoutX="15.0" layoutY="162.0" mnemonicParsing="false" onAction="#userRegister" prefHeight="11.0" prefWidth="70.0" style="-fx-background-color: #ffc900;" text="Register" />
+            <Label layoutX="7.0" layoutY="49.0" text="Property Manager" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="308.0" text="CSE 412 Group #75  " textFill="WHITE" />
+            <Label layoutX="18.0" layoutY="343.0" text="Sean Berríos" textFill="WHITE" />
+            <Label layoutX="16.0" layoutY="360.0" text="Abdullah Al-Ani" textFill="WHITE" />
+            <Label layoutX="16.0" layoutY="377.0" text="Arjun Dadhwal" textFill="WHITE" />
+            <Label layoutX="17.0" layoutY="394.0" text="Aditi Kelwalkar" textFill="WHITE" />
             </children>
         </AnchorPane>
     </left>
@@ -36,6 +44,11 @@
                                     <Image url="https://i.imgur.com/ZZfDO86.png" />
                                 </image>
                             </ImageView>
+                        <Label layoutX="68.0" layoutY="20.0" text="Log in" textFill="WHITE">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <Label fx:id="wrongLogin" prefHeight="17.0" prefWidth="212.0" textFill="WHITE" />
