@@ -92,6 +92,17 @@ public class unitController implements Initializable {
     @FXML
     private Label tenantEmail;
 
+    @FXML
+    private Label username1;
+    @FXML
+    private Label username2;
+    @FXML
+    private Label username3;
+    @FXML
+    private Label username4;
+    @FXML
+    private Label username5;
+
     //Rent Tab:
 
     @FXML
@@ -283,7 +294,7 @@ public class unitController implements Initializable {
         StringBuilder errors = new StringBuilder();
         errors.append("Errors in the following fields: ");
 
-    boolean newFurnished = selectedFurnished;
+    boolean newFurnished = selectedFurnished ;
     boolean temp_nr = false; 
 
     if (selectedRent.equals("Paid"))
@@ -355,20 +366,28 @@ public class unitController implements Initializable {
 
     public void initializeValues(Stage primaryStage, int userID, int propertyID, int unitID)
     {
-        userName1.setText("");
-        userName2.setText("");
-        userName3.setText("");
-        userName4.setText("");
-        userName5.setText("");
 
         try {
             String usr = UserSession.getInstance().getEmail();
-            database_controller dbController = database_controller.getInstance(); 
-            userName1.setText(dbController.getName(usr));
+            database_controller dbController = database_controller.getInstance();
+
+            System.out.println(usr);
+
+            username1.setText(dbController.getName(usr));
+            username2.setText(dbController.getName(usr));
+            username3.setText(dbController.getName(usr));
+            username4.setText(dbController.getName(usr));
+            username5.setText(dbController.getName(usr));
+
+
+            //userName1.setText("Hello World");
+
+
+           /* userName1.setText(dbController.getName(usr));
             userName2.setText(dbController.getName(usr));
             userName3.setText(dbController.getName(usr));
             userName4.setText(dbController.getName(usr));
-            userName5.setText(dbController.getName(usr));
+            userName5.setText(dbController.getName(usr));*/
         } catch (IllegalStateException e) {
             UserSession.cleanUserSession();
             //username.setText("ERROR");

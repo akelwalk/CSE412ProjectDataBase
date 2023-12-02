@@ -28,7 +28,7 @@
                                         <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                     </image>
                                 </ImageView>
-                                <Label fx:id="userName1" layoutX="14.0" layoutY="77.0" minHeight="-Infinity" minWidth="-Infinity" text="username" textFill="WHITE" />
+                                <Label fx:id="username1" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
                                 <Button fx:id="homeButton" layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onAction="#goBack" prefHeight="16.0" prefWidth="62.0" text="Home" />
 
                             </children>
@@ -73,7 +73,7 @@
                                         <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                     </image>
                                 </ImageView>
-                                <Label fx:id="userName2" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                                <Label fx:id="username2" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
                                 <Button fx:id="homeButton1" layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onAction="#goBack" prefHeight="20.0" prefWidth="73.0" text="Home" />
 
                             </children>
@@ -115,7 +115,7 @@
                                         <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                     </image>
                                 </ImageView>
-                                <Label fx:id="userName3" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                                <Label fx:id="username3" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
                                 <Button fx:id="homeButton2" layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="84.0" text="Home" />
 
                             </children>
@@ -149,7 +149,7 @@
                                      <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                                  </image>
                              </ImageView>
-                             <Label fx:id="userName4" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                             <Label fx:id="username4" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
                              <Button fx:id="homeButton3" layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="84.0" text="Home" />
                         <Button fx:id="homeButton31" layoutX="10.0" layoutY="153.0" mnemonicParsing="false" onAction="#resolveRequest" prefHeight="25.0" prefWidth="84.0" text="Resolve" />
 
@@ -192,7 +192,7 @@
                               <Image url="https://i.imgur.com/xCvzudWb.jpg" />
                            </image>
                         </ImageView>
-                        <Label fx:id="userName5" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
+                         <Label fx:id="username5" layoutX="14.0" layoutY="77.0" text="username" textFill="WHITE" />
                         <Button fx:id="homeButtonEdit" layoutX="10.0" layoutY="114.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="84.0" text="Home" />
                      </children>
                   </AnchorPane>
