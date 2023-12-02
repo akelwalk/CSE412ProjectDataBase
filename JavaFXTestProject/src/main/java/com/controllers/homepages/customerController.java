@@ -223,7 +223,6 @@ public class customerController {
     private ListView announcementsListView;
 
     @FXML
-
     private ObservableList<String> communityAnnouncements = FXCollections.observableArrayList();
 
 
